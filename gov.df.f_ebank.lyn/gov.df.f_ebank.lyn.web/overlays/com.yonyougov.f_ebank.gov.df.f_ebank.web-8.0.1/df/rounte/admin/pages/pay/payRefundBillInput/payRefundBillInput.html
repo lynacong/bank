@@ -1,0 +1,102 @@
+<div class="wrapper" style="margin:0 auto;">
+	<!-- 操作按钮区 -->
+	<div class="button-fixed">
+		<div class="btn-grid-group-btn ip-content-btn-area">
+			<div id="buttonArea" class="icon-buttons"></div>
+		</div>
+	</div>
+	<div class="btn-group-content button-fixed-select">
+		<div class="common-border">
+			<span class="common-surround-header">查询区</span>
+			<div class="search-area" id="searchArea"></div>
+		</div>
+		<div class="mainLabel clearfix">
+			<label>退款凭证：</label> 
+			<select id="statusArea"></select>
+		</div>
+		<div class="mainTable">
+			<table id="mainGridArea"
+				class="table-striped table nowrap table-bordered table-hover table-condensed"
+				style="width: 100%;"></table>
+		</div>
+	</div>
+
+	<!-- 详情弹窗 -->
+	<div id="detailContainer"></div>
+
+	<!-- 退款通知书录入 -->
+	<div class="modal fade" id="payRefundBillInput" tabindex="-1"
+		role="dialog" aria-labelledby="ylModalLabel" data-backdrop="static"
+		style="height: 800px;">
+		<div class="modal-dialog" role="document" style="width:1000px;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close"
+						onclick="closePayRefundBillInput()" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="titleText">退款通知书录入</h4>
+				</div>
+				<div class="modal-body" style="height: 430px;padding:10px 15px;">
+					<div class="clearfix">
+						<div class="col-md-4 col-sm-4">
+							<label id="voucher_no_name" class="col-md-6 col-sm-6 text-right">原支付凭证单号：</label>
+							<div class="col-md-6 ip-input-group" >
+								<input type="text" class="form-control" id="bill_no">
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-4" style="padding: 0px;">
+							<label class="col-md-4 col-sm-4 text-right">财政机构：</label>
+							<div class="col-md-8 ip-input-group" style="padding: 0px;">
+								<select	class="form-control" id="finance_code"></select>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-4">
+							<div class="col-md-4">
+								<button type="button" class="btn btn-primary" style="margin-top:0;" onclick="searchBill()">查询</button>
+							</div>
+							<div class="col-md-8">
+								<label id="refundSerchText" style="display:inline-block;padding-top:5px;"></label>
+							</div>
+						</div>
+					</div>
+					<div class="common-border clearfix" style="padding-bottom:10px;">
+						<span class="common-surround-header">退款信息录入区</span>
+						<div class="input-area">
+							<div class="col-md-4 col-sm-4">
+								<label id="refundMoney" class="col-md-4 text-right">退款金额：</label>
+								<div class="col-md-8">
+									<input type="text" id="refund_money" class="form-control"  />
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<label id="refundReason" class="col-md-4 text-right">退款原因：</label>
+								<div class="col-md-8">
+									<input type="text" id="refund_reason" class="form-control"  />
+								</div>  
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<input type="checkbox" id="isAllBatchCheck"	onclick="isAllBatchCheckListener()" 
+								style="vertical-align:middle;margin-top:-2px; margin-bottom:1px;"/>
+								<span>是否全额批量退款</span>
+							</div>
+						</div>
+					</div>
+					<div>
+						<table id="modalPayRefundListArea"
+							class="table nowrap table-bordered table-hover table-condensed"
+							style="width:100%">
+						</table>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<input type="checkbox" id="continueCheck" class="checkbox-style" style="float:left;padding:3px;"/>
+					<span style="float:left;">连续录入</span>
+				    <button type="button" class="btn btn-primary" onclick="doSavePayRefundBillInput()">确定</button>
+					<button type="button" class="btn btn-primary" onclick="doClearPayRefundBillInput()">清空</button>	
+				    <button type="button" class="btn btn-primary" onclick="closePayRefundBillInput()">退出</button>			   					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

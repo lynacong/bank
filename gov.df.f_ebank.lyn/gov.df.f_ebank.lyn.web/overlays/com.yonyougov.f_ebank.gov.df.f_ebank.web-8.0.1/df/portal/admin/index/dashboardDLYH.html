@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>业务配置</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css"/>
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/foundation-datepicker.css" />
+		<link rel="stylesheet" href="/df/trd/uui/css/u.css" type="text/css">
+		<link rel="stylesheet" href="css/GKJB/dashboardGKJB.css" />
+		<link rel="stylesheet" href="css/zTreeStyle/zTreeStyle.css" type="text/css">
+		<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+		<script type="text/javascript" src="js/jquery.ztree.core-3.1.js"></script>
+		<script type="text/javascript" src="js/highcharts.js"></script>
+		<script type="text/javascript" src="js/highcharts-more.js"></script>
+		<script type="text/javascript" src="js/highcharts-zh_CN.js"></script>
+		<script type="text/javascript" src="js/foundation-datepicker.js"></script>
+		<script type="text/javascript" src="js/foundation-datepicker.zh-CN.js"></script>
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+    a:hover {
+      color: #108EE9;
+    }
+    .m-box {
+      display: flex;
+      height: 100%;
+    }
+    .m-item {
+      flex-grow: 1;
+      padding: 10px 7px 10px 15px;
+      height: 100%;
+    }
+    .m-item .title {
+      color: #108EE9;
+      font-size: 16px;
+    }
+    .m-item .panel {
+      height: 100%;
+      margin: 0;
+    }
+    .m-item .panel-body {
+     /*  height: calc( 100% - 45px ); */
+      height: 90%;
+      overflow: auto;
+    }
+    .m-item.two {
+      padding-left: 8px;
+      padding-right: 15px;
+    }
+
+  </style>
+</head>
+
+<body>
+<div class="m-box" id="app">
+  <div class="m-item">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <span class="title">待办事项</span>
+        <div class="pull-right box-tools" style="margin-top:0px;margin-right:3px;">
+        <button type="button" class="btn btn-info btn-sm" title="刷新" id="dealingRefresh">
+        <i class="fa fa-fw fa-refresh" style="padding:0;"></i>
+        </button>
+      </div>
+      </div>
+      <div class="panel-body" id="content-p2">
+        <ul class="list-unstyled m-body">
+        </ul>
+      </div>
+    </div>
+  </div>
+ <!--  <div class="m-item two" style="padding-left: 8px;">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span class="title">信息提醒</span>
+        </div>
+        <div class="panel-body">
+          <p v-if="!infoList.length">暂无消息</p>
+          <ul v-else class="list-unstyled m-body">
+            <li v-for="item in infoList" class="item">
+              <a href="javascript:;" v-text="item.name"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div> -->
+</div>
+<!--[if lt IE 9]>
+	    	<script src="js/html5shiv.min.js"></script>
+	    	<script src="/df/trd/uui/new/polyfill.js"></script>
+	    	<script src="/df/trd/uui/new/u-polyfill.js"></script>
+	    	<script src="js/respond.min.js"></script>
+	    	<script src="/df/trd/uui/new/es5-sham.min.js"></script>
+<script src="/df/trd/uui/new/html5.min.js"></script>
+	    <![endif]-->
+<script src="js/jquery-2.2.3.min.js"></script>
+<!-- <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script> -->
+<!-- <script src="js/vue.min.js"></script> -->
+<script type="text/javascript" src="js/dashboardDLYH.js" charset="utf-8"></script>
+
+<script charset="utf-8" type="text/javascript" src="js/Base64.js"></script>
+		<!-- <script charset="utf-8" type="text/javascript" src="js/md5.min.js"></script> -->
+		<script charset="utf-8" type="text/javascript" src="/df/trd/ip/js/ip.js"></script>
+	
+		<script charset="utf-8" type="text/javascript" src="js/dfp/dfp.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/dfp/dfpMenu.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/dfp/dfpPayProgress.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/dfp/dfpFiscal.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/dfp/dfpPayProgressRanking.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/dfp/dfpDealing.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/dfp/dfpArticle.js"></script>
+
+</body>
+
+</html>

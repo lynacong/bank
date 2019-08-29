@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible"
+	content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+<title>用户配置</title>
+<meta name="author" content="ip">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/datetimepicker/css/bootstrap-datetimepicker.min.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/ip/css/platform.css" />
+<link rel="stylesheet" type="text/css" href="./opLog.css" />
+</head>
+
+<body>
+	<div class="menuConfig-body">
+		<br>
+		<div id="menubody" class="menubody row">
+			<div class="col-md-12 form-type">
+				<div class="col-md-12">
+					<div style="width:250px;float:left">
+						<label class="col-md-3 text-right">开始:</label>
+						<div class="input-group date form_date col-md-9 ip-input-group"
+							data-date="" data-date-format="yyyy-mm-dd"
+							data-link-format="yyyy-mm-dd">
+							<input class="form-control" size="16" id="bdate" type="text"
+								value=""> <span class="input-group-addon"><span
+								class="glyphicon glyphicon-remove"></span> </span> <span
+								class="input-group-addon"><span
+								class="glyphicon glyphicon-calendar"></span> </span>
+						</div>
+					</div>
+					<div style="width:250px;float:left">
+						<label class="col-md-3 text-right">结束:</label>
+						<div class="input-group date form_date col-md-9 ip-input-group"
+							data-date="" data-date-format="yyyy-mm-dd"
+							data-link-format="yyyy-mm-dd">
+							<input class="form-control" size="16" id="edate" type="text"
+								value=""> <span class="input-group-addon"><span
+								class="glyphicon glyphicon-remove"></span> </span> <span
+								class="input-group-addon"><span
+								class="glyphicon glyphicon-calendar"></span> </span>
+						</div>
+					</div>
+					<div style="width:250px;float:left">
+						<label class="col-md-4 text-right">日志信息:</label>
+						<div class="input-group  col-md-8 ip-input-group">
+							<input class="form-control" size="16" id="message" type="text"
+								value="">
+						</div>
+					</div>
+					<div style="float:left;padding-left:15px;">
+						<button type="button" class="btn btn-primary" data-toggle="modal"
+							data-bind="click: btnSelectSubmit">查&nbsp;询</button>
+					</div>
+				</div>
+
+
+
+				<!-- style="border:2px solid #ccc"    onclick=" showDetailCase() "  -->
+				<label id="labdetailcase" style="width:250px;float: left;padding-left:28px;" >详细条件:</label>
+				<div id="divdetailcase"  class="col-md-12" style="display: none;">
+					<div style="width:250px;float:left">
+						<label class="col-md-4 text-right">系统编码:</label>
+						<div class="input-group  col-md-8 ip-input-group">
+							<input class="form-control" size="16" id="syscode" type="text"
+								value="">
+						</div>
+					</div>
+					<div style="width:250px;float:left">
+						<label class="col-md-4 text-right">模块编码:</label>
+						<div class="input-group  col-md-8 ip-input-group">
+							<input class="form-control" size="16" id="modulecode" type="text"
+								value="">
+						</div>
+					</div>
+					<div style="width:250px;float:left">
+						<label class="col-md-4 text-right">操作名称:</label>
+						<div class="input-group  col-md-8 ip-input-group">
+							<input class="form-control" size="16" id="menucode" type="text"
+								value="">
+						</div>
+					</div>
+					<!-- <div style="width:250px;float:left">
+						<label class="col-md-4 text-right">功能ID:</label>
+						<div class="input-group  col-md-8 ip-input-group">
+							<input class="form-control" size="16" id="funcid" type="text"
+								value="">
+						</div>
+					</div> -->
+					<div style="width:250px;float:left">
+						<label class="col-md-4 text-right">行政区划:</label>
+						<div class="input-group  col-md-8 ip-input-group">
+							<input class="form-control" size="16" id="region" type="text"
+								value="">
+						</div>
+					</div>
+					<div style="width:250px;float:left">
+						<label class="col-md-4 text-right">单位编码:</label>
+						<div class="input-group  col-md-8 ip-input-group">
+							<input class="form-control" size="16" id="agencycode" type="text"
+								value="">
+						</div>
+					</div>
+					<div style="width:250px;float:left">
+						<label class="col-md-4 text-right">单位名称:</label>
+						<div class="input-group  col-md-8 ip-input-group">
+							<input class="form-control" size="16" id="agencyname" type="text"
+								value="">
+						</div>
+					</div>
+					<div style="width:250px;float:left">
+						<label class="col-md-4 text-right">用户编码:</label>
+						<div class="input-group  col-md-8 ip-input-group">
+							<input class="form-control" size="16" id="usercode" type="text"
+								value="">
+						</div>
+					</div>
+					<div style="width:250px;float:left">
+						<label class="col-md-4 text-right">用户名称:</label>
+						<div class="input-group  col-md-8 ip-input-group">
+							<input class="form-control" size="16" id="username" type="text"
+								value="">
+						</div>
+					</div>
+					<div style="width:250px;float:left">
+						<label class="col-md-4 text-right">角色:</label>
+						<div class="input-group  col-md-8 ip-input-group">
+							<input class="form-control" size="16" id="userrole" type="text"
+								value="">
+						</div>
+					</div>
+					<div style="width:250px;float:left">
+						<label class="col-md-4 text-right">转换时间:</label>
+						<div class="input-group  col-md-8 ip-input-group">
+							<input class="form-control" size="16" id="transdate" type="text"
+								value="">
+						</div>
+					</div>
+					<div style="width:250px;float:left">
+						<label class="col-md-4 text-right">IP地址:</label>
+						<div class="input-group  col-md-8 ip-input-group">
+							<input class="form-control" size="16" id="ipaddress" type="text"
+								value="">
+						</div>
+					</div>
+					<div style="width:250px;float:left">
+						<label class="col-md-4 text-right">URL地址:</label>
+						<div class="input-group  col-md-8 ip-input-group">
+							<input class="form-control" size="16" id="url" type="text"
+								value="">
+						</div>
+					</div>
+					<div style="width:250px;float:left">
+						<label class="col-md-4 text-right">是否成功:</label>
+						<div class="input-group  col-md-8 ip-input-group">
+							<input class="form-control" size="16" id="status" type="text"
+								value="">
+						</div>
+					</div>
+					<div style="width:250px;float:left">
+						<label class="col-md-4 text-right">MAC地址:</label>
+						<div class="input-group  col-md-8 ip-input-group">
+							<input class="form-control" size="16" id="macaddress" type="text"
+								value="">
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="menu-grid"
+						u-meta='{"id":"write-grid","data":"gridDataTable","type":"grid","editable":false,"autoExpand":false,"showTree":false,"showNumCol":true,"keyField":"theId","parentKeyField":"parentId","multiSelect":false,"height":500,"headerHeight":25,"rowHeight":25}'>
+						<div
+							options='{"field":"recordtime","width":"120","dataType":"String","title":"记录时间","editType":"string"}'></div>
+						<div
+							options='{"field":"syscode","width":"80","dataType":"String","title":"系统编码","editType":"string"}'></div>
+						<div
+							options='{"field":"modulecode","width":"80","dataType":"String","title":"模块编码","editType":"string"}'></div>
+						<div
+							options='{"field":"menucode","width":"120","dataType":"String","title":"操作名称","editType":"string"}'></div>
+						<!-- <div
+							options='{"field":"funcid","width":"100","dataType":"String","title":"功能ID","editType":"string"}'></div> -->
+						<div
+							options='{"field":"region","width":"80","dataType":"String","title":"行政区划","editType":"string"}'></div>
+						<div
+							options='{"field":"agencycode","width":"80","dataType":"String","title":"单位编码","editType":"string"}'></div>
+						<div
+							options='{"field":"agencyname","width":"80","dataType":"String","title":"单位名称","editType":"string"}'></div>
+						<div
+							options='{"field":"usercode","width":"80","dataType":"String","title":"用户编码","editType":"string"}'></div>
+						<div
+							options='{"field":"username","width":"120","dataType":"String","title":"用户名称","editType":"string"}'></div>
+						<div
+							options='{"field":"userrole","width":"80","dataType":"String","title":"角色","editType":"string"}'></div>
+						<div
+							options='{"field":"transdate","width":"80","dataType":"String","title":"转换时间","editType":"string"}'></div>
+						<div
+							options='{"field":"ipaddress","width":"120","dataType":"String","title":"IP地址","editType":"string"}'></div>
+						<div
+							options='{"field":"url","width":"200","dataType":"String","title":"URL地址","editType":"string"}'></div>
+
+						<!-- <div
+							options='{"field":"status","width":"80","dataType":"String","title":"操作状态","editOptions":{"id":"combobox","type":"combo","datasource":"comItems"},"editType":"combo","renderType":"comboRender","editType":"string"}'></div> -->
+						<div
+							options='{"field":"status","width":"80","dataType":"String","title":"是否成功","editType":"string"}'></div>
+						<div
+							options='{"field":"macaddress","width":"150","dataType":"String","title":"MAC地址","editType":"string"}'></div>
+						
+						<div
+							options='{"field":"message","width":"500","dataType":"String","title":"日志信息","editType":"string"}'></div>
+
+					</div>
+
+					<!-- <div class="tool-bar-body">
+						<div class="info">
+							<div class="expfunc-data-paginate">
+								<div class="dataTables_info" id="expfunc-data_info"
+									role="status" aria-live="polite">共 1,812 项</div>
+								<div class="dataTables_length" id="expfunc-data_length">
+									<label>每页 <select name="expfunc-data_length"
+										aria-controls="expfunc-data" class=""><option
+												value="10">10</option>
+											<option value="20">20</option>
+											<option value="50">50</option>
+											<option value="100">100</option>
+											<option value="200">200</option>
+											<option value="-1">全部</option>
+									</select> 项</label>
+								</div>
+								<div class="dataTables_paginate paging_full_numbers"
+									id="expfunc-data_paginate">
+									<a class="paginate_button first disabled"
+										aria-controls="expfunc-data" data-dt-idx="0" tabindex="0"
+										id="expfunc-data_first"><i
+										class="glyphicon icon-fast-backward"></i>
+									</a><a class="paginate_button previous disabled"
+										aria-controls="expfunc-data" data-dt-idx="1" tabindex="0"
+										id="expfunc-data_previous"><i
+										class="glyphicon icon-angle-left"></i>
+									</a><span><a class="paginate_button current"
+										aria-controls="expfunc-data" data-dt-idx="2" tabindex="0">1</a><a
+										class="paginate_button " aria-controls="expfunc-data"
+										data-dt-idx="3" tabindex="0">2</a><a class="paginate_button "
+										aria-controls="expfunc-data" data-dt-idx="4" tabindex="0">3</a><a
+										class="paginate_button " aria-controls="expfunc-data"
+										data-dt-idx="5" tabindex="0">4</a><a class="paginate_button "
+										aria-controls="expfunc-data" data-dt-idx="6" tabindex="0">5</a><span
+										class="ellipsis">…</span><a class="paginate_button "
+										aria-controls="expfunc-data" data-dt-idx="7" tabindex="0">91</a>
+									</span><a class="paginate_button next" aria-controls="expfunc-data"
+										data-dt-idx="8" tabindex="0" id="expfunc-data_next"><i
+										class="glyphicon icon-angle-right"></i>
+									</a><a class="paginate_button last" aria-controls="expfunc-data"
+										data-dt-idx="9" tabindex="0" id="expfunc-data_last"><i
+										class="glyphicon icon-fast-forward"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div> -->
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+<script src="/df/trd/requirejs/require.js"></script>
+<script src="/df/require.config.js"></script>
+<script src="./opLog.js"></script>
+</html>

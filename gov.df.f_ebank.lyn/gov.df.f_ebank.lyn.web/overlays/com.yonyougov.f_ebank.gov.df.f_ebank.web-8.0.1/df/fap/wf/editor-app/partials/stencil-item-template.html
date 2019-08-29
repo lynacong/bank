@@ -1,0 +1,30 @@
+<span ng-if="$index==0" ng-click="group.expanded = !group.expanded;" style="border-bottom: solid 1px #d7dfe6;">
+        <i class="glyphicon"></i>
+        {{group.name}}
+    </span>
+<span ng-if="$index>0" ng-click="group.expanded = !group.expanded;" style="border-bottom: solid 1px #d7dfe6;">
+    <i class="glyphicon"
+       ng-class="{'fa fa-caret-right ': !group.expanded, 'fa fa-caret-down ': group.expanded}"></i>
+    {{group.name}}
+</span>
+
+<!-- Child groups -->
+<ul ng-repeat="group in group.groups"
+    class="stencil-group stencil-group-non-root"
+    ng-class="{collapsed: !group.expanded, 'first': $first}"
+    ng-include="'editor-app/partials/stencil-item-template.html?version=4'">
+</ul>
+
+<!-- Group items -->
+<ul>
+    <li style="list-style:none;margin: 0;padding: 0px;">
+        <img ng-repeat="item in group.paletteItems" class="stencil-item"
+        id="{{item.id}}"
+        title="{{item.description}}"
+        ng-model="draggedElement"
+        data-drag="true"
+        jqyoui-draggable="{onStart:'startDragCallback', onDrag:'dragCallback'}"
+        data-jqyoui-options="{revert: 'invalid', helper: 'clone', opacity : 0.5}" ng-src="editor-app/stencilsets/bpmn2.0/icons/{{item.icon}}" width="42px;" height="42px;" ng-class="{'clear' : $index%2 == 0}"/>
+        {{item.name}}
+    </li>
+</ul>

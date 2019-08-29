@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+<title>电子签章配置</title>
+<meta name="author" content="ip">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css" />
+<link rel="stylesheet" type="text/css" href="./stampConf.css" />
+</head>
+<body>
+	<div class="container-fluid h100per">
+		<div class="row h100per p10">
+			<!-- <div class="row epay-content"> -->
+				<div class="col-sm-4 h100per p10">
+					<div class="border tree-sidebar">
+						<span class="modal-tree-root"><img src="../images/wj2.png">签章发送</span>
+						<div id="treeTest2" class="ztree" u-meta='{"id":"tree_menu","data":"treeMenuDataTable","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"show_name","setting":"treeMenuSetting"}'></div>
+						<!-- <div id="treeTest2" class="ztree" u-meta='{"id":"tree_menu","data":"treeMenuDataTable","type":"tree","idField":"chr_id","nameField":"show_name","setting":"treeMenuSetting"}'></div> -->
+					</div>
+				</div>
+				<div class="col-sm-8 h100per">
+					<div class="row top-content" id="tabbed-plan">
+						<label for="finance_code" class="col-md-2 col-sm-2 text-right">财政机构:</label>
+						<div class="col-md-3 col-sm-4 ip-input-group">
+							<select id="finance_code" class="form-control" onchange="getBillStampByFinance()" >
+							</select>
+						</div>
+					</div>
+					<div class="row ebank-content">
+						<div class="col-sm-6 h100per">
+							<div class="tree-sidebar border">
+								<span class="modal-tree-root"><img src="../images/wj2.png">签章位置</span>
+								<!-- <span class="title">签章位置</span> -->
+								<div class="ztree" u-meta='{"id":"tree_billType","data":"treeBillTypeDataTable","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"show_name","setting":"treeBillTypeSetting"}'></div>
+							</div>
+						</div>
+						<div class="col-sm-6 h100per">
+							<div class="tree-sidebar border">
+								<span class="modal-tree-root"><img src="../images/wj2.png">签章信息</span>
+								<!-- <span class="title">签章信息</span> -->
+								<div class="ztree" u-meta='{"id":"tree_stamps","data":"treeStampDataTable","type":"tree","idField":"chr_id","pidField":"finance_code","nameField":"show_name","setting":"treeStampSetting"}'></div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			<!-- </div> -->
+		</div>
+	</div>
+</body>
+<script src="/df/trd/knockout/knockout-3.2.0.debug.js"></script>
+<script src="/df/trd/requirejs/require.js"></script>
+<script src="/df/require.config.js"></script>
+<script src="./stampConf.js"></script>
+</html>

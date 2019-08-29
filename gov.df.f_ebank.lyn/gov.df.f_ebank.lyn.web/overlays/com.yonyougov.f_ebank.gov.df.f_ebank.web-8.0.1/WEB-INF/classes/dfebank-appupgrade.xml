@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+     <bean id="install.init.dfebank" class="gov.df.f_ebank.install.DfInstallConfig"></bean>
+    <bean id="version.dfebank" class="gov.df.f_ebank.install.DfVersion"></bean>
+</beans>

@@ -1,0 +1,106 @@
+.info-body[info-body] {
+  height: 280px;
+  position: relative;
+  overflow: auto;
+  padding-right: 5px;
+}
+[info-body] {
+  .get-more {
+    text-align: center;
+    margin: 5px auto 10px;
+    font-size: 12px;
+    .chat-link {
+      text-decoration: none;
+    }
+  }
+
+  .time-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    padding-right: 5px;
+    background: url('../time.png') no-repeat center center;
+    cursor: pointer;
+  }
+
+  .time-word {
+    color: #4EA9E9;
+    font-size: 12px;
+    vertical-align: top;
+    line-height: 20px;
+    cursor: pointer;
+  }
+
+  .one-msg {
+    padding-bottom: 10px;
+    position: relative;
+    .chat-time {
+      text-align: center;
+      color: rgba(0, 0, 0, .5);
+    }
+    .f-customImg {
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+    }
+  }
+
+  .one-msg.other {
+    .msg-box:after {
+      left: 0;
+      transform: translate(-50%, 0);
+      border-top-color: #EBEBEC;
+    }
+  }
+
+  .one-msg.self {
+    text-align: right;
+    .msg-box:after {
+      left: 100%;
+      border-top-color: #DDF3FF;
+      transform: translate(-50%, 0);
+    }
+    .msg-box {
+      background: #DDF3FF;
+      /*color: rgba(255,255,255,.9);*/
+      text-align: left;
+    }
+    .user-img {
+      background-image: url('../me.png');
+    }
+  }
+
+  .user-img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .msg-box {
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px 5px;
+    border-radius: 3px;
+    display: inline-block;
+    max-width: 80%;
+    vertical-align: top;
+    background: #EBEBEC;
+    position: relative;
+    line-height: 22px;
+    &.grp {
+      margin-top: 18px;
+    }
+  }
+
+  .msg-box:after {
+    position: absolute;
+    top: 10px;
+    content: '';
+    border: 6px solid transparent;
+  }
+  .f-nm {
+    position: absolute;
+    left: 38px;
+    top: -2px;
+    color: rgba(0, 0, 0, .5);
+  }
+}

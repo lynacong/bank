@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>银行配置</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css" />
+	<link rel="stylesheet" type="text/css" href="../common.css" />
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12">
+						<h3 class="title">银行配置</h3>
+						<!-- 代理银行---面板开始 -->
+						<div class="panel panel-info">
+    						<div class="panel-heading">
+        						<h3 class="panel-title">代理银行</h3>
+    						</div>
+    						<div class="panel-body">
+    						
+    							<div class="form-group clearfix panel-padding">
+									<label for="agentbankcanPayTime" class="col-sm-3 control-label">是否受支付时间限制：</label>
+									<div class="col-sm-9">
+											<label class="checkbox-inline">
+												<input type="radio" name="agentbankcanPayTime" id="optionsRadios3" value="0" checked>不限制
+											</label>
+											<label class="checkbox-inline">
+												<input type="radio" name="agentbankcanPayTime" id="optionsRadios4"  value="1"> 限制
+											</label>
+									</div>
+								</div>
+    						</div>
+						</div>
+						<!-- 代理银行 ---面板结束-->
+						
+						
+						<!-- 清算银行---面板开始 -->
+						<div class="panel panel-info">
+    						<div class="panel-heading">
+        						<h3 class="panel-title">清算银行</h3>
+    						</div>
+    						<div class="panel-body">
+								<div class="form-group clearfix panel-padding">
+									<label for="clearbankbillNoModifyBankCode" class="col-sm-3 control-label">支持单号修改的人行编码：</label>
+									<div class="col-sm-9">
+										<div class="input-group">
+								            <input type="text" class="form-control" id="clearbankbillNoModifyBankCode">
+								            <span class="input-group-addon" ><span class="glyphicon glyphicon-th-large" onclick="ip.showAssitTree('clearbankbillNoModifyBankCode','CB',0,{},'','支付方式');"></span></span></span>
+								        </div>
+									</div>
+									<div class="row">
+										<div class="col-sm-offset-3 col-sm-8">
+											<button class="btn btn-primary"  id="save" data-bind='click:saveBankSettingData'>保存</button> 
+								        </div>
+									</div>
+								</div>
+									
+								</div>
+								
+    						</div>
+    						
+						</div>
+						<!-- 清算银行 ---面板结束-->
+				</div>
+			</div>
+		
+	<script src="/df/trd/requirejs/require.js"></script>
+	<script src="/df/require.config.js"></script>
+	<script src="./bankSetting.js"></script>
+</body>
+</html>

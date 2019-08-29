@@ -1,0 +1,20 @@
+	<!--共商列表弹层开始-->
+	<div class="modal fade" id="inspectDiscussingModal">
+		<div class="modal-dialog inspectDiscussingModal-dialog" style="width: 800px;">
+			<div class="modal-content inspectDiscussingModal-content" style="width: 800px;height: 350px;">
+				<div class="modal-header">
+					<button type="button" class="close inspectDiscussingModal-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="inspectDiscussingModalLabel">所选业务曾发起共商讨论</h4>
+				</div>
+				<div class="modal-body inspectDiscussingModal-body" style="height: 273px;">
+						<div id="discussingArea" class="tabbed-grid" style="height: 273px;margin-top: -15px;"></div>
+				</div>
+					<div class="modal-footer">
+						<button type="button"  class="btn btn-primary" onclick="doRediscuss()">重新发起讨论</button>
+						<button type="button"  class="btn btn-primary" onclick="doEnterDiscuss()">进入选择讨论组</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!--共商列表弹层结束-->

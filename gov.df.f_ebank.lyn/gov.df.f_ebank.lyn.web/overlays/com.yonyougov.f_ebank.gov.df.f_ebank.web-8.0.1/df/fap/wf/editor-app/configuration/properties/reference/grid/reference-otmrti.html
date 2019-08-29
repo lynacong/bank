@@ -1,0 +1,110 @@
+
+<div class="modal" ng-controller="personCtrl" >
+
+	<div class="modal-dialog"
+		ng-class="{ 'modal-wide-grid': !property.multiSelect, 'modal-wide-multi-grid': property.multiSelect }" style="width: 500px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="editor-pop-close close"
+					data-dismiss="modal" aria-hidden="true" ng-click="closeP()">&times;</button>
+				<span>{{property.title}}</span>
+			</div>
+			<div class="modal-body modal-body-ref">
+<style>
+    .yellow{
+        width:500px;height:50px;
+    }
+    .yellow table{
+        width:100%;height:auto;padding:0;margin:0;
+    }
+    table{
+    	width: 98%;
+    }
+    table th{
+    	    background: #f2f9ff;
+    text-align: center;
+    padding: 5px;
+    font-weight: normal;
+    }
+    table,tr,td{ 
+    	border: 1px solid #ccc;
+        border-collapse: collapse;
+        padding: 5px;}
+    button{padding:5px 10px;}
+    .zxd_mark{
+        width:300px;height:300px;background:green;position:absolute;top:20%;left:20%;
+        color:#fff;
+    }
+    .close{
+        width:20px;height:20px;background:red;position:absolute;top:0;right:0;
+    }
+    .selectbox{
+        width:90%;height:auto;margin:0 auto;margin-top:30px;
+    }
+    tr.focus{background-color:#F2F2F2;}
+
+</style>
+				<table>
+					<caption align="top">操作记账授权</caption>
+					<tr>
+						<th colspan="1">设置</th>
+						<th colspan="1">操作类型编码</th>
+						<th colspan="2">记账标志</th>
+					</tr>
+					<tr ng-repeat="data in datas" ng-click="dataschange($index)"
+						ng-class='{focus: $index==focus}'>
+						<td>{{$index + 1}}</td>
+						<td>{{data.Name1}}</td>
+						<td>{{data.Name2}}</td>
+					</tr>
+				</table>
+				<div>
+					<button id="zxd_add" ng-click="add()" class="btn btn-primary">增加</button>
+					<button id="zxd_delete" ng-click="deletedatas()" class="btn btn-primary">删除</button>
+				</div>
+				
+				
+				<div class="modal ng-scope top am-fade" ng-controller="personCtrl" style="top: 100px;left: -145px;" id="testShow">
+					<div class="modal-dialog modal-wide-multi-grid" ng-class="{ 'modal-wide-grid': !property.multiSelect, 'modal-wide-multi-grid': property.multiSelect }" style="width: 310px;">
+						<div class="modal-content">
+							<div class="modal-header">
+								<span class="ng-binding">操作记账授权</span>
+							</div>
+							<div class="modal-body modal-body-ref">
+								<!-- <form  action="" class="selectbox">-->
+								<ul>
+									<span>操作类型：</span>
+									<select id="select1" ng-init="selectedName1 = datatop[0]"
+										ng-model="selectedName1" ng-options="x for x in datatop" style="color: #333;">
+									</select>
+								</ul>
+						<!--   <ul>
+	        					<span>模拟</span>
+	        					<select name="" id="">
+	
+	        					</select>
+	    						</ul>-->
+								<ul>
+									<span>记账类型：</span>
+									<select id="select2" ng-init="selectedName2 = databottom[0]"
+										ng-model="selectedName2" ng-options="x for x in databottom"></select>
+								</ul>
+								<!-- <p>{{selectedName1}}</p>
+								<p>{{selectedName2}}</p> -->
+								<!--    </form>-->
+							</div>
+							<div class="editor-modal-footer modal-footer">
+								<button ng-click="adddatas()" class="btn btn-primary ng-scope" translate="">确定</button>
+								<button ng-click="close()" class="btn btn-primary ng-scope" translate="">取消</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="editor-modal-footer modal-footer">
+				<button ng-click="save()" class="btn btn-primary" translate>ACTION.OK</button>
+				<button ng-click="cancel()" class="btn btn-primary" translate>ACTION.CANCEL</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,258 @@
+<div class="container-fluid h">
+	<div class="config-btn">
+		<button type="button" class="btn btn-config" onclick="add()" id="add">新增</button>
+		<button type="button" class="btn btn-config" onclick="update()" id="update">修改</button>
+		<button type="button" class="btn btn-config" disabled="disabled" id="save" onclick="saveData()">保存</button>
+		<button type="button" class="btn btn-config" disabled="disabled" id="cancel" onclick="cancel()">取消</button>
+		<button type="button" class="btn btn-danger" id="delMsg" onclick="del()">删除</button>
+		<button type="button" class="btn btn-config" id="refresh" onclick="refresh()">刷新</button>
+	</div>
+	<div class="row config-search"  id="tabbed-plan">
+		<label for="finance_code" class="col-md-1 text-right">财政机构</label>
+		<div class="col-md-2 ip-input-group">
+			<select class="form-control" id="finance_code" onchange="fGetGrid()"></select>
+		</div>
+	</div>
+	<div class="row config-main-hassearch">
+		<div class="col-md-4 tree-sidebar noScrollTable">
+			<table class="table-striped table table-bordered table-hover table-condensed" id="msgGrid" style="width:100%;">  
+	            <thead>  
+	               <tr>  
+	                   <th>编码</th>  
+	                   <th>名称</th> 
+	               </tr>  
+	            </thead>  
+	            <tbody>  
+            	</tbody>  
+      	 	</table>  
+		</div>
+		<div class="col-sm-8 ">
+			<div id="interface-form" class="row">
+				<div class="col-sm-6">
+					<label class="col-sm-4 text-right"><span style="color: red">*</span>编码：</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="chrCode" value="" disabled="disabled">
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<label class="col-sm-4 text-right"><span style="color: red">*</span>名称：</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="chrName" value="" disabled="disabled">
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<label class="col-sm-4 text-right"><span style="color: red">*</span>主单表名称：</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="billtable" value="" disabled="disabled">
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<label class="col-sm-4 text-right"><span style="color: red">*</span>明细表名称：</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="vouchertable" value="" disabled="disabled">
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<label class="col-sm-4 text-right">主单dto：</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="billdto" value="" disabled="disabled">
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<label class="col-sm-4 text-right">明细dto：</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="voucherdto" value="" disabled="disabled">
+					</div>
+				</div>
+				<div class="col-sm-6" >
+					<label class="col-sm-4 text-right">主单凭证号：</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="billId" value="" disabled="disabled">
+					</div>
+				</div>
+				<div class="col-sm-6" style="display:none">
+					<label class="col-sm-4 text-right">明细单id：</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="voucherId" value="" disabled="disabled">
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<label class="col-sm-4 text-right">主联凭证号：</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="referenceId" value="" disabled="disabled">
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<label class="col-sm-4 text-right">回调类：</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="callback_class" value="" disabled="disabled">
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<label class="col-sm-4 text-right">发送方：</label>
+					<div class="col-sm-8">
+						<select class="form-control input-sm" name="" id="sender" disabled="disabled">
+							<option value="" disabled selected></option>
+							<option value="1">财政</option>
+							<option value="2">代理银行</option>
+							<option value="3">清算银行</option>
+							<option value="4">单位</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<label class="col-sm-4 text-right">接受方：</label>
+					<div class="col-sm-8">
+						<select class="form-control input-sm" name="" id="receiver" disabled="disabled">
+							<option value="" disabled selected></option>
+							<option value="1">财政</option>
+							<option value="2">代理银行</option>
+							<option value="3">清算银行</option>
+							<option value="4">单位</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div >
+				<ul class="nav nav-tabs" role="tablist" >
+					<li role="presentation" class="gridtables active" ><a href="#home"
+						aria-controls="home" role="tab" data-toggle="tab" >主单字段列表</a>
+					</li>
+					<li role="presentation" class="gridtables"><a href="#profile"
+						aria-controls="profile" role="tab" data-toggle="tab" >明细字段列表</a>
+					</li>
+				</ul>
+
+				<!-- Tab panes -->
+				<div class="tab-content">
+					<div role="tabpanel" class="tab-pane active" id="home">
+						<div class="ip-content-btn-area mb5" id="bill-btn-container">
+							<button type="button" id="btn-del" class="btn btn-config" onclick="delField('bill')">删除字段</button>
+							<button type="button" id="btn-enter" class="btn btn-config" onclick="addField('add','bill')">添加字段</button>
+							<button type="button" id="btn-edit"class="btn btn-config" onclick="addField('update','bill')">修改信息</button>
+						</div>
+						<table class="table-striped table table-bordered nowrap table-hover table-condensed" id="mainFieldGrid" >  
+			       	 	</table>
+					</div>
+					<div role="tabpanel" class="tab-pane" id="profile">
+						<div class="ip-content-btn-area mb5" id="voucher-btn-container">
+							<button type="button" id="btn-del" class="btn btn-config" onclick="delField('voucher')">删除字段</button>
+							<button type="button" id="btn-enter" class="btn btn-config" onclick="addField('add','voucher')">添加字段</button>
+							<button type="button" id="btn-edit" class="btn btn-config" onclick="addField('update','voucher')">修改信息</button>
+						</div>
+						<table class="table-striped table table-bordered nowrap table-hover table-condensed" id="detailFieldGrid"  >  
+			       	 	</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 修改表单字段 -->
+<div class="modal fade" tabindex="-1" role="dialog" id="updateModalfield"
+	data-backdrop="static">
+	<div class="modal-dialog" role="document"
+		style="width: 750px; height:400px">
+		<div class="modal-content" id ="addFieldInfo">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<span class="modal-title" id="modelTitleText"></span>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+				  <div class="form-group col-md-6">
+					  <label class="col-md-4 text-right" for="filedName"><span style="color: red">*</span>字段名：</label>
+					  <div class="col-md-8">
+					  	<input type="email" class="form-control" id="filedName">
+					  </div>
+				  </div>
+				  <div class="form-group col-md-6">
+					  <label class="col-md-4 text-right" for="description"><span style="color: red">*</span>字段中文：</label>
+					  <div class="col-md-8">
+					  	<input type="text" class="form-control" id="description">
+					  </div>
+				  </div>
+				  <div class="form-group col-md-6">
+					  <label class="col-md-4 text-right" for="dispfieldname">导出字段：</label>
+					  <div class="col-md-8">
+					  	<input type="text" class="form-control" id="dispfieldname">
+					  </div>
+				  </div>
+				  <div class="form-group col-md-6">
+				  <label class="col-md-4 text-right" for="inputPassword3">数据类型：</label>
+					  <div class="col-md-8">
+					      <select  class="form-control" id="datatype">
+					      	<option value=''>请选择</option>
+					      	<option value="VARCHAR2">VARCHAR2</option>
+					      	<option value="NUMBER">NUMBER</option>
+					      	<option value="DATE">DATE</option>
+					      </select>
+					  </div>
+				  </div>
+				  <div class="form-group col-md-6">
+					  <label class="col-md-4 text-right" for="inputPassword3"><span style="color: red">*</span>导出顺序：</label>
+					  <div class="col-md-8">
+					      <input type="text" class="form-control" id="displayorder">
+					  </div>
+				  </div>
+				  <div class="form-group col-md-6">
+				  <label class="col-md-4 text-right" for="inputPassword3">数据格式：</label>
+					  <div class="col-md-8">
+					      <input type="text" class="form-control" id="dataformate">
+					  </div>
+				  </div>
+				  <div class="form-group col-md-6">
+					  <label class="col-md-4 text-right" for="inputPassword3">缺省值：</label>
+					  <div class="col-md-8">
+					      <input type="text" class="form-control" id=defaultvalue>
+					  </div>
+				  </div>
+				  <div class="form-group col-md-6">
+					  <label class="col-md-4 text-right" for="inputPassword3">是否允许空：</label>
+					  <div class="col-md-8">
+					      <select  class="form-control" id="isnull" >
+					      	<option value=''>请选择</option>
+					      	<option value='1'>是</option>
+					      	<option value='0'>否</option>
+					      </select>
+					  </div>
+				  </div>
+				  <div class="form-group col-md-6">
+					  <label class="col-md-4 text-right" for="inputPassword3">最小长度：</label>
+					  <div class="col-md-8">
+					      <input type="text" class="form-control" id="lenmin">
+					  </div>
+				  </div>
+				  <div class="form-group col-md-6">
+					  <label class="col-md-4 text-right" for="inputPassword3">最大长度：</label>
+					  <div class="col-md-8">
+					      <input type="text" class="form-control" id="lenmax">
+					  </div>
+				  </div>
+				  <div class="form-group col-md-6">
+					  <label class="col-md-4 text-right" for="inputPassword3">取值范围：</label>
+					  <div class="col-md-8">
+					      <input type="text" class="form-control" id="valset">
+					  </div>
+				  </div>
+				</div>
+			</div>
+			<div class="modal-footer" >
+				<button type="button" class="btn btn-primary"
+					onclick="saveAddField('primary', 'add')" id="bill-sur-eleTree">确定</button>
+				<button type="button" class="btn btn-primary"
+					onclick="saveAddField('voucher','add')" id="voucher-sur-eleTree">确定</button>
+					
+				<button type="button" class="btn btn-primary"
+					onclick="saveAddField('primary', 'update')" id="bill-update-eleTree">确定</button>
+				<button type="button" class="btn btn-primary"
+					onclick="saveAddField('voucher','update')" id="voucher-update-eleTree">确定</button>
+			    <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="css/rolePage.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.12.1.js" ></script>
+<script type="text/javascript" src="js/rolePage.js" ></script>
+
+<title>通知展示</title>
+<style> 
+  .addoverlay{  display: none;  position: absolute;  top: 0%;  left: 0%;  width: 100%;  height: 100%;  background-color: black;  z-index:1001;  -moz-opacity: 0.8;  opacity:.80;  filter: alpha(opacity=80);  } 
+  .addcontent {  display: none;  position: absolute;  top: 5%;  left: 20%;  width: 60%;  height: 90%;  padding: 16px;    background-color: white;  z-index:1002;  overflow: auto;  } 
+  .editoverlay{  display: none;  position: absolute;  top: 0%;  left: 0%;  width: 100%;  height: 100%;  background-color: black;  z-index:1001;  -moz-opacity: 0.8;  opacity:.80;  filter: alpha(opacity=80);  } 
+  .editcontent {  display: none;  position: absolute;  top: 5%;  left: 20%;  width: 60%;  height: 90%;  padding: 16px;    background-color: white;  z-index:1002;  overflow: auto;  } 
+</style> 
+</head>
+<body>
+<div style="width: 100%;">	
+ 	    <div style="height: 100px; text-align: right;">
+ 	       <div class="bts" style="padding-top: 50px; padding-right: 100px;">
+	 	       <button type="button" style="width:70px;margin-left:20px;" class="btn btn-default btn-sm btn-primary" id="addRolePage" onclick="addRolePageModel()">增加</button>
+	 	       <button type="button" style="width:70px;margin-left:20px;" class="btn btn-default btn-sm btn-primary" id="editRolePage" onclick="editRolePageModel();">修改</button>
+	 	       <button type="button" style="width:70px;margin-left:20px;" class="btn btn-default btn-sm btn-primary" id="deleteRolePage" onclick="deleteRolePage();">删除 </button>  
+ 	       </div>
+        </div> 
+		<div class="rightbox pr" style="height: 100%;">
+			<div class="container" style="width: 100%;">
+				<div class="container-fluid"style="overflow-y: auto;width: inherit;height: 500px;">
+					<div class="form-group" >
+						<dl class="dlcss" style="">
+							<dd style="margin-top: 20px;">
+								<div class="tab-content" id="myTabContent">
+									<div class="tab-pane fade active in" id="doneListPanel">
+										<div id="doneList">
+											<table class="table table-striped" style="font-size: 14px; margin-top: 15px;">
+												<thead>
+													<tr>
+													    <th style="font-size: 14px !important">选择</th>
+													    <th style="font-size: 14px !important">序号</th>
+														<th style="font-size: 14px !important;">角色名</th>
+														<th style="font-size: 14px !important;">页面分类</th>
+													</tr>
+												</thead>
+												<tbody id ="rolePageTableTbody">
+												  
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</dd>
+						</dl>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 新增的弹出层 -->
+	<div id="light" class="addcontent"> 
+	   <div style="text-align: right;">
+	      <a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">关闭</a>
+	   </div>
+       <!-- 新增的弹出层内容 -->
+       <div id="addPageForm" class="addPageForm" style="text-align: right;width:400px;">
+          <form class="form-inline">
+              <!-- <div class="form-group">
+              	<label for="pageFormId">序号:</label>
+				<input id="pageFormId" class="form-control" type="text" name="pageFormId">
+			  </div> -->
+			  <!-- <div class="form-group" style="display: block;">
+              	<label for="pageFormRoleId">角色ID:</label>
+				<input id="pageFormRoleId" class="form-control" type="text" name="pageFormRoleId">
+			  </div>
+			  <div class="form-group" style="display: block;">
+              	<label for="pageFormRoleName">角色名：</label>
+				<input id="pageFormRoleName" class="form-control" type="text" name="pageFormRoleName">
+			  </div> -->
+			  <div class="form-group" style="display: block;">
+              	<label for="pageFormRoleName">角色：</label>
+			  	<select id="pageFormRoleName" name="pageFormRoleName" style="width: 194px;height: 35px;border-radius:3px;"></select>
+			  </div>
+			  <div class="form-group" style="display: block;">
+              	<label for="pageGroupType">页面分类：</label>
+			  	<select id="pageGroupType" name="pageGroupType" style="width: 194px;height: 35px;border-radius:3px;"></select>
+			  </div>
+			  <div class="form-group" style="display: block;">
+              	<label for="pageSetYear">年度：</label>
+				<input id="pageSetYear" class="form-control" type="text" name="pageSetYear">
+			  </div>
+			  <div class="form-group" style="display: block;">
+              	<label for="pageRgCode">区划：</label>
+				<input id="pageRgCode" class="form-control" type="text" name="pageRgCode">
+			  </div>
+			  <br>
+			  <div class="form-group" style="display: block;">
+				<input class="btn" type="submit" value="提交" onclick="addRolePage();">
+			  </div>	
+		  </form> 
+	   </div>
+       
+   </div> 
+   <div id="fade" class="addoverlay">    
+   </div> 
+   
+   	<!-- 修改的弹出层 -->
+	<div id="editLight" class="editcontent"> 
+	   <div style="text-align: right;">
+	      <a href="javascript:void(0)" onclick="document.getElementById('editLight').style.display='none';document.getElementById('editFade').style.display='none'">关闭</a>
+	   </div>
+       <!-- 修改的弹出层内容 -->
+       <div id="editPageForm" class="editPageForm" style="text-align: right;width:400px;">
+          <form class="form-inline">
+              <!-- <div class="form-group">
+              	<label for="editId">序号:</label>
+				<input id="editId" class="form-control" type="text" name="editId">
+			  </div> -->
+			  <input id="editId" class="form-control" type="hidden" name="editId">
+			  <div class="form-group" style="display: block;">
+              	<label for="editRoleId">角色ID:</label>
+				<input id="editRoleId" class="form-control" type="text" name="editRoleId" disabled="disabled">
+			  </div>
+			  <div class="form-group" style="display: block;">
+              	<label for="editRoleName">角色名：</label>
+				<input id="editRoleName" class="form-control" type="text" name="editRoleName" disabled="disabled">
+			  </div>
+			  <!-- <p><span id="rolePageGrouptypeExample"></span></p> -->
+			  <div class="form-group" style="display: block;">
+              	<label for="editGroupType">页面分类：</label>
+				<!-- <input id="editGroupType" class="form-control" type="text" name="editGroupType"> -->
+				<select id="selectGroupType" style="width: 194px;height: 35px;border-radius:3px;"name="selectGroupType">
+					<!-- <option value="JB">单位经办</option>
+					<option value="SH">单位审核</option>
+					<option value="JZZF">集中支付 </option>
+					<option value="YWCS">业务处室</option>
+					<option value="GKLeader">国库领导</option>
+					<option value="GKJB">国库经办</option>
+					<option value="ZGBM">主管部门 </option>
+					<option value="YWPZ"> 业务配置</option> -->
+				</select>
+			  </div>
+			  <div class="form-group" style="display: block;">
+              	<label for="editSetYear">年度：</label>
+				<input id="editSetYear" class="form-control" type="text" name="editSetYear">
+			  </div>
+			  <div class="form-group" style="display: block;">
+              	<label for="editRgCode">区划：</label>
+				<input id="editRgCode" class="form-control" type="text" name="editRgCode">
+			  </div>
+			  <br>
+			  <div class="form-group" style="display: block;">
+				<input class="btn" type="submit" value="提交" onclick="editRolePage();">
+			  </div>	
+		  </form> 
+	   </div>
+       
+   </div> 
+   <div id="editFade" class="editoverlay">    
+   </div> 
+</body>
+</html>

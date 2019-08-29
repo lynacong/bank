@@ -1,0 +1,98 @@
+#discussingArea div[u-meta]{
+	height: 100%;
+}
+#ip-grid-footer-area-discussingArea{
+	height:0px!important;
+}
+#discussingArea .u-grid-content{
+	height: calc(100% - 33px);
+}
+
+/*共商共建弹窗*/
+
+.step-border{border:1px solid #ccc;}
+.flex-2{-webkit-box-flex:2;-webkit-flex:2;-ms-flex:2;flex:2;position:relative;padding-top: 2px;padding-bottom: 5px;}
+.flex-3{-webkit-box-flex:3;-webkit-flex:3;-ms-flex:3;flex:3;position:relative;}
+.flex-4{-webkit-box-flex:4;-webkit-flex:4;-ms-flex:4;flex:4;position:relative;}
+.flex-5{-webkit-box-flex:5;-webkit-flex:5;-ms-flex:5;flex:5;position:relative;}
+.flex-6{-webkit-box-flex:6;-webkit-flex:6;-ms-flex:6;flex:6;position:relative;}
+
+#inspectDiscussModalAdd .inspectDiscussModalAdd-dialog{
+	width:840px;
+	height:520px;
+	
+}
+.inspectDiscussModalAdd-content{
+	height:100%;
+}
+.inspectDiscussModalAdd-body{
+	height: 87%;
+    margin-top: -8px;
+    padding-bottom: 0px;
+}
+.btn-arrow{
+	margin-left:3px;
+	position: relative;
+	width:110px;
+}
+.arrow-right{
+	width:100px;
+	position: absolute;
+	top:50px;
+	left:0px;
+}
+.arrow-left{
+	width:100px;
+	position: absolute;
+	top:100px;
+	left:0px;
+}
+.arrow-right-all{
+	position: absolute;
+	top:150px;
+	left:0px;
+}
+.arrow-left-all{
+	position: absolute;
+	top:200px;
+	left:0px;
+}
+#funcAreaAdd{
+	height:100%;
+}
+#funcAreaAdd .u-grid-content{
+	height: 83% !important;
+}
+.fr{
+	margin-top:1px;
+}
+#funcAreaNew .u-grid-content{
+	height: 132px!important;
+}
+.u-checkbox{
+	width:80px;
+	margin-left: 2px;
+}
+.send-label{
+	float: left;
+    margin-right: 15px;
+    margin-left: 18px;
+}
+#inspectRuleArea .u-grid-content{
+	height: calc(100% - 33px);
+}
+#inspectRuleArea div[u-meta]{
+	height: 91%;
+}
+#ip-grid-footer-area-inspectRuleArea{
+	height:0px!important;
+}
+
+.datagrid-body{
+	margin-top:0!important;
+}
+.checkbox {
+   
+    -webkit-border-radius:0!important;
+    border-radius: 0!important;
+}

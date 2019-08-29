@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>修改密码</title>
+		<link rel="stylesheet" href="/df/portal/budget/css/changePassword.css" />
+		<script src="/df/trd/jquery/jquery-1.12.3.min.js"></script>
+		<script src="/df/trd/md5/js/md5.js"></script>
+		<script src="/df/portal/admin/index/js/dfp/dfp.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="top1"></div>
+			<div id="box">
+				<div class="main">
+					<div class="main-in">
+						<div class="content">
+							<h3>修改密码</h3>
+							<form name ="login_form" class="form-horizontal" action="" method="post">
+								<div>
+									<span class="reminder">原始密码：</span>
+									<div class="box">
+								   	 	<input id="oldpasswd" type="password" class="form-control">
+									</div>
+								</div>
+								<div>
+									<span class="reminder">新密码：</span>
+									<div class="box">
+								   	 	<input id="passwd" type="password" class="form-control">
+									</div>
+								</div>
+								<div>
+									<span class="reminder">再次确认新密码：</span>
+									<div class="box">
+								   	 	<input id="passwd2" type="password" class="form-control">
+									</div>
+								</div>
+								<div class="btn">
+									<input id="reset" type="button" class="subbtn" value="重置"  style="margin:50px 0 0 100px;" />
+									<input id="changepw" type="button" class="subbtn" value="提交"  style="margin:50px 0 0 250px;"/>
+								</div>
+							</form>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			$(function(){
+				$("#reset").click(function(){
+					$("#oldpasswd").val("");
+					$("#passwd").val("");
+					$("#passwd2").val("");
+				});
+				$("#changepw").click(function(){
+					var oldpasswd = $("#oldpasswd").val().replace(/(^\s+)|(\s+$)/g, ""),
+						passwd = $("#passwd").val().replace(/(^\s+)|(\s+$)/g, ""),
+						passwd2 = $("#passwd2").val().replace(/(^\s+)|(\s+$)/g, "");
+					if(passwd != passwd2) {
+						alert("新密码输入不一致");
+						$("#passwd").focus();
+						return false;
+					}
+					$.post("/df/portal/chengepwd.do", 
+						{oldpasswd : hex_md5(oldpasswd), passwd : hex_md5(passwd), passwd2 : hex_md5(passwd2), tokenid : getTokenId(), setYear : $("#svSetYear", parent.document).val()}, 
+						function(data) {
+							alert(data.msg);
+							$("#oldpasswd").val("");
+							$("#passwd").val("");
+							$("#passwd2").val("");
+					});
+					
+				});
+			});
+			
+		</script>
+	</body>
+</html>

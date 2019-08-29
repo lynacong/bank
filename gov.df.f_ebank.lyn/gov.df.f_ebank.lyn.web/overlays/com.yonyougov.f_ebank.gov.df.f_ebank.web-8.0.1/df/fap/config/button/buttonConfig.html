@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible"
+	content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+<title>按钮配置</title>
+<meta name="author" content="ip">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css" />
+<link rel="stylesheet" type="text/css" href="./buttonConfig.css" />
+</head>
+
+<body>
+	<div class="menuConfig-body">
+		<div id="menubody" class="menubody">
+			<div class="bodySize row">
+				<div class='tree-block col-md-4'>
+					<div class="form-group search-form" style="margin: 5px;">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="模糊查询"
+								aria-describedby="basic-addon1"
+								data-bind="event:{keyup:quickQuery}"
+								onkeydown='if(event.keyCode==13){menuTreeNext();}'
+								id="quickquery"> <span class="input-group-addon"
+								onclick="menuTreeNext()"><span
+								class="glyphicon glyphicon-search"></span> </span>
+						</div>
+					</div>
+					<div class="menuTree">
+						<div id="menuConfigTree" class="ztree"
+							u-meta='{"id":"menuConfigTree1","data":"treeDataTable","type":"tree","idField":"sys_id","pidField":"pid","nameField":"name","setting":"treeSetting"}'></div>
+					</div>
+				</div>
+				<div class='menu-tabs col-md-8'>
+					<div style="height: 40px;">
+						<button id="addViewBtn" type="button"
+							class="btn btn-primary add-btn" data-toggle="modal"
+							data-bind="click: addbtn">新&nbsp;增</button>
+						<button id="addViewBtn" type="button"
+							class="btn btn-primary add-btn" data-toggle="modal"
+							data-bind="click: editbtn">修&nbsp;改</button>
+						<button id="delViewBtn" type="button"
+							class="btn btn-danger del-btn" data-bind="click: delbtn">删&nbsp;除</button>
+					</div>
+					<div type="text" class="menu-grid"
+						u-meta='{"id":"write-grid","data":"gridDataTable","type":"grid","editable":false,"autoExpand":false,"showTree":false,"showNumCol":true,"keyField":"theId","parentKeyField":"parentId","multiSelect":true,"height":500,"headerHeight":32,"rowHeight":32,"sumRowHeight":32}'>
+						<div
+							options='{"field":"action_code","dataType":"String","title":"编号","editType":"string"}'></div>
+						<div
+							options='{"field":"action_name","dataType":"String","title":"名称","editType":"string"}'></div>
+						<div
+							options='{"field":"icon_name","dataType":"String","title":"图片","editType":"string"}'></div>
+						<div
+							options='{"field":"func_name","dataType":"String","title":"函数名称","editType":"string"}'></div>
+						<div
+							options='{"field":"param","dataType":"String","title":"参数","editType":"string"}'></div>
+						<div
+							options='{"field":"action_type","dataType":"String","title":"按钮区域","editType":"string","editOptions":{"id":"combobox1","type":"combo","datasource":"comItems2"},"editType":"combo","renderType":"comboRender"}'></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- addModal -->
+	<div class="modal fade" id="addRoleModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" style="width:400px">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">新增按钮</h4>
+				</div>
+				<div class="modal-body clearfix">
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label">子系统:</label>
+						<div class="col-md-8">
+							<select class="form-control" id="user_sys_id">
+
+							</select>
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label"><span
+							class="star-color" style="font-size: 15px;">*</span>编号:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="action_code">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label"><span
+							class="star-color" style="font-size: 15px;">*</span>名称:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="action_name">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label">图片:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="icon_name">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label">函数名称:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="func_name">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label">参&nbsp;&nbsp;数:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="param">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label">按钮区域:</label>
+						<div class="col-md-8">
+							<select class="form-control" id="action_type">
+								<option value="0">按钮区</option>
+								<option value="1">操作区</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bind="click:ensure">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- addModal -->
+	<div class="modal fade" id="editRoleModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" style="width:400px">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel1">菜单修改</h4>
+				</div>
+				<div class="modal-body clearfix">
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label">子系统:</label>
+						<div class="col-md-8">
+							<select class="form-control" id="user_sys_id1">
+
+							</select>
+						</div>
+					</div>
+					<input type="hidden" class="form-control" id="action_id">
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label"><span
+							class="star-color" style="font-size: 15px;">*</span>编&nbsp;&nbsp;号:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="action_code1">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label"><span
+							class="star-color" style="font-size: 15px;">*</span>名&nbsp;&nbsp;称:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="action_name1">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label">图&nbsp;&nbsp;片:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="icon_name1">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label">函数名称:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="func_name1">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label">参&nbsp;&nbsp;数:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="param1">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label">按钮区域:</label>
+						<div class="col-md-8">
+							<select class="form-control" id="action_type1">
+								<option value="0">按钮区</option>
+								<option value="1">操作区</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bind="click:ensure1">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/df/trd/requirejs/require.js"></script>
+<script src="/df/require.config.js"></script>
+<script src="./buttonConfig.js"></script>
+</html>

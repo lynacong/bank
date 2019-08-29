@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+	<title>账户管理</title>
+	<meta name="author" content="ip">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+	<!-- <link rel="stylesheet" type="text/css" href="/df/trd/uui/css/font-awesome.min.css"> -->
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/platform.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css" />
+	<link rel="stylesheet" type="text/css" href="./accountConfig.css" />
+</head>
+<body>
+	<div class="gl-container">
+		<div class="gl-left-module left-module">
+			<div class="gl-module-header module-header">
+				<ul>
+					<li>
+						<div>
+							<select class="form-control" id="changeprop">
+	                            <option value="0" selected="selected">账户类型</option>
+	                            <option value="1" >预算单位</option>
+                            </select>	
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="gl-tree-area" id="account-tree">
+	    		<div id="accountTypeTree" class="ztree" u-meta='{"id":"accountTypeTree","data":"accountTypeDataTree","type":"tree","idField":"id","pidField":"parent_id","nameField":"chr_name","setting":"accountTypeDataSetting"}'></div>
+			</div>
+			<div class="gl-tree-area" id="agency-tree">
+	    		<div id="agencyDataTree" class="ztree" u-meta='{"id":"agencyDataTree","data":"agencyDataTree","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"chr_name","setting":"agencyDataTreeSetting"}'></div>
+			</div>
+		</div>
+		
+		<!-- 财政账户列表 start -->
+		<div class="right-module gl-right-module cz-account-table" id="account-table">
+			<button type="button" id="add" class="btn btn-primary gl-btn" data-toggle="modal" data-bind="click: setDefaultValue" data-target="#addModal" >新增</button>
+			<button type="button" id="delete" data-bind="click: delAccountByID" class="btn btn-danger btn-primary gl-btn">删除</button>
+			<button type="button" id="update" class="btn btn-primary gl-btn" data-bind="click: setAccountDefaultValue">修改</button>
+			
+			<div class="query-condition-container">
+				<div class="module-header query-condition">
+					<ul>
+						<li><div>查询条件</div></li>
+						<li><div><button class="advanced-query" type="button" data-bind="click: showAdvancedQuery">高级查询</a></div></li>
+						<li><div><button id="query-action" class="advanced-query glyphicon glyphicon-refresh" data-bind="click: conditionQuery" type="button"></a></div></li>
+					</ul>
+				</div>
+				<div>
+					<div class="default-condition">
+				
+						<div class="col-md-6" id="query-default-account-type">
+					        <label for="" class="col-md-3 text-right"><span style="color:red">*</span>账户类型:</label>
+					            <div class="col-md-8 ip-input-group">
+					                <input type="text" id="query-account-type" class="form-control"  disabled="disabled">
+					            </div>
+					    </div>
+					    
+					    <div class="col-md-6" id="query-agency-account-type">
+		                          <label class="col-md-3 text-right">账户子类型:</label>
+		                          <div class="col-md-8 ip-input-group">
+		                           <select class="form-control" id="query-account-type-value">
+		                            <option value="12 授权支付预算单位零余额账户" selected="selected">12 授权支付预算单位零余额账户</option>
+		                            <option value="62 授权支付预算单位零余额账户">62 预算单位实拨收款账户</option>
+		                            <option value="64 授权支付预算单位零余额账户">64 公务卡汇总还款账户</option>
+		                           </select>
+		                          </div>
+		                      </div>
+					    <div class="col-md-6" id="query-account-son-type-container">
+					        <label for="" class="col-md-3 text-right"><span style="color:red">*</span>账户子类型:</label>
+					            <div class="col-md-8 ip-input-group">
+					                <input type="text" id="query-account-son-type" class="form-control"  disabled="disabled">
+					            </div>
+					    </div>
+					</div>
+					<div class="advanced-query-container">
+					    <div class="col-md-6">
+						    <label class="col-md-3 text-right"><span style="color:red">*</span>开户行:</label>
+							<div class="col-md-8 input-group modal-input-group">
+								<input id="query-bank" type="text" class="form-control" value="" readonly="readonly"> 
+								<span class="input-control-feedback" onclick="clearText('query-bank')">X</span>
+								<span class="input-group-addon"  data-toggle="modal" data-target="#addChoiceModel" data-bind="click: getBankList" data-whatever="pa">
+									<span class="glyphicon glyphicon-option-horizontal"></span> 
+								</span>
+							</div>
+						</div>
+					    <div class="col-md-6">
+						    <label class="col-md-3 text-right"><span style="color:red">*</span>所有者:</label>
+							<div class="col-md-8 input-group modal-input-group">
+								<input id="query-owner" type="text" class="form-control" value="" readonly="readonly"> 
+								<span id="query-clearText" class="input-control-feedback" onclick="clearText('query-owner')">X</span>
+								<span id="query-addChoice" class="input-group-addon"  data-toggle="modal" data-target="#addChoiceModel" data-bind="click: getOwnerList" data-whatever="">
+									<span class="glyphicon glyphicon-option-horizontal"></span> 
+								</span>
+							</div>
+						</div>
+						<div class="col-md-6" id="query-payee-name-container">
+					        <label for="" class="col-md-3 text-right"><span style="color:red">*</span>收款人名称:</label>
+					            <div class="col-md-8 ip-input-group">
+					                <input id="query-payee-name" type="text" class="form-control" value="">
+					            </div>
+					    </div>
+					    
+					    <div class="col-md-6" id="query-account-name-container">
+					        <label for="" class="col-md-3 text-right"><span style="color:red">*</span>账号名称:</label>
+					            <div class="col-md-8 ip-input-group">
+					                <input id="query-account-name" type="text" class="form-control" value="">
+					            </div>
+					    </div>
+					    
+					    <div class="col-md-6" id="query-account-no-container">
+					        <label for="" class="col-md-3 text-right"><span style="color:red">*</span>账号:</label>
+					            <div class="col-md-8 ip-input-group">
+					                <input id="query-account-no" type="text" class="form-control" value="">
+					            </div>
+					    </div>
+					    
+					    <div class="col-md-6">
+					        <label for="start_date" class="col-md-3 text-right">启用日期:</label>
+				            <div class="col-md-8 ip-input-group u-datepicker">
+				            	<!-- <input class="u-input indirectDiv-input" type="text" placeholder="年/月/日" id="start_date" data-bind="value:startDateVal"> -->
+				                <input id="query-start-date" type="text" data-bind="value: startDateVal" readonly="readonly" class="form-control" value="">
+				            </div>
+					    </div>
+					    
+					    <div class="col-md-6">
+					        <label for="" class="col-md-3 text-right">停用日期:</label>
+					            <div class="col-md-8 ip-input-group u-datepicker">
+					                <input id="query-stop-date" type="text" data-bind="value: endDateVal" readonly="readonly" class="form-control" value="">
+					            </div>
+					    </div>
+					    <div class="col-md-6">
+						    <label for="inputPassword3" class="col-md-3 text-right control-label"><span style="color:red">*</span>默认账户:</label>
+						      <div class="col-md-8 ip-input-group">
+		       				<input type="radio" name="query-isDefault" id="isDefault-y" value="1" checked="checked"> 是
+		       				<input type="radio" name="query-isDefault" id="isDefault-n" value="0"> 否
+		       				</div>
+		       			</div>
+		       			<div class="col-md-6">
+						    <label for="inputPassword3" class="col-md-3 text-right control-label"><span style="color:red">*</span>是否启用:</label>
+						      <div class="col-md-8 ip-input-group">
+		       				<input type="radio" name="query-enable" id="enable-y" value="1" checked="checked"> 是
+		       				<input type="radio" name="query-enable" id="enable-n" value="0"> 否
+		       				</div>
+		       			</div>
+		       			
+		       			<div class="col-md-6" id="query-is-public-container">
+						    <label for="inputPassword3" class="col-md-3 text-right control-label"><span style="color:red">*</span>公共账户:</label>
+						      <div class="col-md-8 ip-input-group">
+		       				<input type="radio" name="query-is-public" id="enable-y" value="1" checked="checked"> 是
+		       				<input type="radio" name="query-is-public" id="enable-n" value="0"> 否
+		       				</div>
+		       			</div>
+		                <div class="col-md-6" id="query-code-container">
+					        <label for="" class="col-md-3 text-right">编码:</label>
+					            <div class="col-md-8 ip-input-group">
+					                <input type="text" id="query-code" class="form-control">
+					            </div>
+					    </div>
+					    <div class="col-md-6" id="query-foreign-code-container">
+					        <label for="" class="col-md-3 text-right">外码:</label>
+					            <div class="col-md-8 ip-input-group">
+					                <input type="text" id="query-foreign-code" class="form-control">
+					            </div>
+					    </div>
+					    <div class="col-md-6">
+					        <label for="" class="col-md-3 text-right">备注:</label>
+					            <div class="col-md-8 ip-input-group">
+					                <input type="text" id="query-remark" class="form-control">
+					            </div>
+					    </div>
+					</div>
+				
+				</div>
+			</div>
+			
+			<div class="module-header gl-table-module-header">
+				<ul>
+					<li><div>账户列表</div></li>
+				</ul>
+			</div>
+			<div class="gl-form-container-account">
+				<div id="account-table" type="text"
+				 u-meta='{"id":"account","data":"accountDataTable","type":"grid","editable":false,"showHeader":true,"autoExpand":false,"showTree":false,"showNumCol":true,"keyField":"theId","parentKeyField":"parentId","multiSelect":true,"height":395,"headerHeight":32,"rowHeight":32,"sumRowHeight":32}'>
+				    <div options='{"field":"owner","dataType":"String","title":"账户所有者","width": 220,"datasource":"owner"}'></div>
+				    <div options='{"field":"chr_code","dataType":"String","title":"编码","width": 220,"datasource":"chr_code"}'></div>
+				    <div options='{"field":"account_no","dataType":"String","title":"账号","width": 220,"datasource":"account_no"}'></div>
+				    <div options='{"field":"account_name","dataType":"String","title":"账户名称","width": 220,"datasource":"account_name"}'></div>
+				    <div options='{"field":"bank","dataType":"String","title":"开户行","width": 220,"datasource":"bank"}'></div>
+				    <div options='{"field":"remark","dataType":"String","title":"备注","width": 120,"datasource":"remark"}'></div>
+				    <div options='{"field":"enabled","dataType":"String","title":"状态","editOptions":{"id":"source1","type":"combo","datasource":"enabled","onlySelect": true},"editType":"combo","renderType":"comboRender","width": 120}'></div>
+				</div>
+			</div>	
+		</div>
+		
+		
+		<!-- 新增账户 start -->
+		<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">账户管理</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-12" id="default-account-type">
+					        <label for="" class="col-md-3 text-right"><span style="color:red">*</span>账户类型:</label>
+					            <div class="col-md-8 ip-input-group">
+					                <input type="text" id="account-type" class="form-control"  disabled="disabled">
+					            </div>
+					    </div>
+					    
+					    <div class="col-md-12" id="agency-account-type">
+                            <label class="col-md-3 text-right">账户子类型:</label>
+                            <div class="col-md-8 ip-input-group">
+	                            <select class="form-control" id="account-type-value">
+		                            <option value="12 授权支付预算单位零余额账户" selected="selected">12 授权支付预算单位零余额账户</option>
+		                            <option value="62 授权支付预算单位零余额账户">62 预算单位实拨收款账户</option>
+		                            <option value="64 授权支付预算单位零余额账户">64 公务卡汇总还款账户</option>
+	                            </select>
+                            </div>
+                        </div>
+					    <div class="col-md-12" id="account-son-type-container">
+					        <label for="" class="col-md-3 text-right"><span style="color:red">*</span>账户子类型:</label>
+					            <div class="col-md-8 ip-input-group">
+					                <input type="text" id="account-son-type" class="form-control"  disabled="disabled">
+					            </div>
+					    </div>
+					    <div class="col-md-12">
+						    <label class="col-md-3 text-right"><span style="color:red">*</span>开户行:</label>
+							<div class="col-md-8 input-group modal-input-group">
+								<input id="bank" type="text" class="form-control" value="" readonly="readonly"> 
+								<input id="bank-h" type="hidden"> 
+								<span class="input-control-feedback" onclick="clearText('bank')">X</span>
+								<span class="input-group-addon"  data-toggle="modal" data-target="#addChoiceModel" data-bind="click: getBankList" data-whatever="pa">
+									<span class="glyphicon glyphicon-option-horizontal"></span> 
+								</span>
+							</div>
+						</div>
+					    <div class="col-md-12">
+						    <label class="col-md-3 text-right"><span style="color:red">*</span>所有者:</label>
+							<div class="col-md-8 input-group modal-input-group">
+								<input id="owner" type="text" class="form-control" value="" readonly="readonly"> 
+								<span id="clearText" class="input-control-feedback" onclick="clearText('owner')">X</span>
+								<span id="addChoice" class="input-group-addon"  data-toggle="modal" data-target="#addChoiceModel" data-bind="click: getOwnerList" data-whatever="">
+									<span class="glyphicon glyphicon-option-horizontal"></span> 
+								</span>
+							</div>
+						</div>
+						<div class="col-md-12" id="payee-name-container">
+					        <label for="" class="col-md-3 text-right"><span style="color:red">*</span>收款人名称:</label>
+					            <div class="col-md-8 ip-input-group">
+					                <input id="payee-name" type="text" class="form-control" value="">
+					            </div>
+					    </div>
+					    
+					    <div class="col-md-12" id="account-name-container">
+					        <label for="" class="col-md-3 text-right"><span style="color:red">*</span>账号名称:</label>
+					            <div class="col-md-8 ip-input-group">
+					                <input id="account-name" type="text" class="form-control" value="">
+					            </div>
+					    </div>
+					    
+					    <div class="col-md-12" id="account-no-container">
+					        <label for="" class="col-md-3 text-right"><span style="color:red">*</span>账号:</label>
+					            <div class="col-md-8 ip-input-group">
+					                <input id="account-no" type="text" class="form-control" value="">
+					            </div>
+					    </div>
+					    
+					    <div class="col-md-12">
+					        <label for="start_date" class="col-md-3 text-right">启用日期:</label>
+				            <div class="col-md-8 ip-input-group u-datepicker">
+				            	<!-- <input class="u-input indirectDiv-input" type="text" placeholder="年/月/日" id="start_date" data-bind="value:startDateVal"> -->
+				                <input id="start-date" type="text" data-bind="value: startDateVal" readonly="readonly" class="form-control" value="">
+				            </div>
+					    </div>
+					    
+					    <div class="col-md-12">
+					        <label for="" class="col-md-3 text-right">停用日期:</label>
+					            <div class="col-md-8 ip-input-group u-datepicker">
+					                <input id="stop-date" type="text" data-bind="value: endDateVal" readonly="readonly" class="form-control" value="">
+					            </div>
+					    </div>
+					    <div class="col-md-12">
+						    <label for="inputPassword3" class="col-md-3 text-right control-label"><span style="color:red">*</span>默认账户:</label>
+						      <div class="col-md-8 ip-input-group">
+	        				<input type="radio" name="isDefault" id="isDefault-y" value="1" checked="checked"> 是
+	        				<input type="radio" name="isDefault" id="isDefault-n" value="0"> 否
+	        				</div>
+	        			</div>
+	        			<div class="col-md-12">
+						    <label for="inputPassword3" class="col-md-3 text-right control-label"><span style="color:red">*</span>是否启用:</label>
+						      <div class="col-md-8 ip-input-group">
+	        				<input type="radio" name="enable" id="enable-y" value="1" checked="checked"> 是
+	        				<input type="radio" name="enable" id="enable-n" value="0"> 否
+	        				</div>
+	        			</div>
+	        			
+	        			<div class="col-md-12" id="is-public-container">
+						    <label for="inputPassword3" class="col-md-3 text-right control-label"><span style="color:red">*</span>公共账户:</label>
+						      <div class="col-md-8 ip-input-group">
+	        				<input type="radio" name="is-public" id="enable-y" value="1" checked="checked"> 是
+	        				<input type="radio" name="is-public" id="enable-n" value="0"> 否
+	        				</div>
+	        			</div>
+                        <div class="col-md-12" id="code-container">
+					        <label for="" class="col-md-3 text-right">编码:</label>
+					            <div class="col-md-8 ip-input-group">
+					                <input type="text" id="code" class="form-control">
+					            </div>
+					    </div>
+					    <div class="col-md-12" id="foreign-code-container">
+					        <label for="" class="col-md-3 text-right">外码:</label>
+					            <div class="col-md-8 ip-input-group">
+					                <input type="text" id="foreign-code" class="form-control">
+					            </div>
+					    </div>
+					    <div class="col-md-12">
+					        <label for="" class="col-md-3 text-right">备注:</label>
+					            <div class="col-md-8 ip-input-group">
+					                <input type="text" id="remark" class="form-control">
+					            </div>
+					             <div class="col-md-8 ip-input-group">
+					                <input id="ele_code" type="hidden"> 
+					            </div>
+					            
+					    </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="modalsave" class="btn btn-primary" data-bind="click:save">保存</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+		<!-- 新增账户 end -->
+		
+		
+		
+		<!-- addChoiceModel -->
+		<div class="modal fade" id="addChoiceModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">
+							<!-- <span class="glyphicon glyphicon-list" style="color:#1296DB;"></span> -->
+							<span style="padding-left:5px;">内容选择</span>
+						</h4>
+					</div>
+					<div class="modal-body">
+					    <div class="">
+							<label for="addviewInput" >模糊查询:</label>
+							<input type="text" name="addviewInput" id="addviewInput" class="addviewInput" />
+						    <button type="button" class="btn btn-primary quik-find" data-bind="click: viewQuery">查找</button>
+					        <button type="button" class="btn btn-primary quik-next" data-bind="click: viewNext">下一个</button>
+						</div>
+						<div class = "view-Tree">
+						    
+	                         <div id="manageTreeUnit" class="ztree"
+	                         	u-meta='{"id":"manageTreeUnit","data":"treeUnitDataTable","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"chr_name","setting":"treeUnitSetting"}'></div>
+	                         <div id="ownerTree" class="ztree"
+	                         	u-meta='{"id":"ownerTree","data":"ownerTree","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"chr_name","setting":"ownerTreeSetting"}'></div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+	</div>
+		
+	<script src="/df/trd/requirejs/require.js"></script>
+    <script src="/df/require.config.js"></script>
+	<script src="./accountConfig.js"></script>
+	
+</body>
+</html>

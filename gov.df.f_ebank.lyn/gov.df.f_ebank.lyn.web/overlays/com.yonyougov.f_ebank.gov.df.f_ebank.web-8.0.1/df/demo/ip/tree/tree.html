@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+    <title>tree的使用</title>
+    <meta name="description" content="grid的使用方法总结">
+    <meta name="keywords" content="grid的使用方法总结">
+    <meta name="author" content="ip">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../../../trd/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../../../trd/uui/css/u.css" />
+    <link rel="stylesheet" type="text/css" href="../../../trd/uui/css/tree.css" />
+    <link rel="stylesheet" type="text/css" href="../../../trd/ip/changeTree/changeTree.css" />
+    <link rel="stylesheet" type="text/css" href="../../../trd/uui/css/u.core.css" />
+    <link rel="stylesheet" href="../../../trd/ip/css/ip.css" />
+    <link rel="stylesheet" type="text/css" href="../../../trd/ip/css/platform.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="../../../trd/ip/css/bizSys.css" /> -->
+    <style>
+        .p-setting {
+            font-size: 18px;
+            color:#085177;
+        }
+        li{
+            margin-top:20px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="demo-continer">
+    <div class="u-widget-body">
+        <h3>tree树  （方法1）</h3>
+        <input type="text" id="input1" value=""/><button onclick="search()">查询1</button>
+        <div>
+            <div id="treeTest2" class="ztree"></div>
+        </div>
+        <h3>tree树  （方法2）</h3>
+        <input type="text" value=""/><button onclick="">查询2</button>
+        <div>
+            <div id="treeTest3" class="ztree" u-meta='{"id":"tree2","data":"dataTable","type":"tree","idField":"id","pidField":"pid","nameField":"title","setting":"treeSetting"}'></div>
+        </div>
+
+        <h3>树方法总结</h3>
+        <div>
+            <ul>
+                <li>
+                    <p class="p-setting">创建树</p>
+                    <p>（1）setting 配置  </p>
+                    <p>（2）zTreeNode 节点数据 </p>
+                    <p> (3)创建树 </p>
+                    <p>&nbsp&nbsp&nbsp&nbsp 例1 ： zTreeObj1 = $.fn.zTree.init($("#treeTest2"), setting1, zNodes1);</p>
+                    <p>&nbsp&nbsp&nbsp&nbsp 例2 ：获取树  $("#treeTest3")[0]['u-meta'].tree  </p>
+                </li>
+                <li>
+                    <p class="p-setting">(1) 查找节点 ：</p>
+                    <p>&nbsp&nbsp&nbsp&nbsp a:根据节点数据的属性搜索  </p>
+                    <p>&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp getNodeByParam(key,value,parentNode)</p>
+                    <p>&nbsp&nbsp&nbsp&nbsp b:根据自定义规则搜索节点数据 </p>
+                    <p>&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp  getNodesByFilter(filter, isSingle, parentNode, invokeParam)</p>
+                    <p>&nbsp&nbsp&nbsp&nbsp c:根据节点数据的属性搜索，获取条件模糊匹配的节点数据 </p>
+                    <p>&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp getNodesByParamFuzzy((key, value, parentNode))</p>
+                </li>
+                <li>
+                    <p class="p-setting">(2)、折叠节点：</p>
+                    <p>&nbsp&nbsp&nbsp&nbsp expandAll(boolean) true 展开全部节点  false 合上全部节点</p>
+                    <p>&nbsp&nbsp&nbsp&nbsp 展开 / 折叠 指定的节点 expandNode(treeNode, expandFlag, sonSign, focus, callbackFlag)</p>
+                </li>
+                <li>
+                    <p class="p-setting">(3)、勾选节点：</p>
+                    <p>&nbsp&nbsp&nbsp&nbsp 勾选/取消勾选 全部节点 </p>
+                    <p>&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp checkAllNodes（boolean） true 勾选  false 取消</p>
+                    <p>&nbsp&nbsp&nbsp&nbsp 勾选/取消勾选 单个节点 </p>
+                    <p>&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp checkNode（treeNode, checked, checkTypeFlag, callbackFlag）</p>
+
+                </li>
+                <li>
+                    <p class="p-setting">(4)、获取选中节点&nbsp&nbsp getSelectNode(treeNode, addFlag, isSilent)</p>
+                    <p></p>
+                </li>
+                <li>
+                    <p class="p-setting">(5)、是否显示勾选框 </p>
+                    <p>&nbsp&nbsp&nbsp&nbsp 显示连接线在js里 setting.check.enable下设置 </p>
+                </li>
+
+
+                <li>
+                    <p class="p-setting">(6)、显示连接线的设置</p>
+                    <p>显示连接线在js里 setting.view.showLine下设置</p>
+                </li>
+
+
+
+            </ul>
+        </div>
+
+    </div>
+</div>
+<script src="../../../trd/knockout/knockout-3.2.0.debug.js"></script>
+<script src="../../../trd/requirejs/require.js"></script>
+<script src="../require.config.js"></script>
+<script src="../../../trd/ip/js/ip.js"></script>
+<script src="./tree.js"></script>
+</body>
+</html>

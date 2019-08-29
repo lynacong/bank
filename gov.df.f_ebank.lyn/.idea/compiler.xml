@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="gov.df.f_ebank.lyn.api" />
+        <module name="gov.df.f_ebank.lyn.controller" />
+        <module name="gov.df.f_ebank.lyn.server" />
+        <module name="gov.df.f_ebank.lyn.web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="gov.df.f_ebank.lyn" target="1.8" />
+      <module name="gov.df.f_ebank.lyn.api" target="1.8" />
+      <module name="gov.df.f_ebank.lyn.controller" target="1.8" />
+      <module name="gov.df.f_ebank.lyn.server" target="1.8" />
+      <module name="gov.df.f_ebank.lyn.web" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

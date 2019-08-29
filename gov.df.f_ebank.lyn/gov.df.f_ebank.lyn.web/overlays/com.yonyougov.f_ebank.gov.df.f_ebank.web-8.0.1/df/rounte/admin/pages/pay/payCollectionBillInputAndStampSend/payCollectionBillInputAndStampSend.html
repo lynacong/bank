@@ -1,0 +1,50 @@
+<div class="wrapper" style="margin:0 auto;">
+	<!-- 操作按钮区 -->
+	<div class="button-fixed">
+		<div class="btn-grid-group-btn ip-content-btn-area">
+			<div id="buttonArea" class="icon-buttons"></div>
+		</div>
+	</div>
+		
+	<div class="btn-group-content button-fixed-select">
+		<div class="common-border">
+			<span class="common-surround-header">查询区</span>
+			<div class="search-area" id="searchArea"></div>
+		</div>
+		<div class="mainLabel clearfix">
+			<label>托收申请：</label>
+			<select id="statusArea"></select>
+		</div>
+		<div class="mainTable">
+			<table id="mainGridArea"
+				class="table-striped table nowrap table-bordered table-hover table-condensed"
+				style="width: 100%;"></table>
+		</div>
+	</div>
+
+	<!-- 详情弹窗 -->
+	<div id="detailContainer"></div>
+	
+	<!-- 托收申请录入 -->
+	 <div class="modal fade" id="payCollectionBillInput" tabindex="-1" role="dialog"
+		aria-labelledby="ylModalLabel" data-backdrop="static">
+		<div class="modal-dialog" role="document" style="width:790px;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" onclick="closeCollBillInput()" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="titleText">托收申请录入</h4>
+				</div>
+				<div class="modal-body display-container">		
+				    <div id="modalCollInputArea" class="tabbed-grid tabbed-grid-modal"></div>											
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" onclick="doSaveCollInput()">确定</button>
+					<button type="button" class="btn btn-primary" onclick="closeCollBillInput()">退出</button>						
+				</div>
+			</div>
+		</div>
+	</div>  
+		
+</div>  

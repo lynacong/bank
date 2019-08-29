@@ -1,0 +1,30 @@
+.gridTest_out{
+		border-left: 1px solid #ccc;
+    	border-bottom: 1px solid #ccc;
+    	clear: both;
+	}
+	.gridTest_out td, th {
+	    padding: 0;
+	    border-top: 1px solid #ccc;
+	    border-right: 1px solid #ccc;
+	    padding: 4px 6px;
+	}
+	.gridTest_out thead{
+		background: #F2F9FF;
+	}
+	#selectMainInfo{
+		border: 1px solid #ccc;
+		height: 25px;
+	}
+	.table-container{
+		min-height: 200px;
+		max-height: 200px;
+		overflow: auto;
+	}
+	.gridTest_out tr.focus_out{background-color:#4F8EDC}
+	.gridTest_out tr.focus{background-color:#4F8EDC}
+	
+	
+	.ztree li span{
+	   font-size:13px;
+    }

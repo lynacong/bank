@@ -1,0 +1,65 @@
+<div class="container-fluid h">
+	<div class="config-btn">
+		<button type="button" class="btn btn-config" onclick="refreshTree()">刷新</button>
+		<button type="button" class="btn btn-config" onclick="addStamp()">新增</button>
+		<button type="button" class="btn btn-config" onclick="modifyStamp()">修改</button>
+		<button type="button" class="btn btn-danger" onclick="delStamp()">删除</button>
+	</div>
+	<div class="config-search clearfix mb5">
+		<label for="finance_code">财政机构：</label>
+		<select id="finance_code" class="form-control ebank-input" onchange="treeValueChange()"></select>
+		<label for="stampNameSearch">印章查询：</label>
+		<input type="text"  id="stampNameSearch" class="form-control ebank-input" placeholder="请输入印章名称" onkeyup="inputListner(event)" />
+	</div>
+	<div class="config-main-hassearch clearfix">
+		<div class="col-md-5 col-sm-5 border tree-sidebar">
+			<div id="stampTree" class="ztree" u-meta='{"id":"tree_elerule","data":"treeDataTable","type":"tree","idField":"chr_id","pidField":"finance_code","nameField":"show_name","setting":"treeSetting"}'></div>
+		</div>
+		<div class="col-md-7 col-sm-7">
+			<table class="table-striped table table-bordered table-hover table-condensed" id="gridTest" style="width:100%;">  
+	           <thead>  
+	               <tr>  
+	                   <th style="width:60%;">编码</th>  
+	                   <th style="width:40%;">名称</th> 
+	               </tr>  
+	           </thead>  
+	            <tbody>  
+	            </tbody>  
+       	 	</table>  
+		</div>
+	</div>
+</div>
+
+<!-- 新增/修改Modal start-->
+<div class="modal fade" id="stampSetModel" tabindex="-1" role="dialog" aria-labelledby="ylModalLabel" data-backdrop="static">
+	<div class="modal-dialog" role="document" style="width:500px;"> 
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>	
+				<h4 class="modal-title" id="titleText"></h4>
+			</div>
+			<div class="modal-body display-container">
+				<div class="form-group col-md-11" style="margin-top:10px;">
+					<label for="stampCode" class="col-md-4 text-right"><span class="color-red">*</span>印章编码：</label> 
+					<div class="input-group col-md-7">
+						<input type="text" id="stampCode" class="form-control"  />
+					</div>
+				</div>
+				<div class="form-group col-md-11">
+					<label for="stampName" class="col-md-4 text-right"><span class="color-red">*</span>印章名称：</label> 
+					<div class="input-group col-md-7">
+						<input type="text"  id="stampName" class="form-control" />
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer" style="clear: both;">
+			  	<button type="button" class="btn btn-primary" onclick="saveOrUpdate()">确定</button>				
+				<button type="button" class="btn btn-primary" data-dismiss="modal">退出</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 新增/修改Modal end-->

@@ -1,0 +1,29 @@
+<span ng-click="propertyGroupClicked(groupIndex,group.name,group.expanded)" id="test">
+        <i ng-class="{'fa fa-angle-right ': !group.expanded, 'fa fa-angle-down ': group.expanded}"></i>
+        {{group.name}}
+</span>
+
+<!-- Child groups -->
+<ul ng-repeat="group in group.groups"
+    class="stencil-group stencil-group-non-root"
+    ng-class="{collapsed: !group.expanded, 'first': $first}"
+    ng-include="'editor-app/partials/property-item-template.html?version=4'">
+</ul>
+
+<!-- Group items -->
+<div class="property-row" ng-repeat="property in group.items" ng-if="group.expanded" name={{group.name}}
+     ng-click="propertyClicked(groupIndex,$index)" ng-class="{'clear' : $index%2 == 0}">
+     <span class="title" ng-if="property.required &&!property.hidden" style="padding-left: 2px; width: 33%"><font color=red>*</font>{{ property.title }}&nbsp;:</span>
+     <span class="title" ng-if="!property.required &&!property.hidden && property.title!='菜单授权' && property.title!='角色授权' && property.title!='关联规则'" style="padding-left: 2px; width: 33%">{{ property.title }}&nbsp;:</span>
+     <span class="title-removed" ng-if="property.hidden"><i>{{ property.title }}&nbsp;({{'PROPERTY.REMOVED' | translate}})&nbsp;:</i></span>
+     <span class="value" style="width: 63%;"> 
+         <ng-include
+             src="getPropertyTemplateUrl(groupIndex,$index)" ng-if="!property.hasReadWriteMode"></ng-include>
+         <ng-include src="getPropertyReadModeTemplateUrl(groupIndex,$index)"
+             ng-if="property.hasReadWriteMode && property.mode == 'read'"></ng-include>
+         <ng-include src="getPropertyWriteModeTemplateUrl(groupIndex,$index)"
+             ng-if="property.hasReadWriteMode && property.mode == 'write'"></ng-include>
+     </span>
+ </div>
+ 
+<div style="clear:both;visibility:hidden;"></div>

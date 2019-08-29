@@ -1,0 +1,135 @@
+
+<div class="modal" ng-controller="KisBpmEventListenersPopupCtrl">
+    <div class="modal-dialog modal-wide">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="editor-pop-close close" data-dismiss="modal" aria-hidden="true" ng-click="close()">&times;</button>
+                <span>{{'PROPERTY.PROPERTY.EDIT.TITLE' | translate:property}}</span>
+            </div>
+            <div class="modal-body">
+            
+                <div class="row row-no-gutter">
+                	<div class="col-xs-10">
+            	        <div ng-if="translationsRetrieved" class="kis-listener-grid" ng-grid="gridOptions"></div>
+            	        <div class="pull-right">
+            	            <div class="btn-group">
+            	                <a class="btn btn-icon btn-lg" rel="tooltip" data-title="{{ACTION.MOVE.UP | translate}}" data-placement="bottom" data-original-title="" title="" ng-click="moveListenerUp()"><i class="glyphicon glyphicon-arrow-up"></i></a>
+            	                <a class="btn btn-icon btn-lg" rel="tooltip" data-title="{{ACTION.MOVE.DOWN | translate}}" data-placement="bottom" data-original-title="" title="" ng-click="moveListenerDown()"><i class="glyphicon glyphicon-arrow-down"></i></a>
+            	            </div>
+            	            <div class="btn-group">
+            	                <a class="btn btn-icon btn-lg" rel="tooltip" data-title="{{ACTION.ADD | translate}}" data-placement="bottom" data-original-title="" title="" ng-click="addNewListener()"><i class="glyphicon glyphicon-plus"></i></a>
+            	                <a class="btn btn-icon btn-lg" rel="tooltip" data-title="{{ACTION.REMOVE | translate}}" data-placement="bottom" data-original-title="" title="" ng-click="removeListener()"><i class="glyphicon glyphicon-minus"></i></a>
+            	            </div>
+            	        </div>
+            		</div>
+            	</div>
+            	
+            	<div class="row row-no-gutter" style="padding-top:10px">
+                  	<div ng-if="translationsRetrieved" ng-show="selectedListeners.length > 0" class="col-xs-6">
+            			<div class="form-group" ng-if="!selectedListeners[0].rethrowEvent">
+            		   		<label for="entityTypeField">{{'PROPERTY.EVENTLISTENERS.ENTITYTYPE' | translate}}</label>
+            		   		<select id="entityTypeField" class="form-control" ng-model="selectedListeners[0].entityType"  ng-change="listenerDetailsChanged()" placeholder="{{'PROPERTY.EVENTLISTENERS.ENTITYTYPE.PLACEHOLDER' | translate}}">
+			                        <option value="PROCESS">{{'PROCESS' | translate}}</option>
+			                        <option value="ENTITY">{{'ENTITY' | translate}}</option>
+			                        <option value="JOB">{{'JOB' | translate}}</option>		                        
+			                        <option value="TIMER">{{'TIMER' | translate}}</option>
+			                        <option value="ACTIVITY">{{'ACTIVITY' | translate}}</option>
+			                        <option value="VARIABLE">{{'VARIABLE' | translate}}</option>
+			                        <option value="TASK">{{'TASK' | translate}}</option>
+			                </select>
+            			</div>
+            			<div class="form-group">
+            	        	<label for="userField">{{'PROPERTY.EVENTLISTENERS.EVENTS' | translate}}</label>
+            	            <div ng-repeat="eventDefinition in selectedListeners[0].events">
+            	            	<select id="eventField" class="form-control" ng-model="eventDefinition.event" ng-change="listenerDetailsChanged()">
+            	                	<option value="ENGINE_CREATED">{{'ENGINE_CREATED' | translate}}</option>
+			                        <option value="ENGINE_CLOSED">{{'ENGINE_CLOSED' | translate}}</option>
+			                        <option value="ENTITY_CREATED">{{'ENTITY_CREATED' | translate}}</option>
+			                        <option value="ENTITY_INITIALIZED">{{'ENTITY_INITIALIZED' | translate}}</option>
+			                        <option value="ENTITY_UPDATED">{{'ENTITY_UPDATED' | translate}}</option>
+			                        <option value="ENTITY_DELETED">{{'ENTITY_DELETED' | translate}}</option>
+			                        <option value="ENTITY_SUSPENDED">{{'ENTITY_SUSPENDED' | translate}}</option>
+			                        <option value="ENTITY_ACTIVATED">{{'ENTITY_ACTIVATED' | translate}}</option>
+			                        <option value="JOB_EXECUTION_SUCCESS">{{'JOB_EXECUTION_SUCCESS' | translate}}</option>
+			                        <option value="JOB_EXECUTION_FAILURE">{{'JOB_EXECUTION_FAILURE' | translate}}</option>
+			                        <option value="JOB_RETRIES_DECREMENTED">{{'JOB_RETRIES_DECREMENTED' | translate}}</option>
+			                        <option value="TIMER_FIRED">{{'TIMER_FIRED' | translate}}</option>
+			                        <option value="JOB_CANCELED">{{'JOB_CANCELED' | translate}}</option>
+			                        <option value="ACTIVITY_STARTED">{{'ACTIVITY_STARTED' | translate}}</option>
+			                        <option value="ACTIVITY_COMPLETED">{{'ACTIVITY_COMPLETED' | translate}}</option>
+			                        <option value="ACTIVITY_SIGNALED">{{'ACTIVITY_SIGNALED' | translate}}</option>
+			                        <option value="ACTIVITY_ERROR_RECEIVED">{{'ACTIVITY_ERROR_RECEIVED' | translate}}</option>
+			                        <option value="UNCAUGHT_BPMN_ERROR">{{'UNCAUGHT_BPMN_ERROR' | translate}}</option>
+			                        <option value="ACTIVITY_COMPENSATE">{{'ACTIVITY_COMPENSATE' | translate}}</option>
+			                        <option value="VARIABLE_CREATED">{{'VARIABLE_CREATED' | translate}}</option>
+			                        <option value="VARIABLE_UPDATED">{{'VARIABLE_UPDATED' | translate}}</option>
+			                        <option value="VARIABLE_DELETED">{{'VARIABLE_DELETED' | translate}}</option>
+			                        <option value="TASK_ASSIGNED">{{'TASK_ASSIGNED' | translate}}</option>
+			                        <option value="TASK_CREATED">{{'TASK_CREATED' | translate}}</option>
+			                         <option value="TASK_COMPLETED">{{'TASK_COMPLETED' | translate}}</option>
+			                        <option value="TASK_TIMEOUT">{{'TASK_TIMEOUT' | translate}}</option>
+			                        <option value="TASK_CREATED">{{'PROCESS_COMPLETED' | translate}}</option>
+            	               	</select>
+            		            <i ng-if="$index > 0" class="glyphicon glyphicon-minus clickable-property" ng-click="removeEventValue($index)"></i>
+            		            <i class="glyphicon glyphicon-plus clickable-property" ng-click="addEventValue($index)"></i>
+            	            </div>
+            	            <div class="form-group">
+            			   		<label style="margin:0px;" for="classField">{{'PROPERTY.EVENTLISTENERS.RETHROW' | translate}}</label>
+            			   		<input type="checkbox" id="rethrowField" class="form-control" style="display:inline-block;vertical-align: middle;width:17px;height:17px;margin:0px;" ng-model="selectedListeners[0].rethrowEvent" ng-change="listenerDetailsChanged()" />
+            				</div>
+            	       	</div>
+                     </div>
+                     <div ng-show="selectedListeners.length > 0 && selectedListeners[0].events[0].event" class="col-xs-6">
+                     	<div class="form-group">
+						   		<label for="implementations">{{'PROPERTY.TASKLISTENERS.FIELDS.IMPLEMENTATION' | translate}}</label>
+						   		<select id="implementations" class="form-control" ng-model="selectedListeners[0].clazz">
+			                        <option value="class">{{'PROPERTY.TASKLISTENERS.CLASS' | translate}}</option>
+			                        <option value="expression">{{'PROPERTY.TASKLISTENERS.EXPRESSION' | translate}}</option>
+			                        <option value="delegateexpression">{{'PROPERTY.TASKLISTENERS.DELEGATEEXPRESSION' | translate}}</option>
+			                    </select>
+						</div>
+						<div class="form-group" ng-show="selectedListeners[0].clazz == 'class'">
+            			   		<label for="classField">{{'PROPERTY.EXECUTIONLISTENERS.CLASS' | translate}}</label>
+            			   		<input type="text" id="classField" class="form-control" ng-model="selectedListeners[0].className" ng-change="listenerTypeChanged('class')" placeholder="{{'PROPERTY.EXECUTIONLISTENERS.CLASS.PLACEHOLDER' | translate}}" />
+           				</div>
+           				<div class="form-group" ng-show="selectedListeners[0].clazz == 'expression'">
+           			   		<label for="expressionField">{{'PROPERTY.EXECUTIONLISTENERS.EXPRESSION' | translate}}</label>
+           			   		<input type="text" id="expressionField" class="form-control" ng-model="selectedListeners[0].expression" ng-change="listenerTypeChanged('expression')" placeholder="{{'PROPERTY.EXECUTIONLISTENERS.EXPRESSION.PLACEHOLDER' | translate}}" />
+           				</div>
+           				<div class="form-group" ng-show="selectedListeners[0].clazz == 'delegateexpression'">
+           			   		<label for="delegateExpressionField">{{'PROPERTY.EXECUTIONLISTENERS.DELEGATEEXPRESSION' | translate}}</label>
+           			   		<input type="text" id="delegateExpressionField" class="form-control" ng-model="selectedListeners[0].delegateExpression" ng-change="listenerTypeChanged('delegateexpression')" placeholder="{{'PROPERTY.EXECUTIONLISTENERS.DELEGATEEXPRESSION.PLACEHOLDER' | translate}}" />
+           				</div>
+            			<div class="form-group" ng-if="selectedListeners[0].rethrowEvent">
+            		   		<label for="delegateExpressionField">{{'PROPERTY.EVENTLISTENERS.RETHROWTYPE' | translate}}</label>
+            		   		<select id="rethrowTypeField" class="form-control" ng-model="selectedListeners[0].rethrowType" ng-change="rethrowTypeChanged()">
+                                <option value="error">{{'PROPERTY.EVENTLISTENERS.EVENTTYPE.ERROR' | translate}}</option>
+                                <option value="message">{{'PROPERTY.EVENTLISTENERS.EVENTTYPE.MESSAGE' | translate}}</option>
+                                <option value="signal">{{'PROPERTY.EVENTLISTENERS.EVENTTYPE.SIGNAL' | translate}}</option>
+                                <option value="globalSignal">{{'PROPERTY.EVENTLISTENERS.EVENTTYPE.GLOBALSIGNAL' | translate}}</option>
+                            </select>
+            			</div>
+            			<div class="form-group" ng-if="selectedListeners[0].rethrowType === 'error'">
+            		   		<label for="errorCodeField">{{'PROPERTY.EVENTLISTENERS.ERRORCODE' | translate}}</label>
+            		   		<input type="text" id="errorCodeField" class="form-control" ng-model="selectedListeners[0].errorcode" ng-change="listenerDetailsChanged()" placeholder="{{'PROPERTY.EVENTLISTENERS.ERRORCODE.PLACEHOLDER' | translate}}" />
+            			</div>
+            			<div class="form-group" ng-if="selectedListeners[0].rethrowType === 'message'">
+            		   		<label for="messageNameField">{{'PROPERTY.EVENTLISTENERS.MESSAGENAME' | translate}}</label>
+            		   		<input type="text" id="messageNameField" class="form-control" ng-model="selectedListeners[0].messagename" ng-change="listenerDetailsChanged()" placeholder="{{'PROPERTY.EVENTLISTENERS.MESSAGENAME.PLACEHOLDER' | translate}}" />
+            			</div>
+            			<div class="form-group" ng-if="selectedListeners[0].rethrowType === 'signal' || selectedListeners[0].rethrowType === 'globalSignal'">
+            		   		<label for="messageNameField">{{'PROPERTY.EVENTLISTENERS.SIGNALNAME' | translate}}</label>
+            		   		<input type="text" id="signalNameField" class="form-control" ng-model="selectedListeners[0].signalname" ng-change="listenerDetailsChanged()" placeholder="{{'PROPERTY.EVENTLISTENERS.SIGNALNAME.PLACEHOLDER' | translate}}" />
+            			</div>
+                     </div>
+                     <div ng-show="selectedListeners.length == 0" class="col-xs-6 muted no-property-selected" translate>PROPERTY.EVENTLISTENERS.UNSELECTED</div>
+                </div>
+            
+            </div>
+            <div class="editor-modal-footer modal-footer">
+            	<button ng-click="save()" class="btn btn-primary" translate>ACTION.SAVE</button>
+                <button ng-click="cancel()" class="btn btn-primary" translate>ACTION.CANCEL</button>
+            </div>
+        </div>
+    </div>
+</div>

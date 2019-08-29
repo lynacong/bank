@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--<meta charset="UTF-8">-->
+  <!--<title>title</title>-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--<meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+  <!--<meta http-equiv="X-UA-Compatible" content="IE=edge;IE=11;IE=10;IE=9;IE=8;"/>-->
+  <!--<link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/reset.css"/>-->
+  <!--<link rel="stylesheet" type="text/css" href="../../../../trd/bootstrap/css/bootstrap.css"/>-->
+  <!--<link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/font-awesome.min.css">-->
+  <!--<link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/u.css"/>-->
+  <!--<link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/tree.css"/>-->
+  <!--<link rel="stylesheet" type="text/css" href="../../../../trd/ip/changeTree/changeTree.css"/>-->
+  <!--<link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/grid.css"/>-->
+  <!--<link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/ip.css"/>-->
+  <!--<link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/platform.css"/>-->
+  <!--<link rel="stylesheet" type="text/css" href="../../config/ncrd.css"/>-->
+  <!--<link rel="stylesheet" href="list.css">-->
+  <style>
+    /**********样式重置******/
+    label.text-right {
+      height: inherit;
+      line-height: inherit;
+    }
+    .ztree li > span.button {
+      width: 14px !important;
+      height: 14px !important;
+    }
+    .u-grid-content-sel-row {
+      background-color: inherit !important;
+    }
+    .u-grid tr:hover {
+      background-color: inherit;
+    }
+    .ncrd .left-tree {
+      height: inherit;
+    }
+    /***********样式************/
+    .left-tree {
+      padding-top: 15px;
+    }
+    .form-control.mzc-w200 {
+      width: 200px;
+    }
+    .form-group > label {
+      width: 100px;
+      float: left;
+      line-height: 25px;
+    }
+    .form-group .mzc-dropdown {
+      float: left;
+    }
+    .u-grid-content-sel-row.mzc-focus,
+    .mzc-focus {
+      background-color: rgb(210,236,255) !important;
+    }
+    .form-group .dropdown {
+      display: inline-block;
+    }
+    .mzc-dropdown > .mzc-edit {
+      width: 200px;
+      padding-left: 8px;
+      height: 25px;
+      line-height: 25px;
+      margin: 0;
+    }
+    .dropdown-menu {
+      max-height: 330px;
+      max-width: 300px;
+      overflow: auto;
+    }
+    .level-tree {
+      height: 310px;
+    }
+  </style>
+</head>
+<body>
+<div id="editMain">
+  <div class="modal fade" id="f1-edit-container">
+    <div class="modal-dialog w800">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="margin-top-0"><span data-bind="text: editTitle()"></span> <span class="close pull-right" data-bind="click:btnCloseClick">x</span></h5>
+        </div>
+        <div class="modal-body w700 padding-0">
+          <div id="edit-pages" class="clearfix">
+            <div class="left-tree">
+              <div class="row padding-bottom-5">
+                <div class="form-group col-md-6 nav">
+                  <label for="coa-code" class="control-label text-right"><span style="color: red;">*</span>coa编码:</label>
+                  <input type="text" class="form-control mzc-w200" id="coa-code" data-bind="textInput: coaObj.coaCode, event: {focus: focusHandler.bind(this, 'coaCodeError')}">
+                  <span data-bind="text: coaObj.coaCodeError" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6 nav">
+                  <label for="coa-name" class="control-label text-right"><span style="color: red;">*</span>coa名称:</label>
+                  <input type="text" class="form-control mzc-w200" id="coa-name" data-bind="textInput: coaObj.coaName, event: {focus: focusHandler.bind(this, 'coaNameError')}">
+                  <span data-bind="text: coaObj.coaNameError" class="text-danger"></span>
+                </div>
+              </div>
+              <div class="row padding-bottom-5">
+                <div class="form-group col-md-6 nav">
+                  <label for="coa-describe" class="control-label text-right"><span style="color: red;">*</span>coa描述:</label>
+                  <input type="text" class="form-control mzc-w200" id="coa-describe" data-bind="textInput: coaObj.coaDesc, event: {focus: focusHandler.bind(this, 'coaDescError')}">
+                  <span data-bind="text: coaObj.coaDescError" class="text-danger"></span>
+                </div>
+                <!--<div class="form-group col-md-6 nav">-->
+                <!--<label for="ccid-table" class="control-label text-right">ccid表:</label>-->
+                <!--<input type="text" class="form-control mzc-w200" id="ccid-table" data-bind="textInput: coaObj.coaCode">-->
+                <!--</div>-->
+                <div class="form-group col-md-6 nav">
+                  <label for="business-period" class="control-label text-right">所属业务阶段:</label>
+                  <div class="dropdown mzc-dropdown">
+                    <a href="#" class="btn btn-default mzc-edit" data-toggle="dropdown">
+                      <span data-bind="text: coaObj.sysAppName()"></span>
+                      <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" data-bind="foreach: businessStage">
+                      <li><a href="#" data-bind="text: text, click: $root.changeBusinessStage"></a></li>
+                    </ul>
+                  </div>
+                  <!--<select class="form-control mzc-w200" name="business-period" id="business-period" data-bind="textInput: coaObj.sysAppName">-->
+                  <!--<option value="指标管理">指标管理</option>-->
+                  <!--<option value="计划管理">计划管理</option>-->
+                  <!--<option value="支付管理">支付管理</option>-->
+                  <!--<option value="实拨管理">实拨管理</option>-->
+                  <!--<option value="其他">其他</option>-->
+                  <!--</select>-->
+                </div>
+              </div>
+              <div class="row padding-bottom-5">
+                <div class="form-group col-md-6 nav">
+                  <label for="enable-identity" class=" control-label text-right">启用标识:</label>
+                  <div class="dropdown mzc-dropdown">
+                    <a href="#" class="btn btn-default mzc-edit" data-toggle="dropdown">
+                      <span data-bind="text: coaObj.enabled() == 1 ? '是' : '否'"></span>
+                      <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a href="#" data-bind="click: function() {this.coaObj.enabled(1)}">是</a></li>
+                      <li><a href="#" data-bind="click: function() {this.coaObj.enabled(0)}">否</a></li>
+                    </ul>
+                  </div>
+                  <!--<select class="form-control mzc-w200" name="enable-identity" id="enable-identity" data-bind="textInput: coaObj.enabled">-->
+                  <!--<option value="1">是</option>-->
+                  <!--<option value="0">否</option>-->
+                  <!--</select>-->
+                </div>
+              </div>
+              <div class="row height-400">
+                <div class="col-md-6 nav height-full">
+                  <!--要素表-->
+                  <div class="panel panel-default panel-body height-full">
+                    <div id="coa-grid"
+                         u-meta='{"id":"coa-grid1","type":"grid","data":"eleDataTable","showNumCol":"true",
+                           "multiSelect":"true","editable":true,
+                           "onBeforeClickFun":"getEle",
+                           "onRowSelected":"rowSelected",
+                           "onBeforeAllRowSelected":"beforeAllRowSelected",
+                           "onAllRowSelected":"allRowSelected",
+                           "columnMenu":"false",
+                           "onRowUnSelected":"rowUnSelected"}'>
+                      <div
+                              options='{"field":"ele_code","dataType":"String","title":"要素编码","width":100}'></div>
+                      <div
+                              options='{"field":"ele_name","dataType":"String","title":"要素名称"}'></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 nav height-full padding-right-0">
+                  <div class="form-group nav">
+                    <label for="allow-null" class="control-label text-right">允许为空:</label>
+                    <div class="dropdown mzc-dropdown">
+                      <a href="#" class="btn btn-default mzc-edit" data-toggle="dropdown">
+                        <span data-bind="text: eleObj.isMustInput() == 1 ? '是' : '否'"></span>
+                        <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#" data-bind="click: function() {this.eleObj.isMustInput(1)}">是</a></li>
+                        <li><a href="#" data-bind="click: function() {this.eleObj.isMustInput(0)}">否</a></li>
+                      </ul>
+                    </div>
+                    <!--<select class="form-control mzc-w200" name="allow-null" id="allow-null"-->
+                    <!--data-bind="event: {  textInput: eleObj.isMustInput">-->
+                    <!--<option value="1">是</option>-->
+                    <!--<option value="0" selected="selected">否</option>-->
+                    <!--</select>-->
+                  </div>
+                  <div class="form-group nav">
+                    <label for="default-value" class="control-label text-right">默认值:</label>
+                    <div class="dropdown mzc-dropdown">
+                      <a href="#" class="btn btn-default mzc-edit" data-toggle="dropdown">
+                        <span data-bind="html: eleObj.defaultValueName()"></span>
+                        <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu" data-bind="foreach: tree">
+                        <li><a href="#" data-bind="text: $data.codename, click: $root.changeDefaultValue"></a></li>
+                      </ul>
+                    </div>
+                    <!--<select class="form-control mzc-w200" name="default-value" id="default-value"-->
+                    <!--data-bind="-->
+                    <!--options: tree,-->
+                    <!--optionsText: 'codename',-->
+                    <!--optionsValue: 'chr_id',-->
+                    <!--textInput: eleObj.defaultValue">-->
+                    <!--</select>-->
+                  </div>
+                  <div class="form-group nav">
+                    <label for="level" class="control-label text-right">级次:</label>
+                    <div class="dropdown mzc-dropdown">
+                      <a href="#" class="btn btn-default mzc-edit" data-toggle="dropdown">
+                        <span data-bind="html: eleObj.levelName()"></span>
+                        <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu" data-bind="foreach: max_level() !== '' ? levelList.slice(0, max_level()+3) : levelList">
+                        <li><a href="#" data-bind="text: text, click: $root.changeLevelNum"></a></li>
+                      </ul>
+                    </div>
+                    <!--<select class="form-control mzc-w200" name="level" id="level"-->
+                    <!--data-bind="-->
+                    <!--event: { change:changeTreeByLevel.bind(this)},-->
+                    <!--options: max_level() !== '' ? levelList.slice(0, max_level()+3) : [],-->
+                    <!--optionsText: 'text',-->
+                    <!--optionsValue: 'value',-->
+                    <!--textInput: eleObj.levelNum">-->
+                    <!--</select>-->
+                  </div>
+                  <div class="form-group nav">
+                    <!--要素树-->
+                    <div class="panel panel-default panel-body level-tree">
+                      <div id="coa-tree" class="ztree"
+                           u-meta='{"id":"coa-tree1","data":"treeDataTable","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"codename","setting":"treeSetting1"}'></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer margin-top-15 padding-right-0">
+            <!--按钮-->
+            <div class="text-right">
+              <button class="btn btn-primary text-center" id="save-confirm" data-bind="click:btnSaveClick">确定</button>
+              <button class="btn btn-primary text-center" id="save-cancel" data-bind="click:btnCloseClick">取消</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="saveModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                  aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">是否级联保存COA</h4>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bind="click:saveCascadeCoa">确定</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<script src="../../../../trd/requirejs/require.debug.js"></script>-->
+<!--<script src="../../../../require.config.js"></script>-->
+<!--<script src="edit.js"></script>-->
+</body>
+</html>

@@ -1,0 +1,512 @@
+/* 通用样式 */
+html,body,.wrapper{
+	width:100%;
+	height:100%;
+}
+.bg-fff{
+	background-color:#fff;
+}
+.bg-f8f8f8{
+	background-color:#f8f8f8;
+}
+.bg-e8e8e8{
+	background-color:#e8e8e8;
+}
+.bg-1871c1{
+	background-color:#1871c1;
+}
+.bg-eeeff1{
+	background-color:#eeeff1;
+}
+.bg-gradient{
+	background: -webkit-linear-gradient(#fff, #e7e7e7); /* Safari 5.1 - 6.0 */
+	background: -o-linear-gradient(#fff, #e7e7e7); /* Opera 11.1 - 12.0 */
+	background: -moz-linear-gradient(#fff, #e7e7e7); /* Firefox 3.6 - 15 */
+	background: linear-gradient(#fff, #e7e7e7); /* 标准的语法 */
+}
+.cr-1871c1{
+	color:#1871c1;
+}
+
+/*文字排版*/
+.f7{font-size: 7px}
+.f12{font-size:12px}
+.f13{font-size:13px}
+.f14{font-size:14px}
+.f16{font-size:16px}
+.f20{font-size:20px}
+.fb{font-weight:bold}
+.fn{font-weight:normal}
+.t2{text-indent:2em}
+.lh100{line-height:100%}
+.lh150{line-height:150%}
+.lh180{line-height:180%}
+.lh200{line-height:200%}
+.unl{text-decoration:underline}
+.no_unl{text-decoration:none}
+
+/*定位*/
+.tl{text-align:left}
+.tc{text-align:center}
+.tr{text-align:right}
+.bc{margin-left:auto; margin-right:auto}
+.fl{float:left; display:inline;}
+.fr{float:right; display:inline;}
+.vm{vertical-align: middle}
+.pr{position:relative}
+.pa{position:absolute}
+.abs-right{position:absolute; right:0}
+.zoom{zoom:1}
+.vh{visibility:hidden;}
+
+/*长度高度*/
+.w10{width:10px}
+.w20{width:20px}
+.w30{width:30px}
+.w40{width:40px}
+.w50{width:50px}
+.w60{width:60px}
+.w70{width:70px}
+.w80{width:80px}
+.w90{width:90px}
+.w100{width:100px}
+.w200{width:200px}
+.w250{width:250px}
+.w300{width:300px}
+.w400{width:400px}
+.w500{width:500px}
+.w600{width:600px}
+.w700{width:700px}
+.w800{width:800px}
+.w{width:100%}
+.w50per{width:50%}
+.h20{height:20px}
+.h40{height:40px}
+.h50{height:50px}
+.h80{height:80px}
+.h100{height:100px}
+.h150{height:150px}
+.h200{height:200px}
+.h{height:100%}
+
+/*边距*/
+.m10{margin:10px}
+.m15{margin:15px}
+.m30{margin:30px}
+.mt5{margin-top:5px}
+.mt10{margin-top:10px}
+.mt15{margin-top:15px}
+.mt20{margin-top:20px}
+.mt30{margin-top:30px}
+.mt50{margin-top:50px}
+.mt100{margin-top:100px}
+.mb5{margin-bottom:5px}
+.mb10{margin-bottom:10px}
+.mb15{margin-bottom:15px}
+.mb20{margin-bottom:20px}
+.mb30{margin-bottom:30px}
+.mb50{margin-bottom:50px}
+.mb100{margin-bottom:100px}
+.ml5{margin-left:5px}
+.ml10{margin-left:10px}
+.ml15{margin-left:15px}
+.ml20{margin-left:20px}
+.ml30{margin-left:30px}
+.ml50{margin-left:50px}
+.ml100{margin-left:100px}
+.ml_10{margin-left:-10px}
+.ml_15{margin-left:-15px}
+.mr5{margin-right:5px}
+.mr10{margin-right:10px}
+.mr15{margin-right:15px}
+.mr_15{margin-right:-15px}
+.mr20{margin-right:20px}
+.mr30{margin-right:30px}
+.mr50{margin-right:50px}
+.mr100{margin-right:100px}
+.p8{padding:8px}
+.p10{padding:10px}
+.p15{padding:15px}
+.p30{padding:30px}
+.pt5{padding-top:5px}
+.pt10{padding-top:10px}
+.pt15{padding-top:15px}
+.pt20{padding-top:20px}
+.pt30{padding-top:30px}
+.pt50{padding-top:50px}
+.pt100{padding-top:100px}
+.pb5{padding-bottom:5px}
+.pb10{padding-bottom:10px}
+.pb15{padding-bottom:15px}
+.pb20{padding-bottom:20px}
+.pb30{padding-bottom:30px}
+.pb50{padding-bottom:50px}
+.pb100{padding-bottom:100px}
+.pl0{padding-left:0}
+.pl5{padding-left:5px}
+.pl10{padding-left:10px}
+.pl15{padding-left:15px}
+.pl20{padding-left:20px}
+.pl30{padding-left:30px}
+.pl50{padding-left:50px}
+.pl100{padding-left:100px}
+.pr0{padding-right:0}
+.pr5{padding-right:5px}
+.pr10{padding-right:10px}
+.pr15{padding-right:15px}
+.pr20{padding-right:20px}
+.pr30{padding-right:30px}
+.pr50{padding-right:50px}
+.pr100{padding-right:100px}
+/* ============================================================
+   flex：定义布局为盒模型
+   flex-v：盒模型垂直布局
+   flex-1：子元素占据剩余的空间
+   flex-align-center：子元素垂直居中
+   flex-pack-center：子元素水平居中
+   flex-pack-justify：子元素两端对齐
+   兼容性：ios 4+、android 2.3+、winphone8+
+   ============================================================ */
+.flex{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}
+.flex-v{-webkit-box-orient:vertical;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}
+.flex-1{-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;position:relative;}
+.flex-align-center{-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;}
+.flex-pack-center{-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}
+.flex-pack-justify{-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;}
+
+.wrapper {
+	padding:10px;
+}
+.nav-tabs>li {
+	float: left;
+}
+.search {
+	background: #FFFFFF;
+	border: 2px solid #E5E5E5;
+	border-radius: 2px;
+	overflow:hidden;
+}
+.tab-content > .active.flex{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}
+/* 标签上的小徽章 */
+.tab-badge{
+	position:absolute;
+	right:-9px;
+	top:-9px;
+	display:block;
+	width:18px;
+	height:18px;
+	border-radius:50%;
+	text-align:center;
+	line-height:18px;
+	background-color:#da5b57;
+	color:#fff;
+}
+/* 主界面高级查询 */
+.senior-query {
+	border: none;
+}
+/* 主界面高级查询鼠标滑过样式 */
+.senior-query:hover {
+	color: blue;
+}
+/* 高级搜索 */
+.high-search {
+	background: #F8F8F8;
+	margin-left: -1px;
+	margin-right: -1px;
+	border-top: 1px solid #DCDCDC;
+}
+/* 主界面高级查询 */
+.high-search-row {
+	padding-top: 5px;
+}
+/* 主界面操作区域-操作按钮 */
+.btn-grid-group {
+	margin-top: 5px;
+	background: #FFFFFF;
+	border: 1px solid #E5E5E5;
+	box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.30);
+	border-radius: 2px;
+	overflow:hidden;
+}
+/* 主界面-操作按钮位置 */
+.btn-grid-group-btn {
+	padding:5px;
+}
+/* 主界面操作区域 */
+.btn-grid-group-grid {
+	padding: 5px;
+	background: #FFFFFF;
+}
+/* 录入页面 */
+.modal-dialog-head {
+	/* background: #1871C1; */
+	border-radius: 6px 6px 0px 0px;
+	height: 40px;
+	font-family: MicrosoftYaHei;
+	font-size: 14px;
+	color: #FFFFFF;
+}
+/* 主界面列表-操作区域删除详情送审按钮 */
+.fun-operate {
+	text-align: center;
+}
+/* 选项卡面板 */
+.tabbed-pane{
+	height:100%;
+	background-color:#f8f8f8;
+}
+.fast-search-row{padding-top:10px;}
+.tabbed-grid{
+	/* padding:5px; */
+	height: -moz-calc(100% - 35px);
+	height: -webkit-calc(100% - 35px);
+	height: calc(100% - 35px);
+	width:100%;
+	/* position:absolute; */
+}
+.tabbed-grid-modal{
+    height: 100%!important;
+}
+.tabbed-subNav{
+	height:40px;
+}
+.tabbed-subItem a{
+	display:block;
+	float:left;
+	padding:6px 10px;
+	color:#999;
+	margin-left:24px;
+	margin-top:3px;
+}
+.tabbed-subItem.active a{
+	background:#1871c1;
+	color:#fff;
+}
+/* 副表格区域 */
+.grid-area-vice{
+	height:200px;
+	margin-top:5px;
+	border: 1px solid #E5E5E5;
+	box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.30);
+	border-radius: 2px;
+	position:relative;
+}
+.grid-area-vice-title{
+	height:35px;
+	line-height:35px;
+	padding-left:5px;
+	background:#EBF2F9;
+}
+
+/* .modal-body{padding:10px 15px; height: 450px} */
+.modal-body {
+    overflow:auto;
+}
+
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar
+{
+	height:10px;
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0);
+	border-radius: 10px;
+	background-color: #ededed;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: none;
+	background-color: #d0d0d0;
+}
+
+.quick-search-position{height:40px; overflow:hidden; margin-top:0;}
+.edit-model-btn{margin-left:5px;color: #1871C1;}
+.edit-model-btn:hover{color: #1871C1;}
+.add-model-btn{color: #1871C1;}
+.add-model-btn:hover{color: #1871C1;}
+.modal-dialog-temp-title{height:32px; line-height:32px; overflow:hidden;}
+.dropDown-button-group{float:left; display:inline-block;}
+#grid,#grid_grid{height:100%!important;}
+#grid_content{
+	height: -moz-calc(100% - 33px);
+	height: -webkit-calc(100% - 33px);
+	height:calc(100% - 33px);
+}
+.new-add-grid-style{overflow:hidden!important;}
+/* 辅助录入树样式 */
+.controlTreeIcon{
+	color:#b3a9a9;
+}
+/*编辑模板 新增模板添加关闭按钮*/
+.moduleposition .close{
+	color: #fff;
+	font-size: 27px;
+	opacity: 0.7;
+	font-weight: normal;
+	position:absolute;
+	top:0;
+	right:5px;
+}
+/*表单右侧添加按钮*/
+.modal-input-group .form-control{height:28px; line-height:28px;}
+.modal-input-group .btn{padding:6px; outline:none; font-family: 'Glyphicons Halflings';}
+.modal-input-group .btn[readonly]{background-color:#eee;}
+
+
+/* 表格最后一行添加下边框 */
+.u-grid-content-num{height:33px!important;}
+.u-grid-content-left>div:last-child,.u-grid .u-grid-content-div tbody tr:last-child td
+{border-bottom-width:1px;}
+/* 弹出框中的表格文本框左右顶到头 */
+.u-grid-content-td-div{
+	margin:0 2px;
+}
+
+/* grid百分比布局 */
+.tabbed-content{
+	height: -moz-calc(100% - 34px);
+	height: -webkit-calc(100% - 34px);
+	height: calc(100% - 34px);
+}
+.tabbed-grid div[u-meta] {
+	height: -moz-calc(100% - 46px);
+	height: -webkit-calc(100% - 46px);
+    height: calc(100% - 46px);
+}
+.u-grid,.u-grid-grid,.u-grid-content-div{
+	height:100%!important;
+}
+.u-grid.u-grid-header-drag-clue,.u-pagination{
+	height:auto!important;
+}
+.u-grid-content{
+	height: -moz-calc(100% - 33px);
+	height: -webkit-calc(100% - 33px);
+	height: calc(100% - 68px);
+}
+/* grid百分比布局结束 */
+.form-inline{
+	padding:4px 0px;
+}
+
+/* 带边框弹出框面板 */
+.modal-pane{
+	height:130px;
+	border:1px solid #ccc;
+	position: relative;
+}
+.modal-pane-title{
+	background:#fff;
+	position:absolute;
+	top:-10px;
+	left:20px;
+	padding:0 8px;
+}
+.modal-pane-center{
+	position:absolute;
+	top:50%;
+	margin-top:-20px;
+}
+.modal-pane .control-label{
+	font-weight: normal;
+    font-size: 13px;
+    padding: 5px;
+}
+/* 带边框弹出框面板结束  */
+
+/*规则模板配置向导*/
+.h40per{height:40%; overflow:auto;}
+.h50per{height:40%; overflow:auto;}
+.h60per{height:60%; overflow:auto;}
+.h400{height:400px}
+.over-scroll{overflow:hidden;}
+
+
+#monitorModalAddOne .monitorModalAddOne-dialog{
+	height:550px;
+}
+.monitorModalAddOne-body{
+	height:400px;
+	overflow:hidden;
+	overflow-y: scroll;
+}
+.nav-subject{
+	width:300px;
+	margin: 0 auto 10px auto;
+}
+.nav-step{
+	float:left;
+	background: #e6e6e6;
+	color:#108EE9;
+	margin-right: 20px;
+	padding: 3px 5px;
+	cursor: pointer;
+}
+.btn-subject{
+	background: #108EE9;
+	color:#e4e4e4;
+}
+.btn-disable{
+	background: #e6e6e6;
+	color:#108EE9;
+}
+
+/*选择执行单位弹层*/
+
+.chooseModal-content{
+	width:500px;
+	height:400px;
+}
+
+.chooseModal-body{
+	height: -moz-calc(100% - 82px);
+	height: -webkit-calc(100% - 82px);
+	height:calc(100% - 82px);
+	overflow: auto;
+}
+
+/*预算部分公共样式*/
+.clearFloat{  clear:both;  }
+
+.border1{  border:1px solid #ccc;  }
+
+.over-auto{  overflow:auto;  }
+
+.color-red{  color:red;  }
+
+.h300 {height:300px}
+
+/*单位设置分组弹层*/
+.exeGroupModal-content{
+	width:800px;
+	height:500px;
+}
+.exeGroupModal-body{
+	height: -moz-calc(100% - 82px);
+	height: -webkit-calc(100% - 82px);
+	height:calc(100% - 82px);
+}
+select.groupH{
+	height:200px;
+}
+/* 添加分组名弹层 */
+
+.addGroupModal-content{
+	width:300px;
+}
+.addGroupModal-body{
+	width:300px;
+	height:120px;
+}
+
+

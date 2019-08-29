@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- 事务代理bean配置，target表示代理的真正实现bean-->
+	<bean id="sys.paraManService"
+		class="gov.df.fap.service.para.ParaManageBO">
+		<property name="dao" ref="generalDAO" />
+	</bean>
+	<bean id="sys.elementEngine"
+		class="gov.df.fap.service.dictionary.element.ElementConfiguration" init-method="initialize" destroy-method="destroyMethod">
+		<!--  -->
+		<!-- property name="eleOpWrapper" ref="sys.ddElement"/ -->
+		<!--是否启用要素信息缓存 -->
+		<property name="elementSetCache" value="false" />
+		<!--是否延迟加载缓存 -->
+		<property name="lazyLoadCache" value="false" />
+		<!--是否启用基础数据缓存 -->
+		<property name="elementSourceCache" value="false" />
+		<!--是否启用数据查询结果缓存 -->
+		<property name="needResultCache" value="false" />
+		<!--基础数据缓存列表 -->
+		<property name="cachedEleList">
+		<list>
+			  	<!--   <value>AE</value>
+				<value>BIS</value>
+				<value>PF</value>
+				<value>GP_AGENCY</value>
+				<value>DIR</value>
+				<value>GPPLAN</value>
+				<value>GPBARN</value>
+				<value>GZBS</value>
+				<value>BC</value>
+				<value>BSO</value>
+				<value>AE</value>
+				<value>BGTDIR</value>
+				<value>BP</value>
+				<value>BGTSOURCE</value>
+				<value>HOLD1</value>
+				<value>HOLD2</value>
+				<value>HOLD3</value>
+				<value>HOLD4</value> 
+				<value>HOLD5</value>
+				<value>HOLD6</value>
+				<value>HOLD7</value>
+				<value>HOLD8</value>
+				<value>HOLD9</value>
+				<value>HOLD10</value>
+				<value>HOLD11</value>
+				<value>HOLD12</value>
+				<value>HOLD13</value>
+				<value>HOLD14</value>
+				<value>HOLD15</value>
+				<value>HOLD16</value>
+				<value>HOLD17</value>
+				<value>HOLD18</value>
+				<value>HOLD19</value>
+				<value>HOLD20</value>
+				<value>HOLD21</value>
+				<value>HOLD22</value>
+				<value>HOLD23</value>
+				<value>HOLD24</value>
+				<value>HOLD25</value>
+				<value>HOLD26</value>
+				<value>HOLD27</value>
+				<value>HOLD28</value>
+				<value>HOLD29</value>
+				<value>HOLD30</value>
+				<value>INPM</value>
+				<value>ST</value>
+				<value>SM</value>
+				<value>OPUSER</value>
+				<value>ZFCGBS</value>
+				<value>FM</value>
+				<value>AS</value>
+				<value>AGENCY</value>
+				<value>FUNDTYPE</value>
+				<value>EXPFUNC</value>
+				<value>AGENCYEXP</value>
+				<value>EXPECO</value>
+				<value>GOV_EXPECO</value>
+				<value>PAYTYPE</value>
+				<value>BGTTYPE</value>
+				<value>PAYKIND</value>
+				<value>MB</value>
+				>value>FILE</value
+				<value>SETMODE</value>
+				<value>IN_BS</value>
+				<value>IN_BIS</value>
+				银行共用同一张基础数据表，如果有缓存数据更新不能同步
+				value>IB</value
+				 <value>CB</value>
+				 <value>PB</value>
+				<value>BAC</value>
+				<value>BAP</value>
+				<value>BAI</value> -->
+			</list>
+		</property>
+		<!--启动缓存列表 -->
+		<property name="startCachedEleList">
+			<list>
+			  <!--   <value>AE</value>
+				<value>BIS</value>
+				<value>PF</value>
+				<value>GP_AGENCY</value>
+				<value>DIR</value>
+				<value>GPPLAN</value>
+				<value>GPBARN</value>
+				<value>GZBS</value>
+				<value>BC</value>
+				<value>BSO</value>
+				<value>AE</value>
+				<value>BGTDIR</value>
+				<value>BP</value>
+				<value>BGTSOURCE</value>
+				<value>INPM</value>
+				<value>ST</value>
+				<value>ZFCGBS</value>
+				<value>FM</value>
+				<value>AS</value>
+				<value>AGENCY</value>
+				<value>FUNDTYPE</value>
+				<value>EXPFUNC</value>
+				<value>AGENCYEXP</value>
+				<value>EXPECO</value>
+				<value>GOV_EXPECO</value>
+				<value>PAYTYPE</value>
+				<value>BGTTYPE</value>
+				<value>PAYKIND</value>
+				<value>MB</value>
+				value>FILE</value
+				<value>SETMODE</value>
+				<value>IN_BS</value>
+				<value>IN_BIS</value>
+				<value>IB</value>
+				 <value>CB</value>
+				 <value>PB</value>
+				<value>BAC</value>
+				<value>BAP</value>
+				<value>BAI</value>-->
+			</list> 
+		</property>
+		
+	</bean>  
+</beans>

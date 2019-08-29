@@ -1,0 +1,19 @@
+@CHARSET "UTF-8";
+
+.ncrd .left-tree{
+	height: calc(1vh - 4px);
+}
+
+.ncrd .relation-edit-tree{
+	height: calc(1vh - 180px);
+}
+
+.ncrd .right-grid{
+	height:calc(1vh - 52px);
+}
+
+
+.ncrd .addElementBody{
+	height: calc(1vh - 290px);
+}
+

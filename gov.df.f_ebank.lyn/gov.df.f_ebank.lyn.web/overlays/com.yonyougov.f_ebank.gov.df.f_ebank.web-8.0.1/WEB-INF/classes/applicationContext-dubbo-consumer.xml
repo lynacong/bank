@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans.xsd 
+      http://code.alibabatech.com/schema/dubbo
+      http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- dubbo 配置 -->
+	<!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+	<dubbo:application name="fap_dubbo_consumer" />
+	<dubbo:registry protocol="zookeeper" address="192.168.10.11:2181" timeout="150000" />
+	<dubbo:consumer check="false" retries="0" timeout="120000" />
+	
+	<!-- 支出进度 -->
+	<dubbo:reference id="iPayProgressService"
+		interface="com.ufgov.dss.api.dataservice.IPayProgressService"
+		url="dubbo://192.168.10.11:20880/com.ufgov.dss.api.dataservice.IPayProgressService"
+		check="false" />
+		
+	<!-- 支出进度排名 -->
+	<dubbo:reference id="iBudgetExeDataService"
+		interface="com.ufgov.dss.api.dataservice.IBudgetExeDataService"
+		url="dubbo://192.168.10.11:20880/com.ufgov.dss.api.dataservice.IBudgetExeDataService"
+		check="false" />
+		
+	<!-- 获取报表url -->
+	<dubbo:reference id="ipReportConfigService"
+		interface="com.ufgov.ip.api.system.IpReportConfigServiceI"
+		url="dubbo://192.168.10.11:20880/com.ufgov.ip.api.system.IpReportConfigServiceI"
+		check="false" />
+	<dubbo:reference id="ipReportDetailService"
+		interface="com.ufgov.ip.api.system.IpReportDetailServiceI"
+		url="dubbo://192.168.10.11:20880/com.ufgov.ip.api.system.IpReportDetailServiceI"
+		check="false" />
+	<dubbo:reference id="iDssConfigService"
+		interface="com.ufgov.dss.api.dssconfig.DssConfigServiceI"
+		url="dubbo://192.168.10.11:20880/com.ufgov.dss.api.dssconfig.DssConfigServiceI"
+		check="false" />
+	
+</beans>

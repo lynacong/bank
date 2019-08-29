@@ -1,0 +1,44 @@
+
+#subSystemGrid .dataTables_wrapper{
+	position: relative;
+	clear: both;
+	zoom: 1;
+	overflow-x: auto;
+}
+
+table.altrowstable {
+    font-size:11px;
+    color:#333333;
+    border-width: 1px;
+    border-color: #a9c6c9;
+    border-collapse: collapse;
+    table-layout:fixed;
+}
+table.altrowstable th {
+	/*width:500px!important;*/
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #a9c6c9;
+    text-align: center;
+}
+table.altrowstable td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+    border-color: #a9c6c9;
+    word-break:break-all;
+}
+.oddrowcolor{
+    background-color:#d4e3e5;
+}
+.evenrowcolor{
+    background-color:#c3dde0;
+}
+
+.x-state-highlight{
+    background:pink !important;
+}
+.blueActive{
+        background:skyblue !important;
+}

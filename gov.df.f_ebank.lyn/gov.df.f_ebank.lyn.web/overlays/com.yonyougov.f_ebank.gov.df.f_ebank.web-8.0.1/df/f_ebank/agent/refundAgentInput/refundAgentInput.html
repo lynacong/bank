@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>退款凭证补录</title>
+<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/datetimepicker/css/bootstrap-datetimepicker.min.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/theme/blue.css" />
+<link rel="stylesheet" type="text/css" href="../../css/fbStyle.css" />
+<link rel="stylesheet" type="text/css" href="../../css/image.css" />
+<link rel="stylesheet" type="text/css" href="../../css/fbcommon.css" />
+</head>
+<body>
+	<div class="wrapper" style="margin:0 auto;">
+		<div style="height: 35px;">
+			<div class="btn-grid-group-btn ip-content-btn-area">
+				<div class="icon-buttons">
+					<div id="input" class="icon-box" onclick="input()" >
+						<i class="iconbtn icon-enter"></i>补录
+					</div>
+				<!-- 	<div id="cancelInput" class="icon-box" onclick="cancelInput()" style="display:none;">
+						<i class="iconbtn icon-revoke-generation"></i>撤销补录
+					</div> -->
+					<div id="cancelInput" class="icon-box" onclick="reInput()" style="display:none;">
+						<i class="iconbtn icon-enter"></i>再次补录
+					</div>
+                     <div id="query" class="icon-box" data-bind="click:query">
+						<i class="iconbtn icon-query-state"></i>查询
+					</div>
+				</div>
+			</div>
+		</div>
+		
+<!-- 		
+		<div class="search">
+					<div class="row fast-search fast-search-row">
+						<div class="col-sm-5">
+							<label class="col-sm-2 text-right fast-query">查询</label>
+							<div class="input-group col-sm-10">
+								<input type="text" class="form-control ">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button">
+										<span class="glyphicon glyphicon-search"></span>
+									</button>
+								</span>
+							</div>
+						</div>
+						<div class="col-sm-5 ">
+							<button  type="button" class="btn btn-default btn-lg senior-query ip-font-color"  data-bind="click:showHighSearch.bind('noAudit')">
+								高级查询<span id="noAudit-high-query-btn" class="glyphicon glyphicon-triangle-bottom ip-font-color" aria-hidden="true"></span>
+							</button>
+							<button type="button" class="btn btn-default ip-font-color hidden glyphicon glyphicon-refresh" id="showOrHideSearch" onclick="doRefresh()"  style="margin-left: 20px;width: 70px;"></button>
+						</div>
+					</div>
+					<div id="noAudit-high-search-panel" class="row high-search hidden">
+						<div class="high-search-row">
+							<div id="modalQueryGridArea"></div>
+						</div>
+					</div>
+				</div> -->
+		<div class="btn-group-content"
+			style="margin-top:5px; display: block;overflow-y: scroll; border: 1px solid #ccc;">
+			<label style="">查询区：</label><br>
+			<div style="border-radius: 2px;border: 1px solid #ccc;overflow:auto;padding:4px">
+				<div class="" style="margin:4px 0px 0px 0px;height:35px">
+					<div id="modalQueryGridArea"></div>
+				</div>
+			</div> 
+			<div style="float:left;padding-top:13px;">
+				<label id="zfpz">退款凭证：</label>
+				<select id="fs_status" style="border-radius: 2px;border: 1px solid #ccc;" onchange="fGetGrid()">
+					<option value="1" selected="selected">未补录</option>
+					<option value="2">已补录</option>
+				</select>
+			</div>
+			<div id="mainDiv" style=" display: block;height:289px;" onclick="getDetail()">
+				<div id="modalMainGridArea" class="tabbed-grid tabbed-grid-modal"></div>
+			</div>
+			<label style="float:left;padding-top: 13px;">凭证明细：</label>
+			<div id="subDiv" style=" display: block;height:289px;">
+	 			<div id="modalSubsysGridArea" class="tabbed-grid tabbed-grid-modal"></div> 
+			</div>
+		</div>
+		
+		
+						<!-- 退款通知书录入 -->
+		 <div class="modal fade" id="refundAgentInput" tabindex="-1" role="dialog"
+			aria-labelledby="ylModalLabel" data-backdrop="static">
+			<div class="modal-dialog" role="document" style="margin-top:20px; width:600px;height: 200px">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-bind="click:closeAgentRefundBillInput"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="titleText">退款信息补录</h4>
+					</div>
+					<div class="modal-body display-container" style="height: 200px;">
+					  <div style="height: 50px;">
+					    <label id="voucher_no_name" style="margin:1px 0px 5px 10px;">支付报文类型：</label> 
+				          <label>
+					       <input type="text" style="border-radius: 2px;height:30;margin:5px 0px 0px 0px;" id="pay_msg_no" value=""> 
+				        </label>
+				     </div>
+					<div style="height: 50px;">
+					    <label id="voucher_no_name" style="margin:1px 0px 5px 10px;">支付交易序号：</label> 
+				          <label>
+					       <input type="text" style="border-radius: 2px;height:30;margin:5px 0px 0px 0px;" id="pay_dictate_no" value=""> 
+				        </label>
+				     </div>
+                     <!--  <div style="height: 50px;">
+					    <label id="voucher_no_name" style="margin:1px 0px 5px 10px;">支付报文编码：</label> 
+				          <label>
+					       <input type="text" style="border-radius: 2px;height:30;margin:5px 0px 0px 0px;" id="pay_msg_no" value=""> 
+				        </label>
+				     </div> -->
+				     <div style="height: 50px;">
+					    <label id="voucher_no_name" style="margin:1px 0px 5px 10px;">交易委托日期：</label> 
+				          <label>
+					       <input type="date" style="border-radius: 2px;height:30;margin:5px 0px 0px 0px;" id="pay_entrust_date" value="" data-date-format="yyyy-mm-dd"> 
+				        </label>
+				     </div>  
+					<div class="modal-footer" style="float:right;">
+						<button type="button" class="btn btn-primary" data-bind="click:doSaveAgentRefundBillInput">确定</button>
+						<button type="button" class="btn btn-primary" data-bind="click:doClearAgentRefundBillInput">清空</button>
+						<button type="button" class="btn btn-primary" data-bind="click:closeAgentRefundBillInput">退出</button>
+					</div>
+					</div>
+					
+				</div>
+				
+			</div>
+		</div>  
+		
+	</div>
+	<script src="../../../trd/knockout/knockout-3.2.0.debug.js"></script>
+	<script src="../../../trd/requirejs/require.js"></script>
+	<script src="../../../require.config.js"></script>
+	<script src="../../common/ebankConstants.js"></script>
+	<script src="../../common/ebankCommonUtil.js"></script>
+	<script src="refundAgentInput.js"></script>
+</body>
+</html>

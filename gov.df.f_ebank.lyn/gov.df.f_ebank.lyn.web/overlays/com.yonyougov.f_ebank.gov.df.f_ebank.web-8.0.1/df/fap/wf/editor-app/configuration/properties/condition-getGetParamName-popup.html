@@ -1,0 +1,63 @@
+
+
+<div class="modal" ng-controller="KisBpmGetParamNameCtrl">
+    <div class="modal-dialog">
+        <div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close editor-pop-close" data-dismiss="modal" aria-hidden="true" ng-click="closeP()">&times;</button>
+			    <span >参数名选择</span>
+			</div>
+			<div class="modal-body">
+			  <div style="margin: 0px 10px 38px 0;">
+						<div class="col-sm-3 col-md-3">
+					  		 <span>参数类型：</span>
+					   	</div>
+					   	<div class="col-sm-8 col-md-8">
+						   <select id="selectMainInfo" ng-init="selectedNameMainInfo = mainInfo[0]"
+												ng-model="selectedNameMainInfo" ng-change='eleChanged(selectedNameMainInfo)' ng-options="x for x in mainInfo" style="text-align: center;width: 100%;">
+						 	</select>
+						</div>
+			  </div>
+			  
+			  <div class="table-container">
+
+				    <table  id="gridTest" class="gridTest_out">
+
+				      <thead style="display: table; table-layout: fixed;">
+
+				        <tr id="1st" style="display: table; table-layout: fixed;width:100%;">  
+
+			                    <td style="text-align: center;">设置</td>  
+
+			                    <td style="text-align: center;">字段名称</td>  
+
+			                    <td style="text-align: center;">字段中文名</td>  
+
+			            </tr> 
+
+			          </thead> 
+
+				     
+				      <tbody>
+				      	<tr id="1st" style="display: table; table-layout: fixed;width:100%;" ng-repeat="data in mianInfoDatas" ng-click="mainEleSelected($index)"
+								ng-class='{focus_out: $index==focus_out}'>
+						   <td id='eleID{{$index}}'>{{$index + 1}}</td>
+						   <td id='eleFieldName{{$index}}'>{{data.fieldName}}</td>
+						   <td id='eleFieldNameCN{{$index}}'>{{data.fieldNameCN}}</td>	
+					     </tr>
+				      </tbody>
+				      
+
+				    </table>
+
+				</div>
+			  
+			
+			</div>
+			<div class="editor-modal-footer modal-footer">
+				<button ng-click="selElementContent()" class="btn btn-primary" translate >选择</button>
+				<button ng-click="closeP()" class="btn btn-primary" translate >取消</button>
+			</div>
+		</div>
+	</div>
+</div>

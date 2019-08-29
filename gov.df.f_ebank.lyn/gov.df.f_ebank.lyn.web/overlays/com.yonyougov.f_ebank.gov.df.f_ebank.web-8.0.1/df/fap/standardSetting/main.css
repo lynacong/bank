@@ -1,0 +1,24 @@
+body{
+	background: #F2F2F2;
+}
+.model-list{
+	height: 30px;
+	padding: 5px;
+    color: #fff;
+	background: #108EE9;
+}
+.left-panel{
+    background: #fff;
+    padding: 5px;
+    height: 600px
+}
+h3.panel-title{
+	display: inline-block;
+    height: 30px;
+    line-height: 23px;
+    padding: 5px;
+    background: #108EE9;
+    border-radius: 4px 4px 0 0;
+    color: #fff;
+    font-size: 14px;
+}

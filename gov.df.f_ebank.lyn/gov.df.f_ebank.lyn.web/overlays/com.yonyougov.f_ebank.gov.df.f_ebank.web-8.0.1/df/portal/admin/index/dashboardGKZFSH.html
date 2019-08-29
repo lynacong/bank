@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>国库-支付组-审核（经办）</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="css/lte/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/lte/AdminLTE.min.css">
+    <link rel="stylesheet" href="css/lte/_all-skins.min.css">
+	<link rel="stylesheet" href="css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <link rel="stylesheet" href="css/dfp.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/gkzgtz/dashboardGKZGTZ.css">-->
+    
+    <script src="js/lte/jQuery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/zTree_v3/js/jquery.ztree.core.min.js"></script>
+    <script type="text/javascript" src="js/zTree_v3/js/jquery.ztree.exhide.min.js"></script>
+
+</head>
+<body class="hold-transition sidebar-mini sidebar-collapse">
+<div class="wrapper">
+
+    <div class="content-wrapper" style="background: #f8f8f8;">
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <!-- 常用操作 -->
+                <div id="topOften" class="row" style="margin-left: 15px;margin-right: 15px;">
+                    <div id="often" class="box box-default col-xs-11">
+                        <div id="oftenContent" class="box-body"></div>
+                    </div>
+                    <div id="oftenSetting" class="box box-default col-xs-1">
+                        <i class="fa fa-fw fa-cog"></i>
+                        <span>页面设置</span>
+                    </div>
+                </div>
+                <!-- /.常用操作 -->
+                <!-- left -->
+                <div class="col-md-9 col-lg-9 dfp-left">
+
+                    <!--<div id="payProgressStatement" class="box box-default dfp-box">-->
+                    <!--<div id="payProgressStatementContent" class="box-body" style="height: 190px;">-->
+                    <!--<iframe id="payProgressStatementIframe" src="" class="dfp-ele-iframe"></iframe>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--支出进度情况-->
+                    <div id="payProgressStatement" class="box box-default dfp-box">
+                        <div class="box-header with-border dfp-box-header">
+                            <h3 class="box-title dfp-box-title">支出进度情况</h3>
+                            <div class="pull-right box-tools">
+                                <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="查询" id="payProgressStatementCheck">
+                                    <i class="fa fa-fw fa-search" style="padding: 0;"></i>
+                                </button>
+                                <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="刷新" id="payProgressStatementRefresh">
+                                    <i class="fa fa-fw fa-refresh" style="padding: 0;"></i>
+                                </button>
+                                <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="最大化" id="payProgressStatementMaxium">
+                                    <i class="fa fa-fw fa-square-o" style="padding: 0;"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <!--查询-->
+                        <!--<div id="payProgressStatementCheckSelect" class="box box-info" style="position: absolute;display: none;width: 400px;float: right;right: 10px;z-index: 9999;">-->
+                            <!--<div class="box-header with-border dfp-box-header">-->
+                                <!--<h3 class="box-title dfp-box-title">支出进度情况-查询</h3>-->
+                            <!--</div>-->
+                            <!--<div class="box-body">-->
+                                <!--<div class="input-group" style="margin-bottom: 5px;">-->
+                                    <!--<span class="input-group-addon">预算类别</span>-->
+                                    <!--<input type="text" class="form-control" value="全部">-->
+                                <!--</div>-->
+                                <!--<div class="input-group" style="margin-bottom: 5px;">-->
+                                    <!--<span class="input-group-addon">项目分类</span>-->
+                                    <!--<input type="text" class="form-control" value="全部">-->
+                                <!--</div>-->
+                                <!--<div class="input-group" style="margin-bottom: 5px;">-->
+                                    <!--<span class="input-group-addon">指标来源</span>-->
+                                    <!--<input type="text" class="form-control" value="全部">-->
+                                <!--</div>-->
+                                <!--<div class="input-group" style="margin-bottom: 5px;">-->
+                                    <!--<span class="input-group-addon">预算单位</span>-->
+                                    <!--<input type="text" class="form-control" value="全部">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="box-footer pull-right">-->
+                                <!--<button id="payProgressStatementCheckSelectCancel" type="button" class="btn btn-default">取消</button>-->
+                                <!--<button id="payProgressStatementCheckSelectSubmit" type="button" class="btn btn-info">确定</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <div id="payProgressGaoji" style="display: block;width: 770px; height: 140px; background: #FFFFFF; box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50); border-radius: 6px; position: absolute; top: 36px; right: 10px; display: none; z-index: 999;">
+                            <ul id="d-list" style="width: 100%; height: 147px; padding: 8px 16px 0 16px; border-bottom: 1px solid #E9E9E9;">
+                                <li style="position: relative;width: 340px; float: left; height: 32px; font-family: 微软雅黑; font-size: 14px; color: #333333; margin-bottom: 7px;margin-left:20px;">预算类别
+                                    <input type="text" id="payProgressYSLBGaojiInput_NAME" style="display: inline-block; width: 216px; height: 30px; background: #FFFFFF; border: 1px solid #D9D9D9; border-radius: 4px;margin: 5px 10px 0 5px;">
+                                    <input type="hidden" id="payProgressYSLBGaojiInput_ID" style="display: inline-block; width: 164px; height: 30px; background: #FFFFFF; border: 1px solid #D9D9D9; border-radius: 4px;margin: 5px 10px 0 5px;">
+                                    <span style="cursor: pointer; position: absolute; top: 5px; right: 38px; color: #999999; font-size: 16px; border: solid 1px #ccc; background: #FFF; z-index: 9; padding: 2px 7px 4px 9px;border-left:none;border-right:none;color:#ff3939;">x</span>
+                                    <span style="cursor: pointer; position: absolute; top: 5px; color: #999999; font-size: 16px; border: solid 1px #ccc; background: #FFF; z-index: 9; padding: 0px 6px 6px 8px; right: 11px; border-top-right-radius: 4px; border-bottom-right-radius: 4px;">...</span>
+                                </li>
+                                <li style="position: relative;width: 340px; float: left; height: 32px; font-family: 微软雅黑; font-size: 14px; color: #333333; margin-bottom: 7px;margin-left:20px;">项目分类
+                                    <input type="text" id="payProgressXMFLGaojiInput_NAME" style="display: inline-block; width: 216px; height: 30px; background: #FFFFFF; border: 1px solid #D9D9D9; border-radius: 4px;margin: 5px 10px 0 5px;">
+                                    <input type="hidden" id="payProgressXMFLGaojiInput_ID" style="display: inline-block; width: 164px; height: 30px; background: #FFFFFF; border: 1px solid #D9D9D9; border-radius: 4px;margin: 5px 10px 0 5px;">
+                                    <span style="cursor: pointer; position: absolute; top: 5px; right: 38px; color: #999999; font-size: 16px; border: solid 1px #ccc; background: #FFF; z-index: 9; padding: 2px 7px 4px 9px;border-left:none;border-right:none;color:#ff3939;">x</span>
+                                    <span style="cursor: pointer; position: absolute; top: 5px; color: #999999; font-size: 16px; border: solid 1px #ccc; background: #FFF; z-index: 9; padding: 0px 6px 6px 8px; right: 11px; border-top-right-radius: 4px; border-bottom-right-radius: 4px;">...</span>
+                                </li>
+                                <li style="position: relative;width: 340px; float: left; height: 32px; font-family: 微软雅黑; font-size: 14px; color: #333333; margin-bottom: 7px;margin-left:20px;">指标来源
+                                    <input type="text" id="payProgressZBLYGaojiInput_NAME" style="display: inline-block; width: 216px; height: 30px; background: #FFFFFF; border: 1px solid #D9D9D9; border-radius: 4px;margin: 5px 10px 0 5px;">
+                                    <input type="hidden" id="payProgressZBLYGaojiInput_ID" style="display: inline-block; width: 164px; height: 30px; background: #FFFFFF; border: 1px solid #D9D9D9; border-radius: 4px;margin: 5px 10px 0 5px;">
+                                    <span style="cursor: pointer; position: absolute; top: 5px; right: 38px; color: #999999; font-size: 16px; border: solid 1px #ccc; background: #FFF; z-index: 9; padding: 2px 7px 4px 9px;border-left:none;border-right:none;color:#ff3939;">x</span>
+                                    <span style="cursor: pointer; position: absolute; top: 5px; color: #999999; font-size: 16px; border: solid 1px #ccc; background: #FFF; z-index: 9; padding: 0px 6px 6px 8px; right: 11px; border-top-right-radius: 4px; border-bottom-right-radius: 4px;">...</span>
+                                </li>
+                                <li style="position: relative;width: 340px; float: left; height: 32px; font-family: 微软雅黑; font-size: 14px; color: #333333; margin-bottom: 7px;margin-left:20px;">预算单位
+                                    <input type="text" id="payProgressYSDWGaojiInput_NAME" style="display: inline-block; width: 216px; height: 30px; background: #FFFFFF; border: 1px solid #D9D9D9; border-radius: 4px;margin: 5px 10px 0 5px;">
+                                    <input type="hidden" id="payProgressYSDWGaojiInput_ID" style="display: inline-block; width: 164px; height: 30px; background: #FFFFFF; border: 1px solid #D9D9D9; border-radius: 4px;margin: 5px 10px 0 5px;">
+                                    <span style="cursor: pointer; position: absolute; top: 5px; right: 38px; color: #999999; font-size: 16px; border: solid 1px #ccc; background: #FFF; z-index: 9; padding: 2px 7px 4px 9px;border-left:none;border-right:none;color:#ff3939;">x</span>
+                                    <span style="cursor: pointer; position: absolute; top: 5px; color: #999999; font-size: 16px; border: solid 1px #ccc; background: #FFF; z-index: 9; padding: 0px 6px 6px 8px; right: 11px; border-top-right-radius: 4px; border-bottom-right-radius: 4px;">...</span>
+                                </li>
+                            </ul>
+                            <input type="button" id="payProgressGaojiClose" value="关闭" style="width: 66px; height: 30px; background: #FFFFFF; outline: none; color: #333333; font-family: 微软雅黑; cursor: pointer; font-size: 14px; border: 1px solid #CCCCCC; border-radius: 2px; float: right; margin-top: -55px;margin-right: 10px;">
+                            <input type="button" id="payProgressGaojiSubmit" value="确定" style="width: 66px; height: 30px; background: #108EE9; outline: none; border: none; color: #FFFFFF; font-family: 微软雅黑; cursor: pointer; font-size: 14px; border-radius: 2px; float: right; margin-top: -55px; margin-right: 90px;">
+                        </div>
+                        <div id="content_wrap2" style="background: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); position: absolute; top: 40px;right: 20px;z-index: 1000;display: none;height: 345px;">
+                            <div class="head-div" style="width: 100%; height: 36px; background: #108ee9;">
+                                <span style="float: left; font-size: 14px; color: #FFFFFF; margin: 10px;">列表</span>
+                                <a href="javascript:void(0);" id="_payProgressZTreeClose" style="float: right; font-size: 14px; color: #FFFFFF; margin: 10px;">
+                                    <span>×</span>
+                                </a>
+                            </div>
+                            <div class="zTreeDemoBackground left" style="background-color:#ffffff;width: 100%; height: 250px;background: #ffffff; overflow-y: auto; overflow-x: auto;">
+                                <ul id="payProgressZTree" class="ztree" style="width: 249px;height: 235px; margin-left: 18px;margin-right: 18px;border: 1px solid #E5E5E5;"></ul>
+                            </div>
+                            <input type="button" id="payProgressZTreeClose" value="关闭" style="width: 66px; margin-top: 8px; height: 30px; background: #FFFFFF; outline: none; color: #333333; font-family: 微软雅黑; cursor: pointer; font-size: 14px; border: 1px solid #CCCCCC; border-radius: 2px; float: right;position: relative; right: 10px; margin-left: 20px;"/>
+                            <input type="button" id="payProgressZTreeSubmit" value="确定" style="width: 66px; margin-top: 8px; height: 30px; background: #108EE9; outline: none; border: none; color: #FFFFFF; font-family: 微软雅黑; cursor: pointer; font-size: 14px; border-radius: 2px; float: right;"/>
+                        </div>
+
+                        <div id="payProgressStatementContent" class="box-body" style="height: 135px;padding-top: 0;"><!--273-->
+                            <!--<div id="topPaymentStatementText" class="box box-default" style="margin-bottom: 0;border: none;">-->
+                                <!--<div class="box-body" style="padding-bottom: 0px;background: #f8f8f8;">-->
+                                    <!--<span style="font-size: 15px;">-->
+                                        <!--本年指标共计 <span class="dfp-num-yellow" id="payProgressStatementAllBudget">0</span>元，比上年增长(wait) <span class="dfp-num-yellow">12.9%</span><br>-->
+                                        <!--共支出(wait) <span class="dfp-num-yellow">347.21</span>万笔，共计 <span class="dfp-num-yellow" id="payProgressStatementAllBudgetCost">0</span>元，比上年同期增长(wait) <span class="dfp-num-red">-1.3%</span>-->
+                                    <!--</span>-->
+                                    <!--<button type="button" class="btn btn-info pull-right" style="position: relative;top: -5px;line-height: 14px;">详细查询</button>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="box-body" style="padding-bottom: 0px;background: #f8f8f8;">-->
+                                <!--<span style="font-size: 15px;">-->
+                                    <!--本年财政总指标金额 <span class="dfp-num-red">2,127.46 亿</span>元，-->
+                                    <!--增长 <span class="dfp-num-red">13.1%</span>，共完成支出 <span class="dfp-num-yellow">324.03 万</span>笔，-->
+                                    <!--支出金额 <span class="dfp-num-yellow">313.55 亿</span>元，支出进度 <span class="dfp-num-yellow">65%</span>，-->
+                                    <!--序时进度 <span class="dfp-num-red">71%</span>。-->
+                                <!--</span>-->
+                                <!--<span style="font-size: 15px;">-->
+                                    <!--本月完成支出 <span class="dfp-num-yellow">34,721</span> 笔，共计 <span class="dfp-num-yellow">37.25 亿</span>元，-->
+                                    <!--比上月增长 <span class="dfp-num-yellow">-0.4%</span>，比上年同期增长 <span class="dfp-num-red">1.3%</span>。-->
+                                <!--</span>-->
+                                <!--<button type="button" class="btn btn-info pull-right" style="position: relative;height: 27px;line-height: 14px;">详细查询</button>-->
+                            <!--</div>-->
+
+                            <div class="zhibiao" style="position:absolute;z-index: 5;margin:13px 0 0 20px;font-size: 14px;">
+                                <span class="zbje">指标金额：<span class="zbjenum" id="_portal_zhichu_text_zbje_span_GKZFSH">0</span>元</span>&nbsp;&nbsp;
+                                <span class="zfje">支出金额：<span class="zfjenum" id="_portal_zhichu_text_zfje_span_GKZFSH">0</span>元</span>&nbsp;&nbsp;
+                                <span class="zbye">指标余额：<span class="zbyenum" id="_portal_zhichu_text_zbye_span_GKZFSH">0</span>元</span>
+                                <span>比时间进度<span id="payProgressRanking_fasterOrLower" style="color: #f56a00;font-weight: bold;"></span> 个百分点</span>
+                            </div>
+                            <div style="float: right;font-size: 14px;margin-top: 7px;width:280px;">
+				            	<span id="tooltipyzf" style="margin-right: 10px;" ><span style="width:10px;height:10px;background:#F56A00;display:inline-block;margin-right: 3px;"></span><span> 已支付</span></span>
+				            	<span id="tooltipsyed" style="margin-right: 10px;"><span style="width:10px;height:10px;background:#D2EAFB;display:inline-block;margin-right: 3px;"></span><span> 剩余额度</span></span>
+				            	<span id="tooltipXSJD" style="margin-right: 10px;float:left;"><span style="color:red;">▼</span><span> 序时进度</span></span>
+				            </div>
+                            <!-- <div id="dwzc" style="width:95%;height:130px;margin: 0 auto;margin-top:20px;padding:0 2% 0 2%;"></div> -->
+                            <div style="margin-left: 10%;margin-right: 10%;">
+					            <div id="dwzc" style="height:115px;margin: 0 auto;"></div>
+				            </div>
+                            <!--<div id="payProgressRanking" style="margin-left: 20px;margin-top:10px;font-size: 14px;">-->
+								<!--<span style="">支付进度本部门排第 <span id="payProgressRanking_bm" style="color: #f56a00;font-weight: bold;"></span> 名</span>&nbsp;&nbsp;&nbsp;&nbsp;-->
+								<!--<span style="">全部省级预算单位排第 <span id="payProgressRanking_ysdw" style="color: #f56a00;font-weight: bold;"></span> 名</span>-->
+							<!--</div>-->
+                            <!-- 支出进度 序时进度 -->
+                            <div id="payprogressXSJD" style="display:none;background: #fff;border: 1px solid #0c0c0c !important;padding: 5px;">
+                                <span class="">序时进度：<span id="payprogressXSJDValue">0%</span></span>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!--/支出进度情况-->
+
+                    <!--支出规律分析-->
+                    <div id="paymentLawAnalysis" class="box box-default dfp-box">
+                        <!--<div class="box-header with-border dfp-box-header">-->
+                            <!--&lt;!&ndash;<h3 class="box-title dfp-box-title">支出规律分析</h3>&ndash;&gt;-->
+                            <!--<div class="pull-right box-tools">-->
+                                <!--<button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="最大化" id="paymentLawAnalysisMaxium">-->
+                                    <!--<i class="fa fa-fw fa-square-o" style="padding: 0;"></i>-->
+                                <!--</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" style="position: absolute;right: 16px;top: 3px;" title="最大化" id="paymentLawAnalysisMaxium">
+                            <i class="fa fa-fw fa-square-o" style="padding: 0;"></i>
+                        </button>
+                        <!--查询-->
+                        <!--<div id="paymentLawAnalysisCheckSelect" class="box box-info" style="position: relative;display: none;width: 400px;float: right;right: 10px;z-index: 9999;">-->
+                            <!--<div class="box-body">-->
+                                <!--<div class="input-group" style="margin-bottom: 5px;">-->
+                                    <!--<span class="input-group-addon">预算类别</span>-->
+                                    <!--<input type="text" class="form-control" value="全部">-->
+                                <!--</div>-->
+                                <!--<div class="input-group" style="margin-bottom: 5px;">-->
+                                    <!--<span class="input-group-addon">项目分类</span>-->
+                                    <!--<input type="text" class="form-control" value="全部">-->
+                                <!--</div>-->
+                                <!--<div class="input-group" style="margin-bottom: 5px;">-->
+                                    <!--<span class="input-group-addon">指标来源</span>-->
+                                    <!--<input type="text" class="form-control" value="全部">-->
+                                <!--</div>-->
+                                <!--<div class="input-group" style="margin-bottom: 5px;">-->
+                                    <!--<span class="input-group-addon">预算单位</span>-->
+                                    <!--<input type="text" class="form-control" value="全部">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="box-footer pull-right">-->
+                                <!--<button id="paymentLawAnalysisCheckSelectCancel" type="button" class="btn btn-default">取消</button>-->
+                                <!--<button id="paymentLawAnalysisCheckSelectSubmit" type="button" class="btn btn-info">确定</button>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--/查询-->
+                        <!-- /.box-header -->
+                        <div id="paymentLawContent" class="box-body" style="height: 349px;padding: 0;">
+                            <iframe id="paymentLawIframe" src="" class="dfp-ele-iframe"></iframe>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!--/支出规律分析-->
+
+                </div>
+                <!-- /left -->
+
+                <!-- right -->
+                <div class="col-lg-3 col-md-3 dfp-right">
+
+                    <!--待办-->
+                    <div id="dealing" class="box box-default dfp-box">
+                        <div class="box-header with-border dfp-box-header">
+                            <h3 class="box-title dfp-box-title">待办事项</h3>
+                            <div class=" box-tools">
+                                <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="刷新" id="dealingRefresh">
+                                    <i class="fa fa-fw fa-refresh" style="padding: 0;"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div id="dealingContent" class="box-body" style="height: 135px;overflow-y: auto;">
+                            <!--<ul></ul>-->
+                        </div>
+                        <!-- /.box-body -->
+                        <div id="dealingRefreshCover" class="overlay" style="display: none;">
+                            <img src="/df/portal/admin/index/img/loading-refresh.gif">
+                            <!--<i class="fa fa-refresh fa-spin"></i>-->
+                        </div>
+                    </div>
+                    <!--/待办-->
+
+                    <!--进度排名-->
+                    <div id="payProgressRanking" class="box box-default dfp-box">
+                        <!--<div class="box-header with-border dfp-box-header">-->
+                            <!--<h3 class="box-title dfp-box-title">进度排名</h3>-->
+                            <!--<div class=" box-tools">-->
+                                <!--<div style="float: right;">-->
+                                    <!--<span style="position: relative;top: 10px;">单位：<span>元</span></span>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!-- /.box-header -->
+                        <div id="payProgressRankingContent" class="box-body" style="height: 260px;padding: 0;">
+                        	<button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="最大化" id="payProgressRankingContentMaxium" style="position: absolute;right: 13px;top: 3px;">
+                                <i class="fa fa-fw fa-square-o" style="padding: 0;"></i>
+                            </button>
+                            <iframe id="payProgressRankingIframe" src="" class="dfp-ele-iframe"></iframe>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!--/进度排名-->
+
+                    <!--公告-->
+                    <div id="article" class="box box-default dfp-box">
+                        <div class="box-header with-border dfp-box-header">
+                            <h3 class="box-title dfp-box-title">公告信息</h3>
+                            <div class=" box-tools">
+                                <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="刷新" id="articleRefresh">
+                                    <i class="fa fa-fw fa-refresh" style="padding: 0;"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div id="articleContent" class="box-body" style="height: 97px;overflow-y: auto;">
+                            <ul></ul>
+                        </div>
+                        <!-- /.box-body -->
+                        <div id="articleRefreshCover" class="overlay" style="display: none;">
+                            <!--<img style="width: 50px;height: 50px;position: absolute;height: 100px;left: 50%;top: 50%;margin-left: -40px;margin-top: -50px;" src="/df/portal/admin/index/img/loading-refresh.gif">-->
+                            <i class="fa fa-refresh fa-spin"></i>
+                        </div>
+                    </div>
+                    <!--/公告-->
+
+                </div>
+                <!-- /right -->
+
+            </div>
+
+        </section>
+    </div>
+
+</div>
+<!-- ./wrapper -->
+
+<footer style="margin-left: 60px;margin-top: 0px;">
+	山东省财政厅 北京用友政务软件有限公司  联合研发
+</footer>
+
+<script src="js/lte/jquery-ui.min.js"></script>
+<script>
+    $.widget.bridge('uibutton', $.ui.button);
+</script>
+<script src="js/lte/bootstrap.min.js"></script>
+<script src="js/lte/app.min.js"></script>
+
+<!--layer-->
+<script src="js/layer/layer.js"></script>
+
+<script type="text/javascript" src="js/highcharts.js"></script>
+<script type="text/javascript" src="js/highcharts-more.js"></script>
+
+<script charset="utf-8" src="js/dfp/dfp.js"></script>
+<script charset="utf-8" src="js/dfp/dfpMenu.js"></script>
+<script charset="utf-8" src="js/dfp/dfpPayProgress.js"></script>
+<script charset="utf-8" src="js/dfp/dfpArticle.js"></script>
+<script charset="utf-8" src="js/dfp/dfpDealing.js"></script>
+<script charset="utf-8" src="js/dashboardGKZFSH.js"></script>
+</body>
+</html>

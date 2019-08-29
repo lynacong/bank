@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd    
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+        ">
+    <!-- tomcat / weblogic 都支持的 jndi 配置
+    <jee:jndi-lookup id="dfdatasource" jndi-name="dfdatasource" resource-ref="true"/>
+	 -->
+	<!-- 根据实际需要配置对应日志数据库数据源 
+    <jee:jndi-lookup id="logdatasource" jndi-name="dfdatasource" resource-ref="true"/> 
+     -->  
+    <context:property-placeholder ignore-unresolvable="true" location="classpath:jdbc.properties"/>
+    <!-- 注入连接信息 dataSource//数据源，连接池  常用的： dbcp,c3p0,proxool -->
+	<bean id="dfdatasource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="username">
+			<value>${jdbc.user}</value>
+		</property>
+		<property name="password">
+			<value>${jdbc.password}</value>
+		</property>
+		<property name="driverClassName">
+			<value>${jdbc.driver}</value>
+		</property>
+		<property name="url">
+			<value>${jdbc.url}</value>
+		</property>
+		<property name="maxActive">
+            <value>${jdbc.maxActive}</value>
+        </property>
+        <property name="maxIdle">
+            <value>${jdbc.maxIdle}</value>
+        </property>
+	</bean>
+
+	<bean id="logdatasource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="username">
+			<value>${jdbc.user}</value>
+		</property>
+		<property name="password">
+			<value>${jdbc.password}</value>
+		</property>
+		<property name="driverClassName">
+			<value>${jdbc.driver}</value>
+		</property>
+		<property name="url">
+			<value>${jdbc.url}</value>
+		</property>
+	</bean>
+    
+	<bean  class="gov.df.fap.service.util.datasource.MultiDataSource" dependency-check="default" id="multiDataSource" lazy-init="default">
+		<!--数据库类型：目前支持：Oracle MySQL  -->
+		<property name="dbType" value="Oracle"/>
+		<property name="defaultDataSource">
+			<ref bean="dfdatasource"/>
+		</property>
+		<property name="dataSources">
+			<map>
+			    <entry key="000000#2019"><ref bean="dfdatasource"/></entry>
+			    <entry key="000000#2019#read"><ref bean="dfdatasource"/></entry>
+	 		</map>
+		</property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,22 @@
+html {
+    height: 100%;
+}
+
+
+.eleConBody {
+	padding-left: 15px;
+	padding-top: 10px;
+	padding-right: 10px;
+}
+
+.check-location {
+	padding-top: 10px;
+}
+.Grid-location {
+	padding-top: 10px;
+}
+
+.btn-location {
+	float: right;
+	margin-right: 10px;
+}

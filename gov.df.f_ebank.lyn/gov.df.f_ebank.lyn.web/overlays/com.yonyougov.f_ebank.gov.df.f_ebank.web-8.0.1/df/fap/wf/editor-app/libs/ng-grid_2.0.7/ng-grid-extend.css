@@ -1,0 +1,77 @@
+
+.grid-col-xs-0 {
+	width: 100%;
+}
+
+.grid-col-xs-1 {
+	width: 705px;
+}
+
+.grid-col-xs-2 {
+	width: 200px;
+}
+
+.grid-col-xs-3 {
+	width: 35px;
+}
+
+.tg-grid-col-xs-1 {
+	width: 500px;
+}
+
+.tg-grid-col-xs-2 {
+	width: 240px;
+}
+
+.grid-col-xs-0, .grid-col-xs-1, .grid-col-xs-2, .tg-grid-col-xs-1, .tg-grid-col-xs-2 {
+  	min-height: 1px;
+}
+
+.grid-col-xs-0, .grid-col-xs-1, .grid-col-xs-2, .grid-col-xs-3, .tg-grid-col-xs-1, .tg-grid-col-xs-2 {
+	position: relative;
+	float: left;
+}
+
+.grid-btn-group {
+	padding-top: 175px;
+}
+
+.grid-btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+	border-radius: 4px;
+	margin-left: 0px;
+}
+
+.grid-btn-group > .btn:last-child:not(:first-child),
+.grid-btn-group > .dropdown-toggle:not(:first-child) {
+	border-radius: 4px;
+  	margin-left: 0px;
+}
+
+.grid-hidden{
+	display: none;
+}
+
+.ngColMenu{
+	background-color: #d6d7d8;
+	border: 1px solid #888;
+}
+
+.modal-wide-grid{
+	width: 715px;
+}
+
+.modal-wide-multi-grid{
+	width: 1000px;
+}
+
+.modal-wide-tree-grid{
+	width: 715px;
+}
+
+.modal-wide-multi-tree-grid{
+	width: 1000px;
+}
+
+.tg-default-grid{
+	height: 400px;
+}

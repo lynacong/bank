@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+    <title>单号管理</title>
+    <link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/u.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/tree.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/ip/changeTree/changeTree.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/grid.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/ip.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/platform.css" />
+    <link rel="stylesheet" type="text/css" href="../ncrd.css" />
+	<!--[if lte IE 9]>
+		<link rel="stylesheet" type="text/css" href="../ncrd-ie9.css" />
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="list.css" />
+</head>
+
+<body>
+<!--billno列表页面-->
+<div id="billno-list-contanier" class="container-fluid ncrd" style="height:100%;">
+    <!-- 按钮 -->
+    <div class="row" style="height:100%;">
+        <div class="col-xs-3 col-sm-3 col-md-3 padding-right-0 padding-left-0" style="height:100%;">
+            <div class="panel panel-default left-tree" style="height:99%;">
+                <div class="tree-search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="请输入关键字" data-bind="value:treeKeyword">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" data-bind="click:findTree">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <!-- 左侧树 -->
+                <div class="ncrd left-tree-scroll">
+                    <div id="tree" class="ztree" u-meta='{"id":"tree","data":"treeDataTable","type":"tree","idField":"cid","pidField":"pid","nameField":"name","setting":"treeSetting"}'></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 padding-right-5 padding-left-5 " style="height: 100%;">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="right-btngroup padding-bottom-10">
+                        <!-- 按钮组 -->
+                        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="" data-bind="click: editAdd">新增
+                        </button>
+                        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="" data-bind="click: editUpdate">修改
+                        </button>
+                        <button type="button" class="btn btn-danger " data-toggle="modal" data-target="" data-bind="click: deleteBtn">删除
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="height: calc(100% - 46px);">
+                <div class="col-md-12" style="height: 100%;">
+                    <div class="right-grid panel panel-default" style="height: 99%;">
+                        <!--表格列表 -->
+                        <div class="row" id="formData">
+                                <div class="form-group col-sm-3 col-md-3 padding-0 margin-bottom-5">
+                                    <div class="row">
+                                        <label for="ruleNumber" class="billno-label col-sm-3 col-md-3 padding-0 text-left">规则编号：</label>
+                                        <input type="text" id="ruleNumber" u-meta='{"data": "ruleNumberData","field":"ruleNumber"}' class="form-control bg-white col-sm-7 col-md-7" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-3 col-md-3 padding-0 margin-bottom-5 margin-left-n40">
+                                    <div class="row">
+                                        <label for="ruleName" class="billno-label col-sm-3 col-md-3 padding-0 text-left ">规则名称：</label>
+                                        <input type="text" id="ruleName"  u-meta='{"data": "ruleNameData","field":"ruleName"}'  class="form-control bg-white col-sm-7 col-md-7" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-3 col-md-3 padding-0 margin-bottom-5 margin-left-n40">
+                                    <div class="row">
+                                        <label for="appModel" class="billno-label  col-sm-3 col-md-3 padding-0 text-left">应用模块：</label>
+                                        <select id="appModel" class="form-control bg-white col-sm-7 col-md-7" disabled>
+                                            <option value="null"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                        </div>
+                        <!--<p>例子:(<span data-bind="text: exampleMessage"></span>)</p>-->
+                        <div class="grid" style="height: calc(100% - 34px)" u-meta='{"id":"grid","data":"gridDataTable","type":"grid","sortable":false,"showNumCol": false,"columnMenu":false,"editable":false,"autoExpand":false,"showTree":false,"keyField":"theId","parentKeyField":"parentId","headerHeight":25,"rowHeight":25,"sumRowHeight":25}'>
+                            <div options='{"field":"line_no","dataType":"String","title":"序号","editType":"string","width": 60}'></div>
+                            <div options='{"field":"billnorule_id","dataType":"String","title":"规则ID","editType":"string","visible":false}'></div>
+                            <div options='{"field":"billnoruleline_id","dataType":"String","title":"规则项ID","editType":"string","visible":false}'></div>
+                            <div options='{"field":"eles_name","dataType":"String","title":"关联要素","editType":"string","width": 200,"visible":false}'></div>
+                            <div options='{"field":"line_type_name","dataType":"String","title":"类型","editType":"string","width": 180}'></div>
+                            <div options='{"field":"ele_code_name","dataType":"String","title":"要素","editType":"string","width": 180}'></div>
+                            <div options='{"field":"line_format_name","dataType":"String","title":"格式","editType":"string","width": 180}'></div>
+                            <div options='{"field":"level_num_name","dataType":"String","title":"级次","editType":"string","width": 160}'></div>
+                            <div options='{"field":"init_value","dataType":"String","title":"初始化","editType":"string","width": 200}'></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--billno编辑页面-->
+<div id="billno-editAdd-contanier" class="container-fluid ncrd">
+</div>
+
+<!--右键菜单-->
+<div class="clickContent panel panel-default" style="position: absolute;background-color: #ccc;width: 80px;display: none;">
+    <ul style="list-style: none;text-align: center">
+        <li data-bind="click: editAdd">增加</li>
+        <li data-bind="click: editUpdate">修改</li>
+        <li data-bind="click: deleteBtn">删除</li>
+    </ul>
+</div>
+
+<!-- 引入js-->
+<script src="../../../../trd/requirejs/require.debug.js"></script>
+<script src="../../../../require.config.js"></script>
+<script src="list.js" type="text/javascript"></script>
+</body>
+
+</html>

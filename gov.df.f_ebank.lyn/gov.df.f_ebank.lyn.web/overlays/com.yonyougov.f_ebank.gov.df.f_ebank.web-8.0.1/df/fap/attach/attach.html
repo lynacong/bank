@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+  <title>附件管理</title>
+  <link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+  <link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+  <link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+  <link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+  <link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+  <link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+  <link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css">
+  <link rel="stylesheet" type="text/css" href="/df/trd/ip/css/theme/blue.css" />
+  <link rel="stylesheet" type="text/css" href="attach.css" />
+</head>
+
+<body>
+
+  <div id="attach-container" class="container-fluid ncrd">
+    <!--子系统列表-->
+    <div class="row">
+      <div class="form-group padding-top-10 margin-bottom-10 col-sm-6">
+        <label for="sys-id" class="col-sm-3 text-center require-input">子系统:</label>
+        <div class="col-sm-3 ">
+          <select class="form-control" id="sys-id" data-bind="options: sysIdOptions,optionsText: 'sys_name', optionsValue: 'sys_id',optionsCaption: '请选择', value:selectedSysId">
+                </select>
+        </div>
+      </div>
+    </div>
+    <!--左侧附件分类列表-->
+    <div class="col-xs-3 col-sm-3 col-md-3 padding-0">
+      <div class="left-sort-list">
+        <div class="panel panel-default padding-0">
+          <div class="panel-heading">
+            <span class="attach-sort">附件分类</span>
+            <button class="btn btn-primary sort-button" data-bind="click:addSort">
+                        <span class="glyphicon glyphicon-plus attach-glyphicon" aria-hidden="true" title="新增"></span>
+                    </button>
+          </div>
+          <ul class="list-group" data-bind="foreach:{data:attachSort.rows(),as:'row'}">
+            <li class="list-group-item clear-fix" data-bind="event:{click:$root.initAttachTable.bind($data, row.getValue('sortnumber'), $index())}">
+              [<span data-bind="text: row.ref('sortcode')">test</span>]
+              <span data-bind="text: row.ref('sortname')">test</span>
+              <button data-bind="event:{click:$root.deleteSortBtn.bind($data, $index(), row.getValue('sortnumber'))}, clickBubble: false"
+                class="btn btn-xs btn-danger sort-button">
+                            <span class="glyphicon glyphicon-trash attach-glyphicon" title="删除"></span>
+                        </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--右侧附件列表-->
+    <div class="col-xs-9 col-sm-9 col-md-9">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default right-attach-list padding-0">
+            <div class="attach-group panel-heading">
+              <span class="attach-files">附件</span>
+              <button class="btn btn-primary attach-button" data-bind="click:addAttach">
+                <span class="glyphicon glyphicon-plus attach-glyphicon" aria-hidden="true" title="新增"></span>
+              </button>
+              <button class="btn btn-primary attach-button" data-bind="click:batchDeleteFileBtn">批量删除</button>
+            </div>
+            <!--附件表格-->
+            <table id="attach-table" class="table table-bordered table-hover table-condensed">
+              <thead>
+                <tr>
+                  <th class="pct5 text-center">
+                    <input type="checkbox" class="checkBox" id="selectAll">
+                    <label for="selectAll"></label>
+                  </th>
+                  <th class="pct5 text-center">序号</th>
+                  <th class="pct10 text-center">业务编号</th>
+                  <th class="pct15 text-center">附件名称</th>
+                  <th class="pct10 text-center">附件类型</th>
+                  <th class="pct15 text-center">上传人</th>
+                  <th class="pct20 text-center">上传时间</th>
+                  <th class="pct30 text-center">操作</th>
+                </tr>
+              </thead>
+              <tbody data-bind="foreach:{data:attachFiles.rows(),as:'row'}">
+                <tr>
+                  <td class="pct5 text-center">
+                    <input type="checkbox" class="checkBox selectedFile" name="selectedFile" data-bind="value: row.ref('attach_id'), attr: {'id': 'checkBox' + $index()}">
+                    <label data-bind="attr: {'for': 'checkBox' + $index()}"></label>
+                  </td>
+                  <td data-bind="text: $index()+1" class="pct5 text-center"></td>
+                  <td data-bind="text: row.ref('busi_id')" class="pct10 text-center"></td>
+                  <td data-bind="text: row.ref('attach_name')" class="pct15 text-center"></td>
+                  <td data-bind="text: row.ref('attach_type')" class="pct10 text-center"></td>
+                  <td data-bind="text: row.ref('create_by')" class="pct15 text-center"></td>
+                  <td data-bind="text: row.ref('createTime')" class="pct20 text-center"></td>
+                  <td class="text-center pct30">
+                  <button data-bind="event:{click:$root.previewFile.bind($data, row.getValue('attach_id'))}" class="btn btn-xs btn-primary">
+                                    <span class="glyphicon glyphicon-search attach-glyphicon" title="预览"></span>
+                                </button>
+                    <button data-bind="event:{click:$root.downloadFile.bind($data, row.getValue('attach_id'), row.getValue('attach_type'))}" class="btn btn-xs btn-primary">
+                                    <span class="glyphicon glyphicon-download-alt attach-glyphicon" title="下载"></span>
+                                </button>
+                    <button data-bind="event:{click:$root.editFile.bind($data, $index(), row)}" class="btn btn-xs btn-primary">
+                                    <span class="glyphicon glyphicon-pencil attach-glyphicon" title="编辑"></span>
+                                </button>
+                    <button data-bind="event:{click:$root.deleteFileBtn.bind($data, $index(), row.getValue('attach_id'))}" class="btn btn-xs btn-danger">
+                                    <span class="glyphicon glyphicon-trash attach-glyphicon" title="删除"></span>
+                                </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="panel-footer">
+              <div id='pagination' class='u-pagination' u-meta='{"type":"pagination","data":"attachFiles","pageList":[5,10,15,20],"pageChange":"pageChangeFunc","sizeChange":"sizeChangeFunc"}'></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--增加分类模态框-->
+  <div class="modal fade" id="add-sort-box" tabindex="-1" role="dialog" aria-labelledby="addSortBoxLabel" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-bind="click:cancleAddSort" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title font-size-14" id="addSortBoxLabel">增加分类</h4>
+        </div>
+        <div class="modal-body">
+          <!--form表单开始-->
+          <form class="form-horizontal">
+            <div class="form-group margin-bottom-10">
+              <label for="sort-name" class="col-sm-3 control-label require-input">分类名称:</label>
+              <div class="col-sm-5 ">
+                <input type="text" class="form-control" maxlength="30" id="sort-name" data-bind="value:sortNameValue" autocomplete="off">
+              </div>
+              <span id="sort-name-error" class="col-sm-4 checkError"></span>
+            </div>
+            <div class="form-group margin-bottom-10">
+              <label for="sort-code" class="col-sm-3 control-label require-input">分类代号:</label>
+              <div class="col-sm-5 ">
+                <input type="text" class="form-control" maxlength="30" id="sort-code" data-bind="value:sortCodeValue" autocomplete="off">
+              </div>
+              <span id="sort-code-error" class="col-sm-4 checkError"></span>
+            </div>
+            <div class="form-group margin-bottom-10">
+              <label for="sort-info" class="col-sm-3 control-label">分类说明:</label>
+              <div class="col-sm-5 ">
+                <textarea class="form-control" id="sort-info" data-bind="value:sortInfoValue" rows="5" cols="20">
+                            </textarea>
+              </div>
+            </div>
+          </form>
+          <!--form表单结束-->
+        </div>
+        <div class="modal-footer padding-right-0">
+          <button type="button" class="btn btn-primary" id="sort-add-confirm" data-bind="click:confirmAddSort">
+                    保存
+                </button>
+          <button type="button" class="btn btn-primary" id="sort-add-cancle" data-bind="click:cancleAddSort" style="color: #000;">取消
+                </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--新增附件模态框-->
+  <div class="modal fade" id="add-attach-box" tabindex="-1" role="dialog" aria-labelledby="addAttachBoxLabel" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-bind="click:cancleAddAttach" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title font-size-14" id="addAttachBoxLabel">新增附件</h4>
+        </div>
+        <div class="modal-body">
+          <!--form表单开始-->
+          <form class="form-horizontal">
+            <div class="form-group margin-bottom-10">
+              <label for="attach-sort" class="col-sm-3 control-label require-input">附件分类:</label>
+              <div class="col-sm-5 padding-0">
+                <select class="form-control" id="attach-sort" data-bind="options: sortOptions, optionsText: 'sort_name', optionsValue: 'sort_id', optionsCaption: '请选择', value:selectedSortNumberValue">
+                                    </select>
+              </div>
+              <span id="attach-sort-error" class="col-sm-4 checkError"></span>
+            </div>
+            <div class="form-group margin-bottom-10">
+              <label for="attach-new-code" class="col-sm-3 control-label no-require-input">附件编号:</label>
+              <div class="col-sm-5 padding-0">
+                <input type="text" class="form-control" maxlength="30"  id="attach-new-code" data-bind="value:attachNewCodeValue">
+              </div>
+              <span id="attach-new-code-error" class="col-sm-4 checkError"></span>
+            </div>
+            <div class="form-group margin-bottom-10">
+              <label for="fileupload" class="col-sm-3 control-label require-input">选择附件:</label>
+              <div class="col-sm-5 padding-0">
+                <a class="a-upload">
+                  <input id="fileupload" type="file" name="files" multiple>选择文件
+                </a>
+              </div>
+              <span id="fileupload-error" class="col-sm-4 checkError"></span>
+            </div>
+            <div id="progress" class="progress">
+              <div class="progress-bar"></div>
+            </div>
+            <div class="form-group height-150" style="overflow:auto">
+              <!--已添加文件-->
+              <table id="uploadTable" class="table-bordered table-hover table-condensed col-sm-10 col-sm-offset-1">
+                <thead>
+                  <tr>
+                    <th class="col-sm-1 text-center">序号</th>
+                    <th class="col-sm-9 text-center">附件名称</th>
+                    <th class="col-sm-2 text-center">操作</th>
+                  </tr>
+                </thead>
+                <tbody data-bind="foreach:{data:uploadedFiles.rows(),as:'row'}">
+                  <tr>
+                    <td data-bind="text: $index()+1" class="col-sm-1 text-center"></td>
+                    <td data-bind="text: row.ref('name')" class="col-sm-9 text-left"></td>
+                    <td class="col-sm-2 text-center"><span class="glyphicon glyphicon-trash file-glyphicon" title="删除" data-bind="click: $root.removeFile"></span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </form>
+          <!--form表单结束-->
+        </div>
+        <div class="modal-footer padding-right-0">
+          <button type="button" class="btn btn-primary" id="attach-add-confirm">保存
+                </button>
+          <button type="button" class="btn btn-primary" id="attach-add-cancle" data-bind="click:cancleAddAttach" style="color: #000;">取消
+                </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--编辑附件模态框-->
+  <div class="modal fade" id="edit-attach-box" tabindex="-1" role="dialog" aria-labelledby="editAttachBoxLabel" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-bind="click:cancleEditAttach" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title font-size-14" id="editAttachBoxLabel">编辑附件</h4>
+        </div>
+        <div class="modal-body">
+          <!--form表单开始-->
+          <form class="form-horizontal">
+            <div class="form-group margin-bottom-10">
+              <label for="new-attach-sort" class="col-sm-3 control-label require-input">附件分类:</label>
+              <div class="col-sm-5 padding-0">
+                <select class="form-control" id="new-attach-sort" data-bind="options: sortOptions, optionsText: 'sort_name', optionsValue: 'sort_id', optionsCaption: '请选择', value:selectedSortNumberValue">
+                                        </select>
+              </div>
+              <span id="new-attach-sort-error" class="col-sm-4 checkError"></span>
+            </div>
+            <div class="form-group margin-bottom-10">
+              <label for="attach-code" class="col-sm-3 control-label no-require-input">附件编号:</label>
+              <div class="col-sm-5 padding-0">
+                <input type="text" class="form-control" maxlength="30" id="attach-code" data-bind="value:attachCodeValue">
+              </div>
+              <span id="attach-code-error" class="col-sm-4 checkError"></span>
+            </div>
+            <div class="form-group margin-bottom-10">
+              <label for="attach-name" class="col-sm-3 control-label require-input">附件名称:</label>
+              <div class="col-sm-5 padding-0">
+                <input type="text" class="form-control" id="attach-name" maxlength="30" data-bind="value:attachNameValue">
+              </div>
+              <span id="attach-name-error" class="col-sm-4 checkError"></span>
+            </div>
+            <div class="form-group margin-bottom-10">
+              <label for="fileuploadNew" class="col-sm-3 control-label require-input">选择附件:</label>
+              <div class="col-sm-5 padding-0">
+                <a class="a-upload">
+                    <input id="fileuploadNew" type="file" name="files">选择文件
+                  </a>
+              </div>
+            </div>
+            <div class="form-group height-150" style="overflow:auto">
+              <!--已上传文件-->
+              <table id="existedTable" class="table-bordered table-hover table-condensed col-sm-10 col-sm-offset-1">
+                <thead>
+                  <tr>
+                    <th class="col-sm-1 text-center">序号</th>
+                    <th class="col-sm-9 text-center">附件名称</th>
+                    <th class="col-sm-2 text-center">操作</th>
+                  </tr>
+                </thead>
+                <tbody data-bind="foreach:{data:existedFile.rows(),as:'row'}">
+                  <tr>
+                    <td data-bind="text: $index()+1" class="col-sm-1 text-center"></td>
+                    <td data-bind="text: row.ref('name')" class="col-sm-9 text-left"></td>
+                    <td class="col-sm-2 text-center"><span class="glyphicon glyphicon-trash file-glyphicon" title="删除" data-bind="click: $root.removeExistedFile"></span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </form>
+          <!--form表单结束-->
+        </div>
+        <div class="modal-footer padding-right-0">
+          <button type="button" class="btn btn-primary" id="attach-edit-confirm" data-bind="click:confirmEditAttach">保存
+                </button>
+          <button type="button" class="btn btn-primary" id="attach-edit-cancle" data-bind="click:cancleEditAttach" style="color: #000;">取消
+                </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--预览附件模态框-->
+<div class="modal fade bs-example-modal-lg" id="preview-attach-box" tabindex="-1" role="dialog" aria-labelledby="previewAttachBoxLabel"
+     data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background:white;height:40px;font-family: MicrosoftYaHei;font-size: 12px;color: #333333;padding-top:15px;">
+                <button type="button" class="close" data-bind="click: clsoePreview" aria-label="Close" style="color:black;padding-right:10px;"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title font-size-14" id="addAttachBoxLabel">预览附件</h4>
+            </div>
+            <div id="other" class="modal-body" style="padding-top: 8px;adding-bottom: 8px;">
+             	<div id="csof-right-iframe" style="width:98%;height:430px;overflow-y:auto;"></div>
+            </div>
+            <div class="modal-footer padding-right-0" style="height:45px;">
+                <button type="button" class="btn btn-primary" id="attach-preview-close" data-bind="click:clsoePreview" style="margin-top:4px;width:60px;height:30px;background: #FFFFFF;border-radius: 4px;color:black;margin-right:40px;">关闭
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <!-- 引入js-->
+  <script src="/df/trd/requirejs/require.js"></script>
+  <script src="/df/require.config.js"></script>
+  <script type="text/javascript" src="/df/trd/jquery/jquery-1.12.3.min.js"></script>  
+  <script type="text/javascript" src="/df/trd/jquery-media/jquery.media.js"></script>
+  <script src="attach.js" type="text/javascript"></script>
+</body>
+
+</html>

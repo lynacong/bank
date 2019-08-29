@@ -1,0 +1,83 @@
+.modal-content {
+    padding-right:10px;
+    padding-left:10px;
+}
+
+.modal-header {
+    padding: 5px 0 5px 0;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.modal-body {
+	height: calc(100vh - 120px);
+	overflow-y: auto;
+    padding: 10px 0 0 0;
+}
+.modal-footer{
+	padding:5px;
+}
+.form-group {
+    margin-bottom: 12px;
+}
+.modal-title {
+    font-family: MicrosoftYaHei;
+    color: #9B9B9B;
+}
+
+#TimingManagerEdit .modal-dialog {
+    width: 690px;
+    margin: 15px auto;
+}
+
+#TimingManagerEdit .control-label {
+    font-family: MicrosoftYaHei;
+    font-size: 12px;
+    color: #333333;
+    line-height: 25px;
+    font-weight: normal;
+    padding:0;
+    text-align: right;
+}
+
+#TimingManagerEdit input,
+#TimingManagerEdit select{
+    font-family: MicrosoftYaHei;
+    font-size: 12px;
+    color: #333333;
+    border: 1px solid #DBDBDB;
+}
+
+#TimingManagerEdit .info-title {
+    background: #F2F9FF;
+    border: 1px solid #D9E9F6;
+    height: 32px;
+    margin-bottom: 10px;
+}
+
+#TimingManagerEdit .info-title p {
+    font-family: PingFangSC-Regular,MicrosoftYaHei;
+    font-size: 14px;
+    color: #1296DB;
+    line-height: 32px;
+    padding-left: 10px;
+}
+
+#TimingManagerEdit .form-group {
+    margin-right: 0;
+    margin-left: 0;
+    padding: 0;
+}
+
+#TimingManagerEdit .date-input {
+    height: 25px;
+}
+
+#TimingManagerEdit .date-input .u-input {
+    height: 25px;
+    border: 1px solid #DBDBDB;
+}
+
+#TimingManagerEdit input[type=radio] {
+    height: 16px;
+    width: 16px;
+}

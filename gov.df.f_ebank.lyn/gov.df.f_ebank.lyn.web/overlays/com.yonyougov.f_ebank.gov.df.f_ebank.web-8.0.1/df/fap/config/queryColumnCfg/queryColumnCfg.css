@@ -1,0 +1,311 @@
+@CHARSET "UTF-8";
+
+.view-show-content{
+	min-height:270px;
+	border:1px #e5e5e5 solid;
+	overflow:auto;
+}
+.modal-header{
+	border-bottom:0;
+	padding:9px 12px;
+}
+
+.view-base-content{
+	min-height:120px;
+	border:1px #e5e5e5 solid;
+	overflow:auto;
+}
+
+.search-h{
+	height: 30px;
+}
+input.search-h{
+	height: 30px;
+}
+
+.ip-input-group .view-text-left {
+	width: 190px;
+    height: 24px;
+    padding: 0 12px;
+}
+label.view-text-right {
+	height: 24px;
+    line-height: 24px;
+	padding: 0;
+	font-weight: normal;
+}
+
+.modal-content-set{
+	width : 700px;
+	height: 560px;
+}
+
+.labarea{
+	padding: 12px;
+    margin-bottom: 10px;
+    color: #4A90E2;
+    background: #FBFBFB;
+    border: 1px solid #E5E5E5;
+    height: 50px;
+}
+.labarea-add{
+	padding: 12px;
+    margin-bottom: 10px;
+    color: #4A90E2;
+}
+
+.menuarea{
+	min-height:150px;
+}
+
+.menubutton{
+	margin-left:500px;
+	margin-bottom:10px;
+}
+
+.ul-info{
+	margin-top : 10px;
+	margin-left : 10px;
+}
+
+.left-collab{
+    color: #4A90E2;
+    font-size: 8px;
+}
+
+.right-collab{
+    margin-left: 220px;
+    color: #4A90E2;
+    font-size: 8px;
+}
+.collab-set-right{
+	color: #4A90E2;
+	font-size: 14px;
+	float: right;
+    margin-right: 10px;
+	cursor:pointer;
+}
+
+.collab-set{
+	color: #4A90E2;
+	font-size: 14px;
+	
+}
+
+.all_info{
+	min-height: 460px;
+	background: #FFFFFF;
+	border: 1px solid #E5E5E5;
+	margin-left:10px;
+	margin-right:10px;
+	margin-bottom:6px;
+}
+
+.col-info{
+	background: #FFFFFF;
+	border: 1px solid #E5E5E5;
+	height:320px;
+	width:100%;
+	/* margin-left:10px; */
+	margin-right:10px;
+	/* margin-bottom:10px; */
+	overflow:auto;
+}
+
+.col-button{
+	margin-left:10px;
+	margin-bottom:10px;
+}
+.base-bg{
+	background: #F2F9FF;
+	padding: 5px 5px;
+	border:1px solid #e5e5e5;
+	border-bottom:none;
+}
+.left-content{
+	border-top:none;
+}
+.ip-input-group{
+	height: 28px;
+    line-height: 28px;
+    padding: 0;
+}
+
+.ip-input-group .detail-text-left {
+	width: 210px;
+    height: 20px;
+    padding: 0 12px;
+}
+label.text-right {
+	font-weight: normal;
+	}
+	
+label.detail-text-right {
+	height: 20px;
+    line-height: 20px;
+	padding: 0;
+	font-weight: normal;
+}
+.check-sta{
+	margin-left:70px;
+}
+.textarea{
+	margin:10px;
+	font-weight: normal;
+}
+.tab-content{
+	padding:0px 5px;
+}
+
+/*带确定的提示弹出框*/
+.modal-content-bc{
+    width:461px;
+    margin-top: 50px;
+    height:330px;
+}
+
+    
+.modal-content-advance{
+    width: 660px;
+    margin-left: -128px;
+    margin-top: 50px;
+}
+
+.col-add-button{
+	margin-left: 156px;
+    margin-bottom: 15px;
+}
+
+.main-info-hide{
+	display:none;
+}
+#add-config-modal{
+	top:-10px;
+}
+.list-box{
+	background: #eee;
+    border: 1px solid #ccc;
+    display: inline-block;
+    height: 20px;
+    width: 24px;
+    cursor: pointer;
+    border-left-width: 0;
+}
+
+
+.ip-input-group .detail-text-btn{
+	width:186px;
+	height:20px;
+	float: left;
+}
+.list-box .list-box{
+	top:-2px;
+	left:5px;
+}
+.icon-box{
+	top: -3px;
+    margin: 5px;
+    font-size: 12px;
+	/* background: #FFFFFF;
+	border: 1px solid #E5E5E5; */
+}
+.icon-box-blue{
+	top:-2px;
+	margin:5px;
+}
+.col-ele-dialog{
+	width: 380px;
+    height: 300px;
+    overflow: auto;
+    padding: 10px;
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+}
+
+.ele-text-search{
+	width: 120px;
+    height: 24px;
+    margin: 10px;
+}
+
+#addModal .modal-dialog{
+	top: -15px;
+    height: 480px;
+}
+
+#ele-config-modal .modal-sm{
+	top: -60px;
+	left:30px;
+}
+
+.ele-search-btn{
+	border-radius: 0;
+    line-height: 16px;
+    padding: 3px 5px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: Microsoft YaHei;
+    color: #FFFFFF;
+    background: #4A90E2;
+    border: 1px solid #ccc;
+}
+.keep-right-btn{
+	float: right;
+    margin: 10px;
+}
+
+.preview-btn{
+    margin: 10px;
+}
+
+.modal-content-pre{
+	width: 1050px;
+    height: 300px;
+    margin-left: -300px;
+}
+
+.btn-pre{
+	position: absolute;
+    right: 30px;
+    bottom: 20px;
+}
+    
+span.tmpzTreeMove_arrow {
+	z-index: 9999;
+}
+.tool-btn-h{
+	height:50px;
+}
+
+.checkbox-inline-ui{
+	position: relative; 
+    display: inline-block; 
+    padding-left: 5px;
+    font-weight: normal;
+    vertical-align: middle;
+    cursor: pointer; 
+}
+
+.advance-edit-row-view{
+	height:220px;
+}
+
+.advance-edit-add-button{
+	margin-left: 360px;
+    margin-bottom: 15px;
+}
+.advance-edit-row-div{
+	margin-left: 115px;
+    padding-top: 100px;
+}
+
+.advance-edit-row-button{
+	margin-left: 15px;
+}
+.show-hand{
+	cursor:pointer;
+}
+
+
+
+

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible"
+	content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+<title>要素管理</title>
+<meta name="author" content="ip">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/platform.css" />
+<link rel="stylesheet" type="text/css" href="./elementConfig.css" />
+</head>
+<body>
+	<div class = "eleConBody">
+		<div class="btn-head">
+			<button id="addViewBtn" type="button" class="btn btn-primary" data-target="#addElementModal" 
+			data-toggle="modal" data-bind="click: addviewSubmit">增加要素</button>
+			<button id="delViewBtn" type="button" class="btn btn-primary"
+				data-bind="click: delviewSubmit">删除要素</button>
+			<button id="editViewBtn" type="button" class="btn btn-primary"
+			    data-bind="click: editviewSubmit">修改要素</button>
+			<button id="typeViewBtn" type="button" class="btn btn-primary"
+			    data-bind="click: editcodeSubmit">修改编码格式</button>
+		</div>
+		<div>
+			<div type="text" class="menu-grid"
+				u-meta='{"id":"write-grid","data":"gridDataTable","type":"grid","editable":false,"autoExpand":false,"showTree":false,"showNumCol":true,"keyField":"theId","parentKeyField":"parentId","multiSelect":false,"onDblClickFun":"editviewSubmit","height":540,"headerHeight":25}'>
+				<div
+					options='{"field":"czgb_code","dataType":"String","title":"标准码","editType":"string"}'></div>
+				<div
+					options='{"field":"ele_code","dataType":"String","title":"要素编码","editType":"string"}'></div>
+				<div
+					options='{"field":"ele_source","dataType":"String","title":"要素表","editType":"string"}'></div>
+				<div
+					options='{"field":"ele_name","dataType":"String","title":"要素中文名","editType":"string"}'></div>
+				<div
+					options='{"field":"enabled","dataType":"String","title":"启用","editOptions":{"id":"combobox1","type":"combo","datasource":"enabledItems"},"editType":"combo","renderType":"comboRender","editType":"string"}'></div>
+				<div
+					options='{"field":"ref_mode","dataType":"String","title":"参照方式","editOptions":{"id":"combobox1","type":"combo","datasource":"refItems"},"editType":"combo","renderType":"comboRender","editType":"string"}'></div>
+				<div
+					options='{"field":"code_rule","dataType":"String","title":"编码格式","editType":"string"}'></div>
+				<div
+					options='{"field":"is_view","dataType":"String","title":"是否逻辑要素","editOptions":{"id":"combobox1","type":"combo","datasource":"isviewItems"},"editType":"combo","renderType":"comboRender","editType":"string"}'></div>
+				<div
+					options='{"field":"is_rightfilter","dataType":"String","title":"控制数据权限","editOptions":{"id":"combobox1","type":"combo","datasource":"isrightfilterItems"},"editType":"combo","renderType":"comboRender","editType":"string"}'></div>
+				<div
+					options='{"field":"level_name","dataType":"String","title":"控件标题","editType":"string"}'></div>
+				<div
+					options='{"field":"is_nolevel","dataType":"String","title":"是否不存在级次","editOptions":{"id":"combobox1","type":"combo","datasource":"isnolevelItems"},"editType":"combo","renderType":"comboRender","editType":"string"}'></div>
+				<div
+					options='{"field":"is_operate","dataType":"String","title":"是否平台维护","editOptions":{"id":"combobox1","type":"combo","datasource":"isoperateItems"},"editType":"combo","renderType":"comboRender","editType":"string"}'></div>
+			</div>
+		</div>
+	</div>
+	<!-- addElementModal -->
+	<div class="modal fade" id="addElementModal" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" style="width:450px">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">定义要素信息</h4>
+				</div>
+				<div style="padding-top: 10px;">
+					<div class="form-type clearfix">
+						<label class="col-md-3 control-label">要素简称:</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="ele_code">
+						</div>
+					</div>
+					<div class="form-type clearfix">
+						<label class="col-md-3 control-label">要素表:</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="ele_source">
+						</div>
+					</div>
+					<div class="form-type clearfix">
+						<label class="col-md-3 control-label">要素中文名:</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="ele_name">
+						</div>
+					</div>
+					<div class="form-type clearfix">
+						<label class="col-md-3 control-label" >参照方式:</label>
+						<div class="col-md-9">
+							<select class="form-control" id ="ref_mode">
+								<option value="0">树参照</option>
+								<option value="1">列表参照</option>
+								<option value="2">下拉框</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-type clearfix">
+						<label class="col-md-3 control-label">标准码:</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="czgb_code">
+						</div>
+					</div>
+					<div class="form-type clearfix">
+						<label class="col-md-3 control-label">录入视图:</label>
+						<div class="col-md-9">
+								<div class="input-group ip-input-group modal-input-group">
+									<input type="text" class="form-control" id="enterview">
+									<span class="input-control-feedback" onclick="clearText('enterview')">X</span>
+									<input type="hidden" class="form-control" id="enterview-h">
+									 <span class="input-group-addon" style="border-radius: 0;cursor: pointer;" data-bind="click:lrtree">
+											<span class="glyphicon glyphicon-list"></span>
+									</span>
+								</div>
+						</div>
+					</div>
+					<div class="form-type clearfix">
+						<label class="col-md-3 control-label">列表视图:</label>
+						<div class="col-md-9">
+								<div class="input-group ip-input-group modal-input-group">
+									<input type="text" class="form-control" id="listview">
+									<span class="input-control-feedback" onclick="clearText('listview')">X</span>
+									<input type="hidden" class="form-control" id="listview-h">
+									 <span class="input-group-addon" style="border-radius: 0;cursor: pointer;" data-bind="click:lbtree">
+											<span class="glyphicon glyphicon-list"></span>
+									</span>
+								</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-bind="click:ensure">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- editElementModal -->
+	<div class="modal fade" id="editElementModal" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" style="width:450px">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">定义要素信息</h4>
+				</div>
+				<input type="hidden" class="form-control" id="chr_id1">
+				<div style="padding-top: 10px;">
+					<div class="form-type clearfix">
+						<label class="col-md-3 control-label">要素简称:</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="ele_code1">
+						</div>
+					</div>
+					<div class="form-type clearfix">
+						<label class="col-md-3 control-label">要素表:</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="ele_source1">
+						</div>
+					</div>
+					<div class="form-type clearfix">
+						<label class="col-md-3 control-label">要素中文名:</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="ele_name1">
+						</div>
+					</div>
+					<div class="form-type clearfix">
+						<label class="col-md-3 control-label" >参照方式:</label>
+						<div class="col-md-9">
+							<select class="form-control" id ="ref_mode1">
+								<option value="0">树参照</option>
+								<option value="1">列表参照</option>
+								<option value="2">下拉框</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-type clearfix">
+						<label class="col-md-3 control-label">标准码:</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="czgb_code1">
+						</div>
+					</div>
+					<div class="form-type clearfix">
+						<label class="col-md-3 control-label">录入视图:</label>
+						<div class="col-md-9">
+								<div class="input-group ip-input-group">
+									<input type="text" class="form-control" id="enterview1">
+									<input type="hidden" class="form-control" id="enterview1-h">
+									 <span class="input-group-addon" style="border-radius: 0;cursor: pointer;" data-bind="click:lrtree1">
+											<span class="glyphicon glyphicon-list"></span>
+									</span>
+								</div>
+						</div>
+					</div>
+					<div class="form-type clearfix">
+						<label class="col-md-3 control-label">列表视图:</label>
+						<div class="col-md-9">
+								<div class="input-group ip-input-group">
+									<input type="text" class="form-control" id="listview1">
+									<input type="hidden" class="form-control" id="listview1-h">
+									 <span class="input-group-addon" style="border-radius: 0;cursor: pointer;" data-bind="click:lbtree1">
+											<span class="glyphicon glyphicon-list"></span>
+									</span>
+								</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-bind="click:ensure1">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- editcodeModal -->
+	<div class="modal fade" id="editcodeModal" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" style="width:450px">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">修改编码格式</h4>
+				</div>
+				<input type="hidden" class="form-control" id="chr_id2">
+				<div style="padding-top: 10px;">
+					<div class="form-type clearfix">
+						<label class="col-md-3 control-label">最大级次:</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" onKeyUp="value=value.replace(/[^\d]/g,'')" placeholder="请输入数字" id="max_level">
+						</div>
+					</div>
+					<div class="form-type clearfix">
+						<label class="col-md-3 control-label">编码格式:</label>
+						<div class="col-md-9">
+							<input type="text" class="form-control" id="code_rule">
+						</div>
+					</div>
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-bind="click:ensure2">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/df/trd/requirejs/require.js"></script>
+<script src="/df/require.config.js"></script>
+<script src="./elementConfig.js"></script>
+</html>

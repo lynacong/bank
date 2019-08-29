@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>计划管理</title>
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css" />
+<link rel="stylesheet" type="text/css" href="../common.css" />
+
+</head>
+<body>
+		<div class="">
+			<h3 class="title">计划管理</h3>
+		</div>
+		<div class="panel panel-info">
+	      <div class="panel-heading">
+			 <h3 class="panel-title">计划配置</h3>
+		  </div>
+		  <div class="panel-body">
+		      <div class="row row-item">
+		      	<div class="col-sm-4 col-md-4">
+		      		<label>计划录入保存送审按钮是否显示标识</label>
+		      	</div>
+		      	<div class="col-sm-8 col-md-8">
+		      		<input type="radio" name="planinputsaveAndCheckBtn" value="1">是
+		      		<input type="radio" name="planinputsaveAndCheckBtn" value="0">否
+		      	</div>
+		      </div>
+		      <div class="row row-item">
+		      	<div class="col-sm-4 col-md-4">
+		      		<label>收支管理要素决定计划编制方式的显示方式</label>
+		      	</div>
+		      	<div class="col-sm-8 col-md-8">
+		      		<input type="radio" name="planisInpmRefer" value="true">是
+		      		<input type="radio" name="planisInpmRefer" value="false">否
+		      	</div>
+		      </div>
+		      <div class="row row-item">
+		      	<div class="col-sm-4 col-md-4">
+		      		<button data-bind="click: savePageInfo" class="btn btn-primary">保存</button>
+		      	</div>
+		      
+		      </div>
+		    </div>
+		  </div>
+		<script src="/df/trd/requirejs/require.js"></script>
+		<script src="/df/require.config.js"></script>
+		<script src="planmain.js"></script>
+</body>
+
+</html>

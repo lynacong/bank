@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html style="height:100%">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>代理财政业务平台</title>
+		<link rel="stylesheet" href="/df/portal/login/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/df/portal/login/css/index.css" />
+		<style type="text/css">
+			.panel-login{
+				height:56px;
+			}
+			.panel-login input{
+				width:150px;
+			}
+			.hint{
+				color: red;
+				margin-left:112px;
+			}
+			.labelSpan{
+			    width:80px;
+				float:left;
+				line-height: 29px;
+				margin-right: 22px;
+				font-size: 16px;
+			}
+			.form-control{
+				height:30px;
+				line-height:1.26050;
+				padding: 5px 2px;
+    			padding-left: 7px;
+			}
+			.license_area{
+				position:absolute;
+				top:7%;
+				left:48%;
+			}
+			#license{
+				color:red;
+				font-size:18px;
+				font-weight:bold;
+			}
+			.bg{
+				background:url("/df/portal/login/img/bg_new.png") no-repeat top center;
+				-moz-background-size:cover;
+				-webkit-background-size:cover;
+				background-size:cover;
+				/* 适应IE8及以下浏览器   */
+				filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/df/portal/login/img/bg_new.png',sizingMethod='scale');
+			}
+		</style>
+	</head>
+	<body onkeydown='if(event.keyCode==13){login();}' style="height: 100%">
+		<div  class="bg" style="height: 100%">
+			<div class="license_area">
+				<p id="license"></p>
+			</div>
+			<div class="login-box">
+				<div class="login" style="border-radius: 20px;">
+				    <h3 class="login-title">用户登录</h3>
+					<form name ="login_form" class="form-horizontal" method="post">
+						<div class="col-md-12 panel-login">
+						    <span class="labelSpan">用户名&nbsp;&nbsp;：</span>
+						    <input type="text" class="form-control user" id="username" placeholder="账号/手机/邮箱">
+		                	<p class="hint hint-user"></p>  
+						</div>
+						
+						<div class="col-md-12 panel-login">
+						    <span class="labelSpan">密&nbsp;&nbsp;&nbsp;&nbsp;码&nbsp;&nbsp;：</span>
+						    <input type="password" class="form-control pwd" id="password" placeholder="密码">
+		                	<p class="hint hint-pwd"></p> 
+						</div>
+						 <div class="col-md-12" style="margin-bottom: 10px;display:none;" >  
+						    <span style="float:left;line-height: 29px; margin-right: 20px;font-size: 16px;">区&nbsp;&nbsp;划&nbsp;&nbsp;&nbsp;&nbsp;：</span>
+						    <select id="rgCode" style="width:150px;height:30px;background-color: rgb(250, 255, 189);border: 1px solid #ccc;border-radius: 4px;">
+						    	<option value="000000">代理财政业务平台专用</option>
+	                        </select>
+						</div>
+						<div class="col-md-12" style="margin-bottom: 10px;display:none;">
+						     <span style="float:left;line-height: 29px; margin-right: 20px;font-size: 16px;">年&nbsp;&nbsp;度&nbsp;&nbsp;&nbsp;&nbsp;：</span>
+						     <select id="setYear" style="width:150px;height:30px;background-color: rgb(250, 255, 189);border: 1px solid #ccc;border-radius: 4px;">
+	                         	<option value="2019" selected="selected">2019</option>
+	                         </select>
+						</div> 
+						
+						<div class="col-md-12" style="margin-top:10px;">
+						    <input id="login-btn" type="button" value="登录" class="btn btn-primary btn-block btn-lg" 
+						    style="font-size: 18px;outline: none;" onclick="javascript:login();" />
+						</div>
+					</form>
+				</div>
+				<div class="download-area">
+					<a id="reportLink" href="/download/reportOCX/DSC(3).EXE" download="DSC(3).EXE">下载<b>报表控件</b></a>
+					<a id="ocxLink" href="/download/assp/ASSP.EXE"  download="ASSP.EXE">下载<b>凭证查看控件</b></a>
+				</div>
+			</div>
+        </div>
+        <script src="/df/trd/md5/js/md5.js"></script>
+		<script src="/df/trd/jquery/jquery-1.12.3.min.js"></script>
+	    <script src="/df/portal/login/js/cookie.js"></script>
+		<script src="/df/portal/admin/index/js/dfp/dfp.js"></script>
+		<script src="/df/rounte/admin/trd/ip/js/ip.js"></script>
+		<script src="/df/portal/login/js/login.js"></script>
+		
+		<!-- <script src="/df/portal/login/js/imgChange.js"></script> -->
+	</body>
+</html>

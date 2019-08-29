@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>用户角色授权</title>
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/platform.css" />
+		<link rel="stylesheet" type="text/css" href="userdauthority.css" />
+	</head>
+	<body>
+	<div class="row" style="padding-top:10px; height: 100%;">
+			<div class="col-md-3" style="height: 100%">
+					<div class="form-group search-form">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="模糊查询" aria-describedby="basic-addon1" onkeydown='if(event.keyCode==13){menuTreeNext();}' id="quickquery" style="border-right: none;">
+							<span class="input-group-addon" onclick="menuTreeNext()" style="background: #fff; color: #3fa4ed;"><span class="glyphicon glyphicon-search"></span></span>
+						</div>
+					</div>
+				<div class="left-content">
+					<span class="modal-tree-root"><img src="/df/trd/ip/changeTree/images/base.gif">用户</span>
+					<div id="treeTest" class="ztree" style="padding: 0" u-meta='{"id":"user-tree1","data":"userDataTable","type":"tree","idField":"guid","pidField":"pid","nameField":"name","setting":"userTreeSetting"}'>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-9 right-content" style="height: 100%;">
+				<div style="margin-bottom: 10px;">
+					<button class="btn btn-primary" data-bind="click: saveDataRightReltion">保存</button>
+				</div>
+				<ul class="nav nav-tabs" role="tablist">
+
+					<li role="presentation" class="active">
+						<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">机构权限</a>
+					</li>
+					<li role="presentation">
+						<a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">数据权限</a>
+					</li>
+					<li role="presentation">
+						<a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">角色信息</a>
+					</li>
+				</ul>
+				<div class="tab-content" style="height: 84%;">
+					<div role="tabpanel" class="tab-pane active" id="profile">
+						<!-- <label>机构权限</label> -->
+						<select id="organSelectList" style="width: 135px"></select>
+						<div>
+							<div class="panel panel-default panel-tree">
+
+
+								<div class="panel-body">
+									<span class="modal-tree-root" data-bind="click:selectAll"><img src="/df/trd/ip/changeTree/images/base.gif">全部</span>
+									<div id="treeTest" class="ztree" u-meta='{"id":"oragn-tree","data":"organRightDataTable","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"codename","setting":"organTreeSetting"}' style="padding:0;margin-left: 10px;"></div>
+								</div>
+
+							</div>
+						</div>
+						
+					</div>
+					<div role="tabpanel" class="tab-pane" id="messages">
+						<div class="form-inline">
+							<label>数据：</label>
+							<input class="form-control" id="dataRightInput"/>
+							<button class="btn btn-primary btn-data-authority" data-bind="click: getRightGroup">选择</button>
+							<button class="btn btn-danger btn-data-authority" data-bind="click: delDataRight">删除</button>
+						</div>
+						<div>
+							<div class="panel panel-default panel-tree">
+								<div class="panel-body">
+									<div id="rigntTree" class="ztree" u-meta='{"id":"rightDetaile","data":"rightDetaileDataTable","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"chr_name"}'>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					</div>
+					<div role="tabpanel" class="tab-pane" id="settings" style="height: 100%;">
+						<div class="panel panel-default" id="user-role-info" style="height: 42%; overflow: auto;">
+							<div class="panel-body" style="height: 76%;">
+								<div>
+								<!--  
+									<span class="modal-tree-root"><img src="/df/trd/ip/changeTree/images/base.gif">角色</span>
+								-->
+									<ul id="ulroleSelectedRight" style="margin-left: 20px;">
+									</ul>
+								</div>
+							</div>
+							<div class="panel-footer" style="text-align: right;">
+								<button class="btn btn-primary btn-data-authority" data-bind="click: showAddRolesModal">添加角色</button>
+								<button class="btn btn-danger btn-data-authority" data-bind="click: delRole">删除角色</button>
+							</div>
+						</div>
+						<div id="zdyTab" class="panel panel-default" style="height: 50%; overflow: auto; padding-top: 10px;">
+							<div class="panel-body" style="height: auto;">
+								<div class="row">
+									<div class="col-md-3">
+										<label><input type="radio" name="optionsRadios1" id="optionsRadios3" value="option1" onclick="allClick()" checked="" disabled="disabled">使用用户权限</label>
+									</div>
+									<div class="col-md-3">
+										<label><input type="radio" name="optionsRadios1" id="optionsRadios4" value="option2" onclick="userDefinedClick()" disabled="disabled">自定义权限</label>
+									</div>
+									<div class="col-md-3">
+										<input class="form-control" id="dataRightInput2" readonly="readonly">
+									</div>
+									<div class="col-md-3">
+										<button class="btn btn-primary btn-data-authority choose-btn2" id="checkbtn" data-bind="click: getRightGroup1" disabled="disabled">选择</button>
+									</div>
+								</div>
+								<div class="zdycontent">
+									<div id="rigntTree1" class="ztree"
+										u-meta='{"id":"rightDetaile1","data":"rightDetaileDataTable1","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"chr_name"}'>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--
+        	时间：2017-03-27
+        	描述：添加角色弹窗
+        -->
+		<div class="modal fade" tabindex="-1" role="dialog" id="addRoleModal" data-backdrop="static">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<span class="modal-title">添加角色</span>
+					</div>
+					<div class="modal-body">
+						<div id="treeTest" class="ztree" u-meta='{"id":"addRoletree3","data":"roleDataTable","type":"tree","idField":"guid","pidField":"roletype","nameField":"name","setting":"roleTreeSetting"}'></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-bind="click: getSelectRoleTree">确定</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!--
+   	时间：2017-03-27
+   	描述：选择权限弹窗
+  		 -->
+	<div class="modal fade" tabindex="-1" role="dialog" id="selectAuthModal" data-backdrop="static">
+		<div class="modal-dialog" role="document" style="width: 35%;">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<span class="modal-title">增加权限组</span>
+				</div>
+				<div class="modal-body" style="height: 300px; overflow: auto;">
+					<span class="modal-tree-root"><img src="/df/trd/ip/changeTree/images/base.gif">权限组</span>
+					<div id="ruleTree1" class="ztree" u-meta='{"id":"ruleTree1","data":"dataTableRuleGroup","type":"tree","idField":"rule_id","pidField":"pid","nameField":"name"}'></div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-bind="click: addGroup">新增</button>
+					<button type="button" class="btn btn-primary" data-bind="click: showRightDetail">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+				<div id="rightModal" style="display:none">
+					<div id='add-config-modal' class='bs-modal-sm'>
+						<div class='modal-dialog' style="width:600px; margin-left: -75px;">
+							<div class='modal-content modal-content-bc'>
+								<div class='modal-header'>
+									<button type="button" class="close" data-bind="click:rightModelCloseButton">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class='modal-title'>设定规则</h4>
+								</div>
+								<div class="modal-body">
+									<form class="form-inline">
+										<div class="form-group">
+											<label for="rule_code">编号：</label> <input type="text" class="form-control" id="rule_code">
+										</div>
+										<div class="form-group">
+											<label for="rule_name">名称：</label> <input type="text" class="form-control" style="width:276px" id="rule_name">
+										</div>
+										<div class="form-group m-top">
+											<label for="remark">说明：</label> <input type="text" class="form-control spe-input" id="remark">
+										</div>
+									</form>
+									<div class="m-top">
+
+										<!-- Nav tabs -->
+										<ul id="addNewRule" class="nav nav-tabs" role="tablist">
+										</ul>
+
+										<!-- Tab panes -->
+										<div id="myTabContent" class="tab-content" style="height: 200px; overflow-y:auto; overflow-x:hidden;border:solid 1px #FFE5E5;border-top:none;"></div>
+									</div>
+								</div>
+								<div class="modal-footer" style=" border-top: 0px;">
+									<button type="button" class="btn btn-primary" data-bind="click: showYLModelDialog">预览</button>
+									<button type="button" class="btn btn-primary" data-bind="click: rightSure">确定</button>
+									<button type="button" class="btn btn-default" data-bind="click:rightModelCloseButton">取消</button>
+								</div>
+								<!-- 预览Modal start-->
+							    <div id="ylModal" style="display:none">
+									<div id='ylModal-modal' class='bs-modal-sm'>
+										<div class='modal-dialog' style="width: 400px;">
+										<div class='modal-content modal-content-bc'>
+											<div class='modal-header'>
+												<button type="button" class="close" data-bind="click:drCloseButton">
+													<span aria-hidden="true">&times;</span>
+												</button>
+												<h4 class='modal-title'>预览权限组信息</h4>
+											</div>
+											<div class="modal-body display-container">
+												<ul id="detail_list"></ul>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-primary" data-bind="click:drCloseButton" >关闭</button>
+											</div>
+										</div>
+											
+										</div>
+									</div>
+								</div>
+								<!-- 预览Modal end-->
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!-- 查看Modal begin-->
+			   <div id="drDisplayModal" style="display:none">
+						<div id='ylModal-modal' class='bs-modal-sm'>
+							<div class='modal-dialog' style="width: 400px;">
+							<div class='modal-content modal-content-bc'>
+								<div class='modal-header'>
+									<button type="button" class="close" data-bind="click:drCloseButton">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class='modal-title'>权限预览</h4>
+								</div>
+								<div class="modal-body display-container">
+									<div id="detail_list"></div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-primary" data-bind="click:drCloseButton" >关闭</button>
+								</div>
+							</div>
+								
+							</div>
+						</div>
+			 </div>
+			<!-- 查看Modal end-->
+			</div>
+		</div>
+	</div>
+
+	<!-- adadad -->
+		<div class="modal fade" tabindex="-1" role="dialog" id="demo" data-backdrop="static">
+			<div class="modal-dialog" role="document" style="width: 75%">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<img class="modal-img" src="/df/images/modal-img.png" />
+						<span class="modal-title">权限组</span>
+					</div>
+					<div class="modal-body">
+						<iframe src="" style="width: 100%; height: 500px; border:none" id="modal-iframe" ></iframe>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-bind="click: showRightDetail">确定</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" tabindex="-1" role="dialog" id="selectAuthModal1" data-backdrop="static">
+			<div class="modal-dialog" role="document" style="width: 35%;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<span class="modal-title">增加权限组</span>
+					</div>
+					<div class="modal-body panel-body">
+						<span class="modal-tree-root"><img
+							src="/df/trd/ip/changeTree/images/base.gif">权限组</span>
+						<div id="ruleTree1jump" class="ztree"
+							u-meta='{"id":"ruleTree1-jump","data":"dataTableRuleGroup","type":"tree","idField":"rule_id","pidField":"pid","nameField":"name"}'></div>
+					</div>
+					<div class="modal-footer">
+						<!-- <button type="button" class="btn btn-primary"
+							data-bind="click: addGroup">新增</button> -->
+						<button type="button" class="btn btn-primary"
+							data-bind="click: showRightDetail1">确定</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- yours -->
+		<div class="modal fade" tabindex="-1" role="dialog" id="drModel" data-backdrop="static">
+			<div class="modal-dialog" role="document" style="width: 55%;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<img class="modal-img" src="/df/images/modal-img.png" />
+						<span class="modal-title">权限组设置</span>
+					</div>
+					<div class="modal-body">
+						<p>权限组</p>
+						
+					 <div class="contain">
+						<div class="row">
+							<div class="col-sm-4 col-md-3 col-lg-3 left-content" style="min-height: 350px; overflow: auto;">
+								<!-- tree modal -->
+								<span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+								权限组
+									<div class="form-group search-form" style="margin: 5px;">
+										<div class="input-group">
+										<input type="text" class="form-control" placeholder="模糊查询" aria-describedby="basic-addon1" data-bind="event:{keyup:quickQueryDR}" onkeydown='if(event.keyCode==13){menuTreeNextDR();}' id="quickqueryDR">
+										<span class="input-group-addon" onclick="menuTreeNextDR()"><span class="glyphicon glyphicon-search"></span></span>
+										</div>
+									</div>
+									<div id="ruleTree" class="ztree"
+											u-meta='{"id":"ruleTree","data":"dataTableRuleGroup","type":"tree","idField":"rule_id","pidField":"pid","nameField":"name","setting":"RuleListTreeSetting"}'>
+									</div>
+							</div>
+							<div class="col-sm-8 col-md-9 col-lg-9">
+								<div class="header">
+									<button class="btn btn-primary"  id="addsss" data-bind="click:addGroup">新增</button> 
+									<button class="btn btn-primary"  role="button" data-bind="click:modifyGroup">修改</button> 
+									<button class="btn btn-danger"  role="button" data-bind="click:delGroup" id="groupDel">删除</button> 
+								</div>
+								<div class="form-group clearfix">
+									<label for="inputEmail3" class="col-sm-2 control-label">编号:</label>
+									<div class="col-sm-10" style="">
+										<input type="text" class="form-control" id="right-code" readonly="true" >
+									</div>
+								</div>
+								<div class="form-group clearfix">
+									<label for="inputPassword3" class="col-sm-2 control-label">名称:</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="right-name" readonly="true" >
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="exampleInputName2">配置信息：</label>
+									<div class="info-content" id="" style="width:41.5%;">
+										<!-- tree modal -->
+										<div id="treeTest2" class="ztree"
+											u-meta='{"id":"tree2","data":"dataTableRightList","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"chr_name","setting":"RightListTreeSetting"}'></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+		<!-- 设定规则Modal start -->
+		
+		
+	
+		
+		<!-- 设定规则Modal end -->
+		
+		
+  		</div>
+						
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-bind="click: getSelectRoleTree">确定</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<!-- 
+		时间：2017-05-02
+		权限组弹出整个页面的弹出框
+		 -->
+		
+			
+		
+		
+		
+		<script src="/df/trd/requirejs/require.js"></script>
+		<script src="/df/require.config.js"></script>
+		<script src="userdauthority.js"></script>
+		<!-- <script type="text/javascript">
+			rule_id="";
+				function groupclick(id) {
+					rule_id=id;
+					var current_url = location.search;
+					var tokenid = current_url.substring(current_url
+							.indexOf("tokenid") + 8,
+							current_url.indexOf("tokenid") + 48);
+					$.ajax({
+								url : "/df/dataright/getSysRightList.do?tokenid="
+										+ tokenid,
+								type : 'POST',
+								dataType : 'json',
+								data : {
+									"rule_id" : id,
+									"ajax":1
+								},
+								success : function(data) {
+									viewModel.dataTableRightList.setSimpleData(data.rows);
+								}
+							});
+				};
+	</script> -->
+	</body>
+
+</html>

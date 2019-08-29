@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="../../../trd/bootstrap/css/bootstrap.css">
+</head>
+<body>
+<button onclick="uploadFile()">点击我</button>
+
+<!--新增附件模态框-->
+<!--<div class="modal fade in show" id="add-attach-box" tabindex="-1" role="dialog" aria-labelledby="addAttachBoxLabel" data-backdrop="static">-->
+  <!--<div class="modal-dialog" role="document">-->
+    <!--<div class="modal-content">-->
+      <!--<div class="modal-header">-->
+        <!--<button type="button" class="close" data-bind="click:cancleAddAttach" aria-label="Close"><span-->
+            <!--aria-hidden="true">&times;</span></button>-->
+        <!--<h4 class="modal-title font-size-14" id="addAttachBoxLabel">新增附件</h4>-->
+      <!--</div>-->
+      <!--<div class="modal-body">-->
+        <!--&lt;!&ndash;form表单开始&ndash;&gt;-->
+        <!--<form class="form-horizontal">-->
+          <!--<div class="form-group height-150" style="overflow:auto">-->
+            <!--&lt;!&ndash;已添加文件&ndash;&gt;-->
+            <!--<table id="uploadTable" class="table-bordered table-hover table-condensed col-sm-10 col-sm-offset-1">-->
+              <!--<thead>-->
+              <!--<tr>-->
+                <!--<th class="col-sm-1 text-center">序号</th>-->
+                <!--<th class="col-sm-9 text-center">附件名称</th>-->
+                <!--<th class="col-sm-2 text-center">操作</th>-->
+              <!--</tr>-->
+              <!--</thead>-->
+              <!--<tbody id="upload-table-content">-->
+              <!--</tbody>-->
+            <!--</table>-->
+          <!--</div>-->
+        <!--</form>-->
+        <!--&lt;!&ndash;form表单结束&ndash;&gt;-->
+      <!--</div>-->
+      <!--<div class="modal-footer padding-right-0">-->
+        <!--<button type="button" class="btn btn-primary" id="attach-add-confirm" onclick="">保存</button>-->
+        <!--<button type="button" class="btn btn-primary" id="attach-add-cancle" data-bind="click:cancleAddAttach" style="color: #000;">取消-->
+        <!--</button>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+<script src="../../../trd/requirejs/require.debug.js"></script>
+<script src="../require.config.js"></script>
+<script>
+  require(['./fileUploadDemo.js'], function(uploadFile) {
+    window.uploadFile = uploadFile
+  })
+</script>
+</body>
+</html>

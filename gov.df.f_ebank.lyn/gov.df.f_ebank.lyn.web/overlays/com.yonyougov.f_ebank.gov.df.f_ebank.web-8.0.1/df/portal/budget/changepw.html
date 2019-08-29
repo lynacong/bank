@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>修改密码</title>
+		<link rel="stylesheet" href="css/changePassword.css" />
+		<script src="/df/trd/jquery/jquery-1.12.3.min.js"></script>
+		<script src="/df/portal/admin/index/js/Base64.js"></script>
+		<script src="/df/portal/admin/index/js/dfp.js"></script>
+		<script src="/df/trd/md5/js/md5.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="top"></div>
+			<div id="box">
+				<div class="main">
+					<div class="main-in">
+						<div class="content">
+							<h3>修改密码</h3>
+							<form name ="login_form" class="form-horizontal" action="" method="post">
+								<div>
+									<span class="reminder">原始密码：</span>
+									<div class="box">
+								   	 	<input id="oldpasswd" type="password" class="form-control">
+									</div>
+								</div>
+								<div>
+									<span class="reminder">新密码：</span>
+									<div class="box">
+								   	 	<input id="passwd" type="password" class="form-control">
+									</div>
+								</div>
+								<div>
+									<span class="reminder">再次确认新密码：</span>
+									<div class="box">
+								   	 	<input id="passwd2" type="password" class="form-control">
+									</div>
+								</div>
+								<div class="btn">
+									<input id="changepw" type="button" class="subbtn" value="提交"  style="margin:50px 0 0 250px;"/>
+									<input id="quxiao" type="button" class="subbtn" value="取消"  style="margin:50px 0 0 100px;" />
+								</div>
+							</form>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="hidden_label">
+			<input type="hidden" id="svFiscalPeriod" value=""/>
+			<input type="hidden" id="svMenuId" value=""/>
+			<input type="hidden" id="svRgCode" value=""/>
+			<input type="hidden" id="svRgName" value=""/>
+			<input type="hidden" id="svRoleCode" value=""/>
+			<input type="hidden" id="svRoleId" value=""/>
+			<input type="hidden" id="svRoleName" value=""/>
+			<input type="hidden" id="svSetYear" value=""/>
+			<input type="hidden" id="svTransDate" value=""/>
+			<input type="hidden" id="svUserCode" value=""/>
+			<input type="hidden" id="svUserId" value=""/>
+			<input type="hidden" id="svUserName" value=""/>
+			<input type="hidden" id="svAgencyCode" value=""/>
+			<input type="hidden" id="svAgencyName" value=""/>
+			<a class="one_hidden_a" style="display:none" href="javascript:void(0);" target="_blank"></a> <!-- target="_blank" -->
+			<a class="two_hidden_a two-level-detail" style="display:none" href="javascript:void(0);" data-title="" data-href=""></a> <!-- target="_blank" -->
+		</div>
+		<script src="/df/portal/budget/js/dealing.js"></script>
+		<script src="/df/portal/budget/js/index.js"></script>
+	</body>
+</html>

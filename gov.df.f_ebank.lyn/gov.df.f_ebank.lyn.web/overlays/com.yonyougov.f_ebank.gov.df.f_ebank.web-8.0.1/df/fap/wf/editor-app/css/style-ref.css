@@ -1,0 +1,37 @@
+/**
+	����CSS
+*/
+
+.modal-body-ref {
+	padding-left: 15px;
+	padding-right: 0px;
+}
+
+.row-ref {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.margin_left{
+	margin-left: 5px;
+}
+
+.margin_right{
+	margin-right: 5px;
+}
+
+ul.t_ztree {
+	width: 300px;
+	height: 400px;
+	/*overflow-y: scroll;*/
+	overflow-x: auto;
+	padding: 0px;
+}
+
+ul.tg_ztree {
+	width: 200px;
+	height: 400px;
+	/*overflow-y: scroll;*/
+	overflow-x: auto;
+	padding: 0px;
+}

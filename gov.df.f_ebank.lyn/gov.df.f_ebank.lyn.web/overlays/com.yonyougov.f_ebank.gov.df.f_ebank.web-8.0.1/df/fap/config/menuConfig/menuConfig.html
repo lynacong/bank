@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible"
+	content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+<title>菜单资源</title>
+<meta name="author" content="ip">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/datetimepicker/css/bootstrap-datetimepicker.min.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css" />
+<link rel="stylesheet" type="text/css" href="./menuConfig.css" />
+</head>
+
+<body>
+	<div class="menuConfig-body">
+		<div id="menubody" class="menubody">
+			<div class="bodySize">
+				<div class="bodyBackgroud">
+					<div class='row '>
+						<div class='tree-block col-md-3'>
+							<div class="form-group search-form" style="margin: 5px;">
+								<div class="input-group">
+									<input type="text" class="form-control" placeholder="模糊查询"
+										aria-describedby="basic-addon1"
+										data-bind="event:{keyup:quickQuery}"
+										onkeydown='if(event.keyCode==13){menuTreeNext();}'
+										id="quickquery"> <span class="input-group-addon"
+										onclick="menuTreeNext()"><span
+										class="glyphicon glyphicon-search"></span> </span>
+								</div>
+							</div>
+							<div class="menuTree">
+								<div id="menuConfigTree" class="ztree"
+									u-meta='{"id":"menuConfigTree1","data":"treeDataTable","type":"tree","idField":"guid","pidField":"parentid","nameField":"name","setting":"treeSetting"}'></div>
+							</div>
+						</div>
+						<div class='menu-tabs col-md-9'>
+							<!-- Nav tabs -->
+							<ul id="myTabs" class="nav nav-tabs" role="tablist">
+								<li role="presentation" class="active"><a href="#homes"
+									aria-controls="home" role="tab" data-toggle="tab">视图列表</a>
+								</li>
+								<li role="presentation"><a href="#profiles"
+									aria-controls="profile" role="tab" data-toggle="tab">资源列表</a>
+								</li>
+								<li role="presentation"><a href="#status"
+									aria-controls="status" role="tab" data-toggle="tab">状态列表</a>
+								</li>
+								<li role="presentation"><a href="#buttonlist"
+									aria-controls="buttonlist" role="tab" data-toggle="tab">按钮列表</a>
+								</li>
+								<li role="presentation"><a href="#statuebutton"
+									id="statue123" aria-controls="statuebutton" role="tab"
+									data-toggle="tab">状态按钮</a>
+								</li>
+								
+								<li role="presentation"><a href="#statuebuttonparam"
+									id="btnparam123" aria-controls="statuebutton" role="tab"
+									data-toggle="tab">状态按钮参数</a>
+								</li>
+								
+							</ul>
+
+							<!-- Tab panes -->
+							<div id="myTabContent" class="tab-content">
+								<div role="tabpanel" class="tab-pane active backcolor"
+									id="homes">
+									<div>
+										<button id="addViewBtn" type="button"
+											class="btn btn-primary add-btn" data-toggle="modal"
+											data-bind="click: addviewSubmit">新&nbsp;增</button>
+										<button id="delViewBtn" type="button"
+											class="btn btn-danger del-btn"
+											data-bind="click: delviewSubmit">删&nbsp;除</button>
+									</div>
+									<div type="text" class="menu-grid"
+										u-meta='{"id":"write-grid","data":"gridDataTable","type":"grid","editable":false,"autoExpand":false,"showTree":false,"showNumCol":true,"keyField":"theId","parentKeyField":"parentId","multiSelect":true,"height":450,"headerHeight":32,"rowHeight":32,"sumRowHeight":32}'>
+										<div
+											options='{"field":"viewcode","dataType":"String","title":"视图编码","editType":"string","width": 150}'></div>
+										<div
+											options='{"field":"viewtype","dataType":"String","title":"视图类型","editOptions":{"id":"combobox1","type":"combo","datasource":"comItems"},"editType":"combo","renderType":"comboRender","width": 150}'></div>
+										<div
+											options='{"field":"viewname","dataType":"String","title":"视图名称","editType":"string","width": 150}'></div>
+										<div
+											options='{"field":"orders","dataType":"String","title":"显示顺序","editType":"string","width": 150}'></div>
+										<div
+											options='{"field":"keyword","dataType":"String","title":"关键字","editType":"string","width": 150}'></div>
+									</div>
+								</div>
+
+								<div role="tabpanel" class="tab-pane backcolor" id="profiles">
+									<div>
+										<button type="button" class="btn btn-primary add-btn"
+											data-toggle="modal" data-bind="click: addbtnSubmit">新&nbsp;增</button>
+										<button type="button" class="btn btn-danger del-btn"
+											data-bind="click: delbtnSubmit">删&nbsp;除</button>
+									</div>
+									<div type="text" class="menu-grid"
+										u-meta='{"id":"write-grid1","data":"gridDataTableButton","type":"grid","editable":false,"autoExpand":false,"showNumCol":true,"showTree":false,"keyField":"theId","parentKeyField":"parentId","multiSelect":true,"height":450,"headerHeight":32,"rowHeight":32,"sumRowHeight":32}'>
+										<div
+											options='{"field":"actioncode","dataType":"String","title":"资源标识","editType":"string","width": 200}'></div>
+										<div
+											options='{"field":"buttonname","dataType":"String","title":"资源名称","editType":"string","width": 300}'></div>
+										<div
+											options='{"field":"actionname","dataType":"String","title":"权限","editOptions":{"id":"combobox2","type":"combo","datasource":"comItems1"},"editType":"combo","renderType":"comboRender","width": 100}'></div>
+										<div
+											options='{"field":"changeType","dataType":"String","title":"权限修改","editType":"string","width": 150,"renderType":"changeType"}'></div>
+									</div>
+								</div>
+
+								<div role="status" class="tab-pane backcolor" id="status">
+									<div>
+										<button type="button" class="btn btn-primary add-btn"
+											data-toggle="modal" data-bind="click: addstatusSubmit">新&nbsp;增</button>
+										<button type="button" class="btn btn-primary del-btn"
+											data-bind="click: editstatusSubmit">修&nbsp;改</button>
+										<button type="button" class="btn btn-danger del-btn"
+											data-bind="click: delstatusSubmit">删&nbsp;除</button>
+									</div>
+									<div type="text" class="menu-grid"
+										u-meta='{"id":"write-grid2","data":"statueDataTable","type":"grid","editable":false,"autoExpand":false,"showNumCol":true,"showTree":false,"keyField":"theId","parentKeyField":"parentId","multiSelect":false,"height":450,"headerHeight":32,"rowHeight":32,"sumRowHeight":32}'>
+										<div
+											options='{"field":"status_name","dataType":"String","title":"状态名称","editType":"string"}'></div>
+										<div
+											options='{"field":"status_code","dataType":"String","title":"状态编码","editType":"string"}'></div>
+										<div
+											options='{"field":"show_name","dataType":"String","title":"别名","editType":"string"}'></div>
+										<div
+											options='{"field":"show_order","dataType":"String","title":"显示顺序","editType":"string"}'></div>
+										<div
+											options='{"field":"menu_name","dataType":"String","title":"菜单","editType":"string"}'></div>
+									</div>
+								</div>
+
+								<div role="buttonlist" class="tab-pane backcolor"
+									id="buttonlist">
+									<div>
+										<button type="button" class="btn btn-primary add-btn"
+											data-toggle="modal" data-bind="click: addbtn1Submit">新&nbsp;增</button>
+										<button type="button" class="btn btn-primary del-btn"
+											data-bind="click: editbtn1Submit">修&nbsp;改</button>
+										<button type="button" class="btn btn-danger del-btn"
+											data-bind="click: delbtn1Submit">删&nbsp;除</button>
+									</div>
+									<div type="text" class="menu-grid"
+										u-meta='{"id":"write-grid3","data":"buttonDataTable","type":"grid","editable":false,"autoExpand":false,"showNumCol":true,"showTree":false,"keyField":"theId","parentKeyField":"parentId","multiSelect":false,"height":450,"headerHeight":32,"rowHeight":32,"sumRowHeight":32}'>
+										<div
+											options='{"field":"remark","dataType":"String","title":"权限修改","editType":"string","width": 150,"renderType":"changeType1"}'></div>
+										<div
+											options='{"field":"action_code","dataType":"String","title":"按钮编码","editType":"string"}'></div>
+										<div
+											options='{"field":"action_name","dataType":"String","title":"按钮名称","editType":"string"}'></div>
+										<div
+											options='{"field":"func_name","dataType":"String","title":"函数名称","editType":"string"}'></div>
+										<div
+											options='{"field":"show_name","dataType":"String","title":"别名","editType":"string"}'></div>
+										<div
+											options='{"field":"show_order","dataType":"String","title":"显示顺序","editType":"string"}'></div>
+										<div
+											options='{"field":"param","dataType":"String","title":"参数","editType":"string"}'></div>
+									</div>
+								</div>
+								<div role="statuebutton" class="tab-pane backcolor"
+									id="statuebutton">
+									<div class="row">
+										<div class="col-md-1"></div>
+										<div class="col-md-4 main-layout">
+											<div class='headtype'>
+												<label class="headforent">状态列表</label>
+											</div>
+											<div class="robtnTree treeht1">
+												<div id="statusMenuTree" class="ztree"
+													u-meta='{"id":"statusMenuTree","data":"treeDataTable5","type":"tree","idField":"status_id","pidField":"pid","nameField":"show_name","setting":"treeSetting5"}'></div>
+											</div>
+										</div>
+										<div class="col-md-1"></div>
+										<div class="col-md-4 main-layout">
+											<div class='headtype'>
+												<label class="headforent">按钮列表</label>
+											</div>
+											<div class="robtnTree treeht1">
+												<div id="statusMenuTree1" class="ztree"
+													u-meta='{"id":"statusMenuActionTree1","data":"treeDataTable6","type":"tree","idField":"action_id","pidField":"pid","nameField":"show_name","setting":"treeSetting4"}'></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<!-- 状态按钮参数  开始-->
+								<div role="statuebuttonparam" class="tab-pane backcolor"
+									id="statuebuttonparam">
+									<div class="row">
+										<div class="col-md-1"></div>
+										<div class="col-md-4 main-layout">
+											<div class='headtype'>
+												<label class="headforent">状态列表</label>
+											</div>
+										<div style="margin-top:4px;">
+												<select id="statusoptions" >
+												<option value=''>请选择状态</option>
+											</select>
+										</div>
+										</div>
+										<div class="col-md-6 main-layout">
+											<div class='headtype'>
+												<label class="headforent">按钮列表</label>
+											</div>
+											<div type="text" 
+											u-meta='{"id":"btnparamgrid","data":"buttonparamDataTable","type":"grid","editable":true,"autoExpand":false,"showNumCol":true,"onValueChange":"gridChange","showTree":false,"keyField":"action_id","multiSelect":false,"height":450,"headerHeight":32,"rowHeight":32,"sumRowHeight":32}'>
+											<div
+												options='{"field":"show_name","dataType":"String", "editable":false,"title":"按钮名称","editType":"string"}'></div>
+											<div
+												options='{"field":"button_param","dataType":"String","editable":true,"title":"参数","editType":"string"}'></div>
+										</div>
+										</div>
+									</div>
+								</div>
+								<!-- 状态按钮参数  结束-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- addviewModal -->
+	<div class="modal fade" id="addviewModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">视图添加</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-7 addview-input">
+							<label for="addviewInput">模糊查询:</label> <input type="text"
+								name="addviewInput" id="addviewInput" class="addview-Input" />
+						</div>
+						<div class="col-md-5">
+							<button type="button" class="btn btn-primary quik-find"
+								data-bind="click: viewQuery">查找</button>
+							<button type="button" class="btn btn-primary quik-next"
+								data-bind="click: viewNext">下一个</button>
+						</div>
+					</div>
+					<div class="view-Tree">
+						<div id="menuConfigTree2" class="ztree"
+							u-meta='{"id":"menuConfigTree2","data":"treeViewTable","type":"tree","idField":"ui_id","pidField":"parentid","nameField":"uiname","setting":"treeSetting2"}'></div>
+					</div>
+					<div class="row viewAdd-input">
+						<!--  <div class="col-md-6">
+					    <span class="star-color">*</span><label for="orderInput">显示顺序:</label>
+					    <input type="text" name="orderInput" class="form-control" id="orderInput" onKeyUp="value=value.replace(/[^\d]/g,'')" placeholder="请输入数字"/></div> -->
+						<div class="col-md-6">
+							<label for="" class="col-md-4 text-right"><span
+								class="star-color" style="font-size: 15px;">*</span>显示顺序:</label>
+							<div class="col-md-8 ip-input-group">
+								<input type="text" class="form-control" id="orderInput"
+									onKeyUp="value=value.replace(/[^\d]/g,'')" placeholder="请输入数字">
+							</div>
+						</div>
+						<!-- 	<div class="col-md-6">
+							<label for="keyInput">关键字:</label> <input type="text"
+								name="keyInput" class="form-control" id="keyInput" />
+						</div> -->
+						<div class="col-md-6">
+							<label for="" class="col-md-4 text-right"
+								style="font-size: 15px;">关键字:</label>
+							<div class="col-md-8 ip-input-group">
+								<input type="text" class="form-control" id="keyInput">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bind="click: ensure">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- addButtonModal -->
+	<div class="modal fade" id="addButtonModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">增加资源信息</h4>
+				</div>
+				<div class="modal-body clearfix">
+					<div class="form-group clearfix">
+						<label class="col-md-2 control-label">资源标识:</label>
+						<div class="col-md-10">
+							<input type="text" class="form-control" id="btnCode">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-2 control-label">资源名称:</label>
+						<div class="col-md-10">
+							<input type="text" class="form-control" id="btnName">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-2 control-label">所属菜单:</label>
+						<div class="col-md-10">
+							<input type="text" class="form-control" id="belongMenu"
+								disabled="disabled">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-2 control-label">权限:</label>
+						<div class="col-md-10">
+							<select class="form-control" id="btnRemark">
+								<option value="1">显示</option>
+								<option value="0">不显示</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bind="click:ensure2">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- addStatusModal -->
+	<div class="modal fade" id="addStatusModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">增加状态信息</h4>
+				</div>
+				<div class="modal-body clearfix">
+					<div class="form-group clearfix">
+						<label class="col-md-3 control-label">所属菜单:</label>
+						<div class="input-group  ip-input-group col-md-9">
+							<input type="text" class="form-control" id="belongMenu1"
+								disabled="disabled">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-3 control-label">状态选择:</label>
+						<div class="input-group  ip-input-group col-md-9">
+							<select class="form-control" id="status-select">
+
+							</select>
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-3 control-label"><span
+							class="star-color">*</span>别名:</label>
+						<div class="input-group  ip-input-group col-md-9">
+							<input type="text" class="form-control" id="show_name">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-3 control-label"><span
+							class="star-color">*</span>显示顺序:</label>
+						<div class="input-group  ip-input-group col-md-9">
+							<input type="text" class="form-control" id="show_order"
+								onKeyUp="value=value.replace(/[^\d]/g,'')" placeholder="请输入数字">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-3 control-label">显示菜单:</label>
+						<div class="input-group  ip-input-group col-md-9">
+							<input id="belonemenu" type="text" class="form-control"
+								readonly="readonly"> <input id="belonemenu-h"
+								type="hidden"> <span id="belonemenu-span"
+								class="input-group-addon belon-class" data-bind="click: belmenu">
+								<span class="glyphicon glyphicon-list"></span> </span>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bind="click:ensure3">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="drDisplayModal" style="display:none">
+			<div id='ylModal-modal' class='bs-modal-sm'>
+				<div class='modal-dialog'>
+					<div class='modal-content modal-content-bc'>
+						<div class='modal-header'>
+							<button type="button" class="close"
+								data-bind="click:drCloseButton">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class='modal-title'>菜单树</h4>
+						</div>
+						<div class="modal-body display-container panel-body menuTree1">
+							<input id="menuguid" type="hidden">
+							<div id="menuTree" class="ztree"
+								u-meta='{"id":"menuTree","data":"treeDataTable1","type":"tree","idField":"guid","pidField":"parentid","nameField":"name","setting":"treeSetting3"}'></div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary"
+								data-bind="click:menuCheckButton">确定</button>
+							<button type="button" class="btn btn-primary"
+								data-bind="click:drCloseButton">关闭</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- editStatusModal -->
+	<div class="modal fade" id="editStatusModal" tabindex="-1"
+		role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">修改状态信息</h4>
+				</div>
+				<div class="modal-body clearfix">
+					<input id="guid2" type="hidden">
+					<div class="form-group clearfix">
+						<label class="col-md-3 control-label">所属菜单:</label>
+						<div class="input-group  ip-input-group col-md-9">
+							<input type="text" class="form-control" id="belongMenu2"
+								disabled="disabled">
+						</div>
+					</div>
+
+					<div class="form-group clearfix">
+						<label class="col-md-3 control-label">状态选择:</label>
+						<div class="input-group  ip-input-group col-md-9">
+							<select class="form-control" id="status-select1">
+
+							</select>
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-3 control-label"><span
+							class="star-color">*</span>别名:</label>
+						<div class="input-group  ip-input-group col-md-9">
+							<input type="text" class="form-control" id="show_name1">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-3 control-label"><span
+							class="star-color">*</span>显示顺序:</label>
+						<div class="input-group  ip-input-group col-md-9">
+							<input type="text" class="form-control" id="show_order1"
+								onKeyUp="value=value.replace(/[^\d]/g,'')" placeholder="请输入数字">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-3 control-label"> <span
+							class="star-color">*</span>显示菜单:</label>
+						<div class="input-group  ip-input-group col-md-9">
+							<input id="belonemenu1" type="text" class="form-control"
+								readonly="readonly"> <input id="belonemenu1-h"
+								type="hidden"> <span id="belonemenu-span"
+								class="input-group-addon belon-class"
+								data-bind="click: belmenu1"> <span
+								class="glyphicon glyphicon-list"></span> </span>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bind="click:ensure5">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="drDisplayModal1" style="display:none">
+			<div id='ylModal-modal' class='bs-modal-sm'>
+				<div class='modal-dialog'>
+					<div class='modal-content modal-content-bc'>
+						<div class='modal-header'>
+							<button type="button" class="close"
+								data-bind="click:drCloseButton1">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class='modal-title'>菜单树</h4>
+						</div>
+						<div class="modal-body display-container panel-body menuTree1">
+							<input id="menuguid1" type="hidden">
+							<div id="menuTree1" class="ztree"
+								u-meta='{"id":"menuTree1","data":"treeDataTable2","type":"tree","idField":"guid","pidField":"parentid","nameField":"name","setting":"treeSetting3"}'></div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary"
+								data-bind="click:menuCheckButton1">确定</button>
+							<button type="button" class="btn btn-primary"
+								data-bind="click:drCloseButton1">关闭</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- btnStatusModal -->
+	<div class="modal fade" id="addbtnModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="mybtnLabel">新增按钮</h4>
+				</div>
+				<div class="modal-body clearfix">
+					<div class="form-group clearfix">
+						<label class="col-md-3 control-label">所属菜单:</label>
+						<div class="input-group  ip-input-group col-md-9">
+							<input type="text" class="form-control" id="belongMenu4"
+								disabled="disabled">
+						</div>
+					</div>
+
+					<div class="form-group clearfix">
+						<label class="col-md-3 control-label"> <span
+							class="star-color">*</span>按钮选择:</label>
+						<div class="input-group  ip-input-group col-md-9">
+							<input id="btnmenu" type="text" class="form-control"
+								readonly="readonly"> <input id="btnmenu-h" type="hidden">
+							<span id="belonemenu-span" class="input-group-addon belon-class"
+								data-bind="click: btnmenu"> <span
+								class="glyphicon glyphicon-list"></span> </span>
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-3 control-label"><span
+							class="star-color">*</span>别名:</label>
+						<div class="input-group  ip-input-group col-md-9">
+							<input type="text" class="form-control" id="show_name2">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-3 control-label"><span
+							class="star-color">*</span>显示顺序:</label>
+						<div class="input-group  ip-input-group col-md-9">
+							<input type="text" class="form-control" id="show_order2"
+								onKeyUp="value=value.replace(/[^\d]/g,'')" placeholder="请输入数字">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-3 control-label">权限:</label>
+						<div class="input-group  ip-input-group col-md-9">
+							<select class="form-control" id="btn1Remark">
+								<option value="1">启用</option>
+								<option value="0">停用</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bind="click:ensure4">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="btnDisplayModal" style="display:none">
+			<div id='ylModal-modal' class='bs-modal-sm'>
+				<div class='modal-dialog'>
+					<div class='modal-content modal-content-bc'>
+						<div class='modal-header'>
+							<button type="button" class="close"
+								data-bind="click:btnCloseButton1">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class='modal-title'>按钮树</h4>
+						</div>
+						<div class="modal-body display-container panel-body menuTree1">
+							<div id="btnTree1" class="ztree"
+								u-meta='{"id":"btnTree1","data":"treeDataTable3","type":"tree","idField":"guid","pidField":"parentid","nameField":"name","setting":"treeSetting3"}'></div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary"
+								data-bind="click:btnCheckButton1">确定</button>
+							<button type="button" class="btn btn-primary"
+								data-bind="click:btnCloseButton1">关闭</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- editStatusModal -->
+	<div class="modal fade" id="editbtnModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="mybtnLabel">修改按钮</h4>
+				</div>
+				<div class="modal-body clearfix">
+					<input id="guid3" type="hidden">
+					<div class="form-group clearfix">
+						<label class="col-md-3 control-label">所属菜单:</label>
+						<div class="input-group  ip-input-group col-md-9">
+							<input type="text" class="form-control" id="belongMenu5"
+								disabled="disabled">
+						</div>
+					</div>
+
+					<div class="form-group clearfix">
+						<label class="col-md-3 control-label"> <span
+							class="star-color">*</span>按钮选择:</label>
+						<div class="input-group  ip-input-group col-md-9">
+							<input id="btnmenu1" type="text" class="form-control"
+								readonly="readonly"> <input id="btnmenu1-h"
+								type="hidden"> <span id="belonemenu-span"
+								class="input-group-addon belon-class"
+								data-bind="click: btnmenu1"> <span
+								class="glyphicon glyphicon-list"></span> </span>
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-3 control-label"><span
+							class="star-color">*</span>别名:</label>
+						<div class="input-group  ip-input-group col-md-9">
+							<input type="text" class="form-control" id="show_name3">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-3 control-label"><span
+							class="star-color">*</span>显示顺序:</label>
+						<div class="input-group  ip-input-group col-md-9">
+							<input type="text" class="form-control" id="show_order3"
+								onKeyUp="value=value.replace(/[^\d]/g,'')" placeholder="请输入数字">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-3 control-label">权限:</label>
+						<div class="input-group  ip-input-group col-md-9">
+							<select class="form-control" id="btn1Remark1">
+								<option value="1">启用</option>
+								<option value="0">停用</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bind="click:ensure6">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="btnDisplayModal1" style="display:none">
+			<div id='ylModal-modal' class='bs-modal-sm'>
+				<div class='modal-dialog'>
+					<div class='modal-content modal-content-bc'>
+						<div class='modal-header'>
+							<button type="button" class="close"
+								data-bind="click:btnCloseButton2">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class='modal-title'>按钮树</h4>
+						</div>
+						<div class="modal-body display-container panel-body menuTree1">
+							<div id="btnTree2" class="ztree"
+								u-meta='{"id":"btnTree2","data":"treeDataTable4","type":"tree","idField":"guid","pidField":"parentid","nameField":"name","setting":"treeSetting3"}'></div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary"
+								data-bind="click:btnCheckButton2">确定</button>
+							<button type="button" class="btn btn-primary"
+								data-bind="click:btnCloseButton2">关闭</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+<script src="/df/trd/requirejs/require.js"></script>
+<script src="/df/require.config.js"></script>
+<script src="./menuConfig.js"></script>
+</html>

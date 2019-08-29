@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible"
+	content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+<title>额度规则配置</title>
+<meta name="author" content="ip">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/ip/css/theme/blue.css" />
+<link rel="stylesheet" type="text/css"
+	href="../voucherTypeManage/voucherTypeManage.css" />
+<link rel="stylesheet" type="text/css" href="../billRule/billRule.css" />
+</head>
+<body>
+	<div class="container-fluid h100per">
+		<div class="row btn-bar btn-group epay-header" role="group"
+			aria-label="">
+			<button type="button" class="btn btn-primary"
+				data-bind="click:refreshTree">刷新</button>
+			<button type="button" class="btn btn-primary" data-bind="click:add">新增</button>
+			<button type="button" class="btn btn-primary"
+				data-bind="click:modify">修改</button>
+			<button type="button" class="btn btn-danger" data-bind="click:del">删除</button>
+		</div>
+
+		<div class="row top-content" id="tabbed-plan">
+			<label for="finance_code" class="col-md-1 col-sm-2 text-right">财政机构</label>
+			<div class="col-md-2 col-sm-2 ip-input-group">
+				<select class="form-control" id="finance_code" onchange="fGetGrid()">
+				</select>
+			</div>
+		</div>
+
+		<div class="row epay-content">
+			<div class="col-sm-4 h100per p10">
+				<div class="border tree-sidebar">
+					<div id="treeTest2" class="ztree"
+						u-meta='{"id":"tree_elerule","data":"treeDataTable","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"show_name","setting":"treeSetting"}'></div>
+				</div>
+			</div>
+			<div class="col-sm-8 pt10">
+				<div id="gridTest"
+					u-meta='{"id":"grid","type":"grid","data":"gridDataTable","showNumCol":"true","canDrag":false,"sortable":false,"canSwap":false,"columnMenu": false}'>
+					<div
+						options='{"field":"name","width":400,"dataType":"String","title":"要素名称"}'></div>
+					<div options='{"field":"num","dataType":"String","title":"要素级次"}'></div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 新增/修改Modal start-->
+		<div class="modal fade" id="addBalanceSetModel" tabindex="-1"
+			role="dialog" aria-labelledby="ylModalLabel" data-backdrop="static">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-bind="click:closeModel"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="titleText"></h4>
+					</div>
+					<div class="all_info">
+						<div class="labarea-add">
+							<span style="color:#4A90E2" class="glyphicon glyphicon-stop"
+								aria-hidden="true"></span> &nbsp 额度基本信息
+						</div>
+						<div class="row clearfix" id="base-info">
+
+							<div class="col-md-12 column">
+								<div class="col-md-6">
+									<label for="billtypeCode"
+										class="col-md-4 text-right view-text-right">额度编号：</label>
+									<div class="col-md-8 ip-input-group1">
+										<input type="text" class="form-control view-text-left"
+											id="billTypeCode">
+									</div>
+								</div>
+								<div class="col-md-6 ">
+									<label for="billTypeName"
+										class="col-md-4 text-right view-text-right">额度名称：</label>
+									<div class="col-md-8 ip-input-group1">
+										<input class="form-control view-text-left" id="billTypeName">
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div>
+							<div>
+								<ul class="ul-info">
+									<li><span class="glyphicon glyphicon-stop left-collab"></span>
+										<span class="collab-set">额度配置列表</span> <span
+										class="glyphicon glyphicon-stop right-collab"></span> <span
+										class="collab-set">配置详细信息</span></li>
+								</ul>
+							</div>
+							<!-- 详细信息 -->
+							<div class="row clearfix"
+								style="padding-left:15px;padding-right:15px;">
+								<div class="col-md-5">
+									<div class="col-info">
+										<div id="viewTree" class="ztree"
+											u-meta='{"id":"viewDetailTree","data":"viewDetailTree","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"name","setting":"detailTreeSetting"}'>
+										</div>
+									</div>
+									<div class="col-button">
+										<button type="button" id="baseCloseButton"
+											class="btn btn-danger keep-right-btn"
+											data-bind="click: delColumnButton">删除</button>
+										<button type="button" id="btn-add-column"
+											class="btn btn-primary keep-right-btn"
+											data-bind="click: addColumnButton">添加</button>
+									</div>
+								</div>
+
+								<div class="col-md-offset-1 col-md-6">
+									<div id="view-detail"
+										class="form-horizontal h100per border p10 pt30">
+										<label for="ele_code"
+											class="col-md-4 text-right detail-text-right">要素编码：</label>
+										<div class="col-md-8 ip-input-group1">
+											<input type="text" class="form-control detail-text-left"
+												id="ele_code" onkeyup="changeDeatil(this)">
+										</div>
+										<label for="ele_name"
+											class="col-md-4 text-right detail-text-right">要素名称：</label>
+										<div class="col-md-8 ip-input-group1">
+											<input type="text" class="form-control detail-text-left"
+												id="ele_name" onkeyup="changeDeatil(this)">
+										</div>
+										<label for="level_num"
+											class="col-md-4 text-right detail-text-right">级次：</label>
+										<div class="col-md-8 ip-input-group1">
+											<select class="form-control detail-text-left" id="level_num"
+												onchange="changeDeatil(this)">
+												<option value="-2">任意级</option>
+												<option value="-1">底级</option>
+												<option value="0">顶级</option>
+												<option value="1">1级</option>
+												<option value="2">2级</option>
+												<option value="3">3级</option>
+												<option value="4">4级</option>
+											</select>
+										</div>
+										<label for="ele_rule"
+											class="col-md-4 text-right detail-text-right">编码规则：</label>
+										<div class="col-md-8 ip-input-group1">
+											<input type="text" class="form-control detail-text-left"
+												id="ele_rule" onkeyup="changeDeatil(this)">
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- 详细信息新增界面 -->
+							<div id="addCol" style="display:none">
+								<div id='add-config-modal' class='bs-modal-sm'>
+									<div class='modal-dialog modal-sm'>
+										<div class='modal-content modal-content-bc'>
+											<div class='modal-header'>
+												<button type='button' class='close closeBtn '
+													data-bind="click: cancelAddDetailButton">
+													<span>&times;</span>
+												</button>
+												<h4 class='modal-title'>添加额度配置</h4>
+											</div>
+											<div id="col_body" class='modal-body'>
+												<label for="addCode"
+													class="col-md-4 text-right detail-text-right">要素编码：</label>
+												<div class="col-md-8 ip-input-group1">
+													<input type="text" class="form-control detail-text-left"
+														id="addCode">
+												</div>
+												<label for="addName"
+													class="col-md-4 text-right detail-text-right">要素名称：</label>
+												<div class="col-md-8 ip-input-group1">
+													<input type="text" class="form-control detail-text-left"
+														id="addName"">
+												</div>
+												<label for="addNum"
+													class="col-md-4 text-right detail-text-right">级次：</label>
+												<div class="col-md-8 ip-input-group1">
+													<select class="form-control detail-text-left" id="addNum"">
+														<option value="-2">任意级</option>
+														<option value="-1">底级</option>
+														<option value="0">顶级</option>
+														<option value="1">1级</option>
+														<option value="2">2级</option>
+														<option value="3">3级</option>
+														<option value="4">4级</option>
+													</select>
+												</div>
+												<label for="addRule"
+													class="col-md-4 text-right detail-text-right">编码规则：</label>
+												<div class="col-md-8 ip-input-group1">
+													<input type="text" class="form-control detail-text-left"
+														id="addRule"">
+												</div>
+												<div class="col-add-button">
+													<button type="button" id="eleConfirmButton"
+														data-bind="click: addDetailButton" class="btn btn-primary">保存</button>
+													<button type="button" id="eleCloseButton"
+														data-bind="click: cancelAddDetailButton"
+														class="btn btn-primary">取消</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-primary"
+									data-bind="click:saveOrUpdate">确定</button>
+								<button type="button" class="btn btn-primary"
+									data-bind="click:closeModel">退出</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/df/trd/knockout/knockout-3.2.0.debug.js"></script>
+<script src="/df/trd/requirejs/require.js"></script>
+<script src="/df/require.config.js"></script>
+<script src="./balanceConf.js"></script>
+</html>

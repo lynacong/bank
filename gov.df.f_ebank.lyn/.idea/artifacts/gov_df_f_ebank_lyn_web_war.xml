@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="gov.df.f_ebank.lyn.web:war">
+    <output-path>$PROJECT_DIR$/gov.df.f_ebank.lyn.web/target</output-path>
+    <root id="archive" name="gov.df.f_ebank.lyn.web.war">
+      <element id="artifact" artifact-name="gov.df.f_ebank.lyn.web:war exploded" />
+    </root>
+  </artifact>
+</component>

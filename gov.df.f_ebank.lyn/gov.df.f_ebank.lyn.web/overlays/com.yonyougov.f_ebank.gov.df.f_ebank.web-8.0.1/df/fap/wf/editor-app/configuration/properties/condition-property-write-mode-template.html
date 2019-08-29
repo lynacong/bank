@@ -1,0 +1,9 @@
+
+<div ng-controller="KisBpmStringPropertyCtrl">
+    <textarea id="multiinstance_conditionInput" row="3" ng-model="property.value"
+    	   placeholder="${nrOfCompletedInstances/nrOfInstances>0.5}"
+    	   class="form-control" 
+           ng-focus="onfocus()"
+           ng-blur="inputBlurred()"
+           ng-keypress="{13:'enterPressed($event)'}"/>
+</div>

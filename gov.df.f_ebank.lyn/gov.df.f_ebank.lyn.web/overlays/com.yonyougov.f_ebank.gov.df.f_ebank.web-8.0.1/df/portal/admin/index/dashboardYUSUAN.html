@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <title>财政一体化系统</title>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="/df/trd/uui/css/u.css" type="text/css">
+    <link rel="stylesheet" href="/df/trd/uui/css/grid.css" type="text/css">
+    <link rel="stylesheet" href="/df/trd/ip/css/ip.css" type="text/css">
+    <link rel="stylesheet" href="/df/trd/ip/css/bizSys.css" type="text/css">
+    <link rel="stylesheet" href="/df/trd/ip/css/theme/blue.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/df/trd/datetimepicker/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css">
+    <link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css">
+	<link rel="stylesheet" href="css/yusuan/dashboardYUSUAN.css" />
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+<body style="margin-left:0px">
+<div class="top">
+	<div class="top-cen1">
+		<div class="top-cen1-cen">
+			<i class="square"></i>
+			<span>我的常用操作</span>
+<!-- 			<select id="powerUnit" style="float: right;">
+			</select> -->
+		</div>
+		<div id="myCarousel" class="carousel slide">
+		    <ol id="totalPage" class="carousel-indicators">
+		    </ol>   
+		    <div id="carouselInner" class="carousel-inner">
+		    </div>
+		    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+		    </a>
+		    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+		    </a>
+		</div>
+		
+	</div>
+	<div class="top-cen2">
+		<div class="top-cen2-cen">
+			<i class="square"></i>
+			<span>我的任务管理</span>
+		</div>
+		<div id="initiateTask" class="top-cenn">
+			<div class="top-task">
+			    <div>
+			    	<img src="img/left1.png">
+			    </div>
+				<div class="fqtask">
+					<i></i>
+					<span>我发起的任务<span class="circlenum"></span></span>
+				</div>
+				<div>
+					<img src="img/right1.png">
+				</div>
+			</div>
+			<ul id="taskInit" class="daliyOp">
+			</ul>
+		</div>
+		<div id="unfinishTask" class="top-cenn">
+			<div class="top-task">
+			<!-- 	<a>更多</a> -->
+				<div>
+			    	<img src="img/left2.png">
+			    </div>
+				<div class="fqtask">
+					<i></i>
+					<span>我的未完成任务<span class="circlenum"></span></span>
+				</div>
+				<div>
+			    	<img src="img/right2.png">
+			    </div>
+				
+			</div>
+			<ul id="unfinishedTask" class="daliyOp">
+			</ul>
+		</div>
+		<div id="finishTask" class="top-cenn">
+			<div class="top-task">
+				<div>
+			    	<img src="img/left3.png">
+			    </div>
+				<div class="fqtask">
+					<i></i>
+					<span>我的已完成任务<span class="circlenum"></span></span>
+				</div>
+				<div>
+			    	<img src="img/right3.png">
+			    </div>
+				
+			</div>
+			<ul id="finishedTask" class="daliyOp">
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="bottom">
+	<div class="bottom-cen1">
+		<div class="bottom-cen1-cen">
+			<i class="square"></i>
+			<span>预算资金构成分析</span>
+		    <i class="switch"></i>  
+		</div>
+		
+		<div id="container" style="width: 100%;height: calc(100% - 38px)"></div>
+		<div id="containeraa" style="width: 100%;height: calc(100% - 38px)"></div>
+		
+	</div>
+	<div class="bottom-cen2">
+		<div class="bottom-cen2-cen">
+			<i class="square"></i>
+			<span class="title">历年预算安排情况对比分析</span>
+		    <i class="switch"></i>
+		</div>
+		
+		<div id="container1" style="width: 100%;height: calc(100% - 38px)"></div>
+		<div id="container2" style="width: 100%;height: calc(100% - 38px)"></div>
+	</div>
+	<div class="bottom-cen3">
+		<div class="bottom-cen3-cen">
+			<i class="square"></i>
+			<span>公告信息</span>
+		</div>
+		<ul id="noticeInfo">
+
+		</ul>
+		
+	</div>
+</div>
+				
+				
+
+</body>
+<script type="text/javascript" src="js/echarts.min.js"></script>
+<script charset="utf-8" type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+<script src="js/lte/bootstrap.min.js"></script>
+<script charset="utf-8" type="text/javascript" src="js/fbUtil.js"></script>
+<script charset="utf-8" type="text/javascript" src="/df/trd/ip/js/ip.js"></script> 
+<script type="text/javascript" src="js/pie.js"></script>
+<script type="text/javascript" src="js/pie2.js"></script>
+<script type="text/javascript" src="js/bar.js"></script>
+<script type="text/javascript" src="js/bar2.js"></script>
+<script type="text/javascript" src="js/dashboardYUSUAN.js"></script>
+</html>

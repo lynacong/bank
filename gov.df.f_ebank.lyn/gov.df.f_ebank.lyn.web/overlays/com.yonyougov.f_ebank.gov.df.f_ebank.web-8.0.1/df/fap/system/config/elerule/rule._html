@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;IE=11;IE=10;IE=9;IE=8;"/>
+    <title>设定规则</title>
+    <meta name="author" content="ip">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--<link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/reset.css"/>-->
+    <!--<link rel="stylesheet" type="text/css" href="../../../../trd/bootstrap/css/bootstrap.css"/>-->
+    <!--<link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/u.css"/>-->
+    <!--<link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/tree.css"/>-->
+    <!--<link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/ip.css"/>-->
+    <!--<link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/platform.css" />-->
+    <!--<link rel="stylesheet" type="text/css" href="../ncrd.css"/>-->
+    <!--<link rel="stylesheet" type="text/css" href="rule.css"/>-->
+</head>
+<body>
+
+<!--<div id="edit-contanier" class="container-fluid ncrd collapse" style="background-color: pink">-->
+    <div style="width:600px;margin: 0 auto;margin-top: 50px">
+        <!--第一层 设定规则窗口 -->
+        <div id="setRuleWindow" class="panel">
+            <div class="panel-heading">
+                <div class=" u-border-bottom  font-size-16">
+                    <p>
+                        <span class="glyphicon glyphicon-list-alt">
+                        </span><span>&nbsp;设定规则</span>
+                        <!--关闭图标-->
+                        <span class="glyphicon glyphicon-remove pull-right" role="button" data-bind="click:btnCloseClick"></span>
+                    </p>
+                </div>
+            </div>
+            <div class="panel-body">
+                <!--输入框组-->
+                <div class="row">
+                    <form class="form-inline">
+                        <div class="form-group col-lg-6 col-sm-6 col-xs-12">
+                            <label for="ruleCode">编码</label>
+                            <input id="ruleCode" type="text"  maxlength="42" class="form-control" id="ruleCode"
+                                   data-bind="value: rule_code" style="width:240px">                    
+                        </div>
+                        <div class="form-group col-lg-6 col-sm-6 col-xs-12">
+                            <label for="ruleName">名称</label>
+                            <input type="text" maxlength="60" class="form-control" id="ruleName"
+                                   data-bind="value: rule_name" style="width:244px">                 
+                        </div>
+                    </form>
+                </div>
+
+                <!--中间-->
+                <div class="row" style="margin:5px 2px 5px 2px">
+                    <span class="pull-left font-size-14"> 要素</span>
+                    <a class="pull-right font-size-14" role="button">
+                         <span data-toggle="modal" data-target="#addElementWindow" data-bind="click:changeTitleAddElem"> 增加要素>> </span>                           
+                    </a>
+                </div>
+                <div id="addEleContainer" class="panel panel-default">
+                    <!--要素组-->
+                    <div id="elemArray" class="panel-body" style="padding: 5px 10px">
+
+                            <div id="elementList" data-bind="foreach:{data:typeDataTable.rows(),as:'row'}">
+
+                            <div class="elementListChild elementListChildBase  pull-left  font-size-12"
+                                 data-bind="value:$index">
+
+                                <!--要素简称-->
+                                <span class="eleName" data-bind="text:row.ref('ele_NAME')"> </span>
+
+                                <!--删除元素-->         
+                                <button type="button" class="close"  aria-label="Close" data-bind="click:$parent.delElement.bind($data)">&times;</button>
+                              
+
+
+                                <!--修改要素-->
+                                <div style="text-align: center;margin-top: 5px">
+                                        <span class="glyphicon font-size-40" role="button" data-toggle="modal" data-target="#addElementWindow" data-bind="click:$parent.changeTitleEditElem.bind($data)"></span>
+                                      
+                                </div>
+
+                                <!--权限描述-->
+                                <div id="rightTypeLable">
+                                             <span class=" pull-right"
+                                                   data-bind="text:row.ref('right_TYPE_STR')">
+                                             </span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--保存-->
+                <div class="pull-right">
+                    <!-- <div type="button" class="btn btn-primary" data-bind="click:btnSaveClick">保存</div>  --> 
+                     <div type="button" class="btn btn-primary" style="margin-top: 10px" data-bind="click:btnSaveClick">保存</div>                      
+                </div>
+
+                <div>
+
+                </div>
+            </div>
+        </div>
+        <!--第二层 model编辑要素 -->
+                <div class="modal fade" id="addElementWindow" tabindex="-1" role="dialog" aria-labelledby="addElementLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <!--弹框标题-->
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="addElementLabel" data-bind="text:titleText"></h4>
+                            </div>
+                             <!--添加要素-->
+                            <div class="modal-body">
+                                <div id="addElementContainer" class="panel panel-default">
+                                    <!--选择要素、权限、查找-->
+                                    <div id="addElementHead" class="bg-sys label-font-normal">
+                                        <form class="form-inline">
+                                        	<div class="row"> 
+                                        	  <!--选择要素-->
+        	                                    <div class="form-group">
+        	                                        <label for="selectElement">选择要素</label>
+        	                                        <select class="form-control padding-0" id="selectElement"  data-bind="event:{change:getSelectEle}"> </select>
+        	                                    </div>
+        	                                    <!--权限复选框-->
+        	                                    <div class="form-group">
+        	                                        <label for="rightType">全部权限 </label>
+        	                                        <input id="rightType" type="checkbox"  data-bind="checked:rightType,event:{change:rightTypeChange}">       	                                 
+        	                                    </div>
+        	                                  	<div class="input-group pull-right">
+											      <input type="text" class="form-control" placeholder="请输入关键词" data-bind="value: treeKeyword,event:{keydown:treeSearchKeyDown}" style="width:110px">
+											      <span class="input-group-btn">
+											        <button class="btn btn-default search-btn" type="button"  data-bind="click: findTree">
+											        	<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+											        </button>
+											      </span>
+											    </div><!-- /input-group -->
+                                        	</div>
+                                        </form>
+                                    </div>
+
+                                    <!--要素树-->
+                                    <div id="addElementBody" class="addElementBody">
+                                        <div class="ztree"
+                                             u-meta='{"id":"tree1","data":"elemTreeDataTable","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"codename","setting":"treeSetting"}'>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--保存-->
+                            <div class="modal-footer">
+                                <button id="saveElmBtn" type="button" class="btn btn-primary" data-dismiss="modal" data-bind="click:saveAddElement">保存</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+    </div>
+
+<!--</div>-->
+
+
+<!--<script src="../../../../trd/requirejs/require.js"></script>-->
+<!--<script src="../../../../require.config.js"></script>-->
+<!--<script src="rule.js"></script>-->
+
+</body>
+</html>

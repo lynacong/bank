@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>单位审核</title>
+
+    <link rel="stylesheet" href="/df/trd/uui/css/u.css" type="text/css">
+    <link rel="stylesheet" href="/df/trd/uui/css/grid.css" type="text/css">
+    <link rel="stylesheet" href="/df/trd/ip/css/ip.css" type="text/css">
+    <link rel="stylesheet" href="/df/trd/ip/css/bizSys.css" type="text/css">
+    <link rel="stylesheet" href="/df/trd/ip/css/theme/blue.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/df/trd/datetimepicker/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css">
+    <link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css">
+
+    <link rel="stylesheet" href="lib/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/css/font-awesome.min.css">
+    <link rel="stylesheet" href="lib/css/ionicons.min.css">
+    <link rel="stylesheet" href="lib/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="lib/css/_all-skins.min.css">
+    <link rel="stylesheet" href="css/companyTree.css" type="text/css">
+    <link rel="stylesheet" href="css/zTreeStyle/zTreeStyle.css" type="text/css">
+    <link rel="stylesheet" href="css/dfp.css">
+    <link rel="stylesheet" href="css/pageDWSH.css"/>
+
+</head>
+<body style="background:#FFFFFF;margin-left: 0;">
+<div id="top">
+    <div class="cen-1">
+        <ul class="list">
+            <li><a href="javascript:void(0);" class="_portal_cursor_default" style="cursor:default !important;"></a></li>
+            <li class="icon hid _portal_hid_wen_li" style="width:20%;background:#F8F8F8;"><a href="javascript:void(0);"><img src="img/menu/often-wen.png"/><span>我的单据</span></a>
+                <div class="hidContent" style="position: absolute;top: 30px;left: 0;z-index: 66;">
+                    <ul id="woyaowen" style="width:250px;"></ul>
+                </div>
+            </li>
+            <li class="icon hid _portal_hid_cha_li" style="width:20%;background:#F8F8F8;"><a href="javascript:void(0);"><img src="img/menu/often-cha.png"/><span>我要查询</span></a>
+                <div class="hidContent" style="position: absolute;top: 30px;left: 0;z-index: 66;">
+                    <!-- <ul style="width:318px; height:250px;"> -->
+                    <ul id="woyaocha" style="width: 320px;"></ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="right">
+    <!-- <div id="search" style="margin-top:10px;">
+        <div id="text" style="margin-left:-6px;">
+             <input type="text" name="" style="margin-left: 10px;font-size: 16px;color: #000;width: 273px;" id="fiscalInput" value="" placeholder="&nbsp;&nbsp;请输入关键词"/>
+            <div id="pic" class="_portal_fiscal_sub" style="cursor:pointer;width:41px;height:41px;right: -41px;">
+                <img id="fiscalSubImg" style="transform: scale(1.3, 1.3) !important;transition:all 0.5s !important;margin: 13px 0 0 13px;" src="img/dashboard/search1.png"/>
+            </div>
+        </div>
+    </div> -->
+    <div class="cen1" style="height:250px;">
+        <div class="head-r" id="head-r">
+            <!--
+            <span class=" ac">本日</span>
+            <span class="">本月</span>
+            <span class="">本年</span>
+            <a href="javascript:void(0);" id="refreshFundmonitor">刷新</a>
+            -->
+        </div>
+        <!-- <a href="javascript:void(0);" id="refreshFundmonitor" style="position:relative;top:-35px;z-index: 20;margin-right:3px;"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a> -->
+        <div class="pull-right box-tools" style="margin-right: 3px;margin-top: -33px;">
+            <button type="button" class="btn btn-info btn-sm" title="刷新" id="refreshFundmonitor">
+                <i class="fa fa-fw fa-refresh" style="padding: 0;"></i>
+            </button>
+        </div>
+        <!--本日-->
+        <div id="fundmonitor_tab_day" class="biao tab2" style="">
+            <table border="0" cellspacing="0" cellpadding="0"></table>
+        </div>
+        <!--本月-->
+        <div id="fundmonitor_tab_month" class="biao tab2 hidden">
+            <table border="0" cellspacing="0" cellpadding="0"></table>
+        </div>
+        <!--本年-->
+        <div id="fundmonitor_tab_year" class="biao tab2 hidden">
+            <table border="0" cellspacing="0" cellpadding="0"></table>
+        </div>
+    </div>
+    <div class="cen2" style="height:200px;">
+        <div class="head-r2">
+            <span>待办事项</span>
+            <!-- <a id="dealingMore" class="_portal_cursor_pointer" style="margin:3px;">
+            <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+            </a> -->
+            <div class="pull-right box-tools" style="margin-top: 1px;margin-right: 3px;">
+                <button type="button" class="btn btn-info btn-sm" title="刷新" id="dealingMore">
+                    <i class="fa fa-fw fa-refresh" style="padding: 0;"></i>
+                </button>
+            </div>
+        </div>
+        <div id="m-content1" style="overflow-y: auto;overflow-x: hidden;height: 180px;width: inherit;">
+            <img id="m-content1_loadinggif" style="width:50px;display:none;position:relative;left:34%;margin: 30px 50px 50px 50px;" src="/df/portal/admin/index/img/loading-refresh.gif">
+            <ul>
+                <!-- <li><span class="icon1"></span><a href="javascript:void(0);">财政直接支付退款入账通知书登记<span class="c-red">未登记1条</span></a></li> -->
+            </ul>
+        </div>
+    </div>
+    <div class="cen3 box" style="height:136px;">
+        <div class="head-r2">
+            <span>公告信息</span>
+            <div class="pull-right box-tools">
+                <button type="button" class="btn btn-info btn-sm" title="刷新" id="articleRefresh">
+                    <i class="fa fa-fw fa-refresh" style="padding: 0;"></i>
+                </button>
+            </div>
+            <!-- <img src="img/dashboard/notice.png" class="_portal_article_more _portal_cursor_pointer"/> -->
+            <!-- <a id="_portal_article_more" class="_portal_article_more _portal_cursor_pointer" style="color: #108ee9;">更多</a>
+            <a id="_portal_article_add" class="_portal_article_add _portal_cursor_pointer" style="color: #108ee9;">创建</a> -->
+        </div>
+        <div id="m-content">
+            <ul>
+                <!-- <li><span class="icon1"></span><a href="javascript:void(0);">关于提醒自行纳税申报的函20161229</a></li> -->
+            </ul>
+        </div>
+        <div id="articleRefreshCover" class="overlay" style="display: none;">
+            <img style="position: absolute;height: 40px;left: 50%;top: 50%;margin-left: 0px;margin-top: 0px;" src="/df/portal/admin/index/img/loading-refresh.gif">
+        </div>
+    </div>
+
+</div>
+<div id="left">
+
+    <div class="cen-2" style="height:190px;">
+        <div class="head-l">
+            <span>支出进度情况</span>
+
+            <!--高级查询start-->
+            <div class="selectDiv2" style="position: relative;float:right; margin: 4px 30px 3px 2px">
+                <!-- <span id="payProgressShowGaoji" class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
+                <div class="pull-right box-tools">
+                    <button type="button" class="btn btn-info btn-sm" title="刷新" id="payProgressRefreshGaoji">
+                        <i class="fa fa-fw fa-refresh" style="padding: 0;"></i>
+                    </button>
+                </div>
+                <div class="pull-right box-tools" style="margin-right:2px">
+                    <button type="button" class="btn btn-info btn-sm" title="查询" id="payProgressShowGaoji">
+                        <i class="fa fa-fw fa-search" style="padding: 0;"></i>
+                    </button>
+                </div>
+
+                <div id="payProgressGaoji">
+                    <ul id="d-list">
+                        <li style="position: relative;">预算类别
+                            <input type="text" id="payProgressYSLBGaojiInput_NAME"/>
+                            <input type="hidden" id="payProgressYSLBGaojiInput_ID"/>
+                            <span>x</span>
+                            <span>...</span>
+                        </li>
+                        <li style="position: relative;">项目分类
+                            <input type="text" id="payProgressXMFLGaojiInput_NAME"/>
+                            <input type="hidden" id="payProgressXMFLGaojiInput_ID"/>
+                            <span>x</span>
+                            <span>...</span>
+                        </li>
+                        <li style="position: relative;">指标来源
+                            <input type="text" id="payProgressZBLYGaojiInput_NAME"/>
+                            <input type="hidden" id="payProgressZBLYGaojiInput_ID"/>
+                            <span>x</span>
+                            <span>...</span>
+                        </li>
+                        <li style="position: relative;">预算单位
+                            <input type="text" id="payProgressYSDWGaojiInput_NAME"/>
+                            <input type="hidden" id="payProgressYSDWGaojiInput_ID"/>
+                            <span>x</span>
+                            <span>...</span>
+                        </li>
+                    </ul>
+                    <input type="button" id="payProgressGaojiClose" value="关闭"/>
+                    <input type="button" id="payProgressGaojiSubmit" value="确定"/>
+                </div>
+                <div id="content_wrap2" style="background:#fff;border:1px solid #ccc;position: absolute;top: 40px;left: -334px;display: none; z-index: 1000;">
+                    <div class="head-div">
+                        <span>列表</span>
+                        <a href="javascript:void(0);" id="_payProgressZTreeClose">
+                            <span>×</span>
+                        </a>
+                    </div>
+                    <div class="zTreeDemoBackground left" style="background-color:#ffffff">
+                        <!--放内容  -->
+                        <ul id="payProgressZTree" class="ztree" style="width: 249px;height: 235px; margin-left: 18px;margin-right: 18px;border: 1px solid #E5E5E5;"></ul>
+                    </div>
+                    <input type="button" id="payProgressZTreeClose" value="关闭"/>
+                    <input type="button" id="payProgressZTreeSubmit" value="确定"/>
+                </div>
+            </div>
+            <div class="pull-right box-tools" style="margin-top:4px;  margin-right: -80px;">
+                <button type="button" class="btn btn-info btn-sm" title="最大化" id="payProgressMaxGaoji">
+                    <i class="fa fa-fw fa-square-o" style="padding: 0;"></i>
+                </button>
+            </div>
+            <!--高级查询end-->
+            <!-- 单位切换：元/万元 -->
+            <div class="selectDiv1" style="float:right;display:none;">
+                <span class="payProgressSpan">单位：</span>
+                <select id="payProgressDanweiChange" style="width:55px;">
+                    <option value="0">元</option>
+                    <option value="1" selected="selected">万元</option>
+                    <option value="2">亿元</option>
+                </select>
+            </div>
+            <!-- 单位切换：元/万元 end -->
+            <!--时间-->
+            <!-- <div class="selectDiv" style="margin-top:-3px;">
+                <span class="timespan">截止时间:</span>
+                <input id="budgetTime" style="height:26px;line-height:26px;margin-top:8px;padding-top:0px;padding-left: 5px;" type="text" class="_portal_cursor_pointer form-control budgetTime" readonly="readonly">
+                <span><i class="icon-calendar"></i></span>
+            </div> -->
+            <!-- <div class="danwei">单位：元</div> -->
+        </div>
+        <div style="position: relative; margin-top:-20px;">
+            <div class="zhibiao" style="position:absolute;z-index: 5;margin:13px 0 0 20px;">
+                <span class="zbje">指标金额：<span class="zbjenum" id="_portal_zhichu_text_zbje_span">0</span>元</span>
+                <span class="zfje">支出金额：<span class="zfjenum" id="_portal_zhichu_text_zfje_span">0</span>元</span>
+                <span class="zbye" style="margin-right: 20px;display:none;">指标余额：<span class="zbyenum" id="_portal_zhichu_text_zbye_span">0</span>元</span>
+                <!-- <span class="zbye">序时进度：<span class="zbyenum" id="payprogressXSJD">0</span></span> -->
+            </div>
+            <span id="tooltipXSJD" style="display:none; position: absolute;float: right;right: 200px;top: 14px;font-size: 13px;z-index: 5; margin-right:3%;"><span style="color:blue;">▼</span><span> 序时进度</span></span>
+            <!--<div class="danweiType">
+                <span class="zbje">单位:</span>
+                <label><input name="Fruit" type="radio" value="" checked="true" />元 </label>
+                <label><input name="Fruit" type="radio" value="" />万元 </label>
+            </div>-->
+            <div id="dwzc" style="width:95%;height:130px;margin: 0 auto;margin-top:20px;padding:0 2% 0 2%;"></div>
+            <div id="payProgressRanking" style="margin-left: 20px;margin-top: -2px;font-size: 14px;">
+                <span style="">支付进度本部门排第 <span id="payProgressRanking_bm" style="color: #f56a00;font-weight: bold;"></span> 名</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span style="">全部省级预算单位排第 <span id="payProgressRanking_ysdw" style="color: #f56a00;font-weight: bold;"></span> 名</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="cen-3" id="leftDownBudgetGrid" style="height:410px;padding-bottom:10px;">
+        <div class="head-l">
+					<span>
+						预算指标
+					</span>
+            <!-- <div id="blowUpBtn" style="width: 50px;height: 30px;background: #108EE9;color: #FFFFFF;text-align: center;line-height: 30px;
+                            margin: 2px 0 0 10px;display:inline-block;">放大</div> -->
+            <!-- <div id="blowUpBtn" style="display:inline-block;float: right; margin: 10px 5px 5px 0px;"><span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span></div>	 -->
+            <!--时间-->
+            <!-- <div class="selectDiv1">
+                <span class="timespan">下达时间:</span>
+                <input id="budgetTime1" type="text" class="form-control budgetTime" readonly="readonly"  data-bind="click:onFocus" value="2017-7">
+                <span><i class="icon-calendar"></i></span>
+            </div> -->
+            <div class="check-box" style="right: 3px;float: right;position: relative;">
+                <!-- <a href="javascript:void(0);" id="budgetGridRefresh" style="margin:3px" ><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a> -->
+                <div class="pull-right box-tools" style="margin-top:-5px;margin-right:-1px;">
+                    <button type="button" class="btn btn-info btn-sm" title="刷新" id="budgetGridRefresh">
+                        <i class="fa fa-fw fa-refresh" style="padding: 0;"></i>
+                    </button>
+                </div>
+                <div class="pull-right box-tools" style="margin-right: -51px; margin-top: -5px;">
+                    <button type="button" class="btn btn-info btn-sm" title="最大化" id="budgetGridMax">
+                        <i class="fa fa-fw fa-square-o" style="padding: 0;"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="selectDiv1" style="float:right;margin-right: 29px;display:none;">
+                <span class="budgetSpan">单位：</span>
+                <select id="budgetDanweiChange" style="width:55px;">
+                    <option value="0" id="budgetDanweiChangeYuan">元</option>
+                    <option value="1" selected="selected">万元</option>
+                    <option value="2">亿元</option>
+                </select>
+            </div>
+            <div class="check-box" style="margin-right:38px"><input type="checkbox" id="budgetTableYueNull" value="" style="margin-top:-1px;"/>显示余额为零</div>
+            <div class="selectDiv1" style="position: relative; right;margin-right: -130px;">
+                <!-- <span id="demand"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span> -->
+                <div class="pull-right box-tools" style="margin-top:3px">
+                    <button type="button" class="btn btn-info btn-sm" title="刷新" id="demand">
+                        <i class="fa fa-fw fa-search" style="padding: 0;"></i>
+                    </button>
+                </div>
+                <div class="demandContent" style="width:610px;left:-570px;">
+                    <ul id="d-list">
+                        <li style="position: relative;">
+                            指标文号
+                            <input type="text" id="_portal_yusuan_table_gaoji_zbwh_input" value=""/>
+                            <span id="budgetTableSelectClear_zbwh" class="_portal_cursor_pointer" style="position: absolute;top: 5px;right: 38px; color: #999999;font-size: 15px;border: solid 1px #ccc;background: #FFF;z-index: 9;padding: 2px 7px 4px 9px;">x</span>
+                            <span id="more" class="_portal_cursor_pointer _portal_table_gaoji_zbwh_span" style="position: absolute;top: 5px;color: #999999;font-size: 15px;border: solid 1px #ccc;background: #FFF;z-index: 9;padding: 0px 6px 6px 8px;right: 11px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;">...</span>
+                        </li>
+                        <li style="position: relative;">
+                            项目分类
+                            <input type="text" id="_portal_yusuan_table_gaoji_xmfl_input" value=""/>
+                            <span id="budgetTableSelectClear_xmfl" class="_portal_cursor_pointer" style="position: absolute;top: 5px;right: 38px; color: #999999;font-size: 15px;border: solid 1px #ccc;background: #FFF;z-index: 9;padding: 2px 7px 4px 9px;">x</span>
+                            <span class="_portal_cursor_pointer _portal_table_gaoji_xmfl_span" style="position: absolute;top: 5px;right: 18px; color: #999999;font-size: 15px;border: solid 1px #ccc;background: #FFF;z-index: 9;padding: 0px 6px 6px 8px;right: 11px;border-top-right-radius: 4px;border-bottom-right-radius: 4px;">...</span>
+                        </li>
+                        <li style="position: relative;">
+                            预算项目
+                            <input type="text" id="_portal_yusuan_table_gaoji_ysxm_input" value=""/>
+                            <span id="budgetTableSelectClear_ysxm" class="_portal_cursor_pointer" style="position: absolute;top: 5px;right: 38px; color: #999999;font-size: 15px;border: solid 1px #ccc;background: #FFF;z-index: 9;padding: 2px 7px 4px 9px;">x</span>
+                            <span class="_portal_cursor_pointer _portal_table_gaoji_ysxm_span" style="position: absolute;top: 5px;right: 18px; color: #999999;font-size: 15px;border: solid 1px #ccc;background: #FFF;z-index: 9;padding: 0px 6px 6px 8px;right: 11px;border-top-right-radius: 4px;border-bottom-right-radius: 4px;">...</span>
+                        </li>
+                        <li style="position: relative;">
+                            预算单位
+                            <input type="text" id="_portal_yusuan_table_gaoji_ysdw_input" value=""/>
+                            <span id="budgetTableSelectClear_ysdw" class="_portal_cursor_pointer" style="position: absolute;top: 5px;right: 38px; color: #999999;font-size: 15px;border: solid 1px #ccc;background: #FFF;z-index: 9;padding: 2px 7px 4px 9px;">x</span>
+                            <span class="_portal_cursor_pointer _portal_table_gaoji_ysdw_span" style="position: absolute;top: 5px;right: 18px; color: #999999;font-size: 15px;border: solid 1px #ccc;background: #FFF;z-index: 9;padding: 0px 6px 6px 8px;right: 11px;border-top-right-radius: 4px;border-bottom-right-radius: 4px;">...</span>
+                        </li>
+                        <li style="position: relative;">
+                            支付方式
+                            <input type="text" id="_portal_yusuan_table_gaoji_zffs_input" value=""/>
+                            <span id="budgetTableSelectClear_zffs" class="_portal_cursor_pointer" style="position: absolute;top: 5px;right: 38px; color: #999999;font-size: 15px;border: solid 1px #ccc;background: #FFF;z-index: 9;padding: 2px 7px 4px 9px;">x</span>
+                            <span class="_portal_cursor_pointer _portal_table_gaoji_zffs_span" style="position: absolute;top: 5px;right: 18px; color: #999999;font-size: 15px;border: solid 1px #ccc;background: #FFF;z-index: 9;padding: 0px 6px 6px 8px;right: 11px;border-top-right-radius: 4px;border-bottom-right-radius: 4px;">...</span>
+                        </li>
+                        <li style="position: relative;">
+                            政府采购
+                            <select id="_portal_yusuan_table_gaoji_zfcg_select"/>
+                            <option value="2" selected>全部</option>
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                            </select>
+                        </li>
+                        <input type="hidden" id="_portal_yusuan_table_gaoji_zbwh_input_chrid" value=""/>
+                        <input type="hidden" id="_portal_yusuan_table_gaoji_xmfl_input_chrid" value=""/>
+                        <input type="hidden" id="_portal_yusuan_table_gaoji_ysxm_input_chrid" value=""/>
+                        <input type="hidden" id="_portal_yusuan_table_gaoji_ysdw_input_chrid" value=""/>
+                        <input type="hidden" id="_portal_yusuan_table_gaoji_zffs_input_chrid" value=""/>
+                    </ul>
+                    <input type="button" id="close" value="关闭"/>
+                    <input type="button" id="sure" value="确定"/>
+                </div>
+                <div class="content_wrap" style="position: absolute;top: -35px;left: -390px;display: none;">
+                    <div class="head-div">
+                        <span>列表</span>
+                        <a href="javascript:void(0);" id="close-div">
+                            <span>x</span>
+                        </a>
+                    </div>
+                    <div class="inputDiv" style="display:none;">
+                        <span class="posi">快速定位:<input type="text" class="inputForm" id="_portal_table_input" value=""/></span>
+                        <input type="hidden" id="_portal_table_input_chrid" value=""/>
+                        <button type="button" class="btn btnSearch">搜索</button>
+                    </div>
+                    <div class="zTreeDemoBackground left">
+                        <ul id="zhibiaotree" class="ztree" style="width: 249px;height: 235px; margin-left: 18px;border: 1px solid #E5E5E5;"></ul>
+                    </div>
+                    <input type="button" id="_portal_table_gaoji_close_input" value="关闭"/>
+                    <input type="button" id="_portal_table_gaoji_submit_input" value="确定"/>
+                    <input type="hidden" id="_portal_yusuan_gaoji_type_input" value=""/>
+                </div>
+            </div>
+        </div>
+        <div id="tableContent" style="padding:10px 10px;">
+            <div id="mainGeriContentDiv" u-meta='{"id":"gridShow","height":"355px","type":"grid","data":"dataTable","editable":true,"onBeforeEditFun":"tableBeforeEdit","onDblClickFun":"tableDbCLick","rowHeight":"30","showNumCol": true,"needLocalStorage": false,"headerHeight":"36","sortable":true,"showSumRow":true,"sumRowFirst":true,"sumRowFixed": true}'>
+                <div options='{"field":"sum_id","visible":"false","canVisible":"false","dataType":"String","title":"sum_id","renderType":"changeColorNormal","width": 170}'></div>
+                <div options='{"field":"fromctrlid","visible":"false","canVisible":"false","dataType":"String","title":"fromctrlid","renderType":"changeColorNormal","width": 170}'></div>
+                <div options='{"field":"zfcgbs_code","visible":"false","canVisible":"false","dataType":"String","title":"zfcgbs_code","renderType":"changeColorNormal","width": 170}'></div>
+                <div options='{"field":"canuse_money_ori","visible":"false","canVisible":"false","width":"auto","dataType":"String","title":"指标余额(yuan)","sumCol": true,"sumRenderType":"tableSum","renderType":"changeColorKeyong","width": 160}'></div>
+                <div options='{"field":"file_name","width":"auto","dataType":"String","title":"指标文号","renderType":"changeColorNormal","width": 170}'></div>
+                <div options='{"field":"is_zfcg","width":"auto","dataType":"String","title":"政府采购","renderType":"changeColorNormal","width": 100}'></div>
+                <div options='{"field":"agencyexp_name","width":"auto","dataType":"String","title":"项目分类","renderType":"changeColorNormal","width": 130}'></div>
+                <div options='{"field":"bis_name","width":"auto","dataType":"String","title":"预算项目","renderType":"changeColorNormal","width": 130}'></div>
+                <div options='{"field":"avi_money","width":"auto","dataType":"Float","title":"指标金额","sumCol": true,"sumRenderType":"tableSum","renderType":"changeColorZhibiao","width": 120}'></div>
+                <div options='{"field":"canuse_money","width":"auto","dataType":"Float","title":"指标余额","sumCol": true,"sumRenderType":"tableSum","renderType":"changeColorKeyong","width": 120}'></div>
+                <div options='{"field":"zcjd","width":"auto","dataType":"Float","title":"支出进度","renderType":"changeColorZCJD","width": 120}'></div>
+                <div options='{"field":"expeco_name","width":"auto","dataType":"String","title":"经济分类","renderType":"changeColorNormal","width": 180}'></div>
+                <div options='{"field":"expfunc_name","width":"auto","dataType":"String","title":"功能分类","renderType":"changeColorNormal","width": 180}'></div>
+                <div options='{"field":"fundtype_name","width":"auto","dataType":"String","title":"资金性质","renderType":"changeColorNormal","width": 130}'></div>
+                <div options='{"field":"bgtsource_name","width":"auto","dataType":"String","title":"指标来源","renderType":"changeColorNormal","width": 130}'></div>
+                <div options='{"field":"agency_name","width":"auto","dataType":"String","title":"预算单位","renderType":"changeColorNormal","width": 300}'></div>
+                <div options='{"field":"mb_name","width":"auto","dataType":"String","title":"业务处室","renderType":"changeColorNormal","width": 130}'></div>
+                <div options='{"field":"sm_name","width":"auto","dataType":"String","title":"指标摘要","renderType":"changeColorNormal","width": 170}'></div>
+            </div>
+            <!-- <div id="pagination" class="u-pagination" u-meta="{'type':'pagination','data':'dataTable'}"> -->
+        </div>
+
+    </div>
+</div>
+
+<!-- 支出进度 序时进度 -->
+<div id="payprogressXSJD">
+    <ul class="u-list-group u-list-group-bordered">
+        <li class="u-list-group-item">序时进度：<span></span></li>
+    </ul>
+</div>
+
+<!-- 资金监控加载图片 -->
+<div id="fundmonitorImg" style="display:none;text-align: center;z-index: 10;position: fixed;top:170px;float:right;right:125px;"><img id="fundmonitorImg_loadinggif" style="left:34%;width:50px;margin: 50px 50px 50px 50px;" src="/df/portal/admin/index/img/loading-refresh.gif"></div>
+<!-- 预算指标加载图片 -->
+<div id="budgetGridImg" style="display:none;z-index: 10;position: relative;top: -330px;left: 356px;"><img id="fundmonitorImg_loadinggif" style="left:34%;width:50px;margin: 50px 50px 50px 50px;" src="/df/portal/admin/index/img/loading-refresh.gif"></div>
+
+<!-- 预算指标右键 -->
+<div id="budgetWrapper" style="margin-top:72px; width:252px !important;">
+    <ul class="u-list-group u-list-group-bordered">
+        <li class="u-list-group-item" data-index="7">执行情况</li>
+        <li class="u-list-group-item" data-index="8">导出Excel</li>
+    </ul>
+</div>
+
+<!-- 右侧滑动框 -->
+<aside id="rightHiddenSider" class="control-sidebar control-sidebar-dark" style="padding-top: 0;">
+    <!-- Create the tabs -->
+    <ul class="nav nav-tabs nav-justified control-sidebar-tabs" style="background: #f8f8f8;border-left: 2px solid #000;">
+        <!-- <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li> -->
+        <li>
+            <!-- <img id="rightSetting" src="img/right-setting.png" style="cursor: pointer;width: 41px;height: 41px;margin: 10px 0 0 -41px;"> -->
+            <a id="rightSetting" class="btn" href="javascript:void(0);" onclick="rightHiddenSiderShow();">
+                <i class="fa fa-fw fa-gear" style="margin: 4px 9px 0px 0px;color: #313131;font-size: 20px;"></i>
+                <span style="margin: 4px 9px 0px -10px;color: #313131;font-size: 18px;">页面设置</span>
+            </a>
+        </li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content" style="padding: 5px 15px 60px 15px;margin-top: -65px;height: 400px;background: #f8f8f8;border-left: 2px solid #000;border-bottom: 2px solid #000;">
+        <!-- Home tab content -->
+        <div class="tab-pane active" id="control-sidebar-home-tab">
+            <h3 class="control-sidebar-heading" style="color: #000;">用户设置</h3>
+            <div class="form-group">
+                <label class="control-sidebar-subheading" style="color:#000;">
+                    <span style="position: absolute;margin: 5px 0 0 5px;">金额单位切换</span>
+                    <select id="rightDanweiSetting" class="pull-right form-control" style="width: 70px;">
+                        <option value="0">元</option>
+                        <option value="1" selected="selected">万元</option>
+                        <option value="2">亿元</option>
+                    </select>
+                </label>
+                <!-- <p>
+                    Some information about this general settings option
+                    <input type="checkbox" class="pull-right" checked>
+                </p> -->
+            </div>
+            <div class="row box-tools" style="position: relative;margin-top: 300px;">
+                <button id="confirm" type="button" class="btn btn-block btn-primary" style="width: 40%;float: left;margin-left: 10px;">确定</button>
+                <button id="cancel" type="button" class="btn btn-block" style="width: 40%;float: left;margin-top: 0px;margin-left: 10px;">取消</button>
+            </div>
+        </div>
+    </div>
+</aside>
+<!-- /右侧滑动框 -->
+
+</body>
+
+<script src="lib/js/jquery-2.1.4.min.js"></script>
+<script src="lib/js/jquery-ui.min.js"></script>
+<script>
+    $.widget.bridge('uibutton', $.ui.button);
+</script>
+<script src="lib/js/bootstrap.min.js"></script>
+<script src="lib/js/app.min.js"></script>
+
+<script src="/df/trd/uui/js/u-polyfill.js"></script>
+<script src="/df/trd/knockout/knockout-3.2.0.debug.js"></script>
+<script src="/df/trd/uui/js/u.js"></script>
+<script src="/df/trd/uui/js/u-grid.js"></script>
+<script src="/df/trd/ip/js/ip.js"></script>
+<!-- xml导出 -->
+<script src="/df/trd/jszip/jszip.js"></script>
+<script src="/df/trd/xlsx/xlsx.js"></script>
+<script src="/df/trd/blob/Blob.js"></script>
+<script src="/df/trd/fileSaver/FileSaver.min.js"></script>
+
+<script src="plugins/highcharts/highcharts.js"></script>
+<script src="plugins/highcharts/highcharts-more.js"></script>
+<script src="plugins/highcharts/highcharts-zh_CN.js"></script>
+<script src="plugins/zTree_v3/js/jquery.ztree.core-3.1.js"></script>
+<script src="plugins/layer/layer.js"></script>
+<script src="plugins/base64/Base64.js"></script>
+<script src="plugins/md5/md5.min.js"></script>
+
+<script src="js/dfp/dfp.js"></script>
+<script src="js/dfp/dfpMenu.js"></script>
+<script src="js/dfp/dfpBudgetGrid.js"></script>
+<script src="js/dfp/dfpPayProgress.js"></script>
+<script src="js/dfp/dfpFundmonitor.js"></script>
+<script src="js/dfp/dfpDealing.js"></script>
+<script src="js/dfp/dfpArticle.js"></script>
+<script src="js/pageDWSH.js"></script>
+<script type="text/javascript">
+    $(function () {
+        //高级查询
+        $("#close2").click(function () {
+            $(".demandContent2").css({"display": "none"});
+        });
+        $("#payProgressShowGaoji").click(function () {
+            $(".demandContent2").css("display") == "none" ? $(".demandContent2").css("display", "block") : $(".demandContent2").css("display", "none");
+        });
+        //高级查询-更多
+        //$("#payProgressShowGaoji").click(function(){
+        //$(".content_wrap2").css({"display":"block"});
+        //})
+        $("#over2").click(function () {
+            $(".content_wrap2").css({"display": "none"});
+        })
+    });
+</script>
+</html>

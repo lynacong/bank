@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible"
+	content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+<title>启用行政区划</title>
+<meta name="author" content="ip">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/ip/css/bizSys.css"/>
+	
+<link rel="stylesheet" type="text/css" href="./regionConfig.css" />
+</head>
+
+<body>
+	<div class="menuConfig-body">
+		<div id="menubody" class="menubody">
+			<div class="bodySize row">
+				<div class='tree-block col-md-4'>
+					<div class="form-group search-form" style="margin: 5px;">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="模糊查询"
+								aria-describedby="basic-addon1"
+								data-bind="event:{keyup:quickQuery('quickquery')}"
+								onkeydown='if(event.keyCode==13){menuTreeNext();}'
+								id="quickquery"> <span class="input-group-addon"
+								onclick="menuTreeNext()"><span
+								class="glyphicon glyphicon-search"></span> </span>
+						</div>
+					</div>
+					<div class="menuTree">
+						<div id="menuConfigTree" class="ztree"
+							u-meta='{"id":"menuConfigTree1","data":"treeDataTable","type":"tree","idField":"sys_id","pidField":"pid","nameField":"sys_name","setting":"treeSetting"}'></div>
+					</div>
+				</div>
+				<div class='menu-tabs col-md-8'>
+					<div style="height: 40px;">
+						<button id="addViewBtn" type="button"
+							class="btn btn-primary add-btn" data-toggle="modal"
+							data-bind="click: addbtn">启用行政区划</button>
+						<button id="addViewBtn" type="button"
+							class="btn btn-primary add-btn" data-toggle="modal"
+							data-bind="click: refreshbtn">刷新</button>
+					</div>
+					<div type="text" class="menu-grid"
+						u-meta='{"id":"write-grid","data":"gridDataTable","type":"grid","editable":false,"autoExpand":false,"showTree":false,"showNumCol":true,"keyField":"theId","parentKeyField":"parentId","multiSelect":false,"height":500,"headerHeight":25,"rowHeight":25}'>
+						<div
+							options='{"field":"sys_id","dataType":"String","title":"系统编码","editType":"string"}'>
+						</div>
+						<div
+							options='{"field":"sys_name","dataType":"String","title":"系统名称","editType":"string"}'>
+						</div>
+						<div
+							options='{"field":"enabled","dataType":"String","title":"是否启用","editOptions":{"id":"combobox1","type":"combo","datasource":"comItems"},"editType":"combo","renderType":"comboRender","editType":"string"}'>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- enableRegionModal -->
+	<div class="modal fade" id="enableRegionModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog enableRegionDialog" id="enableRegionDialog" role="document" style="">
+			<div class="modal-content" id="enableRegionContent">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">启用区划</h4>
+				</div>
+				<div class="modal-body clearfix">
+					<div class="">
+						<div id="enableRegionbody" class="menubody">
+							<div class=" row">
+								<div class='editRegionTree-block col-md-6'>
+									<div class="form-group search-form" style="margin: 5px;">
+										<div class="input-group">
+											<input type="text" class="form-control" placeholder="模糊查询"
+												aria-describedby="basic-addon1"
+												data-bind="event:{keyup:quickQuery('enableRegionQuickquery')}"
+												onkeydown='if(event.keyCode==13){menuTreeNext("enableRegionConfigTree1");}'
+												id="enableRegionQuickquery"> 
+												<span class="input-group-addon" onclick="menuTreeNext('enableRegionConfigTree1')">
+													<span class="glyphicon glyphicon-search"></span> 
+												</span>
+										</div>
+									</div>
+									<div class="editRegionTree">
+										<div id="enableRegionConfigTree" class="ztree"
+											u-meta='{"id":"enableRegionConfigTree1","data":"treeDataTable2","type":"tree","idField":"sys_id","pidField":"pid","nameField":"sys_name","setting":"editRegionTreeSetting"}'></div>
+									</div>
+								</div>
+								<div class='col-md-6'>
+									<div class="form-group search-form" style="margin: 5px;">
+										<div class=" row">
+											<div class='col-md-3' style="vertical-align: middle;height: line-height;margin-right: 0px">
+												<span>区划配置模板：</span>
+											</div>
+											<div class='col-md-9'>
+												<div class="input-group">
+													<input type="text" class="form-control" placeholder="区划名称或代码"
+														aria-describedby="basic-addon1"
+														onkeydown='if(event.keyCode==13){configRegionTemplate();}'
+														id="regionTemplateQuery"> 
+														<span class="input-group-addon" onclick="configRegionTemplate()">
+															<span class="glyphicon glyphicon-list"></span> 
+														</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div type="text" class="menu-grid"
+										u-meta='{"id":"write-grid2","data":"gridDataTable","type":"grid","editable":false,"autoExpand":false,"showTree":false,"showNumCol":true,"keyField":"theId","parentKeyField":"parentId","multiSelect":false,"height":400,"headerHeight":25,"rowHeight":25}'>
+										<div
+											options='{"field":"sys_id","dataType":"String","title":"系统编码","editType":"string"}'>
+										</div>
+										<div
+											options='{"field":"sys_name","dataType":"String","title":"系统名称","editType":"string"}'>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bind="click:ensure">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- addModal -->
+	<div class="modal fade" id="selectTempletModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" style="width:450px">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="templateModalLabel1">选择区划配置模板</h4>
+				</div>
+				<div class="modal-body clearfix">
+					<div class="form-group search-form" style="margin: 5px;">
+						<div class=" row">
+							<div class="col-md-3">
+								<span>快速定位：</span>
+							</div>
+							<div class="col-md-6">
+								<input type="text" class="form-control" placeholder="模糊查询"
+									aria-describedby="basic-addon1"
+									data-bind="event:{keyup:quickQuery('enableRegionQuickquery')}"
+									onkeydown='if(event.keyCode==13){menuTreeNext("templateConfigTree1");}'
+									id="templateQuickquery"> 
+							</div>
+							<div class="col-md-3">
+								<div style="height: 40px;">
+									<!-- <button id="addViewBtn" type="button"
+										class="btn btn-primary add-btn" data-toggle="modal"
+										data-bind="click: addbtn">查找</button> -->
+									<button id="addViewBtn" type="button"
+										class="btn btn-primary add-btn" data-toggle="modal"
+										onclick="menuTreeNext('templateConfigTree1')">查找</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class=" row">
+						<div class='templateConfigTree-block col-md-12'>
+							<div class="templateConfigTree">
+								<div id="templateConfigTree" class="ztree"
+									u-meta='{"id":"templateConfigTree1","data":"treeDataTable","type":"tree","idField":"sys_id","pidField":"pid","nameField":"sys_name","setting":"treeSetting"}'></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bind="click:ensure1">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- addModal -->
+	<div class="modal fade" id="progressModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" style="width:450px">
+				<div class="modal-body clearfix">
+					<div class="progress">
+						<div id="initProgress" class="progress-bar progress-bar-success" role="progressbar"
+							 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+							 style="width: 0%;">
+							<span id="progressTip">正在处理，已完成0%</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/df/trd/requirejs/require.js"></script>
+<script src="/df/require.config.js"></script>
+<script src="./regionConfig.js"></script>
+</html>

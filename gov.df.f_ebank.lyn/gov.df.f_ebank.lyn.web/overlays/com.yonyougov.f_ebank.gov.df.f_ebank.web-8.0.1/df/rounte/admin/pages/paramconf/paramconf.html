@@ -1,0 +1,58 @@
+	<div class="container-fluid h" style="margin:0 auto;">
+		<div class="config-btn">
+			<button id="xg" class="btn btn-config" onclick="editParam()">修改</button>
+		</div>
+		<div class="config-main border-box">
+			<div class="mt5 mb5">
+				<label style="margin-left:5px;">财政机构： </label> 
+				<select	id="finance_code" class="mr10 form-control ebank-input" 
+					onchange="fGetGrid()"></select> 
+				<input id="implementParam" type="checkbox" checked="checked" 
+					style="margin-right:2px;" onclick="fGetGrid()"/>
+					<label style="vertical-align:middle;">实施参数</label>
+				<input id="developParam" type="checkbox" style="margin-right:2px;"  
+					onclick="fGetGrid()"/>
+					<label style="vertical-align:middle;">开发参数 </label>
+			</div>
+			<div id="subSystemGrid" >
+				<table id="gridDatatable" style="width:100%;table-layout:fixed;" 
+					class="table-striped table table-bordered table-hover table-condensed">  
+          				<thead><tr><th></th><th>参数名称</th><th>参数值</th> <th>财政机构</th><th></th><th></th></tr></thead>  
+         					 <tbody> </tbody>  
+     	 			</table>  
+     	 		</div> 
+		</div>
+	</div>
+	<!-- 修改弹窗 -->
+	<div class="modal fade" tabindex="-1" id="editParamModal">
+		<div class="modal-dialog" role="document" style="width:600px;">
+			<div class="modal-content">
+				<div class="modal-header ui-draggable-handle">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">参数值修改</h4>
+				</div>
+				<div class="modal-body clearfix">
+					<input id="modal_chr_id" type="hidden">
+					<div class="col-sm-12 mt15">
+						<label class="col-sm-3 text-right">参数名称：</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" id="modal_chr_name" readonly="readonly">
+						</div>
+					</div>
+					<div class="col-sm-12 mt15">
+						<label class="col-sm-3 text-right">参数值：</label>
+						<div class="col-sm-9">
+							<textarea id="modal_chr_value" rows="4" style="width:100%;"></textarea>
+						</div>
+					</div>
+				</div> 
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" onclick="fModalOk()">确定</button>						
+					<button type="button" class="btn btn-primary" onclick="fModalCancel()">取消</button>
+			    </div>
+			</div>
+		</div>
+	</div>

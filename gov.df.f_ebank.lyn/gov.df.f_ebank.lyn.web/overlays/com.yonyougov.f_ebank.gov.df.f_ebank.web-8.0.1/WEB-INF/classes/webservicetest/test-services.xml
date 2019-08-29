@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:distributed="http://www.springframework.org/schema/fasp2/distributed"
+	xmlns:dic="http://www.springframework.org/schema/fasp2/dic"
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/fasp2/dic
+        http://www.springframework.org/schema/fasp2/dic/dic.xsd
+        http://www.springframework.org/schema/fasp2/distributed
+    http://www.springframework.org/schema/fasp2/distributed/distributed.xsd
+        http://cxf.apache.org/jaxws 
+    	http://cxf.apache.org/schemas/jaxws.xsd ">
+	<!-- 引入依赖包 -->
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+	<!--webservice实现类注册 -->
+	<bean id="fasp2.yonyou.WebService" class="gov.df.fap.service.webservicetest.service.WebServiceImpl">
+	</bean>
+	<!--服务接口注册 -->
+	<jaxws:server id="yonyWebService" serviceClass="gov.df.fap.service.webservicetest.inter.IWebserviceInter "
+		address="/yonyougove">
+		<jaxws:serviceBean>
+			<ref bean="fasp2.yonyou.WebService" />
+		</jaxws:serviceBean>
+	</jaxws:server>
+
+</beans>

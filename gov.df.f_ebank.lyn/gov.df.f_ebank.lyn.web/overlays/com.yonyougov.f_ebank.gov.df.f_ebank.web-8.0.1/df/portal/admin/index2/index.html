@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>山东省国库集中支付系统</title>
+  		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/companyTree.css" type="text/css">
+		<link rel="stylesheet" href="css/zTreeStyle/zTreeStyle.css" type="text/css">
+		<link rel="stylesheet" href="css/font-awesome.min.css" />
+		<link rel="stylesheet" href="css/H-ui.css"/>
+		<link rel="stylesheet" href="css/H-ui.admin.css"/>
+		<link rel="stylesheet" href="css/ionicons.min.css" />
+		<link rel="stylesheet" href="css/AdminLTE.min.css" />
+		<link rel="stylesheet" href="css/_all-skins.min.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		
+		<link rel="stylesheet" href="css/home.css" />
+	</head>
+	<body class="skin-blue sidebar-mini sidebar-collapse"style="height: auto;overflow-x:hidden;overflow-y:scroll;">
+		<div class="wrapper">
+		    <nav class="navbar">
+				<a href="#" class="sidebar-toggle type bor-r" id="sidebar-btn" data-toggle="offcanvas" role="button" >
+					<!--<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>-->
+					<span class="icon-navicon"></span>
+				</a>
+				<a href="javascript:void(0);" class="type">
+			      <span class="logo-lg">山东省国库集中支付系统</span>
+			    </a>
+			    <div class="navbar-custom-menu">
+        			<ul class="nav navbar-nav">
+        				<li class="dropdown  bor-l bor-r" style="position: relative;">
+							<a href="javascript:void(0);" id="department" class="dropdown-toggle" data-toggle="dropdown"> 
+								<span id="_username_index_top">中共山东省委机关服务中（中共山东省委办公厅行政处） </span> 
+							</a>
+							
+							<div class="content_wrap1" style="position: absolute;top: 40px;left:0px;width: 342px;height: 350px;background: #FFFFFF;box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);border-radius: 6px 0 0 0 6px 6px 6px; display: none;">
+								<div class="inputDiv" style="margin-top: 22px;">
+									<span class="highGridSearch" style="font-family: '微软雅黑';font-size: 12px;color: #333333;margin-left: 15px;">快速定位:</span>
+									<input id="companySearch" type="text" class="inputForm" style="width: 172px;height: 25px;outline: none;border: 1px solid #E5E5E5;border-radius: 3px;" >
+									<button id="companySearchBtn"  type="button" class="btn btnSearch" style="width: 60px;height: 25px;background: #108EE9;border-radius:3px;outline: none;color: #FFFFFF;font-size: 12px;">搜索</button>
+								</div>
+								<div class="zTreeDemoBackground left" >
+									<ul id="companyTree" class="ztree"style="width: 298px;height: 270px;margin: 8px 22px;border: 1px solid #E5E5E5;"></ul>
+								</div>
+							</div>	
+						</li>
+						<!-- <li class="dropdown user user-menu bor-r">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"> 
+								<i class="fa fa-user"></i> 
+								<span  id="_username_index_top">张海舒</span> 
+								<i class="fa fa-angle-down"></i>
+							</a>
+							<div class="dropdown-menu toggle" id="dropdown-menu1" style="width:120px !important">
+								<ul class="dMenuInfo" id="dMenuInfo1">
+									
+								</ul>
+							</div>	
+						</li> -->
+					
+						<li class="dropdown messages-menu border-left">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"> 
+								<span class="hidden-xs" id="_currenttime_index_top"></span>
+							</a>
+							<ul class="dropdown-menu toggle null"></ul>
+						</li>
+						<!-- <li class="dropdown border-left">
+							<a href="javascript:toIndex2();"> 
+								<i class="fa fa-exchange"></i>
+							</a>
+							<ul class="dropdown-menu toggle null"></ul>
+						</li> -->
+						<!--<li class="dropdown border-left">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"> 
+								<span class="hidden-xs">切换年度</span> 
+								<i class="fa fa-angle-down"></i>
+							</a>
+							<div class="dropdown-menu toggle" id="dropdown-menu3">
+								<ul class="dMenuInfo" id="dMenuInfo3">
+								</ul>
+							</div>
+						</li>-->
+						<!--<li class="dropdown border-left">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"> 
+								<span class="hidden-xs">切换区划</span> 
+								<i class="fa fa-angle-down"></i>
+							</a>
+							<div class="dropdown-menu toggle" id="dropdown-menu4">
+								<ul class="dMenuInfo" id="dMenuInfo4">
+								</ul>
+							</div>
+						</li>-->
+						<!--<li class="dropdown border-left">
+							<a href="javascript:void(0);" class="dropdown-toggle portal_switch_role" data-toggle="dropdown"> 
+								<span class="hidden-xs">切换角色</span> 
+								<i class="fa fa-angle-down"></i>
+							</a>
+							<div class="dropdown-menu toggle" id="dropdown-menu2">
+								<ul class="dMenuInfo" id="dMenuInfo">
+								</ul>
+							</div>
+						</li>-->
+						<li class="dropdown bor-r" onclick="Portal.user.logout();">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"> 
+								<i class="fa fa-sign-out"></i> 
+								<span class="hidden-xs">退出</span>
+							</a>
+						</li>
+					</ul>
+        		</div>
+    		</nav>
+			
+			<aside class="main-sidebar">
+				<section class="sidebar" id="sidebar" style="height:800px !important;">
+					<ul class="sidebar-menu" id="_sidebar_menu">
+						
+					</ul>
+				</section>
+			</aside>
+			
+			<div class="content-wrapper">
+				<!-- <iframe style="height:100%;min-height:760px;" scrolling="yes" frameborder="0" name="menuFrame" src="" id="menuFrame"></iframe> -->
+				<section class="Hui-article-box">
+					<div id="Hui-tabNav" class="Hui-tabNav ">
+						<div class="Hui-tabNav-wp">
+						<ul id="min_title_list" class="acrossTab cl" style="padding-left: 10px;width: 100%;">
+							<li class="active">
+								<span title="我的工作台" id="iframe_first_id" data-href="">我的工作台</span>
+							</li>
+						</ul>
+						</div>
+						<div class="Hui-tabNav-more btn-group">
+							<a id="js-tabNav-prev"  class="btn radius btn-default size-S" href="javascript:;"><i class="fa fa-angle-left"></i></a>
+							<a id="js-tabNav-next" class="btn radius btn-default size-S" href="javascript:;"><i class="fa fa-angle-right"></i></a>
+						</div>
+					</div>
+				
+					<div id="iframe_box" class="Hui-article">
+						<div class="show_iframe">
+						   <!--<div style="display: none" class="loading"></div>-->
+						   <iframe scrolling="no" frameborder="0" id="iframe_first_id_iframe" src=""></iframe>
+						</div>
+					</div>
+				</section>
+			</div>
+			
+			<!-- <footer class="main-footer">
+			    <div class="center">该软件由 北京用友政务软件有限公司 技术支持</div>
+			</footer> -->
+		</div>
+		
+		<div class="fix" style="display:none;">
+			<!-- title="最近三次操作" -->
+			<p id="work" class="f-bg"><a href="javascript:void(0);" class="_portal_recent_check_a" ><img src="img/work.png"/></a></p>
+			<!-- <p id="search" class="f-bg"><a href="javascript:toIndex3();"><img src="img/search.png"/></a></p> -->
+			<p id="search" class="f-bg"><a href="javascript:void(0);"><img src="img/search.png"/></a></p>
+			<p id="mes" class="f-bg"><a href="javascript:void(0);"><img src="img/mes.png"/></a></p>
+		</div>
+		
+		<div id="recent_work_div" class="rightmenu">
+			<ul class="bar" id="recent_work_div_ul">
+				<!-- <li><a href="">萨佛开房间啊开发</a></li> -->
+			</ul>
+		</div>
+		
+		<div id="hidden_label">
+			<input type="hidden" id="svFiscalPeriod" value=""/>
+			<input type="hidden" id="svMenuId" value=""/>
+			<input type="hidden" id="svRgCode" value=""/>
+			<input type="hidden" id="svRgName" value=""/>
+			<input type="hidden" id="svRoleCode" value=""/>
+			<input type="hidden" id="svRoleId" value=""/>
+			<input type="hidden" id="svRoleName" value=""/>
+			<input type="hidden" id="svSetYear" value=""/>
+			<input type="hidden" id="svTransDate" value=""/>
+			<input type="hidden" id="svUserCode" value=""/>
+			<input type="hidden" id="svUserId" value=""/>
+			<input type="hidden" id="svUserName" value=""/>
+			<a class="one_hidden_a" style="display:none" href="javascript:void(0);"></a> <!-- target="_blank" -->
+		</div>
+		
+		<script charset="utf-8" type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/H-ui.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/H-ui.admin.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/app.min.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/demo.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/Base64.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/md5.min.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/dfp.js"></script>
+		<script type="text/javascript" src="js/jquery.ztree.core-3.1.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/index.js"></script> 
+		
+		<script>
+			
+			var setting1 = {
+				view:{
+					selectedMulti: false	//禁止多点选中
+				},
+				callback: {  
+	                onClick: function(treeId, treeNode) {  
+	                    var treeObj = $.fn.zTree.getZTreeObj(treeNode);  
+	                    var selectedNode = treeObj.getSelectedNodes()[0];  
+	                    $("#companySearch").val(selectedNode.name);  
+	                }  
+	            }
+				
+			};
+			var zNodes1 =[
+				{ name:"中国共产党山东省委会办公厅", open:true,
+					children: [
+						{ name:"中国共产党山东省委会办公厅机关",
+							children: [
+								{ name:"中共山东省委机关幼儿园"},
+								{ name:"中共山东省委第二幼儿园"},
+								{ name:"山东省保密技术检测测评中心"},
+								{ name:"中共山东省委机关服务中心"},
+								{ name:"山东省涉密载体销毁中心"}
+							]},
+						{ name:"中共山东省委山东省人民政府研发中心",
+							children: [
+								{ name:"中共山东省委机关幼儿园"},
+								{ name:"中共山东省委第二幼儿园"},
+								{ name:"山东省保密技术检测测评中心"},
+								{ name:"中共山东省委机关服务中心"},
+								{ name:"山东省涉密载体销毁中心"}
+							]},
+						{ name:"中共山东省委山东省人民政府信访局", isParent:false}
+					]},
+				{ name:"中国共产党山东省委检察院", open:true,
+					children: [
+						{ name:"中国共产党山东省委会办公厅机关",
+							children: [
+								{ name:"中共山东省委机关幼儿园"},
+								{ name:"中共山东省委第二幼儿园"},
+								{ name:"山东省保密技术检测测评中心"},
+								{ name:"中共山东省委机关服务中心"},
+								{ name:"山东省涉密载体销毁中心"}
+							]},
+						{ name:"中共山东省委山东省人民政府研发中心",
+							children: [
+								{ name:"中共山东省委机关幼儿园"},
+								{ name:"中共山东省委第二幼儿园"},
+								{ name:"山东省保密技术检测测评中心"},
+								{ name:"中共山东省委机关服务中心"},
+								{ name:"山东省涉密载体销毁中心"}
+							]},
+						{ name:"中共山东省委山东省人民政府信访局", isParent:false}
+					]}
+	
+			];
+	
+			$(document).ready(function(){
+				$.fn.zTree.init($("#companyTree"), setting1, zNodes1);
+			});
+			//top点击事件
+			$("#department").click(function(){
+			var displayCss = $(".content_wrap1").css("display");
+			if(displayCss=='none'){
+				$(".content_wrap1").show();
+			}else{
+				$(".content_wrap1").hide();
+			}
+		});
+		
+		</script>
+		
+	</body>
+</html>
+

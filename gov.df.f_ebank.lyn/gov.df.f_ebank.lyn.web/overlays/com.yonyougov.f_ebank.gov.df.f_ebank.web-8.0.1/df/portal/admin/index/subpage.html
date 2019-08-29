@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>山东财政</title>
+		<!--<link rel="stylesheet" href="css/highcharts.css" />-->
+		<link rel="stylesheet" href="css/foundation-datepicker.css" />
+		<link rel="stylesheet" href="css/companyTree.css" type="text/css">
+		
+		<link rel="stylesheet" href="css/zTreeStyle/zTreeStyle.css" type="text/css">
+		<link rel="stylesheet" href="css/subpage.css" />
+		<link rel="stylesheet" href="/df/trd/uui/css/u.css" type="text/css">
+		<link rel="stylesheet" href="/df/trd/uui/css/grid.css" type="text/css">
+		<link rel="stylesheet" href="/df/trd/ip/css/ip.css" type="text/css">
+		<link rel="stylesheet" href="/df/trd/ip/css/bizSys.css" type="text/css">
+		<link rel="stylesheet" href="/df/trd/ip/css/theme/blue.css" type="text/css">
+
+		<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+		<script type="text/javascript" src="js/highcharts.js"></script>
+		<script type="text/javascript" src="js/highcharts-more.js"></script>
+		<script type="text/javascript" src="js/solid-gauge.js"></script>
+		<script type="text/javascript" src="js/exporting.js"></script>
+		<script type="text/javascript" src="js/highcharts-zh_CN.js"></script>
+		<script type="text/javascript" src="js/foundation-datepicker.js"></script>
+		<script type="text/javascript" src="js/foundation-datepicker.zh-CN.js"></script>
+		<script src="js/subpage.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="js/jquery.ztree.core-3.1.js"></script>
+		<script type="text/javascript" src="js/layer/layer.js"></script>
+		
+		<script src="/df/trd/uui/js/u-polyfill.js"></script>
+		<script src="/df/trd/knockout/knockout-3.2.0.debug.js"></script>
+		<!-- <script src="/df/trd/knockout/knockout-3.1.0.js"></script> -->
+		<script src="/df/trd/uui/js/u.js"></script>
+		<script src="/df/trd/uui/js/u-grid.js"></script>
+		
+		<!--[if lt IE 9]>
+	    	<script src="js/html5shiv.min.js"></script>
+	    	<script src="js/respond.min.js"></script>
+	    <![endif]-->
+		
+	</head>
+	<body style="background:#f8f8f8;height: 105%;">
+		<div id="right">
+			<div id="search" style="margin-top:10px;">
+				<div id="text" style="margin-left:-6px;">
+					<input type="text" name="" style="margin-left: 10px;font-size: 16px;color: #000;width: 300px;" id="_portal_fiscal_input" value="" placeholder="&nbsp;&nbsp;请输入关键词"/>
+					<div id="pic" class="_portal_fiscal_sub _portal_cursor_pointer">
+						<img id="fiscalSubImg" style="transform: scale(1.3, 1.3) !important;transition:all 0.5s !important;" src="img/dashboard/search1.png"/>
+					</div>
+				</div>
+			</div>
+			<div class="cen1" style="height:266px;">
+				<div class="head-r" id="head-r">
+					<span class=" ac">本日</span>
+					<span class="">本月</span>
+					<span class="">本年</span>
+				</div>
+				<!--本日-->
+				<div id="fundmonitor_tab_day"  class="biao tab2">
+					<table border="0" cellspacing="0" cellpadding="0"></table>
+				</div>
+				<!--本月-->
+				<div id="fundmonitor_tab_month" class="biao tab2 hidden">
+					<table  border="0" cellspacing="0" cellpadding="0"></table>
+				</div>
+				<!--本年-->
+				<div id="fundmonitor_tab_year" class="biao tab2 hidden">
+					<table  border="0" cellspacing="0" cellpadding="0"></table>
+				</div>
+			</div>
+			<div class="cen2">
+				<div class="head-r2">
+					<span>待办事项</span>
+					<!-- <img id="_portal_dealing_more" src="img/dashboard/notice.png"/> -->
+					<a id="_portal_dealing_more" class="_portal_dealing_more _portal_cursor_pointer" style="color: #108ee9;"></a>
+				</div>
+				<div id="m-content1">
+					<ul>
+						<!-- <li><span class="icon1"></span><a href="javascript:void(0);">财政直接支付退款入账通知书登记<span class="c-red">未登记1条</span></a></li> -->
+					</ul>
+				</div>
+			</div>
+			<div class="cen3">
+				<div class="head-r2">
+					<span>公告信息</span>
+					<!-- <img src="img/dashboard/notice.png" class="_portal_article_more _portal_cursor_pointer"/> -->
+					<a id="_portal_article_more" class="_portal_article_more _portal_cursor_pointer" style="color: #108ee9;">更多</a>
+					<a id="_portal_article_add" class="_portal_article_add _portal_cursor_pointer" style="color: #108ee9;">创建</a>
+				</div>
+				<div id="m-content">
+					<ul>
+						<!-- <li><span class="icon1"></span><a href="javascript:void(0);">关于提醒自行纳税申报的函20161229</a></li> -->
+					</ul>
+				</div>
+				
+			</div>
+			
+		</div>
+		<div id="left">
+			<div class="cen-1">
+				<ul class="list">
+					<li><a href="javascript:void(0);" class="_portal_cursor_default" style="cursor:default !important;">常用<br/>操作</a></li>
+					<li class="icon hid _portal_hid_ban_li" style="width:20%;">
+						<a href="javascript:void(0);">
+							<img src="img/icon-ban.png"/>
+							<span>我要办</span>
+						</a>
+						<div class="hidContent" style="position: absolute;top: 40px;left: 0;z-index: 66;">
+							<ul style="width:200px; height:246px;">
+								<li><span class="icon2"></span><a href="javascript:void(0);">现金业务</a></li>
+								<li><span class="icon2"></span><a href="javascript:void(0);">普通转账</a></li>
+								<li><span class="icon2"></span><a href="javascript:void(0);">代扣代缴</a></li>
+								<li><span class="icon2"></span><a href="javascript:void(0);">柜台缴税</a></li>
+								<li><span class="icon2"></span><a href="javascript:void(0);">批量支付</a></li>
+								<li><span class="icon2"></span><a href="javascript:void(0);">公务卡</a></li>
+								<li><span class="icon2"></span><a href="javascript:void(0);">政府采购</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="icon hid _portal_hid_deng_li" style="width:20%;"><a href="javascript:void(0);"><img src="img/icon-deng.png"/><span>我要登</span></a>
+						<div class="hidContent" style="position: absolute;top: 40px;left: 0;z-index: 66;">
+							<ul style="width:255px; height:212px;">
+								<li><span class="icon2"></span><a href="javascript:void(0);">单位额度到账通知书</a></li>
+								<li><span class="icon2"></span><a href="javascript:void(0);">授权支付退款通知书</a></li>
+								<li><span class="icon2"></span><a href="javascript:void(0);">财政授权支付入账通知书</a></li>
+								<li><span class="icon2"></span><a href="javascript:void(0);">财政授权支付退款入账通知书</a></li>
+								<li><span class="icon2"></span><a href="javascript:void(0);">财政直接支付入账通知书</a></li>
+								<li><span class="icon2"></span><a href="javascript:void(0);">财政直接支付退款入账通知书</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="icon hid _portal_hid_cha_li" style="width:20%;"><a href="javascript:void(0);"><img src="img/icon-cha.png"/><span>我要查</span></a>
+						<div class="hidContent" style="position: absolute;top: 40px;left: 0;z-index: 66;">
+							<ul style="width:318px; height:282px;">
+								<li><span class="icon2"></span><a href="javascript:void(0);">财政直接支付申请书查询</a></li>
+								<li><span class="icon2"></span><a href="javascript:void(0);">财政授权支付凭证查询</a></li>
+								<li><span class="icon2"></span><a href="javascript:void(0);">指标明细查询</a></li>
+								<li><span class="icon2"></span><a href="javascript:void(0);">支付明细查询</a></li>
+								<li><span class="icon2"></span><a href="javascript:void(0);">预算执行情况查询</a></li>
+								<li><span class="icon2"></span><a href="javascript:void(0);">国库集中支付年终结余资金对账单查询</a></li>
+								<li><span class="icon2"></span><a href="javascript:void(0);">预算项目查询</a></li>
+								<li><span class="icon2"></span><a href="javascript:void(0);">自定义查询</a></li>
+							</ul>
+						</div>
+					</li>
+					<li class="icon hid _portal_hid_wen_li" style="width:20%;"><a href="javascript:void(0);"><img src="img/icon-wen.png"/><span>我要问</span></a>
+						<div class="hidContent" style="position: absolute;top: 40px;left: 0;z-index: 66;">
+							<!-- <ul style="width:200px; height:318px;"> -->
+							<ul style="width:200px; height:282px;">
+								<li><span class="icon2"></span><a href="javascript:void(0);">操作手册</a></li>
+								<li><span class="icon2"></span><a href="javascript:void(0);">操作规范</a></li>
+								<li><span class="icon2"></span><a href="javascript:void(0);">公务卡</a></li>
+								<li><span class="icon2"></span><a href="javascript:void(0);">支付签章</a></li>
+								<li><span class="icon2"></span><a href="javascript:void(0);">凭证查询</a></li>
+								<li><span class="icon2"></span><a href="javascript:void(0);">凭证打印</a></li>
+								<li><span class="icon2"></span><a href="javascript:void(0);">资金监控</a></li>
+								<!-- <li><span class="icon2"></span><a href="javascript:void(0);">即时通讯</a></li> -->
+								<li><span class="icon2"></span><a href="javascript:void(0);">其他</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="cen-2" style="height:168px;">
+				<div class="head-l">
+					<span>支出进度情况</span>
+					
+					<!--预算类别-->
+					<div class="selectDiv">
+						<span class="budgetSpan">预算类别:</span>
+						<select id="budgetSelect" class="budgetSelect _portal_zhichu_select_yslb_select _portal_cursor_pointer">
+							<option value="01" selected="selected">一般公共预算</option>
+							<option value="02">政府性基金</option>
+							<option value="03">国有资本经营</option>
+							<option value="04">社会保险基金</option>
+						</select>
+					</div>
+					<!--支出类型-->
+					<div class="selectDiv">
+						<span class="zcspan">支出类型:</span>
+						<select id="dwdwzcSelect" class="dwdwzcSelect _portal_zhichu_select_zclx_select _portal_cursor_pointer">
+							<option value="101" selected="selected">基本支出</option>
+							<option value="102">项目支出</option>
+							<option value="103">专项转移支付</option>
+							<option value="109">其他支出</option>
+						</select>
+					</div>
+					<!--时间-->
+					<div class="selectDiv" style="margin-top:-3px;">
+						<span class="timespan">截止时间:</span>
+						<input id="budgetTime" style="height:26px;line-height:26px;margin-top:8px;padding-top:0px;" type="text" class="_portal_cursor_pointer form-control budgetTime" readonly="readonly">
+						<span><i class="icon-calendar"></i></span>
+					</div>
+					<div class="danwei">单位：元</div>
+				</div>
+				<div style="position: relative; margin-top:-20px;">
+					<div class="zhibiao" style="position:absolute;z-index: 5;margin:13px 0 0 20px;">
+						<span class="zbje">指标金额:<span class="zbjenum" id="_portal_zhichu_text_zbje_span">0</span></span>
+						<span class="zfje">支出金额:<span class="zfjenum" id="_portal_zhichu_text_zfje_span">0</span></span>
+						<span class="zbye">指标余额:<span class="zbyenum" id="_portal_zhichu_text_zbye_span">0</span></span>
+					</div>
+					<!--<div class="danweiType">
+						<span class="zbje">单位:</span>
+						<label><input name="Fruit" type="radio" value="" checked="true" />元 </label>
+						<label><input name="Fruit" type="radio" value="" />万元 </label>
+					</div>-->
+					<div id="dwzc" style="width:95%;height:130px;margin: 0 auto;margin-top:20px;padding:0 2% 0 2%;"></div>
+				</div>
+			</div>
+			
+			<div class="cen-3" style="height:auto;padding-bottom:10px;">
+				<div class="head-l">
+					<span>
+						预算指标
+					</span>
+					<!--时间-->
+					<!-- <div class="selectDiv1">
+						<span class="timespan">下达时间:</span>
+						<input id="budgetTime1" type="text" class="form-control budgetTime" readonly="readonly"  data-bind="click:onFocus" value="2017-7">
+						<span><i class="icon-calendar"></i></span>
+					</div> -->
+					<!--预算类别-->
+					<!-- <div class="selectDiv1">
+						<span class="budgetSpan">可用额</span>
+						<select id="budgetSelect" class="budgetSelect">
+							<option value="1">全部</option>
+							<option value="2">项目支出</option>
+							<option value="3">政府采购</option>
+							<option value="4">公务卡</option>
+						</select>
+						元&nbsp;&nbsp;&nbsp;
+					</div> -->
+					<!-- <div class="danwei">单位：元</div> -->
+					<div class="danwei">单位：
+						<input type="radio" class="_portal_cursor_pointer" id="budgetTableRadioYuan" name="_portal_zhibiao_danwei" checked="checked" value="yuan"/> 元&nbsp;&nbsp;
+						<input type="radio" class="_portal_cursor_pointer" id="budgetTableRadioWan" name="_portal_zhibiao_danwei" value="wan"/> 万元
+					</div>
+					<div class="check-box"><input type="checkbox" id="budgetTableYueNull" value="" style="margin-top:-1px;"/>余额为零</div>
+					<div class="selectDiv1" style="position: relative; right;margin-right: 10px;">
+						<span id="demand">高级查询</span>
+						<div class="demandContent" style="width:610px;">
+							<ul id="d-list">
+								<li style="position: relative;">
+									指标文号
+									<input type="text" id="_portal_yusuan_table_gaoji_zbwh_input" value=""/>
+									<span id="budgetTableSelectClear_zbwh" class="_portal_cursor_pointer" style="position: absolute;top: 5px;right: 38px; color: #999999;font-size: 16px;border: solid 1px #ccc;background: #FFF;z-index: 9;padding: 2px 7px 4px 9px;">x</span>
+									<span id="more" class="_portal_cursor_pointer _portal_table_gaoji_zbwh_span" style="position: absolute;top: 5px;color: #999999;font-size: 16px;border: solid 1px #ccc;background: #FFF;z-index: 9;padding: 0px 6px 6px 8px;right: 11px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;">...</span>
+								</li>
+								<li style="position: relative;">
+									项目分类
+									<input type="text" id="_portal_yusuan_table_gaoji_xmfl_input" value=""/>
+									<span id="budgetTableSelectClear_xmfl" class="_portal_cursor_pointer" style="position: absolute;top: 5px;right: 38px; color: #999999;font-size: 16px;border: solid 1px #ccc;background: #FFF;z-index: 9;padding: 2px 7px 4px 9px;">x</span>
+									<span class="_portal_cursor_pointer _portal_table_gaoji_xmfl_span" style="position: absolute;top: 5px;right: 18px; color: #999999;font-size: 16px;border: solid 1px #ccc;background: #FFF;z-index: 9;padding: 0px 6px 6px 8px;right: 11px;border-top-right-radius: 4px;border-bottom-right-radius: 4px;">...</span>
+								</li>
+								<li style="position: relative;">
+									预算项目
+									<input type="text" id="_portal_yusuan_table_gaoji_ysxm_input" value=""/>
+									<span id="budgetTableSelectClear_ysxm" class="_portal_cursor_pointer" style="position: absolute;top: 5px;right: 38px; color: #999999;font-size: 16px;border: solid 1px #ccc;background: #FFF;z-index: 9;padding: 2px 7px 4px 9px;">x</span>
+									<span class="_portal_cursor_pointer _portal_table_gaoji_ysxm_span" style="position: absolute;top: 5px;right: 18px; color: #999999;font-size: 16px;border: solid 1px #ccc;background: #FFF;z-index: 9;padding: 0px 6px 6px 8px;right: 11px;border-top-right-radius: 4px;border-bottom-right-radius: 4px;">...</span>
+								</li>
+								<li style="position: relative;">
+									预算单位
+									<input type="text" id="_portal_yusuan_table_gaoji_ysdw_input" value=""/>
+									<span id="budgetTableSelectClear_ysdw" class="_portal_cursor_pointer" style="position: absolute;top: 5px;right: 38px; color: #999999;font-size: 16px;border: solid 1px #ccc;background: #FFF;z-index: 9;padding: 2px 7px 4px 9px;">x</span>
+									<span class="_portal_cursor_pointer _portal_table_gaoji_ysdw_span" style="position: absolute;top: 5px;right: 18px; color: #999999;font-size: 16px;border: solid 1px #ccc;background: #FFF;z-index: 9;padding: 0px 6px 6px 8px;right: 11px;border-top-right-radius: 4px;border-bottom-right-radius: 4px;">...</span>
+								</li>
+								<li style="position: relative;">
+									支付方式
+									<input type="text" id="_portal_yusuan_table_gaoji_zffs_input" value=""/>
+									<span id="budgetTableSelectClear_zffs" class="_portal_cursor_pointer" style="position: absolute;top: 5px;right: 38px; color: #999999;font-size: 16px;border: solid 1px #ccc;background: #FFF;z-index: 9;padding: 2px 7px 4px 9px;">x</span>
+									<span class="_portal_cursor_pointer _portal_table_gaoji_zffs_span" style="position: absolute;top: 5px;right: 18px; color: #999999;font-size: 16px;border: solid 1px #ccc;background: #FFF;z-index: 9;padding: 0px 6px 6px 8px;right: 11px;border-top-right-radius: 4px;border-bottom-right-radius: 4px;">...</span>
+								</li>
+								<input type="hidden" id="_portal_yusuan_table_gaoji_zbwh_input_chrid" value=""/>
+								<input type="hidden" id="_portal_yusuan_table_gaoji_xmfl_input_chrid" value=""/>
+								<input type="hidden" id="_portal_yusuan_table_gaoji_ysxm_input_chrid" value=""/>
+								<input type="hidden" id="_portal_yusuan_table_gaoji_ysdw_input_chrid" value=""/>
+								<input type="hidden" id="_portal_yusuan_table_gaoji_zffs_input_chrid" value=""/>
+							</ul>
+							<input type="button" id="close" value="关闭" />
+							<input type="button" id="sure" value="确定" />
+						</div>
+						<div class="content_wrap" style="position: absolute;top: -50px;left: 150px;display: none;">
+							<div class="head-div">
+								<span>列表</span>
+								<a href="javascript:void(0);" id="close-div">
+									<span>x</span>
+								</a>
+							</div>	
+							<div class="inputDiv" style="display:none;">
+								<span class="posi">快速定位:<input type="text" class="inputForm" id="_portal_table_input" value=""/></span>
+								<input type="hidden" id="_portal_table_input_chrid" value=""/>
+								<button type="button" class="btn btnSearch">搜索</button>
+							</div>
+							<div class="zTreeDemoBackground left">
+								<ul id="zhibiaotree" class="ztree" style="width: 249px;height: 235px; margin-left: 18px;border: 1px solid #E5E5E5;"></ul>
+							</div>
+							<input type="button" id="_portal_table_gaoji_close_input" value="关闭" />
+							<input type="button" id="_portal_table_gaoji_submit_input" value="确定" />
+							<input type="hidden" id="_portal_yusuan_gaoji_type_input" value=""/>
+						</div>
+					</div>
+				</div>
+				<div id="tableContent"style="padding:10px 10px;">
+					<div id="mainGeriContentDiv" u-meta='{"id":"gridShow","type":"grid","data":"dataTable","editable":true,"onBeforeEditFun":"tableBeforeEdit","onDblClickFun":"tableDbCLick","rowHeight":"30","showNumCol": true,"needLocalStorage": false,"headerHeight":"36","sortable":true,"showSumRow":true,"sumRowFirst":true,"sumRowFixed": true}'>
+						<div options='{"field":"file_name","width":"auto","dataType":"String","title":"指标文号","renderType":"changeColorNormal","width": 170}'></div>
+						<div options='{"field":"agencyexp_name","width":"auto","dataType":"String","title":"项目分类","renderType":"changeColorNormal","width": 130}'></div>
+						<div options='{"field":"bis_name","width":"auto","dataType":"String","title":"预算项目","renderType":"changeColorNormal","width": 130}'></div>
+						<div options='{"field":"avi_money","width":"auto","dataType":"String","title":"指标金额","sumCol": true,"sumRenderType":"tableSum","renderType":"changeColorZhibiao","width": 160}'></div>
+						<div options='{"field":"canuse_money","width":"auto","dataType":"String","title":"指标余额","sumCol": true,"sumRenderType":"tableSum","renderType":"changeColorKeyong","width": 160}'></div>
+						<div options='{"field":"expfunc_name","width":"auto","dataType":"String","title":"功能分类","renderType":"changeColorNormal","width": 180}'></div>
+						<div options='{"field":"expeco_name","width":"auto","dataType":"String","title":"经济分类","renderType":"changeColorNormal","width": 180}'></div>
+						<div options='{"field":"fundtype_name","width":"auto","dataType":"String","title":"资金性质","renderType":"changeColorNormal","width": 130}'></div>
+						<div options='{"field":"bgtsource_name","width":"auto","dataType":"String","title":"指标来源","renderType":"changeColorNormal","width": 130}'></div>
+						<div options='{"field":"agency_name","width":"auto","dataType":"String","title":"预算单位","renderType":"changeColorNormal","width": 300}'></div>
+						<div options='{"field":"mb_name","width":"auto","dataType":"String","title":"业务处室","renderType":"changeColorNormal","width": 130}'></div>
+						<div options='{"field":"budget_summary","width":"auto","dataType":"String","title":"指标摘要","renderType":"changeColorNormal","width": 170}'></div>
+					</div>
+					<!-- <div id="pagination" class="u-pagination" u-meta="{'type':'pagination','data':'dataTable'}"> -->
+				</div>
+				
+			</div>
+		</div>
+		
+		<!-- 预算指标高级查询 -->
+		<!-- <div class="modal fade" id="_portal_yusuan_gaoji_m1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">  
+		    <div class="modal-dialog" role="document">  
+		        <div class="modal-content">  
+		            <div class="modal-header">  
+		                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		                	<span aria-hidden="true">×</span>
+		                </button>  
+		                <h4 class="modal-title" id="exampleModalLabel">高级查询</h4>  
+		            </div>  
+		            <div class="modal-body">  
+		            	<div style="margin-bottom:10px;">
+							<label class="operate-time" style="float: left;margin-top: 7px;font-weight: normal;margin-right: 10px;margin-left: 15px;">
+								指标文号
+							</label>
+							<div class="input-group ip-input-group select-operate-time" style="width:80%;">
+								<input type="text" class="form-control "> <span class="input-group-btn">
+								<button class="btn btn-default" style="padding:6px;" type="button">
+									<span class="glyphicon glyphicon-option-horizontal"></span>
+								</button> </span>
+							</div>
+						</div>
+						<div style="margin-bottom:10px;">
+							<label class="operate-time" style="float: left;margin-top: 7px;font-weight: normal;margin-right: 10px;margin-left: 15px;">
+								项目分类
+							</label>
+							<div class="input-group ip-input-group select-operate-time" style="width:80%;">
+								<input type="text" class="form-control "> <span class="input-group-btn">
+								<button class="btn btn-default" style="padding:6px;" type="button">
+									<span class="glyphicon glyphicon-option-horizontal"></span>
+								</button> </span>
+							</div>
+						</div>
+						<div style="margin-bottom:10px;">
+							<label class="operate-time" style="float: left;margin-top: 7px;font-weight: normal;margin-right: 10px;margin-left: 15px;">
+								预算项目
+							</label>
+							<div class="input-group ip-input-group select-operate-time" style="width:80%;">
+								<input type="text" class="form-control "> <span class="input-group-btn">
+								<button class="btn btn-default" style="padding:6px;" type="button">
+									<span class="glyphicon glyphicon-option-horizontal"></span>
+								</button> </span>
+							</div>
+						</div>
+						<div style="margin-bottom:10px;">
+							<label class="operate-time" style="float: left;margin-top: 7px;font-weight: normal;margin-right: 10px;margin-left: 15px;">
+								预算单位
+							</label>
+							<div class="input-group ip-input-group select-operate-time" style="width:80%;">
+								<input type="text" class="form-control "> <span class="input-group-btn">
+								<button class="btn btn-default" style="padding:6px;" type="button">
+									<span class="glyphicon glyphicon-option-horizontal"></span>
+								</button> </span>
+							</div>
+						</div>
+						<div style="margin-bottom:10px;">
+							<label class="operate-time" style="float: left;margin-top: 7px;font-weight: normal;margin-right: 10px;margin-left: 15px;">
+								支付方式
+							</label>
+							<div class="input-group ip-input-group select-operate-time" style="width:80%;">
+								<input type="text" class="form-control "> <span class="input-group-btn">
+								<button class="btn btn-default" style="padding:6px;" type="button">
+									<span class="glyphicon glyphicon-option-horizontal"></span>
+								</button> </span>
+							</div>
+						</div>
+		            </div>  
+		            <div class="modal-footer" style="height:45px; margin-right: 8%;padding: 0px; border-top: 0px;">  
+		                <button type="button" class="btn btn-default" id="close" data-dismiss="modal">关闭</button>  
+		                <button type="button" class="btn btn-primary" id="sure">确定</button>  
+		            </div>  
+		        </div>  
+		    </div>  
+		</div> --> 
+			
+	</body>
+	
+	<script charset="utf-8" type="text/javascript" src="js/Base64.js"></script>
+	<script charset="utf-8" type="text/javascript" src="js/md5.min.js"></script>
+	<script charset="utf-8" type="text/javascript" src="js/dfp.js"></script>
+	<script charset="utf-8" type="text/javascript" src="/df/trd/ip/js/ip.js"></script>
+	<script charset="utf-8" type="text/javascript" src="js/dashboard.js"></script>
+	
+	<script type="text/javascript">
+		$(function(){
+		
+			// 右上user弹出
+			$("#_portal_fiscal_input").on("focus", function(){
+				$(this).prop("placeholder", "");
+			}).on("blur",function(){
+				if(!$(this).prop("value")){
+					$(this).prop("placeholder", "请输入关键词");
+				}
+			});
+		});
+	</script>
+	
+</html>

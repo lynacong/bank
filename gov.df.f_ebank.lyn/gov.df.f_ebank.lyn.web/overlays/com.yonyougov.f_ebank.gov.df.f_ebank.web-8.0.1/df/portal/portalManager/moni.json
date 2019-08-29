@@ -1,0 +1,65 @@
+{
+	"sub1":[
+	{
+		"ico": "icon-leaf",
+		"name": "财务项目库",
+		"id":1,
+		"pid":0,
+		"sub":[
+		{
+			"ico": "icon-file-alt",
+			"name": "子菜单11",
+			"id":11,
+			"pid":1,
+			"url":"http://www.baidu.com"
+		},
+		{
+			"ico": "icon-file-alt",
+			"name": "子菜单12",
+			"id":12,
+			"pid":1,
+			"url":"http://www.douban.com"
+		},
+		{
+			"ico": "icon-file-alt",
+			"name": "子菜单13",
+			"id":13,
+			"pid":1,
+			"url":"http://www.baidu.com"
+		},
+		{
+			"ico": "icon-file-alt",
+			"name": "子菜单14",
+			"id":14,
+			"pid":1,
+			"url":"http://www.douban.com"
+		}
+		]
+	},
+	{
+		"ico": "icon-leaf",
+		"name": "总账平台",
+		"id":1,
+		"pid":0
+	},
+	{
+		"ico": "icon-leaf",
+		"name": "总账平台",
+		"id":1,
+		"pid":0
+	},
+	{
+		"ico": "icon-leaf",
+		"name": "预算分配系统",
+		"id":1,
+		"pid":0
+	},
+	{
+		"ico": "icon-leaf",
+		"name": "财务处理系统",
+		"id":1,
+		"pid":0
+	}
+	]
+
+}

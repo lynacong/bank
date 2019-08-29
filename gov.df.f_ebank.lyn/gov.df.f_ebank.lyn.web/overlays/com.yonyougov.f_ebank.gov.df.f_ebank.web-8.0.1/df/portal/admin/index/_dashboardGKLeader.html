@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>国库处首页</title>
+		<link rel="stylesheet" href="css/foundation-datepicker.css" />
+		<link rel="stylesheet" href="/df/trd/uui/css/u.css" type="text/css">
+		<link rel="stylesheet" href="css/GKLeader/dashboardGKLeader.css" />
+		<link rel="stylesheet" href="css/zTreeStyle/zTreeStyle.css" type="text/css">
+		<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+		<script type="text/javascript" src="js/jquery.ztree.core-3.1.js"></script>
+		<script type="text/javascript" src="js/highcharts.js"></script>
+		<script type="text/javascript" src="js/highcharts-more.js"></script>
+		<script type="text/javascript" src="js/highcharts-zh_CN.js"></script>
+		<script type="text/javascript" src="js/foundation-datepicker.js"></script>
+		<script type="text/javascript" src="js/foundation-datepicker.zh-CN.js"></script>
+		
+	</head>
+	<body>
+		<div id="right">
+			<div id="search" style="margin-top:10px;">
+				<div id="text" style="margin-left:-6px;">
+					<input type="text" name="" style="margin-left: 10px;font-size: 16px;color: #000;width: 300px;" id="fiscalInput" value="" placeholder="&nbsp;&nbsp;请输入关键词"/>
+					<div id="pic" class="_portal_fiscal_sub _portal_cursor_pointer">
+						<img id="fiscalSubImg" style="transform: scale(1.3, 1.3) !important;transition:all 0.5s !important;" src="img/dashboard/search1.png"/>
+					</div>
+				</div>
+			</div>
+			<div class="cen1" style="height:266px;">
+				<div class="head-r11" id="head-r">
+					<span class=" ac">本日</span>
+					<span class="">本月</span>
+					<span class="">本年</span>
+					<a href="javascript:void(0);" id="refreshFundmonitor">刷新</a>
+				</div>
+				<!--本日-->
+				<div id="fundmonitor_tab_day" class="biao tab1">
+					<table border="0" cellspacing="0" cellpadding="0"></table>
+				</div>
+				<!--本月-->
+				<div id="fundmonitor_tab_month" class="biao tab1 hidden">
+					<table border="0" cellspacing="0" cellpadding="0"></table>
+				</div>
+				<!--本年-->
+				<div id="fundmonitor_tab_year" class="biao tab1 hidden">
+					<table border="0" cellspacing="0" cellpadding="0"></table>
+				</div>
+			</div>
+			<div class="cen2">
+				<div class="head-r" id="head-r1">
+					<span class="ac1" id="zcjdSortFrontSelect">支出进度前五</span>
+					<span class="" id="zcjdSortLastSelect">支出进度后五</span>
+				</div>
+				<!--支出进度前五-->
+				<div class="biao tab1 _tab1" id="zcjdSortFront">
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tr ><td width="60px"align="center">序号</td><td width="146px"align="center">业务处室</td><td width="130px"align="center">进度情况</td></tr>
+					</table>
+				</div>
+				<!--支出进度后五-->
+				<div class="biao tab1 _tab1 hidden" id="zcjdSortLast">
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tr ><td width="60px"align="center">序号</td><td width="146px"align="center">业务处室</td><td width="130px"align="center">进度情况</td></tr>
+					</table>
+				</div>
+			</div>
+			
+			<div class="cen_2">
+				<div class="_head-r" id="_head-r">
+					<span class="ac1" id="articleSpan">公告</span>
+					<span class="" id="ldCaozuoSpan">操作</span>
+				</div>
+				<div class="biao tab1 _tab2" id="m-content">
+					<ul>
+						<!-- <li><span class="icon1"></span><a href="">关于提醒自行纳税申报的函20161229</a></li> -->
+					</ul>
+				</div>
+				<div class="biao tab1 _tab2 hidden" id="ldCaozuo">
+					<ul>
+						<li><a href="javascript:void(0);" title="查询对象注册"><img src="img/GKLeader/gk-rd-zhuce.png" alt="查询对象注册"/></a></li>
+						<li><a href="javascript:void(0);" title="监控规则设置"><img src="img/GKLeader/gk-rb-jiankong.png" alt="监控规则设置"/></a></li>
+						<li><a href="javascript:void(0);" title="每日支付阈值设置"><img src="img/GKLeader/gk-rb-zhifu.png" alt="每日支付阈值设置"/></a></li>
+						<li><a href="javascript:void(0);" title="大额报备阈值设置"><img src="img/GKLeader/gk-rb-dae.png" alt="大额报备阈值设置"/></a></li>
+						<li><a href="javascript:void(0);" title="支付方式限定设置"><img src="img/GKLeader/gk-rb-zhifutype.png" alt="支付方式限定设置"/></a></li>
+					</ul>
+				</div>
+			</div>
+			
+		</div>
+		<div id="left">
+			<div class="cen-1">
+				<div class="headl-1" id="headl-1">
+					<span class="ac1">快慢车道监控</span>
+					<span class="">收支进度总览</span>
+					<span class="" style="width: 98px;">库款预测</span>
+					<span class="">国库动态监控</span>
+				</div>
+				<!--快慢车道监控-->
+				<div class="tab3" style="overflow: auto;">
+					<iframe scrolling="yes" frameborder="0" id="iframeKMCDJK" src="" style="width:100%;height:400px;"></iframe>
+				</div>
+				<!--收支进度总览-->
+				<div class="tab3 hidden" style="text-align: center;">
+					<img src="img/GKLeader/szjdzl-bd.jpg" style="height:390px;"/>
+				</div>
+				<!--库款预测-->
+				<div class="tab3 hidden" >
+					<!-- <div id="kkyc" style="width:700px;height:350px;margin: 30px auto 0;"></div> -->
+					<iframe scrolling="yes" frameborder="0" id="iframeKKYC" src="" style="width:100%;height:400px;"></iframe>
+				</div>
+				<!--国库动态监控-->
+				<div class="tab3 hidden" >
+					<div class="content-pa1">
+						<div class="content-pa1h">
+							<span>总体情况</span>
+							<p id="datetime">统计截止日期:<span>2017年7月18日</span></p>
+							<div id="sec1">
+								<p class="sec1">累计支付笔数 :&nbsp;&nbsp;&nbsp;&nbsp;<span>51,054笔</span></p>
+								<p class="sec1">累计支付金额:&nbsp;&nbsp;&nbsp;&nbsp;<span>351,054万元</span></p>
+							</div>
+							<div id="sec2">
+								<p class="sec2">预警支付笔数: &nbsp;&nbsp;&nbsp;&nbsp;<span>1,436笔</span></p>
+								<p class="sec2">预警支付金额:&nbsp;&nbsp;&nbsp;&nbsp;<span>1,858.21万元</span></p>
+							</div>
+							<div id="sec3">
+								<p class="sec3">预警比例: &nbsp;&nbsp;&nbsp;&nbsp;<span>2.81%</span></p>
+								<p class="sec3">预警比例:&nbsp;&nbsp;&nbsp;&nbsp;<span>0.25%</span></p>
+							</div>
+						</div>
+						
+						<div id="yjqs" style="width:700px;height:200px;margin: 0 auto;"></div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="cen-2" style="height:168px;">
+				<div class="head-l">
+					<span>支出进度情况</span>
+					
+					<!--预算类别-->
+					<div class="selectDiv">
+						<span class="budgetSpan">预算类别:</span>
+						<select id="fundtypeCode" class="budgetSelect _portal_zhichu_select_yslb_select _portal_cursor_pointer">
+							<option value="" selected="selected">全部</option>
+							<option value="01">一般公共预算</option>
+							<option value="02">政府性基金</option>
+							<option value="03">国有资本经营</option>
+						</select>
+					</div>
+					<!-- 项目分类(原 支出类型) -->
+					<div class="selectDiv" style="position:relative;">
+						<span class="zcspan">项目分类:</span>
+						<input id="expfuncCode" type="text" style="padding-left:5px;cursor:pointer;" class="dwdwzcSelect _portal_cursor_pointer" value="全部">
+						<input id="_expfuncCode" type="hidden" value="">
+						<img id="expfuncCodeImg" src="img/sanjiao.png" style="cursor:pointer;position:absolute;z-index:2;top:12px;left:127px;">
+						<ul id="expfuncCodeTree" class="ztree" style="background:#FFF;display: none;width: 160px;overflow: auto;position: absolute;z-index: 6;left: 60px;top: 32px;border: solid 1px #d9d9d9;height: 140px;"></ul>
+					</div>
+					<!-- 指标来源 -->
+					<div class="selectDiv" style="position:relative;">
+						<span class="zcspan">指标来源:</span>
+						<input id="bgtsourceCode" type="text" style="padding-left:5px;cursor:pointer;" class="dwdwzcSelect _portal_cursor_pointer" value="全部">
+						<input id="_bgtsourceCode" type="hidden" value="">
+						<img id="bgtsourceCodeImg" src="img/sanjiao.png" style="cursor:pointer;position:absolute;z-index:2;top:12px;left:127px;">
+						<ul id="bgtsourceCodeTree" class="ztree" style="background:#FFF;display: none;width: 160px;overflow: auto;position: absolute;z-index: 6;left: 60px;top: 32px;border: solid 1px #d9d9d9;height: 140px;"></ul>
+					</div>
+					<!-- 单位选择 -->
+					<div class="selectDiv" style="position:relative;">
+						<span class="zcspan">单位选择:</span>
+						<input id="pAgencyCode" type="text" style="padding-left:5px;cursor:pointer;" class="dwdwzcSelect _portal_cursor_pointer" value="全部">
+						<input id="_pAgencyCode" type="hidden" value="">
+						<img id="pAgencyCodeImg" src="img/sanjiao.png" style="cursor:pointer;position:absolute;z-index:2;top:12px;left:127px;">
+						<ul id="pAgencyCodeTree" class="ztree" style="display: none;width: 400px;overflow: auto;position: absolute;z-index: 6;left: 0px;top: 32px;border: solid 1px #d9d9d9;height: 200px;background:#FFF;"></ul>
+					</div>
+					<!--时间-->
+					<!-- <div class="selectDiv" style="margin-top:-3px;">
+						<span class="timespan">截止时间:</span>
+						<input id="budgetTime" style="height:26px;line-height:26px;margin-top:8px;padding-top:0px;padding-left: 5px;" type="text" class="_portal_cursor_pointer form-control budgetTime" readonly="readonly">
+						<span><i class="icon-calendar"></i></span>
+					</div> -->
+				</div>
+				<div style="position: relative; margin-top:-20px;">
+					<div class="zhibiao" style="position:absolute;z-index: 5;margin:13px 0 0 20px;">
+						<span class="zbje">指标金额：<span class="zbjenum" id="_portal_zhichu_text_zbje_span">0</span>元</span>
+						<span class="zfje">支出金额：<span class="zfjenum" id="_portal_zhichu_text_zfje_span">0</span>元</span>
+						<span class="zbye" style="margin-right: 20px;display:none;">指标余额：<span class="zbyenum" id="_portal_zhichu_text_zbye_span">0</span>元</span>
+						<!-- <span class="zbye">序时进度：<span class="zbyenum" id="payprogressXSJD">0</span></span> -->
+					</div>
+					<span id="tooltipXSJD" style="display:none; position: absolute;float: right;right: 200px;top: 14px;font-size: 13px;z-index: 5; margin-right:3%;"><span style="color:blue;">▼</span><span> 序时进度</span></span>
+					<div id="dwzc" style="width:95%;height:130px;margin: 0 auto;margin-top:20px;padding:0 2% 0 2%;"></div>
+				</div>
+			</div>
+		
+		</div>
+		
+		<div id="payprogressXSJD">
+			<ul class="u-list-group u-list-group-bordered">
+				<li class="u-list-group-item">序时进度：<span></span></li>
+			</ul>
+		</div>
+		
+		<script charset="utf-8" type="text/javascript" src="js/Base64.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/md5.min.js"></script>
+		<script charset="utf-8" type="text/javascript" src="/df/trd/ip/js/ip.js"></script>
+		
+		<script charset="utf-8" type="text/javascript" src="js/dfp/dfp.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/dfp/dfpPayProgress.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/dfp/dfpFiscal.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/dfp/dfpFundmonitor.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/dfp/dfpPayProgressRanking.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/dfp/dfpArticle.js"></script>
+		<script type="text/javascript" src="js/dashboardGKLeader.js" charset="utf-8"></script>
+		
+	</body>
+</html>
+

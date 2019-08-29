@@ -1,0 +1,120 @@
+
+.tree-col-xs-0 {
+	width: 100%;
+}
+
+.tree-col-xs-1 {
+	width: 300px;
+}
+
+.tree-col-xs-2 {
+	width: 300px;
+}
+
+.tree-col-xs-3 {
+	width: 35px;
+}
+
+.tg-tree-col-xs-1 {
+	width: 200px;
+}
+
+.tree-col-xs-0, .tree-col-xs-1, .tree-col-xs-2, .tg-tree-col-xs-1 {
+  	min-height: 1px;
+}
+
+.tree-col-xs-0, .tree-col-xs-1, .tree-col-xs-2, .tree-col-xs-3, .tg-tree-col-xs-1 {
+	position: relative;
+	float: left;
+}
+
+.tree-btn-group {
+	padding-top: 175px;
+}
+
+.tree-btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+	border-radius: 4px;
+	margin-left: 0px;
+}
+
+.tree-btn-group > .btn:last-child:not(:first-child),
+.tree-btn-group > .dropdown-toggle:not(:first-child) {
+	border-radius: 4px;
+  	margin-left: 0px;
+}
+
+.tree-hidden{
+	display: none;
+}
+
+.modal-wide-tree{
+	width: 310px;
+}
+
+.modal-wide-multi-tree{
+	width: 695px;
+}
+
+.angular-ui-tree-handle {
+    background: #f8faff;
+    border: 1px solid #dae2ea;
+    color: #7c9eb2;
+    padding: 4px 10px;
+    font-weight: 400;
+}
+
+.angular-ui-tree-handle:hover {
+    color: #438eb9;
+    background: #f4f6f7;
+    border-color: #dce2e8;
+    cursor:pointer;
+}
+
+.unselected>.angular-ui-tree-handle{
+    background: #f8faff;
+    border: 1px solid #dae2ea;
+    color: #7c9eb2;
+}
+
+.unselected>.angular-ui-tree-handle:hover {
+    color: #438eb9;
+    background: #f4f6f7;
+    border-color: #dce2e8;
+}
+
+.selected>.angular-ui-tree-handle {
+	background: #c9dde1;
+    border: 1px solid #c9dde1;
+    color: #ffffff;
+}
+
+.selected>.angular-ui-tree-handle:hover {
+	background: #c9dde1;
+    border-color: #c9dde1;
+    color: #ffffff;
+}
+
+.angular-ui-tree-placeholder {
+    background: #f0f9ff;
+    border: 2px dashed #bed2db;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.default-tree {
+	border: 1px solid rgb(212,212,212);
+	width: 100%;
+	height: 400px;
+	margin-bottom: 10px;
+}
+
+.group-title {
+    background-color: #687074 !important;
+    color: #FFF !important;
+}
+
+a.btn {
+	font-size: 8px;
+	padding: 4px 10px 2px 10px;
+}

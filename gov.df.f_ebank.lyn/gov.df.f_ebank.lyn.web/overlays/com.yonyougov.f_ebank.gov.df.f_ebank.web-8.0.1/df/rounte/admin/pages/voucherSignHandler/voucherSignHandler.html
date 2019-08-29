@@ -1,0 +1,58 @@
+	<div class="wrapper" style="margin:0 auto;">
+		<div class="height_pct_8 pt_pct_1">
+			<div >
+				<button id="qianshou" class="btn btn-config" style="display:null;"	onclick="fBuild()">签收</button>
+				<button id="qssb" class="btn btn-config" style="display:null;"	onclick="fBuildFail()">签收失败</button>
+				<button id="updateErrMsg" class="btn btn-config" style="display:null;" onclick="openUpdateErrorMsgDlg()">补录签收信息</button>
+				<button id="cx" class="btn btn-config" onclick="fSelect()">查询</button>
+			</div>
+		</div>
+
+		<div class="btn-group-content height_pct_92">
+			<div class="common-border">
+				<span class="common-surround-header">查询区</span>
+				<div class="search-area">
+					<div id="planSearchArea"></div>
+				</div>
+			</div>
+		    <div>
+				<label style="">签收情况：</label> <br>
+				<div id="mianDiv" style="border-radius: 2px;border: 1px solid #ccc;">
+					<table id="modalSubsysGridArea" class="table-striped table nowrap table-bordered table-hover table-condensed"  style="width:100%;"></table>
+					<div style="height:3px"></div>
+				</div>
+			</div> 
+			<div style="height:30%;">
+				<label style="">电子报文：</label> <br>
+				<div id="subDiv" style="border-radius: 2px;border: 1px solid #ccc;height:88%;">
+					<label style="margin:6px 0px 0px 6px;">业务报文内容：</label> <br>
+					<textarea id="imessage" rows="7" cols="128" style="margin:4px 0px 0px 10px;border-radius: 2px; width:99%;height:74%;" readonly></textarea>
+				</div>
+			</div>
+		</div>
+		
+		<div class="modal fade" id="errorMsgModel" tabindex="-1" role="dialog" aria-labelledby="ylModalLabel" data-backdrop="static">
+			<div class="modal-dialog" role="document" style="width:600px;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>	
+						<h4 class="modal-title" id="titleText"></h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group row">
+							<label for="errorMsg" class="col-md-3 text-right">错误原因：</label> 
+							<div class="col-md-8">
+								<input type="text" id="errorMsg" class="form-control"/>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" onclick="updateErrorMsg()">确定</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

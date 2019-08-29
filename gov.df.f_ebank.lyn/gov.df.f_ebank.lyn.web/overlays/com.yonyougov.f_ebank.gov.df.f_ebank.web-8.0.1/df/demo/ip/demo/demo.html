@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+	<title>ip-demo</title>
+	<meta name="description" content="iuap design tinper UI 企业级 Web 应用 前端 框架 解决方案">
+	<meta name="keywords" content="iuap design UI tinper 企业级 Web 应用 前端 框架 解决方案">
+	<!-- <meta itemprop="image" content="/assets/images/favicon.png"> -->
+	<meta name="author" content="ip">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../../../trd/ip/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="../../../trd/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../../../trd/uui/css/u.css" />
+	<link rel="stylesheet" type="text/css" href="../../../trd/ip/css/ip.css" />
+	<link rel="stylesheet" type="text/css" href="demo.css" />
+	<script type="text/javascript" src="../../../trd/jspdf/jspdf.debug.js"></script> 
+</head>
+<body>
+	<div id="pdf-wrap" class="demo-continer">
+		<button id="show" data-bind="click: showDemo">showDemo</button>
+		<button id="" data-bind="click: printHtml">printHtml</button>
+		<h1>书写规范</h1>
+		<div class="rule-common">
+			<h3>HTML书写规范：http://codeguide.bootcss.com/</h3>
+			<p>id与class :使用 "-" ,不建议使用 "_"（1、减少shift操作，2、良好区分js变量，IE6兼容性问题）。
+		   如：iuap-web  而不是 iuap_web</p>
+		</div>
+		<div class="rule-common">
+			<h3>CSS书写规范：http://codeguide.bootcss.com/</h3>
+			<p>	1、Positioning 位置属性
+			      	position, top, right, z-index, display, float等<br>
+				2、Box model  盒模型
+			      	width、height、padding、margin等<br>
+				3、Typographic 文字系列
+			      	font, line-height, letter-spacing, color- text-align等<br>
+				4、Visual 视觉：边框、背景、动画
+			      	background、border、animation、 transition等<br>
+				5.其他(animation, transition等)<br>
+				 	<strong>布局： <a href="http://zh.learnlayout.com/" target="_blank">http://zh.learnlayout.com/</a></strong> </p>
+		</div>
+		<div class="rule-common">
+			<h3>JavaScript书写规范</h3>
+			<p>变量 ：使用 "_";<br>
+			 方法名称 ：使用"驼峰命名法"。<br>
+			 如：var iuap_web = "";<br>
+			 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function getData(){}</p>
+		</div>
+		<h1>学习地址（w3c、Bootstrap、IUAP、zTree）</h1>
+		<ul class="study">
+			<li>前端综合学习（基础：w3c）：<a href="http://www.w3school.com.cn/" target="_blank">http://www.w3school.com.cn/</a></li>
+			<li>bootstrap：<a href="http://www.bootcss.com/" target="_blank">http://www.bootcss.com/</a></li>
+			<li>IUAP：<a href="http://pre.tinper.org/" target="_blank">http://pre.tinper.org/</a></li>
+			<li>zTree：<a href="http://www.treejs.cn/v3/main.php#_zTreeInfo" target="_blank">http://www.treejs.cn/v3/main.php#_zTreeInfo</a></li>
+			<li>前端综合学习（提高：MDN）：<a href="https://developer.mozilla.org/zh-CN/" target="_blank">https://developer.mozilla.org/zh-CN/</a></li>
+		</ul>
+		<h1>前端开发工具：sublime（<a href="https://www.sublimetext.com/" target="_blank">https://www.sublimetext.com/</a>）</h1>
+		<!-- <button type="button" name="button" class="btn btn-default" onclick="showJump('111')">弹窗</button> -->
+	</div>
+	<script src="../../../trd/knockout/knockout-3.2.0.debug.js"></script>
+	<script src="../../../trd/requirejs/require.js"></script>
+	<script src="../require.config.js"></script>
+	<script src="demo.js"></script>
+</body>
+</html>

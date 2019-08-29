@@ -1,0 +1,89 @@
+<div class="container-fluid h" style="overflow:hidden">
+	<div class="row h">
+		<div class="col-sm-4 h pt_pct_dot5 pl10">
+			<div class="border-box tree-sidebar">
+				<div class="ztree"
+				u-meta='{"id":"menutree","data":"menuTreeDataTable","type":"tree","idField":"guid","pidField":"parentid","nameField":"name","setting":"treeSetting"}'></div>
+			</div>
+		</div>
+		<div class="col-sm-8 h" style="float:left;margin-top:8px;">			
+			<div class="row top-content height_pct_8 pt_pct_dot5" id="tabbed-plan">
+				<div class="col-md-12 col-md-12 ip-input-group">
+					<button id="addViewBtn" type="button" class="btn btn-primary add-btn" data-toggle="modal" data-bind="click: addReport">新&nbsp;增</button>
+					<button id="delViewBtn" type="button" class="btn btn-danger del-btn" data-bind="click: delReport">删&nbsp;除</button>
+				</div>
+			</div>
+			<div class="row height_pct_92">
+				<table class="table-striped table table-bordered table-hover table-condensed" id="reportGrid" style="width:100%;">  
+		            <thead>  
+		                <tr>  
+		                	<th style="width:25%;">报表id</th>  
+		                    <th style="width:50%;">报表名称</th>  
+		                    <th style="width:25%;">报表编码</th>
+		                    <th style="width:25%;">报表顺序</th>  
+		                </tr>  
+		            </thead>  
+		            <tbody>  
+		            </tbody>  
+		       	 </table>
+			</div>
+		</div>
+	</div>
+</div>
+	<!-- addReportModal -->
+	<div class="modal fade" id="addReportModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document" style="width:600px;">
+			<div class="modal-content" style="height:492px;">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">添加报表</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<label for="finance_code" class="col-md-2 col-sm-2 text-right">财政机构:</label>
+						<div class="col-md-4 col-sm-4 ip-input-group">
+							<select class="form-control" id="finance_code"
+								onchange="getReportTreeByFinance(this.value)">
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<label class="col-md-2 text-right" for="addviewInput">模糊查询:</label>
+						<div class="col-md-4 col-sm-4 ip-input-group">
+						 	<input type="text" class="addview-Input form-control" 
+								name="addviewInput" id="addviewInput"/>
+						</div>
+						<div class="col-md-6">
+							<button type="button" class="btn btn-primary quik-find"
+								data-bind="click: viewQuery">查找</button>
+							<button type="button" class="btn btn-primary quik-next"
+								data-bind="click: viewNext">下一个</button>
+						</div>
+					</div>
+					<div style="height: 264px;overflow:auto;margin-bottom:12px;border:1px solid #ccc;">
+						<div class="ztree"
+							u-meta='{"id":"reportTree","data":"reportTreeTable","type":"tree","idField":"report_id","pidField":"parent_id","nameField":"show_name","setting":"treeSetting2"}'></div>
+					</div>
+					<div class="row viewAdd-input">
+						<div class="col-md-6">
+							<label for="" class="col-md-4 text-right"><span
+								class="color-red" style="font-size: 15px;">*</span>显示顺序:</label>
+							<div class="col-md-8 ip-input-group">
+								<input type="text" class="form-control" id="orderInput"
+									onKeyUp="value=value.replace(/[^\d]/g,'')" placeholder="请输入数字">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bind="click: addReportSave">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>

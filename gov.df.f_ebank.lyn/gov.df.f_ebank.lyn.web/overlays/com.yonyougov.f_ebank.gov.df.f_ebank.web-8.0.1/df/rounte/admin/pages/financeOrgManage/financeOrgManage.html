@@ -1,0 +1,120 @@
+	<div class="container-fluid h">
+		<div class="mt5 mb5" role="group" aria-label="">
+			<button type="button" class="btn btn-config" onclick="refresh()">刷新</button>
+			<button type="button" class="btn btn-config" onclick="addOrg()">新增</button>
+			<button type="button" class="btn btn-config" onclick="modifyOrg()">修改</button>
+			<button type="button" class="btn btn-config" onclick="disable()">停用</button>
+			<button type="button" class="btn btn-config" onclick="enable()">启用</button>
+			<button type="button" class="btn btn-danger" onclick="delOrg()">删除</button>
+		</div>
+		<div class="row pt10 pb15">
+			<div class="col-sm-12">
+			<table class="table-striped table table-bordered table-hover table-condensed" id="orgGrid" style="width:100%;">  
+	            <thead>  
+	                <tr>  
+	                    <th>财政机构名称</th>  
+	                    <th>财政机构编码</th>
+	                    <th>机构码</th>  
+	                    <th>国库主体代码</th>
+	                    <th>财政机构代码</th>  
+	                    <th>是否清算</th>
+	                <!--     <th>是否有dxp同步</th>   -->
+	                    <th>是否启用</th>  
+	                </tr>  
+	            </thead>  
+	            <tbody>  
+	            </tbody>  
+	       	 </table>  
+			</div>
+		</div>
+	</div>
+
+		<!-- 新增/修改Modal start-->
+		<div class="modal fade" id="orgSetModel" tabindex="-1" role="dialog"
+			aria-labelledby="ylModalLabel" data-backdrop="static">
+			<div class="modal-dialog" role="document" style="width:840px;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>	
+						<h4 class="modal-title" id="titleText"></h4>
+					</div>
+					<div class="modal-body display-container">
+							<div class="form-group col-md-6">
+								<label for="orgCode" class="col-md-4 text-right"><span class="color-red">*</span>财政机构编码：</label> 
+								<div class="input-group col-md-7">
+									<input type="text" id="orgCode" class="form-control"  />
+								</div>
+							</div>
+                            <div class="form-group col-md-6">
+								<label for="orgName" class="col-md-4 text-right"><span class="color-red">*</span>财政机构名称：</label> 
+								<div class="input-group col-md-7">
+									<input type="text"  id="orgName" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label for="financeOrg" class="col-md-4 text-right"><span class="color-red">*</span>机构码：</label> 
+								<div class="input-group col-md-7">
+									<input type="text"  id="financeOrg" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label for="treNo" class="col-md-4 text-right"><span class="color-red">*</span>国库主体代码：</label> 
+								<div class="input-group col-md-7">
+									<input type="text"  id="treNo" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label for="treOrgNo" class="col-md-4 text-right"><span class="color-red">*</span>国库机构代码：</label> 
+								<div class="input-group col-md-7">
+									<input type="text"  id="treOrgNo" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label for="isClear" class="col-md-4 text-right">是否清算：</label>
+								<div class="input-group col-md-7">
+									<select id="isClear" class="form-control">
+										<option value="0">不清算</option>
+										<option value="1">清算</option>
+									</select>
+								</div>
+							</div>
+							<!-- <div class="form-group col-md-6">
+								<label for="isDxp" class="col-md-4 text-right">是否有dxp同步：</label>
+								<div class="input-group col-md-7">
+									<select id="isDxp" class="form-control">
+									    <option value="0">无</option>
+										<option value="1">用友</option>
+										<option value="2">龙图</option>
+										<option value="3">四方志诚</option>
+									</select>
+								</div>
+							</div> -->
+							<div class="form-group col-md-6" id='finance_code'>
+								<label for="financeCode" class="col-md-4 text-right"><span class="color-red">*</span>配置模板：</label> 
+								<div class="input-group col-md-7">
+									<select id="financeCode" class="form-control">
+									</select>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label for="orgEnabled" class="col-md-4 text-right">是否启用：</label>
+								<div class="input-group col-md-7">
+									<select id="orgEnabled" class="form-control">
+										<option value="0">停用</option>
+										<option value="1">启用</option>
+									</select>
+								</div>
+							</div>
+					</div>
+					<div class="modal-footer" style="clear: both;">
+						<button type="button" class="btn btn-primary" onclick="save()">确定</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal">退出</button>
+					</div>
+				</div>
+			</div>
+	</div>
+	<!-- 新增/修改Modal end-->
+

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible"
+	content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+<title>菜单添加</title>
+<meta name="author" content="ip">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/ip/css/bizSys.css" />
+<link rel="stylesheet" type="text/css" href="./menueditConfig.css" />
+</head>
+
+<body>
+	<div class="menuConfig-body">
+		<div id="menubody" class="menubody">
+			<div class="bodySize row">
+				<div class='tree-block col-md-4'>
+					<div class="form-group search-form" style="margin: 5px;">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="模糊查询"
+								aria-describedby="basic-addon1"
+							    data-bind="keyup:quickQuery"
+								id="quickquery"> <span class="input-group-addon"
+								onclick="menuTreeNext()"><span
+								class="glyphicon glyphicon-search"></span> </span>
+						</div>
+					</div>
+					<div class="menuTree">
+						<div id="menuConfigTree" class="ztree"
+							u-meta='{"id":"menuConfigTree1","data":"treeDataTable","type":"tree","idField":"menu_id","pidField":"parent_id","nameField":"menu_name","setting":"treeSetting"}'></div>
+					</div>
+				</div>
+				<div class='menu-tabs col-md-8'>
+					<div style="height: 40px;">
+						<button id="addViewBtn" type="button"
+							class="btn btn-primary add-btn" data-toggle="modal"
+							data-bind="click: addbtn">新&nbsp;增</button>
+						<button id="addViewBtn" type="button"
+							class="btn btn-primary add-btn" data-toggle="modal"
+							data-bind="click: editbtn">修&nbsp;改</button>
+						<button id="delViewBtn" type="button"
+							class="btn btn-danger del-btn" data-bind="click: delbtn">删&nbsp;除</button>
+					</div>
+					<div type="text" class="menu-grid"
+						u-meta='{"id":"write-grid","data":"gridDataTable","type":"grid","editable":false,"autoExpand":false,"showTree":false,"showNumCol":true,"keyField":"theId","parentKeyField":"parentId","multiSelect":true,"height":500,"headerHeight":32,"rowHeight":32,"sumRowHeight":32}'>
+						<div
+							options='{"field":"menu_code","dataType":"String","title":"编号","editType":"string","width": 150}'></div>
+						<div
+							options='{"field":"menu_name","dataType":"String","title":"名称","editType":"string","width": 150}'></div>
+						<div
+							options='{"field":"url","dataType":"String","title":"地址","editType":"string","width": 150}'></div>
+						<div
+							options='{"field":"enabled","dataType":"String","title":"是否启用","editOptions":{"id":"combobox1","type":"combo","datasource":"comItems"},"editType":"combo","renderType":"comboRender","editType":"string","width": 150}'></div>
+						<div
+							options='{"field":"disp_order","dataType":"String","title":"菜单顺序","editType":"string","width": 150}'></div>
+						<div
+							options='{"field":"sys_name","dataType":"String","title":"子系统","editType":"string","width": 150}'></div>
+						<div
+							options='{"field":"tips","dataType":"String","title":"别名","editType":"string","width": 150}'></div>
+						<div
+							options='{"field":"menu_parameter","dataType":"String","title":"系统参数","editType":"string","width": 150}'></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- addModal -->
+	<div class="modal fade" id="addRoleModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" style="width:400px">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">新增菜单</h4>
+				</div>
+				<div class="modal-body clearfix">
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label"><span
+								class="star-color" style="font-size: 15px;">*</span>菜单编号:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="menu_code"
+							onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^a-zA-Z\d\_]/g,''))" onkeyup="this.value=this.value.replace(/[^a-zA-Z\d\_]/g,'')" >
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label"><span
+								class="star-color" style="font-size: 15px;">*</span>菜单名称:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="menu_name">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label">别&nbsp;&nbsp;名:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="tips">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label">地&nbsp;&nbsp;址:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="url">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label"><span
+								class="star-color" style="font-size: 15px;">*</span>菜单顺序:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="disp_order">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label"><span
+								class="star-color" style="font-size: 15px;">*</span>子系统:</label>
+						<div class="col-md-8">
+							<select class="form-control" id="user_sys_id" onchange="sysidChange(this)">
+
+							</select>
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label"><span
+								class="star-color" style="font-size: 15px;">*</span>父级菜单:</label>
+						<div class="col-md-8">
+							<div class="input-group ip-input-group">
+								<input type="text" class="form-control" id="parentid"> <input
+									type="hidden" class="form-control" id="parentid-h"> <span
+									class="input-group-addon"
+									style="border-radius: 0;cursor: pointer;"
+									data-bind="click:lrtree1"> <span
+									class="glyphicon glyphicon-list"></span> </span>
+							</div>
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label">参&nbsp;&nbsp;数:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="menu_parameter">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label for="" class="col-md-4 control-label">启用标识:</label>
+						<div class="col-md-8 ip-input-group enablecheck">
+							<label><input id="enabled" type="checkbox" value=""
+								checked> </label>
+						</div>
+					</div>
+
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bind="click:ensure">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- addModal -->
+	<div class="modal fade" id="editRoleModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" style="width:400px">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel1">菜单修改</h4>
+				</div>
+				<div class="modal-body clearfix">
+					<div class="form-group clearfix">
+						<input type="hidden" class="form-control" id="menu_id"> <label
+							class="col-md-4 control-label"><span
+								class="star-color" style="font-size: 15px;">*</span>菜单编号:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="menu_code1"
+							onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^a-zA-Z\d\_]/g,''))" onkeyup="this.value=this.value.replace(/[^a-zA-Z\d\_]/g,'')" >
+							<input type="hidden" class="form-control" id="menu_oldcode">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label"><span
+								class="star-color" style="font-size: 15px;">*</span>菜单名称:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="menu_name1">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label">别&nbsp;&nbsp;名:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="tips1">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label">地&nbsp;&nbsp;址:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="url1">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label">菜单顺序:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="disp_order1">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label"><span
+								class="star-color" style="font-size: 15px;">*</span>子系统:</label>
+						<div class="col-md-8">
+							<select class="form-control" id="user_sys_id1" onchange="sysidChange1(this)">
+
+							</select>
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label"><span
+								class="star-color" style="font-size: 15px;">*</span>父级菜单:</label>
+						<div class="col-md-8">
+							<div class="input-group ip-input-group">
+								<input type="text" class="form-control" id="parentid1"> <input
+									type="hidden" class="form-control" id="parentid1-h"> <span
+									class="input-group-addon"
+									style="border-radius: 0;cursor: pointer;"
+									data-bind="click:lrtree2"> <span
+									class="glyphicon glyphicon-list"></span> </span>
+							</div>
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label">参&nbsp;&nbsp;数:</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" id="menu_parameter1">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label for="" class="col-md-4 control-label">启用标识:</label>
+						<div class="col-md-8 ip-input-group enablecheck">
+							<label><input id="enabled1" type="checkbox" value=""
+								checked> </label>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bind="click:ensure1">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/df/trd/requirejs/require.js"></script>
+<script src="/df/require.config.js"></script>
+<script src="./menueditConfig.js"></script>
+</html>

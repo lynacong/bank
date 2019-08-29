@@ -1,0 +1,18 @@
+<script type="text/html" id="ko-temp">
+  <li class="side-item">
+    <div href="javascript:;" data-bind="click: $root.toggle">
+  	 <!--ko if: isFolder -->
+      <span class="glyphicon"
+            data-bind="if: isFolder, css: {'glyphicon-plus': !open(), 'glyphicon-minus': open()}"></span>
+      <!--/ko-->
+      <a class="side-text" href="javascript:;" data-bind="text: name,css: {'openMenu': isOpen}" ></a>
+   
+    </div>
+    <!--ko if: isFolder-->
+    <ul class="list-unstyled" data-bind=" visible: open,template: {name: 'ko-temp', foreach: children}">
+    </ul>
+    <!--/ko-->
+  </li>
+</script>
+<li id="dealLi"  class="side-item"><a href="/df/rounte/admin/index.html" data-bind="click: $root.dealClick" class="side-text">待办事项</a></li>
+<!--ko template: {name: 'ko-temp', foreach: menu, afterRender: afterRender}--> <!--/ko-->

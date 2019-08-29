@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>山东省财政厅省级预算管理系统</title>
+		<link rel="stylesheet" type="text/css"/>
+		<script src="/df/trd/jquery/jquery-1.12.3.min.js"></script>
+		<script src="/df/portal/admin/index/js/echarts.min.js"></script>
+		<script src="/df/portal/admin/index/js/Base64.js"></script>
+		<script src="/df/portal/admin/index/js/dfp.js"></script>
+		<script src="/df/portal/budget/js/mouseleave.js"></script>
+		<link rel="stylesheet" href="css/index.css" />
+
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="top"></div>
+			<div class="nav">
+				<div class="nav-in">
+					<div id="more">
+						<img src="img/more.png" id="menu-btn"/>
+						<div id="menu-content">
+							<ul id="danurl">
+								<!-- <li><a href="http://10.10.65.194:7007/gfmis/login?sysapp=800&ucode=999999999&&sid=1HKQJNhpvvY3Zm6G6D&setyear=2017&rgcode=420000&loadModel=1&version=V3.0.6.0">预算管理系统</a></li> -->
+								<!-- <li><a href="">支付系统</a></li>
+								<li><a href="">政府采购系统</a></li> -->
+							</ul>
+						</div>
+					</div>
+					<ul id="top-in">
+						<!-- <li><span class="bor"></span><a href="">admin</a></li> -->
+						<!--<li><span class="bor"></span><a href="">修改密码</a><span class="bor"></span></li>-->
+						<!-- <li><span class="bor"></span><a href="">退出</a></li> -->
+						
+					</ul>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<div id="box">
+				<div class="main">
+					<div class="main-in">
+						<div class="left">
+							<div class="cen1">
+								<div class="head1"></div>
+								<div class="section1">
+									<a href="javascript:toIndex1();" class="pic"><img src="img/tit01.png"/><p>现金业务</p></a>
+									<a href="javascript:toIndex2();" class="pic"><img src="img/tit02.png"/><p>普通转账</p></a>
+									<a href="javascript:toIndex3();" class="pic"><img src="img/tit03.png"/><p>代扣代缴</p></a>
+									<a href="javascript:toIndex4();" class="pic"><img src="img/tit07.png"/><p>柜台缴税</p></a>
+									<a href="javascript:toIndex5();" class="pic"><img src="img/tit06.png"/><p>批量支付</p></a>
+								</div>
+							</div>
+							<div class="cen2">
+								<div class="head2"></div>
+								<div class="section2">
+									<div class="sec1"><a href="javascript:toIndex6();" ><img src="img/tit04.png"/></a></div>
+									<div class="sec2"><a href="javascript:toIndex7();" ><img src="img/tit05.png"/></a></div>
+								</div>
+							</div>
+							<div class="cen3">
+								<div class="head3"></div>
+								<div class="section3">
+									<ul class="list" id="list-r2">
+										
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="right">
+							<div class="part1">
+								<div id="top1"></div>
+								<ul class="list list1" id="m-content">
+									
+								</ul>
+							</div>
+							<div class="part2">
+								<div id="top2"><a href="javascript:toUpload();" class="upload"><p>上传</p></a></div>
+								<ul class="list list1" id="download">
+									<!-- <li><span class="icon"></span><a href="">文件下载</a></li>
+									<li><span class="icon"></span><a href="">文件下载</a></li>
+									<li><span class="icon"></span><a href="">文件下载</a></li> -->
+								
+								</ul>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="footer"><p id="text">版权所有：山东省委财政厅  &nbsp;&nbsp;&nbsp;&nbsp;备案号：鲁ICP备17000122号</p></div>
+		</div>
+		<div id="hidden_label">
+			<input type="hidden" id="svFiscalPeriod" value=""/>
+			<input type="hidden" id="svMenuId" value=""/>
+			<input type="hidden" id="svRgCode" value=""/>
+			<input type="hidden" id="svRgName" value=""/>
+			<input type="hidden" id="svRoleCode" value=""/>
+			<input type="hidden" id="svRoleId" value=""/>
+			<input type="hidden" id="svRoleName" value=""/>
+			<input type="hidden" id="svSetYear" value=""/>
+			<input type="hidden" id="svTransDate" value=""/>
+			<input type="hidden" id="svUserCode" value=""/>
+			<input type="hidden" id="svUserId" value=""/>
+			<input type="hidden" id="svUserName" value=""/>
+			<input type="hidden" id="svAgencyCode" value=""/>
+			<input type="hidden" id="svAgencyName" value=""/>
+			<a class="one_hidden_a" style="display:none" href="javascript:void(0);" target="_blank"></a> <!-- target="_blank" -->
+			<a class="two_hidden_a two-level-detail" style="display:none" href="javascript:void(0);" data-title="" data-href=""></a> <!-- target="_blank" -->
+		</div>
+		<script src="/df/portal/budget/js/dealing.js"></script>
+		<script src="/df/portal/budget/js/index.js"></script>
+		<script>
+		
+		</script>
+	</body>
+</html>

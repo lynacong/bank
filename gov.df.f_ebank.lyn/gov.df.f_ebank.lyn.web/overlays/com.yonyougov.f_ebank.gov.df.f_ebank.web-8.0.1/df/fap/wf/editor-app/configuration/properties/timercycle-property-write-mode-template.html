@@ -1,0 +1,11 @@
+
+<div ng-controller="KisBpmStringPropertyCtrl">
+<p>
+           <input id="timercycledefinitionInput" type="text" ng-model="property.value"
+           placeholder="{{'PROPERTY.TIMERCYCLE.VALUE.PLACEHOLDER' | translate}}"
+    	   class="form-control" 
+           ng-focus="onfocus()"
+           ng-blur="inputBlurred()"
+           ng-keypress="{13:'enterPressed($event)'}"/>
+</p>
+</div>

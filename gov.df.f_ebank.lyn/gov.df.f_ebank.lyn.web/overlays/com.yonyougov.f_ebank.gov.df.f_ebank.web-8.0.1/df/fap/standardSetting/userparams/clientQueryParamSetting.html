@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>客户端查询参数配置</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css" />
+	<link rel="stylesheet" type="text/css" href="./payCard.css">
+	<link rel="stylesheet" type="text/css" href="../common.css">
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12">
+						<h3 class="title">客户端查询参数配置</h3>
+  						<div class="no-right-col" style="margin-top: 35px;">
+							<div type="text"
+								u-meta='{"id":"gridObjField","data":"gridDataTableClassList","type":"grid","editable":false,"autoExpand":false,"onRowSelected":"onRowSelectedFunction","showNumCol":true,"showTree":false,"keyField":"plt_key","height":300,"headerHeight":30}'>
+								<div options='{"field":"querytable","dataType":"String","title":"查询表名","editType":"string","width": 100}'></div>
+								<div options='{"field":"field","dataType":"String","title":"字段名","editType":"string","width": 100}'></div>
+								<div options='{"field":"descript","dataType":"String","title":"字段描述","editType":"string","width": 100}'></div>
+								<div options='{"field":"value","dataType":"String","title":"子查询语句","editType":"string","width": 100}'></div>
+							</div>
+					    </div>
+					    
+					     
+						 <div class="panel panel-info">
+    						<div class="form-group">
+							    <label for="querytable" class="col-sm-2 control-label">查询表名：</label>
+							    <div class="col-sm-9">
+							      <input type="text" class="form-control" id="querytable" readonly>
+							    </div>
+						    </div>
+						 
+						 	<div class="form-group">
+							    <label for="field" class="col-sm-2 control-label">字段名：</label>
+							    <div class="col-sm-9">
+							      <input type="text" class="form-control" id="field" readonly>
+							    </div>
+						 	</div>
+						 
+						 	<div class="form-group" style="height: 60px;">
+							    <label for="descript" class="col-sm-2 control-label">字段描述：</label>
+							    <div class="col-sm-9">
+							      <textarea class="form-control" id="descript" style="width:68%;"></textarea>
+							    </div>
+						 	</div>
+						 
+					     	<div class="form-group" style="height: 90px;">
+							    <label for="value" class="col-sm-2 control-label">子查询语句：</label>
+							    <div class="col-sm-9">
+							      <textarea  class="form-control" id="value" style="width:68%;height: 90px;"></textarea>
+							    </div>
+						 	</div>
+						 	<div class="form-group">
+	    					 	<label for="isEnabledData" class="col-sm-2 control-label">是否启用：</label>
+								<div class="col-sm-9">
+									<label class="checkbox-inline">
+										<input type="radio" name="isEnabledData" id="optionsRadios3" value="0" checked>不启用
+									</label>
+									<label class="checkbox-inline">
+										<input type="radio" name="isEnabledData" id="optionsRadios4"  value="1"> 启用
+									</label>
+								</div>
+							</div>
+							<div class="form-group">
+	    					 	<label for="" class="col-sm-2"></label>
+								<div class="col-sm-9">
+									<button class="btn btn-primary"  id="save" data-bind='click:saveClientQuerySettingData'">保存</button> 
+								</div>
+							</div>
+							
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="/df/trd/requirejs/require.js"></script>
+	<script src="/df/require.config.js"></script>
+	<script src="./clientQueryParamSetting.js"></script>
+</body>
+</html>

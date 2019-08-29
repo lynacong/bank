@@ -1,0 +1,78 @@
+
+#setRuleWindow{
+	-webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+	box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+}
+
+#addEleContainer{
+	padding: 0;
+}
+#elemArray{
+	overflow-y: auto;
+	height: calc(100vh - 250px);
+}
+#elementList{
+	padding:5px 5px;
+}
+.elementListChildBase{
+	width: 100px;
+	height: 100px;
+	margin:5px  15px  5px  0;
+	padding: 5px;
+}
+#elementList .elementListChild{
+	color:  #4990E2;
+	border: 1px solid #D9E9F6;
+	background-color: #F2F9FF;
+}
+#elementList .elementListChild:hover{
+	color: #fff!important;
+	background-color:#4990E2;
+}
+
+#elementList .elementListChild .close{
+	font-weight:normal;
+	color:#4990E2;
+	opacity: 1;
+}
+
+#elementList .elementListChild:hover .close{
+	color: #fff;
+	font-weight:normal;
+	opacity: 1;
+}
+
+#elementList .elementListChild .glyphicon{
+	display:inline-block;
+	width:48px;
+	height:48px;
+	background: url(../images/ele-rule-edit-blue.png) 50% 50% no-repeat;
+}
+
+#elementList .elementListChild:hover .glyphicon{
+	background: url(../images/ele-rule-edit-white.png) 50% 50% no-repeat;
+}
+
+#rightTypeLable{
+	color: #AAD0FC;
+}
+
+#addElementContainer{
+	padding: 0;
+
+}
+#addElementHead{
+	padding: 5px 2px;
+}
+#addElementBody{
+	overflow: auto;
+	height:300px;
+	padding: 0 5px;
+}
+.selectAllBgColor{
+	background:rgba(0,0,0,0.5) ;
+}
+
+.redBorder{
+	borde:1px solid red;
+}

@@ -1,0 +1,58 @@
+html {
+	height: 100%;
+}
+
+.eleConBody {
+	padding-left: 15px;
+	padding-top: 10px;
+	padding-right: 10px;
+}
+
+.check-location {
+	padding-top: 10px;
+}
+
+.btn-location {
+	float: right;
+	margin-right: 10px;
+}
+
+.tabloc {
+	margin-top: 10px;
+}
+
+.u-grid-content {
+	border-style: solid;
+	border-color: #cecece;
+	border-width: 0px;
+	border-bottom-width: 3px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	position: relative;
+	zoom: 1;
+	background-color: #fff;
+	overflow: hidden;
+}
+.definedis{
+	margin-top:20px;
+}
+.definegid{
+	padding-top:10px;
+	margin-top:0px;
+}
+.Grid-location-title{
+	background: #fbfbfb;
+    line-height: 34px;
+    margin: 10px 0 0 0;
+    border: 1px solid #e5e5e5;
+    border-bottom: none;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+
+
+
+
+

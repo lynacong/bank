@@ -1,0 +1,133 @@
+$bdColor: rgba(0,0,0,.2);
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.img-box {
+  width: 60px;
+  height: 100%;
+  position: relative;
+}
+.user-img {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff url('../assets/img.png') no-repeat center center;
+  cursor: pointer;
+  .icon {
+    color: #E1E4E6;
+    font-size: 18px;
+  }
+}
+.chat-link {
+  color: #4EA9E9;
+  text-decoration: underline;
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+    color: #4EA9E9;
+  }
+}
+.bd-1 {
+  border: 1px solid $bdColor;
+}
+.bdb-1 {
+  border-bottom: 1px solid $bdColor;
+}
+.bdt-1 {
+  border-top: 1px solid $bdColor;
+}
+.bdr-1 {
+  border-right: 1px solid $bdColor;
+}
+
+/*
+ * 截图时的背景框
+ */
+.chat-back {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  //background: rgba(0,0,0,.1);
+  z-index: 9999;
+}
+.chat-backdrop-select {
+  border: 1px dashed #333;
+  position: absolute;
+}
+
+/*
+  loading 动画
+ */
+.loadEffect{
+  width: 100px;
+  height: 100px;
+  position: relative;
+  margin: 0 auto;
+}
+.loadEffect span{
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: lightgreen;
+  position: absolute;
+  -webkit-animation: load 1.04s ease infinite;
+}
+@-webkit-keyframes load{
+  0%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0.2;
+  }
+}
+.loadEffect span:nth-child(1){
+  left: 0;
+  top: 50%;
+  margin-top:-8px;
+  -webkit-animation-delay:0.13s;
+}
+.loadEffect span:nth-child(2){
+  left: 14px;
+  top: 14px;
+  -webkit-animation-delay:0.26s;
+}
+.loadEffect span:nth-child(3){
+  left: 50%;
+  top: 0;
+  margin-left: -8px;
+  -webkit-animation-delay:0.39s;
+}
+.loadEffect span:nth-child(4){
+  top: 14px;
+  right:14px;
+  -webkit-animation-delay:0.52s;
+}
+.loadEffect span:nth-child(5){
+  right: 0;
+  top: 50%;
+  margin-top:-8px;
+  -webkit-animation-delay:0.65s;
+}
+.loadEffect span:nth-child(6){
+  right: 14px;
+  bottom:14px;
+  -webkit-animation-delay:0.78s;
+}
+.loadEffect span:nth-child(7){
+  bottom: 0;
+  left: 50%;
+  margin-left: -8px;
+  -webkit-animation-delay:0.91s;
+}
+.loadEffect span:nth-child(8){
+  bottom: 14px;
+  left: 14px;
+  -webkit-animation-delay:1.04s;
+}

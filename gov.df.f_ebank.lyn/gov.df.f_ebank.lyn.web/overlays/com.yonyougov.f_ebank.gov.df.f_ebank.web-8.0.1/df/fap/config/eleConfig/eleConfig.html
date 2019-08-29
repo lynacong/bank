@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>要素配置</title>
+<link rel="stylesheet" type="text/css" href="../../../trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="../../../trd/uui/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../../../trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="../../../trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css" href="../../../trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="../../../trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="../../../trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="../../../trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css" href="../../../trd/ip/css/bizSys.css" />
+<link rel="stylesheet" type="text/css" href="./eleConfig.css" />
+<link rel="stylesheet" type="text/css" href="/df/fap/standardSetting/common.css" />
+
+</head>
+
+<body>
+	<div id="container">
+		<h3 class="title">要素配置</h3>
+		<div class="clearfix row-div-set" style="margin-top: 0;">
+			<div class="panel  panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">支付方式</h3>
+				</div>
+				<div class="panel-body panel-body-info">
+					<div class="row clearfix row-div-set">
+						<label class="col-md-3 col-sm-3">集中支付编码：</label>
+						<div class="input-group col-md-9 col-sm-9 ">
+							<input type="text" class="form-control " id="commonelepkcenterPKCode" > 
+							<input type="hidden" class="form-control " id="commonelepkcenterPKCode-h" > <span class="input-group-addon">
+							 <span class="glyphicon glyphicon-list glyphicon-pointer"  onclick="ip.showAssitTree('commonelepkcenterPKCode','PAYTYPE',0,{},'','')"></span> </span>
+						</div>
+					</div>
+					<div class="row clearfix row-div-set">
+						<label class="col-md-3 col-sm-3">实拨支付编码：</label>
+						<div class="input-group col-md-9 col-sm-9 ">
+							<input type="text" class="form-control " id="commonelepkrealPKCode" > 
+							<input type="hidden" class="form-control " id="commonelepkrealPKCode-h" > <span class="input-group-addon">
+							 <span class="glyphicon glyphicon-list glyphicon-pointer" onclick="ip.showAssitTree('commonelepkrealPKCode','PAYTYPE',0,{},'','')"></span> </span>
+						</div>
+					</div>
+					<div class="row clearfix row-div-set">
+						<label class="col-md-3 col-sm-3">直接支付编码：</label>
+						<div class="input-group col-md-9 col-sm-9 ">
+							<input type="text" class="form-control " id="commonelepkdirectPKCode" > 
+							<input type="hidden" class="form-control " id="commonelepkdirectPKCode-h" > <span class="input-group-addon">
+							 <span class="glyphicon glyphicon-list glyphicon-pointer" onclick="ip.showAssitTree('commonelepkdirectPKCode','PAYTYPE',0,{},'','')"></span> </span>
+						</div>
+					</div>
+					<div class="row clearfix row-div-set">
+						<label class="col-md-3 col-sm-3">授权支付编码：</label>
+						<div class="input-group col-md-9 col-sm-9 ">
+							<input type="text" class="form-control " id="commonelepkaccreditPKCode" > 
+							<input type="hidden" class="form-control " id="commonelepkaccreditPKCode-h" > <span class="input-group-addon">
+							 <span class="glyphicon glyphicon-list glyphicon-pointer" onclick="ip.showAssitTree('commonelepkaccreditPKCode','PAYTYPE',0,{},'','')"></span> </span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 收支管理 -->
+		<div class="clearfix">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">收支管理</h3>
+				</div>
+				<div class="panel-body">
+					<div class="row clearfix row-div-set">
+						<label class="col-md-3 col-sm-3">基础支出编码：</label>
+						<div class="input-group col-md-9 col-sm-9 ">
+							<input type="text" class="form-control " id="commoneleinpmbasicOutcome" > 
+							<input type="hidden" class="form-control " id="commoneleinpmbasicOutcome-h" > <span class="input-group-addon">
+							 <span class="glyphicon glyphicon-list glyphicon-pointer" onclick="ip.showAssitTree('commoneleinpmbasicOutcome','INPM',0,{},'','')"></span> </span>
+						</div>
+					</div>
+					<div class="row clearfix row-div-set">
+						<label class="col-md-3 col-sm-3">项目支出编码：</label>
+						<div class="input-group col-md-9 col-sm-9 ">
+							<input type="text" class="form-control " id="commoneleinpmprojectOutcome" > 
+							<input type="hidden" class="form-control " id="commoneleinpmprojectOutcome-h" > <span class="input-group-addon">
+							 <span class="glyphicon glyphicon-list glyphicon-pointer" onclick="ip.showAssitTree('commoneleinpmprojectOutcome','INPM',0,{},'','')"></span> </span>				
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 结算类型 -->
+		<div class="clearfix">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">结算类型</h3>
+				</div>
+				<div class="panel-body">
+					<div class="row clearfix row-div-set">
+						<label class="col-md-3 col-sm-3">现金支付编码：</label>
+						<div class="input-group col-md-9 col-sm-9 ">
+							<input type="text" class="form-control " id="commonelepmcashCode" > 
+							<input type="hidden" class="form-control " id="commonelepmcashCode-h" > <span class="input-group-addon">
+							 <span class="glyphicon glyphicon-list glyphicon-pointer" onclick="ip.showAssitTree('commonelepmcashCode','SETMODE',0,{},'','')"></span> </span>				
+						</div>
+					</div>
+					<div class="row clearfix row-div-set">
+						<label class="col-md-3 col-sm-3">转账支付编码：</label>
+						<div class="input-group col-md-9 col-sm-9 ">
+							<input type="text" class="form-control " id="commonelepmtransitionCode" > 
+							<input type="hidden" class="form-control " id="commonelepmtransitionCode-h" > <span class="input-group-addon">
+							 <span class="glyphicon glyphicon-list glyphicon-pointer" onclick="ip.showAssitTree('commonelepmtransitionCode','SETMODE',0,{},'','')"></span> </span>				
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 资金性质 -->
+		<div class="clearfix">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">资金性质</h3>
+				</div>
+				<div class="panel-body">
+					<div class="row clearfix row-div-set">
+						<label class="col-md-3 col-sm-3">预算内编码：</label>
+						<div class="input-group col-md-9 col-sm-9 ">
+							<input type="text" class="form-control " id="commonelemkinnerMkcode" > 
+							<input type="hidden" class="form-control " id="commonelemkinnerMkcode-h" > <span class="input-group-addon">
+							 <span class="glyphicon glyphicon-list glyphicon-pointer" onclick="ip.showAssitTree('commonelemkinnerMkcode','FUNDTYPE',0,{},'','')"></span> </span>				
+						</div>
+					</div>
+					<div class="row clearfix row-div-set">
+						<label class="col-md-3 col-sm-3">自有资金编码：</label>
+						<div class="input-group col-md-9 col-sm-9 ">
+							<input type="text" class="form-control " id="commonelemkselfMk" > 
+							<input type="hidden" class="form-control " id="commonelemkselfMk-h" > <span class="input-group-addon">
+							 <span class="glyphicon glyphicon-list glyphicon-pointer" onclick="ip.showAssitTree('commonelemkselfMk','FUNDTYPE',0,{},'','')"></span> </span>				
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 支付管理类型 -->
+		<div class="clearfix">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">支付管理类型</h3>
+				</div>
+				<div class="panel-body">
+					<div class="row clearfix row-div-set">
+						<label class="col-md-3 col-sm-3">年结列支编码：</label>
+						<div class="input-group col-md-9 col-sm-9 ">
+							<input type="text" class="form-control " id="commonelepfdisbursedYearEnd" > 
+							<input type="hidden" class="form-control " id="commonelepfdisbursedYearEnd-h" > <span class="input-group-addon">
+							 <span class="glyphicon glyphicon-list glyphicon-pointer" onclick="ip.showAssitTree('commonelepfdisbursedYearEnd','PF',0,{},'','')"></span> </span>				
+						</div>
+					</div>
+					<div class="row clearfix row-div-set">
+						<label class="col-md-3 col-sm-3">年结不列支编码：</label>
+						<div class="input-group col-md-9 col-sm-9 ">
+							<input type="text" class="form-control " id="commonelepfnormalYearEnd" > 
+							<input type="hidden" class="form-control " id="commonelepfnormalYearEnd-h" > <span class="input-group-addon">
+							 <span class="glyphicon glyphicon-list glyphicon-pointer" onclick="ip.showAssitTree('commonelepfnormalYearEnd','PF',0,{},'','')"></span> </span>				
+						</div>
+					</div>
+					<div class="row clearfix row-div-set">
+						<label class="col-md-3 col-sm-3">正常支付编码：</label>
+						<div class="input-group col-md-9 col-sm-9 ">
+							<input type="text" class="form-control " id="commonelepfnormalPay" > 
+							<input type="hidden" class="form-control " id="commonelepfnormalPay-h" > <span class="input-group-addon">
+							 <span class="glyphicon glyphicon-list glyphicon-pointer" onclick="ip.showAssitTree('commonelepfnormalPay','PF',0,{},'','')"></span> </span>				
+						</div>
+					</div>
+					<div class="row clearfix row-div-set">
+						<label class="col-md-3 col-sm-3">空白支票编码：</label>
+						<div class="input-group col-md-9 col-sm-9 ">
+							<input type="text" class="form-control " id="commonelepfblCheck" > 
+							<input type="hidden" class="form-control " id="commonelepfblCheck-h" > <span class="input-group-addon">
+							 <span class="glyphicon glyphicon-list glyphicon-pointer" onclick="ip.showAssitTree('commonelepfblCheck','PF',0,{},'','')"></span> </span>				
+						</div>
+					</div>
+					<div class="row clearfix row-div-set">
+						<label class="col-md-3 col-sm-3">托收支付编码：</label>
+						<div class="input-group col-md-9 col-sm-9 ">
+							<input type="text" class="form-control " id="commonelepfcarePay" > 
+							<input type="hidden" class="form-control " id="commonelepfcarePay-h" > <span class="input-group-addon">
+							 <span class="glyphicon glyphicon-list glyphicon-pointer" onclick="ip.showAssitTree('commonelepfcarePay','PF',0,{},'','')"></span> </span>				
+						</div>
+					</div>
+					<div class="row clearfix row-div-set">
+						<label class="col-md-3 col-sm-3"></label>
+						<div class="input-group col-md-9 col-sm-9 ">
+							<button class="btn btn-primary"  data-bind="click: saveData"> 保存 </button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../../../trd/knockout/knockout-3.2.0.debug.js"></script>
+	<script src="../../../trd/requirejs/require.js"></script>
+	<script src="../../../require.config.js"></script>
+	<script src="../../../trd/ip/js/ip.js"></script>
+	<script src="./eleConfig.js"></script>
+</body>
+</html>

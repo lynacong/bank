@@ -1,0 +1,113 @@
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	font-family: 微软雅黑;
+}
+.row-item{
+  	margin-top: 10px;
+}
+.panel-info{
+   	border: 1px solid #ccc;
+   	width:99%;
+}
+.wrapper{
+	width: 98%;
+}
+label{
+	font-weight: normal;
+	font-family: 微软雅黑;
+}
+h3.panel-title{
+	display: inline-block;
+    height: 30px;
+    line-height: 23px;
+    padding: 5px;
+    background: #108EE9;
+    border-radius: 4px 4px 0 0;
+    color: #fff;
+    font-size: 14px;
+    margin-left: 10px;
+}
+.panel-info{
+	border: none;
+	padding: 5px;
+}
+.panel-heading{
+	padding: 0;
+	border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.panel-info > .panel-heading{
+	border-color: #108ee9;
+	background: #fff;
+	margin-top: 40px;
+}
+
+.panel-info .col-sm-4, 
+.panel-info .col-sm-3,
+.panel-info .col-sm-2 {
+	text-align: right;
+}
+.col-sm-4, .col-md-4, .col-sm-3, .col-md-3, .col-sm-5, .col-md-5, .col-sm-8, .col-sm-9, .col-sm-7{
+	height: 30px;
+	line-height: 30px;
+}
+.panel-info .col-sm-8 input[type='text'], 
+.panel-info .col-sm-9 input[type='text'],
+.panel-info .col-sm-7 input[type='text']
+{
+	width: 35%;
+}
+.panel-info .input-group{
+	width: 35%;
+}
+.panel-info .input-group .form-control{
+	width: 100% !important;
+}
+.panel-info .col-sm-8 .input-group,
+.panel-info .col-sm-9 .input-group,
+.panel-info .col-sm-7 .input-group{
+	width: 35%;
+}
+.panel-info .col-sm-8 .input-group input[type='text'],
+.panel-info .col-sm-9 .input-group input[type='text'],
+.panel-info .col-sm-7 .input-group input[type='text']{
+	width: 100%;
+}
+.panel-info .col-sm-8 select,
+.panel-info .col-sm-9 select,
+.panel-info .col-sm-7 select{
+	width: 35%;
+}
+.panel{
+	margin-bottom: 0;
+}
+.panel-body{
+	padding: 0;
+}
+.form-group {
+    margin-bottom: 5px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.panel-heading + .panel-body{
+	padding-top: 10px;
+}
+h3.title{
+	position: fixed;
+    width: 100%;
+    background: #d9d9d9;
+    height: 31px;
+    z-index: 9999;
+    margin: 0;
+    padding-left: 5px;
+    line-height: 30px;
+    font-size: 14px;
+}
+.btn{
+	padding: 6px 25px;
+}

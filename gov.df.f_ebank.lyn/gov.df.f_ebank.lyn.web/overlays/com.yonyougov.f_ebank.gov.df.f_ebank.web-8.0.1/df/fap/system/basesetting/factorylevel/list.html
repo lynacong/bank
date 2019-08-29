@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge;IE=11;IE=10;IE=9;IE=8;"/>
+  <title>要素级次</title>
+  <link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/reset.css"/>
+  <link rel="stylesheet" type="text/css" href="../../../../trd/bootstrap/css/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/u.min.css"/>
+  <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/tree.min.css"/>
+  <link rel="stylesheet" type="text/css" href="../../../../trd/ip/changeTree/changeTree.css"/>
+  <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/grid.min.css"/>
+  <link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/ip.css"/>
+  <link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/platform.css"/>
+  <link rel="stylesheet" type="text/css" href="../../config/ncrd.css"/>
+  <link rel="stylesheet" href="list.css">
+</head>
+<body>
+<div class="height-full hide" id="main">
+  <!--列表页面内容-->
+  <div id="fl-list-container" class="container-fluid ncrd">
+    <!-- 按钮 -->
+    <div class="row list-box">
+      <div class="mzc-head">
+        <!-- 按钮组 -->
+        <!-- <button type="button" class="btn btn-primary">完成</button>
+        <button type="button" class="btn btn-primary">帮助</button> -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=""
+                data-bind="click: btnAddClick">增加</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=""
+                data-bind="click: btnEditClick">修改 </button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target=""
+                data-bind="click: btnDelClick">删除</button>
+      </div>
+      <div class="list-div" style="">
+        <div class="fix-left-top" id="fixLeftTop">
+          <table class='table table-condensed table-bordered' style="margin-bottom: 0;">
+            <tbody>
+            <tr><th class="bg-blue"><div class="text-center"><span>业务阶段</span></div></th></tr>
+            <tr>
+              <th
+                      class="vtm u-grid-header-th"
+                      data-bind="style: {height: row2col1.height()+'px', width: row2col1.width()+'px'}">
+                <div class="text-center" ><span>要素级次</span></div></th></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="fix-row" id="fixRow" style="background: #fff;">
+          <!--固定行 -->
+          <table class='table table-condensed table-bordered' style="margin-bottom: 0; margin-right: 100px;">
+            <thead>
+            <!--第一行-->
+            <tr data-bind="foreach: level01()">
+              <th data-bind="
+              attr: {colspan: children.length ? children.length : 1},"
+                  class="text-center vtm bg-blue" >
+                <div>
+                  <span data-bind="text: title"></span>
+                </div>
+              </th>
+            </tr>
+            <!--第二行-->
+            <tr data-bind="foreach: level01()">
+              <!--ko foreach: children-->
+              <!--<td data-bind="text: $data[1]"></td>-->
+              <th class="vtm u-grid-header-th" style="border-bottom-width: 1px;" >
+                <div
+                        class="text-center mzc-por"
+                        data-bind="click: $root.getCoa,
+                    style: {
+                      width: $parentContext.$index() == 0 ? $root.row2col1.width()-1+'px' : $root.cellWidthAndHeight.width-1+'px',
+                      height: $root.row2col1.height()-1+'px'
+                    },
+                    css: {'mzc-bd': $root.selectCoa.selected() && $data[1] == $root.selectCoa.coaId()},">
+                  <span data-bind="text: $data[0]" class="mzc-center"></span>
+                </div>
+              </th>
+              <!--/ko-->
+            </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="fix-col" id="fixCol" style="background: #fff;">
+          <table class='table table-condensed table-bordered' style="margin-bottom: 0;">
+            <thead>
+            <tr><th class="bg-blue"><div class="text-center"><span>业务阶段</span></div></th></tr>
+            <tr>
+              <th
+                      class="vtm u-grid-header-th"
+                      data-bind="style: {height: row2col1.height() - 3 +'px', width: row2col1.width()+'px'}">
+                <div class="text-center" ><span>要素级次</span></div></th></tr>
+            </thead>
+            <tbody data-bind="foreach: els">
+            <tr>
+              <!--固定列-->
+              <td>
+                <div class="mzc-nowrap text-center mzc-por" data-bind="style: {width: $root.row2col1.width()-1+'px', height: $root.cellWidthAndHeight.height+'px'}">
+                  <span data-bind="text: $data.ele_name" class="mzc-center"></span>
+                  <!--<span data-bind="text: $data"></span>-->
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="mainContent" style="overflow: auto;" class="height-full">
+          <!--表格列表 -->
+          <table id='coa-list-table' class='table table-condensed table-bordered'>
+            <thead style="visibility: hidden;">
+            <!--第一行-->
+            <tr data-bind="foreach: level01()">
+              <th data-bind="
+              attr: {colspan: children.length ? children.length : 1}," class="text-center">
+                <div>
+                  <span data-bind="text: title"></span>
+                </div>
+              </th>
+            </tr>
+            <!--第二行-->
+            <tr data-bind="foreach: level01()">
+              <!--ko foreach: children-->
+
+              <!--<td data-bind="text: $data[1]"></td>-->
+              <th class="mzc-break-all" data-bind="attr: {'data-name': $parentContext.$index() == 0 && 'row2col1'}">
+                <div
+                        data-bind="click: $root.getCoa, css: {'mzc-bd': $root.selectCoa.selected() && $data[1] == $root.selectCoa.coaId()}">
+                  <span data-bind="text: $data[0], "></span>
+                </div>
+              </th>
+              <!--/ko-->
+            </tr>
+            </thead>
+            <tbody data-bind="foreach: {data: body(), as: 'items', afterRender: getRow2Col1}, ">
+            <tr>
+              <!--第一列-->
+              <td style="visibility: hidden">
+                <div class="mzc-nowrap text-center">
+                  <span data-bind="text: items[0].ele_name "></span>
+                </div>
+              </td>
+              <!--后续列-->
+              <!--ko foreach: items-->
+              <!--ko if: $index-->
+              <td>
+                <div data-bind="click: $root.getCoa,
+                        style: {
+                          width: $root.cellWidthAndHeight.width-1+'px',
+                          height: $root.cellWidthAndHeight.height+'px',
+                        },
+                        css: {'mzc-bd': !$root.selectCoa.selected() &&　$data.coaId == $root.selectCoa.coaId() && $data.rowNum == $root.selectCoa.rowNum()}">
+                  <div class="dropdown mzc-dropdown js-dropdown">
+                    <a href="#" class="btn btn-default" data-toggle="dropdown">
+                      <span data-bind="text: $data.levelName()"></span>
+                      <span class="caret"></span>
+                    </a>
+                    <!--ko if: $parent[0].max_level -->
+                    <ul class="dropdown-menu js-dropdown-menu" data-bind="foreach: $root.level.slice(0, Number($parent[0].max_level)+1).concat($root.levelAny)">
+                      <li><a href="#" data-bind="text: $data.text, click: $root.changeSelect.bind(this, $parent)"></a></li>
+                    </ul>
+                    <!--/ko-->
+                    <!--ko if: !$parent[0].max_level -->
+                    <ul class="dropdown-menu" data-bind="foreach: $root.level.concat($root.levelAny)">
+                      <li><a href="#" data-bind="text: $data.text"></a></li>
+                    </ul>
+                    <!--/ko-->
+                  </div>
+
+                  <!--<select name="" id=""-->
+                  <!--data-bind="options: $root.level.slice(0, Number($parent[0].max_level)+1).concat($root.levelAny),-->
+                  <!--optionsText: 'text',-->
+                  <!--optionsValue: 'value',-->
+                  <!--style: {'background-color': $data.levelNum() !== '' ? $data.bgColor : ''},-->
+                  <!--event: {change: $root.changeSelect},-->
+                  <!--textInput: $data.levelNum,">-->
+                  <!--</select>-->
+                  <!--<span data-bind="text: $data.levelNum"></span>-->
+                  <!--<select-->
+                  <!--data-bind="-->
+                  <!--options: $root.level.concat($root.levelAny),-->
+                  <!--optionsText: 'text',-->
+                  <!--style: {'background-color': $data.levelNum() !== '' ? $data.bgColor : ''},-->
+                  <!--event: {change: $root.changeSelect},-->
+                  <!--textInput: $data.levelNum,-->
+                  <!--optionsValue: 'value'">-->
+                  <!--</select>-->
+                </div>
+              </td>
+              <!--/ko-->
+              <!--/ko-->
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="cascadeModal" tabindex="-1" role="dialog" aria-labelledby="saveModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-bind="click: cancelSaveCoa" aria-label="Close"><span
+                  aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">是否级联保存COA</h4>
+        </div>
+        <div class="modal-body">
+          <pre data-bind="text: cascadeText"></pre>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bind="click:saveCascadeCoa">确定</button>
+          <button type="button" class="btn btn-default" data-bind="click: cancelSaveCoa">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--确认对话框-->
+  <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="saveModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                  aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">提示!</h4>
+        </div>
+        <div class="modal-body">
+          <p class="modal-title">是否确认要删除: <span data-bind="text: row2()[selectCoa.colNum()] && row2()[selectCoa.colNum()][0]"></span> ?</p>
+          <!--<p class="modal-title">是否确认要删除: <span data-bind="text: selectCoa.colNum()"></span> ?</p>-->
+        </div>
+        <div class="modal-footer" style="border-top: none;">
+          <button type="button" class="btn btn-primary" data-bind="click: confirmDelCoa">确定</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mzc-loading hide" id="myLoading"></div>
+</div>
+
+
+<!--引入js-->
+<script src="../../../../trd/requirejs/require.debug.js"></script>
+<script src="../../../../require.config.js"></script>
+<script src="list.js" type="text/javascript"></script>
+<!--<script src="http://localhost:3000/myWorkspace/gov.df.fap/gov.df.fap.web/src/main/webapp/df/fap/system/basesetting/factorylevel/list.js" type="text/javascript"></script>-->
+<script>
+</script>
+</body>
+</html>

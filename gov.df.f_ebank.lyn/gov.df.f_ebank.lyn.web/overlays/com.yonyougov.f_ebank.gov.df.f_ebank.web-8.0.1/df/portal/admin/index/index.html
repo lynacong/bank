@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html style="height:100%;">
+	<head>
+		<meta charset="utf-8">
+  		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>代理财政业务平台</title>
+  		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/companyTree.css" type="text/css">
+		<link rel="stylesheet" href="css/zTreeStyle/zTreeStyle.css" type="text/css">
+		<link rel="stylesheet" href="css/font-awesome.min.css" />
+		<link rel="stylesheet" href="css/H-ui.css"/>
+		<link rel="stylesheet" href="css/H-ui.admin.css"/>
+		<link rel="stylesheet" href="css/ionicons.min.css" />
+
+		<link rel="stylesheet" href="css/AdminLTE.min.css" />
+		<link rel="stylesheet" href="css/_all-skins.min.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/home.css" />
+		<script charset="utf-8" type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/layer/layer.js"></script>
+		
+		<!--[if lt IE 9]>
+	    	<script src="js/html5shiv.min.js"></script>
+	    	<script src="js/respond.min.js"></script>
+	    <![endif]-->
+		
+		<style>
+			/*add by mazca*/
+			.skin-blue .sidebar-menu>li>a.side-text {
+				border: none;
+				padding-left: 0;
+			}
+			.skin-blue .sidebar-menu>li:hover>a {
+				font-size: 14px;
+			}
+			.side-text:hover {
+				/*font-size: 15px;*/
+			}
+			.side-text {
+				line-height: 22px;
+				padding-right: 15px;
+			}
+			.sidebar-menu>li.side-item {
+				padding-left: 15px;
+			}
+			.side-item {
+				padding-right: 15px;
+			}
+			.side-item:hover {
+				background: rgba(51,51,51,0.3);
+			}
+			.side-item:hover > div > .side-text {
+				color: #fff !important;
+			}
+			.side-item a,
+			.side-item span
+			{
+				color: #fff;
+			}
+			.sidebar-menu.overflow-auto:hover {
+				overflow: hidden;
+			}
+			.logo-lg{
+				float:left;
+			}
+			#license{
+				color:red;
+				font-size:15px;
+				font-weight:bold;
+			}
+		</style>
+		
+	</head>
+	<body class="skin-blue sidebar-mini sidebar-collapse"style="height: 100%;overflow-x:hidden;overflow-y:hidden;">
+		<div class="wrapper" style="height: 100%;">
+		    <nav class="navbar">
+				<a href="#" class="sidebar-toggle type bor-r" id="sidebar-btn" data-toggle="offcanvas" role="button" >
+					<span class="icon-navicon" style="color:#ffffff"></span>
+				</a>
+			    <span class="logo-lg" id="indexLtLogo">
+			    	<img src="">
+			    </span>
+			    <div class="type">
+					<span id="license"></span>
+				</div>
+			    <div class="navbar-custom-menu" style="height:40px">
+        			<ul class="nav navbar-nav" style="height:40px">
+						<li class="dropdown bor-r pull-right" onclick="logout();">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"> 
+								<i class="fa fa-sign-out"  style="color:#ffffff"></i> 
+								<span class="hidden-xs" style="color:#ffffff">退出</span>
+							</a>
+						</li>
+						<!-- 切换角色 -->
+						<li class="dropdown border-left pull-right" id="switchRoleLi" style="border-right:solid 1px #3fa4ec;">
+							<a href="javascript:void(0);" id="switchRole" style="width:90px;padding: 10px 10px 10px 10px;"> 
+								<span class="hidden-xs" id="rolenameTop">切换角色</span> 
+								<i class="fa fa-angle-down" style="padding:0px"></i>
+							</a>
+							<div class="dropdown-menu" id="roleSwitchDiv" style="width:190px; right:-50px;z-index:99;">
+								<ul class="dMenuInfo" id="roleSwitch">
+								</ul>
+							</div>
+						</li>
+					    <li class="dropdown border-left pull-right" id="usernameTopLi" style="border-right: solid 1px #3fa4ec;">
+							<a href="javascript:void(0);" id="usernameTopA" style="padding: 10px 10px 10px 10px;"> 
+								<span class="hidden-xs" id="usernameTop">您好</span> 
+								<i class="fa fa-angle-down"></i>
+							</a>
+							<div class="dropdown-menu" id="usernameTopDiv" style="width:190px; right:-50px;z-index:99;">
+								<ul class="dMenuInfo" id="usernameTopDo">
+									<li><a href="javascript:void(0);">修改密码</a></li>
+								</ul>
+							</div>
+						</li>
+						
+						<li class="dropdown border-left pull-right" id="userDanweiLi" style="border-right: solid 1px #3fa4ec;">
+							<a href="javascript:void(0);" id="_department" style="padding: 10px 10px 10px 10px;"> 
+								<span id="agencyameTop">单位名称</span> 
+							</a>
+						</li>
+						<a href="javascript:void(0);" class="type _portal_cursor_default pull-right" style="cursor:default !important;border-left: solid 1px #40a5ed;border-right: solid 1px #40a5ed;margin-right：-2px;">
+							<span class="logo-lg" id="_currenttime_index_top"></span>
+						</a>
+					</ul>
+        		</div>
+    		</nav>
+			<aside class="main-sidebar">
+				<section class="sidebar" id="sidebar" >
+					<ul class="sidebar-menu" id="_sidebar_menu">
+					</ul>
+				</section>
+			</aside>
+			<div class="content-wrapper" >
+				<section class="Hui-article-box">
+					<div id="Hui-tabNav" class="Hui-tabNav ">
+						<div class="Hui-tabNav-wp">
+							<ul id="min_title_list" class="acrossTab cl" style="padding-left: 10px;width: 100%;min-width:1400px;">
+								<li class="active">
+									<span title="首页" id="iframe_first_id" data-href="">首页</span>
+								</li>
+							</ul>
+						</div>
+						<div class="Hui-tabNav-more btn-group">
+							<div style="width: 51px;height: 30px;background: #EFF3F6;right: -20px;position: absolute;">
+								<a id="js-tabNav-prev"  class="btn radius btn-default size-S" href="javascript:;"><i class="fa fa-angle-left"></i></a>
+								<a id="js-tabNav-next" class="btn radius btn-default size-S" href="javascript:;"><i class="fa fa-angle-right"></i></a>
+							</div>
+						</div>
+					</div>
+				
+					<div id="iframe_box" class="Hui-article" > <!-- style="margin-bottom: 120px;"> -->
+						<div class="show_iframe">
+						   <!--<div style="display: none" class="loading"></div>-->
+						   <iframe scrolling="yes" frameborder="0" id="iframeDashboard" name="iframeDashboard" src=""></iframe>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+			
+		<div id="hidden_label">
+			<input type="hidden" id="svFiscalPeriod" value=""/>
+			<input type="hidden" id="svMenuId" value=""/>
+			<input type="hidden" id="svRgCode" value=""/>
+			<input type="hidden" id="svRgName" value=""/>
+			<input type="hidden" id="svRoleCode" value=""/>
+			<input type="hidden" id="svRoleId" value=""/>
+			<input type="hidden" id="svRoleName" value=""/>
+			<input type="hidden" id="svSetYear" value=""/>
+			<input type="hidden" id="svTransDate" value=""/>
+			<input type="hidden" id="svUserCode" value=""/>
+			<input type="hidden" id="svUserId" value=""/>
+			<input type="hidden" id="svUserName" value=""/>
+			<input type="hidden" id="svAgencyCode" value=""/>
+			<input type="hidden" id="svAgencyName" value=""/>
+			<input type="hidden" id="svAgencyId" value=""/>
+			<input type="hidden" id="svDivision" value=""/>
+			<input type="hidden" id="svBelongOrg" value=""/>
+			<input type="hidden" id="svUserType" value=""/>
+			<a class="one_hidden_a" style="display:none" href="javascript:void(0);" target="_blank"></a>
+			<a class="two_hidden_a two-level-detail" style="display:none" href="javascript:void(0);" data-title="" data-href=""></a>
+		</div>
+		
+		<script charset="utf-8" type="text/javascript" src="js/H-ui.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/H-ui.admin.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/app.min.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/demo.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/Base64.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/md5.min.js"></script>
+		<script charset="utf-8" type="text/javascript" src="/df/trd/ip/js/ip.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/dfp/dfp.js"></script>
+		<script type="text/javascript" src="js/jquery.ztree.core-3.1.js"></script>
+		<!--add by mazca 999999999用户界面侧边栏不同-->
+		<script src="js/createSidebar.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/index.js"></script>
+		<script charset="utf-8" type="text/javascript" src="js/dfp/dfp.js"></script>
+	</body>
+</html>
+

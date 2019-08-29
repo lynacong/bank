@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>公务卡</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css" />
+		<link rel="stylesheet" type="text/css" href="./payCard.css">
+		<link rel="stylesheet" type="text/css" href="../common.css">
+</head>
+
+<body>
+	<div class="wrapper">
+		<div>
+			<h3 class="title">公务卡</h3>
+		</div>
+		<div class="">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12">
+						
+						<!-- 公务卡的模式参数 ---面板开始 -->
+						<div class="panel panel-info">
+    						<div class="panel-heading">
+        						<h3 class="panel-title">公务卡模式参数</h3>
+    						</div>
+    						<div class="panel-body">
+								<label class="checkbox-inline ">
+		   							 <input type="radio" name="paycardpaycard_model"  id="hnModel" value="1" checked>河南模式
+		  						<label class="checkbox-inline">
+		    						<input type="radio" name="paycardpaycard_model" id="nbModel" value="2">宁波模式
+		  						</label>
+		  							<label class="checkbox-inline">
+		   							 <input type="radio" name="paycardpaycard_model" id="localVersion2Model" value="3">地方版2.0模式
+		  						</label>
+		  						<label class="checkbox-inline">
+		    						<input type="radio" name="paycardpaycard_model" id="webserviceModel" value="4">webService接口模式
+		  						</label>
+    						</div>
+						</div>
+						<!-- 公务卡的模式参数 ---面板结束-->
+						
+						<!-- 银联相关 ---面板开始--(河南模式\宁波模式\地方版本2.0模式)-->
+						<div class="panel panel-info top-three-model">
+   							 <div class="panel-heading">
+        						<h3 class="panel-title">银联相关</h3>
+    						</div>
+    						<div class="panel-body">
+    						
+    						    <div class="form-group">
+									<label  id= "topThree_paycardpaycard_bankip_label" for="topThree_paycardpaycard_bankip" class="col-sm-3 control-label">公务卡银联IP地址:</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="topThree_paycardpaycard_bankip" >
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label  id="topThree_paycardpaycard_bankport_label" for="topThree_paycardpaycard_bankport" class="col-sm-3 control-label">公务卡银联端口:</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="topThree_paycardpaycard_bankport" >
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label for="topThree_uparapayPAY_CARD_SOCKET_PORT" class="col-sm-3 control-label">公务卡还款明细下载服务端口号:</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="topThree_uparapayPAY_CARD_SOCKET_PORT" >
+									</div>
+								</div>
+    						</div>
+						</div>
+						<!-- 银联相关 ---面板结束----(河南模式\宁波模式\地方版本2.0模式)-->
+						
+						
+					<!-- 	<!-- 银联相关 ---面板开始--(webservice接口模式)-->
+						<div class="panel panel-info webservice-model">
+   							 <div class="panel-heading">
+        						<h3 class="panel-title">银联相关</h3>
+    						</div>
+    						<div class="panel-body">
+    						
+    						    <div class="form-group">
+									<label for="last_paycardpaycard_bankip" class="col-sm-3 control-label">默认银联的区划码:</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="last_paycardpaycard_bankip" >
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label for="last_paycardpaycard_bankport" class="col-sm-3 control-label">默认银联的机构类型:</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="last_paycardpaycard_bankport" >
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label for="last_uparapayPAY_CARD_SOCKET_PORT" class="col-sm-3 control-label">公务卡还款明细下载服务端口号:</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="last_uparapayPAY_CARD_SOCKET_PORT" >
+									</div>
+								</div>
+    						</div>
+						</div> 
+						<!-- 银联相关 ---面板结束--(webservice接口模式) -->
+						
+  						
+  						<!-- 平台相关 ---面板开始-->
+  						<div class="panel panel-info can-edit">
+    						<div class="panel-heading">
+       							 <h3 class="panel-title">平台相关</h3>
+   						    </div>
+    						<div class="panel-body">
+    						
+    							<div class="form-group">
+									<label for="paycardpaycardServiceEnabled" class="col-sm-3 control-label">是否启用公务卡服务平台:</label>
+									<div class="col-sm-9">
+										<input type="checkbox" id="paycardpaycardServiceEnabled" checked>
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label for="paycardpaycard_serverip" class="col-sm-3 control-label">公务卡服务平台(DXP)IP地址:</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="paycardpaycard_serverip" >
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label for="paycardpaycard_serverport" class="col-sm-3 control-label">公务卡服务平台(DXP)端口:</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="paycardpaycard_serverport" >
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label for="dxpLoginName" class="col-sm-3 control-label">登录DXP用户名:</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="dxpLoginName" >
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label for="paycardpaycardMaxReturnNum" class="col-sm-3 control-label">登录DXP密码:</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="dxpLoginPass" >
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label for="paycardpaycardMaxReturnNum" class="col-sm-3 control-label">单次下载返回最大条数:</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="paycardpaycardMaxReturnNum" >
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label for="paycardpayCardDownType" class="col-sm-3 control-label">下载方式配置:</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="paycardpayCardDownType"  placeholder="1#授机号方式+2#金额方式+3#日期方式+4#卡号方式" >
+									</div>
+								</div>
+								
+						    </div>
+						</div>
+  						<!-- 平台相关 ---面板结束-->
+						
+						<!-- 财政相关 ---面板开始 --（河南模式\宁波模式\地方版2.0模式）-->
+						<div class="panel panel-info top-three-model">
+						    <div class="panel-heading">
+						        <h3 class="panel-title">财政相关</h3>
+						    </div>
+						    <div class="panel-body">
+						    
+						       	<div class="form-group">
+									<label id="topThree_intfdxppaycardPAY_CARD_SRCREGION_label" for="topThree_intfdxppaycardPAY_CARD_SRCREGION" class="col-sm-3 control-label">财政区划码:</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="topThree_intfdxppaycardPAY_CARD_SRCREGION" >
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label id="topThree_intfdxppaycardPAY_CARD_SRCORGANIZE_label" for="topThree_intfdxppaycardPAY_CARD_SRCORGANIZE" class="col-sm-3 control-label">财政机构码:</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="topThree_intfdxppaycardPAY_CARD_SRCORGANIZE" >
+									</div>
+								</div>
+						       
+						    </div>
+						</div>
+						<!-- 财政相关 ---面板结束--（河南模式\宁波模式\地方版2.0模式）-->
+						
+						<!-- 财政相关 ---面板开始 --（webservice模式）-->
+						<div class="panel panel-info webservice-model">
+						    <div class="panel-heading">
+						        <h3 class="panel-title">财政相关</h3>
+						    </div>
+						    <div class="panel-body">
+						    
+						       	<div class="form-group">
+									<label for="last_intfdxppaycardPAY_CARD_SRCREGION" class="col-sm-3 control-label">发送方区划码:</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="last_intfdxppaycardPAY_CARD_SRCREGION" >
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label for="last_intfdxppaycardPAY_CARD_SRCORGANIZE" class="col-sm-3 control-label">发送方机构类型码:</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="last_intfdxppaycardPAY_CARD_SRCORGANIZE" >
+									</div>
+								</div>
+						       
+						    </div>
+						</div> 
+						<!-- 财政相关 ---面板结束--（webservice模式）-->
+						
+						
+						<!-- 其他 ---面板开始-->
+						<div class="panel panel-info">
+						    <div class="panel-heading">
+						        <h3 class="panel-title">其他</h3>
+						    </div>
+						    <div class="panel-body">
+						       	<div class="form-group">
+									<label for="paycardPAY_CARD_CHECK_IDENTITY" class="col-sm-3 control-label">是否启用身份证号有效性验证:</label>
+									<div class="col-sm-9">
+										<input type="checkbox" id="paycardPAY_CARD_CHECK_IDENTITY">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-3"></label>
+									<div class="col-sm-9">
+									<button class="btn btn-primary"  id="save" onclick="saveData()">保存</button> 
+									</div>
+								</div>
+								
+						    </div>
+						</div>
+						<!-- 其他 ---面板结束-->
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="/df/trd/requirejs/require.js"></script>
+	<script src="/df/require.config.js"></script>
+	<script src="./payCard.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+    <title>关联关系编辑页面</title>
+    <meta name="author" content="ip">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../../../../trd/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/u.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/tree.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/grid.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/ip.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/ip/changeTree/changeTree.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/platform.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/select2/select2.css" />
+	<link rel="stylesheet" type="text/css" href="../ncrd.css" />    
+	<!--[if lte IE 9]>
+		<link rel="stylesheet" type="text/css" href="../ncrd-ie9.css" />
+	<![endif]-->
+</head>
+<body>
+<!--开始编辑页面-->
+<div id="edit" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document" style="width:800px">
+        <div class="modal-content">
+            <div id="editpage" class="editpage ncrd">
+                <!--编辑提示-->
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" data-bind="click:btnCloseClick"><span aria-hidden="true">&times;</span></button>
+                    <div id="editnav">
+                        <span id="editadd" class="editadd"></span>
+                    </div>
+                </div>
+                <!--编辑大块内容-->
+                <div id="editcontent" class="ncrd">
+                    <!--上部关联导航-->
+                    <div id="edittopnav" class="container-fluid">
+                        <div style="margin:8px 0 5px 5px">
+                            <div class="row">
+                                <div class="col-md-6 form-inline">
+                                    <div class="form-group">
+                                        <label for="edittopcode">关联关系编码</label>
+                                        <input type="text" class="form-control" id="edittopcode" style="width:283px">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 form-inline">
+                                    <div class="form-group form-inline">
+                                        <label for="edittoptype">关联关系类型</label>
+                                        <select name="" id="edittoptype" class="form-control" style="width:284px">
+                                            <option value="0" id="edittype1">视图关联</option>
+                                            <option value="1" id="edittype2">逻辑关联</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--编辑下面内容-->
+                    <div id="editbotpage" class="container-fluid">
+                        <!--左边内容-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div id="edit-leftpage" class="panel panel-default relation-edit-tree">
+                                    <!--主控要素-->
+                                    <div id="edit-leftpage-nav" class="bg-sys border-none form-group form-inline panel panel-default panel-footer panel-title">
+                                        <lable for="editselect-left">主控要素</lable>
+                                        <select id="editselect-left" class="form-control" style="width:300px" data-bind="options: availableCountries,
+                                                                               optionsText: 'ele_name', optionsValue: 'ele_code', optionsCaption: '请选择',event:{change:whenchange.bind($data,0)}">
+                                            
+                                        </select>
+                                    </div>
+                                    <!--主控要素内容树-->
+                                    <div id="edit-leftpage-tree" class="relation-panel-body">
+                                        <div id="treeTest1" class="ztree" u-meta='{"id":"edittree1","data":"mainElementDataTable","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"chr_name","setting":"edittreeSetting1"}'></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--右边内容-->
+                            <div class="col-md-6">
+                                <div id="edit-rightpage" class="panel panel-default relation-edit-tree">
+                                    <!--被控要素-->
+                                    <div id="edit-rightpage-nav" class="bg-sys border-none form-group form-inline panel panel-default panel-footer panel-title">
+                                        <lable for="editselect-right">被控要素</lable>
+                                        <select id="editselect-right" class="form-control" style="width:300px" data-bind="options: availableCountries1,
+                                                                                                                       optionsText: 'ele_name', optionsValue: 'ele_code', optionsCaption: '请选择',event:{change:whenchange.bind($data,1)}">
+
+                                                                                </select>
+                                    </div>
+                                    <!--被控要素树-->
+                                    <div id="edit-rightpage-tree" class="relation-panel-body">
+                                        <div id="treeTest2" class="ztree" u-meta='{"id":"edittree2","data":"conElementDataTable","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"chr_name","setting":"edittreeSetting2"}'></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--保存-->
+                    <div id="" class="" style="margin: 5px 5px 5px 710px">
+                        <button class="btn btn-primary text-center" id="editexist" data-bind="click:editsave">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

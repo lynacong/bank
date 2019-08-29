@@ -1,0 +1,206 @@
+/*样式重置*/
+.table-bordered>tbody>tr>td,
+.table-bordered>tbody>tr>th,
+.table-bordered>tfoot>tr>td,
+.table-bordered>tfoot>tr>th,
+.table-bordered>thead>tr>td,
+.table-bordered>thead>tr>th {
+    border-color: #d3d3d3;
+}
+.table-bordered > thead > tr > th {
+    border-bottom-width: 1px;
+}
+.table {
+    margin-bottom: 0;
+}
+.u-grid-header-th {
+    white-space: normal;
+}
+.dropdown-menu>li>a {
+    min-height: 26px;
+}
+.modal-content {
+    border-radius: 0;
+    padding: 15px;
+}
+.modal-header {
+    padding: 0;
+}
+.panel {
+    border-radius: 0;
+    overflow: auto;
+}
+.modal {
+    background-color: rgba(85,85,85,0.50);
+}
+.info-loading {
+    z-index: 2001;
+}
+
+/*******面向属性的样式**********/
+.modal-dialog.w800 {
+    min-width: 800px;
+}
+.f28 {
+    font-size: 28px;
+}
+
+/*样式*/
+html {
+    height: 100%;
+}
+
+body {
+    /*height: 92% !important;*/
+    font-size: 12px;
+}
+.mzc-break-all {
+    -ms-word-break: break-all;
+    word-break: break-all;
+}
+.container-fluid {
+    height: 100%;
+}
+
+.container-fluid .row {
+    height: 100%;
+}
+
+.list-box {
+    position: relative;
+}
+
+.list-box .panel {
+    /*padding: 0;*/
+}
+
+.list-box .table td div {
+    padding: 2px;
+}
+
+.list-box .table td select {
+    border: none;
+}
+
+.list-box .table td,
+.list-box .table th {
+    padding: 0 !important;
+}
+
+.list-box .table td > div,
+.list-box .table th > div {
+    padding: 2px;
+    max-height: 70px;
+}
+
+.list-box .table td > div.mzc-bd,
+.list-box .table th > div.mzc-bd {
+    padding: 0;
+}
+
+.mzc-bd {
+    border: 2px solid rgb(33, 150, 243) !important;
+}
+
+.list-div {
+    position: absolute;
+    top: 48px;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+}
+.mzc-nowrap {
+    white-space: nowrap;
+}
+
+#fl-list-container .list-div {
+    margin: 0 2px;
+    padding: 0;
+    height: auto;
+}
+.fix-row {
+    position: absolute;
+    top: -2px;
+    left: 0;
+    right: 17px;
+    overflow: hidden; /*要使scrollTop scrollLeft生效, 需要设置这个属性*/
+    z-index: 5;
+}
+.fix-col {
+    position: absolute;
+    left: 0;
+    top: 0px;
+    overflow: hidden;
+    bottom: 17px;
+    z-index: 5;
+}
+.fix-left-top {
+    position: absolute;
+    left: 0;
+    top: -2px;
+    z-index: 10;
+    background-color: #fff;
+}
+.vtm {
+    vertical-align: middle !important;
+}
+.bg-blue {
+    background-color: #4990E2;
+    color: #fff;
+    font-size: 14px;
+}
+.bg-blue-2 {
+    background-color: #BDE0FD;
+}
+
+/*********页面头部**********/
+.mzc-head {
+    padding-top: 5px;
+}
+
+/*****基本样式*****/
+.mzc-por {
+    position: relative;
+}
+.mzc-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 96%;
+}
+.mzc-dropdown > .btn {
+    padding: 0;
+    width: 87px;
+    height: 24px;
+    display: block;
+    line-height: 24px;
+    position: relative;
+    text-align: left;
+    padding-left: 2px;
+    font-size: 12px;
+}
+.mzc-dropdown > .btn:after {
+    content: '';
+    position: absolute;
+    right: 18px;
+    height: 100%;
+    border-right: 1px solid #ccc;
+}
+.mzc-dropdown > .btn .caret {
+    position: absolute;
+    right: 5px;
+    top: 9px;
+}
+.mzc-loading {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 2001;
+}

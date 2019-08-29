@@ -1,0 +1,141 @@
+<div class="container-fluid h">
+    <div class="config-btn">
+        <button id="refreshBtn" class="btn btn-config" onclick="refreshBtn()">刷新</button>
+        <button id="addBtn" class="btn btn-config" onclick="addBtn()">增加</button>
+        <button id="editBtn" class="btn btn-config" onclick="editBtn()">修改</button>
+        <button id="deleteBtn" class="btn btn-danger" onclick="deleteBtn()">删除</button>
+    </div>
+
+    <div class="config-main border-box p5">
+	    <div id="tableAcc" style="height:100%;">
+	        <table class="table-striped table table-bordered nowrap table-hover table-condensed" id="subSystemGrid" style="width:100%;">
+	            <thead>
+	            <tr>
+	                <th>菜单ID</th>
+	                <th>报文类型</th>
+	                <th>按钮ID</th>
+	                <th>父级ID</th>
+	                <th>菜单编码</th>
+	                <th>菜单名称</th>
+	            </tr>
+	            </thead>
+	            <tbody>
+	            </tbody>
+	        </table>
+	
+	    </div>
+
+    </div>
+</div>
+
+<!-- 新增/修改Modal start-->
+<div class="modal fade" id="accSetModel" tabindex="-1" role="dialog"
+     aria-labelledby="ylModalLabel" data-backdrop="static">
+    <div class="modal-dialog" role="document" style="width:530px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="titleText"></h4>
+            </div>
+            <div class="modal-body display-container">
+                <div class="clearfix" style="margin:10px;">
+
+                    <div class="form-group col-md-12">
+                        <label for="menu_name" class="col-md-3 text-right"><span class="color-red">*</span>菜单名称：</label>
+                        <div class="input-group col-md-9">
+                            <input type="text"  id="menu_name" class="form-control" onFocus="getMenu()"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12" style="display: none;">
+                        <label for="menu_id" class="col-md-3 text-right"><span class="color-red">*</span>菜单ID：</label>
+                        <div class="input-group col-md-9">
+                            <input type="text" id="menu_id" class="form-control"  />
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label for="addr_chr_code" class="col-md-3 text-right"><span class="color-red">*</span>报文类型：</label>
+                        <div class="input-group col-md-9">
+                            <select id="addr_chr_code" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label for="btn_id" class="col-md-3 text-right">按钮ID：</label>
+                        <div class="input-group col-md-9">
+                            <input type="text"  id="btn_id" class="form-control"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12" style="display: none;">
+                        <label for="parent_id" class="col-md-3 text-right"><span class="color-red">*</span>父级ID：</label>
+                        <div class="input-group col-md-9">
+                            <input type="text"  id="parent_id" class="form-control"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-12" style="display: none;">
+                        <label for="menu_code" class="col-md-3 text-right">菜单编码：</label>
+                        <div class="input-group col-md-9">
+                            <input type="text"  id="menu_code" class="form-control"/>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer" style="clear: both;">
+                <button type="button" class="btn btn-primary" onclick="save()">确定</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">退出</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 弹出浮动 -->
+<div class="modal fade" tabindex="-1" id="wizardModal" role="dialog"
+     aria-labelledby="ylModalLabel" data-backdrop="static">
+    <div class="modal-dialog" role="document" style="width:400px;">
+        <div class="modal-content">
+
+            <div class="modal-header ui-draggable-handle">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">菜单选择</h4>
+            </div>
+
+            <div class="modal-body">
+                <div style="margin:0px 0px 0px 0px;border: 1px solid #ccc;">
+                    <input id="modal_chr_id" type="hidden" value="">
+                    <label  style="margin:5px 0px 0px 5px; ">选择菜单： </label>
+                    <div id="treeMain" class="ztree" style="height:300px;overflow-x: hidden;overflow-y: scroll;margin:0px 0px 0px 0px; "
+                         u-meta='{
+                                "id":"treeId",
+                                "data":"dataTable",
+                                "type":"tree",
+                                "idField":"menu_id",
+                                "pidField":"parent_id",
+                                "nameField":"menu_name",
+                                "setting":"treeSetting"
+                            }'>
+                    </div>
+                </div>
+                <br>
+                <div style="margin:0px 0px 0px 225px;">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="modalok" type="button" class="btn btn-primary" onclick="treeOK()">确定</button>
+                <button id="modalcancel" type="button" class="btn btn-primary" onclick="treeCancel()">取消</button>
+            </div>
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+
+<div class="modal" ng-controller="KisBpmRoleReferenceTreeGridPopupCtrl">
+    <div class="modal-dialog" ng-class="{ 'modal-wide-tree-grid': !property.multiSelect, 'modal-wide-multi-tree-grid': property.multiSelect }">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="editor-pop-close close" data-dismiss="modal" aria-hidden="true" ng-click="close()">&times;</button>
+                <span>{{property.title}}</span>
+            </div>
+            <div class="modal-body modal-body-ref">
+            	<div class="row row-no-gutter row-ref">
+            		<div class="tg-tree-col-xs-1">
+                    </div>
+            		<div class="tg-grid-col-xs-1">
+                    	<input id="specialDept" type="checkbox" value="specialDept" /><label translate>REFERENCE.SPECIALDEPT</label> 
+                    	<input id="userRelativeDept" type="checkbox" value="userRelativeDept" /><label translate>REFERENCE.USERRELATIVEDEPT</label> 
+                    </div>
+            	</div>
+                <div class="row row-no-gutter row-ref">
+                	<div class="tg-tree-col-xs-1">
+                        <ul id="treeref1_zTree" class="ztree tg_ztree"></ul>
+                    </div>
+                    <div class="tg-grid-col-xs-1">
+                        <div ng-if="translationsRetrieved" class="default-grid tg-default-grid" ng-grid="gridOptions"></div>
+                    </div>
+                    <div class="grid-col-xs-3 row-ref" ng-class="{'grid-hidden':!property.multiSelect}">
+                        <div class="grid-btn-group btn-group">
+                        	<a class="btn btn-icon btn-lg" rel="tooltip" data-title="{{'ACTION.ADD' | translate}}" data-placement="bottom" data-original-title="" title="" ng-click="addProperty()"><i class="glyphicon glyphicon-plus"></i></a>
+                        	<a class="btn btn-icon btn-lg" rel="tooltip" data-title="{{'ACTION.REMOVE' | translate}}" data-placement="bottom" data-original-title="" title="" ng-click="removeProperty()"><i class="glyphicon glyphicon-minus"></i></a>
+                        </div>
+                    </div>
+                    <div class="grid-col-xs-2" ng-class="{'grid-hidden':!property.multiSelect}">
+                        <div ng-if="translationsRetrieved" class="default-grid tg-default-grid" ng-grid="resultGridOptions"></div>
+                    </div>
+                    <div class="grid-col-xs-3 margin_left" ng-class="{'grid-hidden':!property.multiSelect}">
+                        <div class="grid-btn-group btn-group">
+                            <a class="btn btn-icon btn-lg" rel="tooltip" data-title="{{'ACTION.MOVE.UP' | translate}}" data-placement="bottom" data-original-title="" title="" ng-click="movePropertyUp()"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                        	<a class="btn btn-icon btn-lg" rel="tooltip" data-title="{{'ACTION.MOVE.DOWN' | translate}}" data-placement="bottom" data-original-title="" title="" ng-click="movePropertyDown()"><i class="glyphicon glyphicon-arrow-down"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="editor-modal-footer modal-footer">
+				<button ng-click="save()" class="btn btn-primary" translate>ACTION.OK</button>
+                <button ng-click="cancel()" class="btn btn-primary" translate>ACTION.CANCEL</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>电子凭证查看</title>
+	 <link rel="stylesheet" type="text/css" href="/df/rounte/admin/trd/bootstrap/css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="/df/rounte/admin/trd/uui/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/df/rounte/admin/trd/ip/css/reset.css"/>
+	<link rel="stylesheet" type="text/css" href="/df/rounte/admin/trd/ip/css/ip.css"/>
+	<link rel="stylesheet" type="text/css" href="/df/rounte/admin/trd/ip/css/theme/blue.css"/>
+	<link rel="stylesheet" type="text/css" href="/df/rounte/admin/pages/css/fbcommon.css"/>
+</head>
+<body>
+	<OBJECT CLASSID="clsid:4FC4CDDF-84E5-437C-8527-B23F6D70866C" ID="CTJEstampOcx" CODEBASE="EVoucherOcx-2013.12.30.00.cab"  style="width:100%; height:92%;"></OBJECT>
+	<div style="float:right;">
+		<button id="pageUp" class="btn btn-primary">上联</button>
+		<button id="pageDown" class="btn btn-primary">下联</button>
+		<button id="prevVoucherBtn" class="btn btn-primary"  onclick="gotoPrevVoucher()">上一页</button>
+		<button id="nextVoucherBtn" class="btn btn-primary"  onclick="gotoNextVoucher()">下一页</button>
+		<button id="printBtn" class="btn btn-primary" onclick="printCurrentVoucher()">打印当前页</button>
+		<button id="PrintAllBtn" class="btn btn-primary" onclick="printAllVoucher()">批量打印</button>
+	</div>
+</body>
+
+<script src="/df/trd/jquery/jquery-1.12.3.min.js"></script>
+<script src="../../common/ebankConstants.js"></script>
+<script src="/df/trd/ip/js/ip.js"></script>
+<script src="asspVoucher.js"></script>
+</html>

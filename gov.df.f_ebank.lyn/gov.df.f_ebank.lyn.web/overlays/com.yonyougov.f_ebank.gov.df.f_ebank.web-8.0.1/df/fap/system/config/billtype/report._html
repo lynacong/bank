@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../../../../trd/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/u.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/tree.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/ip/changeTree/changeTree.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/grid.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/ip.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/platform.css" />
+    <link rel="stylesheet" type="text/css" href="../ncrd.css" />
+	<!--[if lte IE 9]>
+		<link rel="stylesheet" type="text/css" href="../ncrd-ie9.css" />
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="report.css">
+
+</head>
+<body>
+<div id="report" class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">内容选择</h3>
+    </div>
+    <div class="panel-body" style="margin-top: 30px">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group re-form">
+                    <label class="col-md-3 control-label">
+                        <h4>快速定位</h4>
+                    </label>
+                    <div class="col-md-9">
+                        <select id="condition1" class="form-control">
+                            <option value="1">包含</option>
+                            <option value="2">左包含</option>
+                            <option value="3">右包含</option>
+                            <option value="4">精确定位</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8 form-group re-form">
+                <div class="col-md-6">
+                    <input type="text" id="reportValue" class="form-control" placeholder="请输入关键字" data-bind="value:tree2KeyWord"/>
+                </div>
+                <button class="btn btn-primary btn-sm col-md-2" data-bind="click:events.findClick">查找</button>
+                <button class="btn btn-primary btn-sm col-md-2" data-bind="click:events.nextOne">下一个</button>
+            </div>
+        </div>
+        <div class="panel panel-default panel-body left-tree" style="height: 400px;overflow-y: scroll">
+            <div id="treeTest2" class="ztree" u-meta='{"id":"tree2","data":"treeDataTable","type":"tree","idField":"report_id","pidField":"parent_id","nameField":"report_name","setting":"treeSetting"}'></div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bind="click:events.refresh">刷新</button>
+        <button type="button" class="btn btn-primary" data-bind="click:btnSaveClick">保存</button>
+        <button type="button" class="btn btn-default" data-bind="click:btnCloseClick">取消</button>
+    </div>
+</div>
+</body>
+</html>

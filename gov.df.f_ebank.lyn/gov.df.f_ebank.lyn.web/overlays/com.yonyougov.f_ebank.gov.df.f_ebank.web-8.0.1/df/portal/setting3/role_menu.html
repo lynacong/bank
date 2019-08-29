@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 2 | Buttons</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="dist/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="dist/css/ionicons.min.css">
+    <!-- jqgrid -->
+    <link rel="stylesheet" href="plugins/jqgrid/jqgrid.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="dist/css/skins/all-skins.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="plugins/iCheck/flat/blue.css">
+    <link rel="stylesheet" href="self/css/ps.css">
+    <!--[if lt IE 9]>
+    <script src="plugins/ie9/html5shiv.min.js"></script>
+    <script src="plugins/ie9/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hold-transition skin-blue">
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <select class="form-control" id="allRoleList"></select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button type="button" class="btn btn-block btn-default" id="roleMenuRefreshBtn" title="刷新当前角色对应菜单">页面：<span id="roleMenuCurPageName" data-roleid="">全部</span></button>
+            </div>
+            <!--<div class="col-md-2">-->
+                <!--<button type="button" class="btn btn-block btn-primary" id="roleMenuPublishModalBtn" title="发布菜单到指定页面的指定模块">发布</button>-->
+            <!--</div>-->
+            <div class="col-md-2">
+                <button type="button" class="btn btn-block btn-primary" id="roleMenuPublishDeleteBtn" title="删除当前角色的指定发布菜单">删除</button>
+            </div>
+            <div class="col-md-2">
+                <!--<button type="button" class="btn btn-block btn-primary">删除</button>-->
+            </div>
+
+        </div>
+        <!-- /.col -->
+        <div class="col-md-12">
+            <div class="box box-primary" style="border-top: none;">
+                <!--<div class="box-header with-border">-->
+                <!--<h3 class="box-title">Inbox</h3>-->
+                <!--<div class="box-tools pull-right">-->
+                <!--<div class="has-feedback">-->
+                <!--<input type="text" class="form-control input-sm" placeholder="Search Mail">-->
+                <!--<span class="glyphicon glyphicon-search form-control-feedback"></span>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!-- /.box-header -->
+                <div class="box-body no-padding" id="roleMenuTable">
+                    <!-- table -->
+                    <table id="jqgrid"></table>
+                    <!-- 分页bar -->
+                    <div id="pjqgrid"></div>
+                    <br>
+                </div>
+                <div class="overlay" id="jqgridOverlay" style="display: none;">
+                    <i class="fa fa-refresh fa-spin"></i>
+                </div>
+            </div>
+            <!-- /. box -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+</section>
+<!-- /.content -->
+
+<!--菜单发布到页面指定位置-->
+<div class="example-modal" style="">
+    <div class="modal fade" id="roleMenuPublishModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">菜单发布</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="box box-info" style="border-top: none;">
+                        <form class="form-horizontal">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="selectPageForRoleMenu" class="col-sm-2 control-label">页面选择</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="selectPageForRoleMenu"></select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="selectPageModalForRoleMenu" class="col-sm-2 control-label">模块选择</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="selectPageModalForRoleMenu"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="roleMenuPublishModalSub">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/菜单发布到页面指定位置-->
+
+<script src="dist/js/jquery-2.2.3.min.js" charset="utf-8"></script>
+<script src="dist/js/jquery-ui.min.js" charset="utf-8"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="plugins/fastclick/fastclick.js"></script>
+<script src="dist/js/app.min.js"></script>
+<script src="plugins/layer/layer.js"></script>
+<script src="plugins/iCheck/icheck.min.js"></script>
+<script src="plugins/jqgrid/jquery.jqGrid.min.js"></script>
+<script src="plugins/jqgrid/grid.locale-en.min.js"></script>
+
+<script src="self/js/dfp.js"></script>
+<script src="self/js/ps.js"></script>
+<script src="self/js/ps.url.js"></script>
+
+<!-- Page Script -->
+<script>
+
+    $(function () {
+        role_page_init();
+    });
+
+    /**
+     * 页面数据初始化
+     */
+    function role_page_init() {
+        var jqgrid_data = [];
+        $.ajax({
+            url: $.psu.back("roleMenuInit"),
+            type: "GET",
+            data: {"tokenid": $.dfp.tokenid()},
+            dataType: "json",
+            success: function (data) {
+                var roleList = data.roleList,
+                    menuList = data.menuList;
+                // 角色
+                var $allRoleList = $("#allRoleList");
+                var roleListHtml = '<option value="{0}">{1}</option>',
+                    html = '<option value="" selected>全部角色</option>';
+                for (var i = 0, length = roleList.length || 0; i < length; i++) {
+                    html += $.dfp.strFormat(roleListHtml, roleList[i].role_id, roleList[i].role_name);
+                }
+                $allRoleList.html(html);
+                // 切换角色刷新菜单
+                $allRoleList.on("change", function () {
+                    var roleId = $(this).val();
+                    $.ajax({
+                        url: $.psu.back("roleMenuInit"),
+                        type: "GET",
+                        data: {"tokenid": $.dfp.tokenid(), "roleId": roleId},
+                        dataType: "json",
+                        success: function (data) {
+                            showMenuWithMenuList(data.menuList);
+                        }
+                    });
+                });
+
+                // 系统菜单
+                for (var j = 0, length = menuList.length || 0; j < length; j++) {
+                    var obj = {
+                        menuId: $.dfp.isStrNull(menuList[j].menu_id) ? '' : menuList[j].menu_id,
+                        menuCode: $.dfp.isStrNull(menuList[j].menu_code) ? '' : menuList[j].menu_code,
+                        menuName: $.dfp.isStrNull(menuList[j].menu_name) ? '' : menuList[j].menu_name,
+                        menuLevel: $.dfp.isStrNull(menuList[j].menu_level) ? '' : menuList[j].menu_level,
+                        menuUrl: $.dfp.isStrNull(menuList[j].menu_url) ? '' : menuList[j].menu_url,
+                        roleId: $.dfp.isStrNull(menuList[j].role_id) ? '' : menuList[j].role_id,
+                        roleCode: $.dfp.isStrNull(menuList[j].role_code) ? '' : menuList[j].role_code,
+                        roleName: $.dfp.isStrNull(menuList[j].role_name) ? '' : menuList[j].role_name,
+                        linkId: $.dfp.isStrNull(menuList[j].link_id) ? '' : menuList[j].link_id,
+                        linkType: $.dfp.isStrNull(menuList[j].link_type) ? '' : menuList[j].link_type,
+                        linkTitle: $.dfp.isStrNull(menuList[j].link_title) ? '' : menuList[j].link_title,
+                        linkOrder: $.dfp.isStrNull(menuList[j].link_order) ? '' : menuList[j].link_order,
+                        linkUrl: $.dfp.isStrNull(menuList[j].link_url) ? '' : menuList[j].link_url,
+                        pageId: $.dfp.isStrNull(menuList[j].page_id) ? '' : menuList[j].page_id,
+                        pageTitle: $.dfp.isStrNull(menuList[j].page_title) ? '' : menuList[j].page_title,
+                        pgTitle: $.dfp.isStrNull(menuList[j].pg_title) ? '' : menuList[j].pg_title,
+                        pgId: $.dfp.isStrNull(menuList[j].pg_Id) ? '' : menuList[j]
+                    };
+                    jqgrid_data.push(obj);
+                }
+                ;
+                $("#jqgrid").jqGrid({
+                    data: jqgrid_data,
+                    datatype: "local", //为local时初始化不加载，支持json，xml等 
+                    colNames: ['操作', '菜单ID', '菜单Code', '菜单名', '菜单级次', '菜单Url', '角色ID', '角色Code', '角色名', '发布ID', '发布类型', '发布Name', '发布Url', '排序', '页面ID', '页面名', '模块ID', '模块名'], //表头
+                    colModel: [ //这里会根据index去解析jsonReader中root对象的属性，填充cell
+                        {name: 'act', index: 'act', sortable: false, search: false, resizable: false}
+                        , {name: 'menuId', index: 'menuId', hidden: true}
+                        , {name: 'menuCode', index: 'menuCode', hidden: true}
+                        , {name: 'menuName', index: 'menuName'}
+                        , {name: 'menuLevel', index: 'menuLevel', hidden: true}
+                        , {name: 'menuUrl', index: 'menuUrl', hidden: true}
+                        , {name: 'roleId', index: 'roleId', hidden: true}
+                        , {name: 'roleCode', index: 'roleCode', hidden: true}
+                        , {name: 'roleName', index: 'roleName', hidden: true}
+                        , {name: 'linkId', index: 'linkId', hidden: true}
+                        , {name: 'linkType', index: 'linkType', hidden: true}
+                        , {name: 'linkTitle', index: 'linkTitle', editable: true}
+                        , {name: 'linkUrl', index: 'linkUrl', editable: true}
+                        , {name: 'linkOrder', index: 'linkOrder', editable: true}
+                        , {name: 'pageId', index: 'pageId', hidden: true}
+                        , {name: 'pageTitle', index: 'pageTitle', hidden: true}
+                        , {name: 'pgId', index: 'pgId', hidden: true}
+                        , {name: 'pgTitle', index: 'pgTitle'}
+                    ],
+                    width: 'auto', // '数字' 或 'auto'
+                    height: 'auto',
+                    autowidth: true,
+                    multiselect: true, // 多选
+                    multiboxonly: true, //在点击表格row时只支持单选，只有当点击checkbox时才多选，需要multiselect=true是有效
+                    rowNum: 10, // 每页记录数
+                    rowList: [10, 20, 30, 50, 100], // 每页记录数可选列表
+                    rownumbers: true, //设置列表显示序号,需要注意在colModel中不能使用rn作为index
+                    rownumWidth: 20, //设置显示序号的宽度，默认为25
+                    pager: '#pjqgrid', // 分页标签divID
+                    toolbarfilter: true,
+                    viewrecords: true, //显示记录数信息，如果这里设置为false,下面的不会显示 recordtext: "第{0}到{1}条, 共{2}条记录", //默认显示为{0}-{1} 共{2}条 scroll: false, //滚动翻页，设置为true时翻页栏将不显示
+                    sortable: true, // 这里是排序的默认设置，这些值会根据列表header点击排序时覆盖
+                    sortname: 'id',
+                    sortorder: "asc",
+                    //caption: "角色-菜单关系配置", //显示查询结果表格标题
+                    gridComplete: function () { // 设定每行操作按钮，当表格所有数据都加载完成而且其他的处理也都完成时触发此事件，排序，翻页同样也会触发此事件
+                        var ids = jQuery("#jqgrid").jqGrid('getDataIDs');
+                        for (var i = 0; i < ids.length; i++) {
+                            var cl = ids[i];
+                            // 表格行操作
+                            editRow = "<button class='btn btn-xs btn-default' data-original-title='编辑行' onclick=\"self_jqgrid.editRow('" + cl + "');\"><i class='fa fa-pencil'></i></button> ";
+                            saveRow = "<button class='btn btn-xs btn-default' data-original-title='保存行' onclick=\"self_jqgrid.saveRow('" + cl + "');\"><i class='fa fa-save'></i></button> ";
+                            //deleteRow = "<button class='btn btn-xs btn-default' data-original-title='删除行' onclick=\"self_jqgrid.deleteRow('" + cl + "');\"><i class='fa fa-times'></i></button> ";
+                            restoreRow = "<button class='btn btn-xs btn-default' data-original-title='恢复行' onclick=\"self_jqgrid.restoreRow('" + cl + "');\"><i class='fa fa-refresh'></i></button>";
+                            jQuery("#jqgrid").jqGrid('setRowData', ids[i], {
+                                act: editRow + saveRow + restoreRow // + deleteRow
+                            });
+                        }
+                    }
+
+                });
+                // 设定分页bar显示的信息
+                jQuery("#jqgrid").jqGrid('navGrid', "#pjqgrid", {
+                        edit: false,
+                        add: false,
+                        del: false
+                    }, {}, {},
+                    {
+                        delCaption: "删除",
+                        reloadAfterSubmit: true,
+                        onClickButton: function () {
+                            debugger;
+                            // 选中行 id
+                            var ids = jQuery("#jqgrid").jqGrid('getGridParam', 'selarrrow');
+
+                        }
+                    }
+                );
+                // http://blog.csdn.net/tfy1332/article/details/51241020
+                jQuery("#jqgrid").jqGrid('inlineNav', "#pjqgrid", {
+                    add: false, // 显示添加行按钮，按钮将会调用addRow(addParams)方法
+                    addtitle: "增加", // 鼠标经过显示
+                    addtext: "", // 按钮内文字
+                    //addicon : "ui-icon-plus", // 按钮的图标,目前仅能设置为UI主题中的图标
+                    edit: true, // 按钮将会调用editRow(editParams)方法
+                    edittitle: "修改",
+                    edittext: "",
+                    save: false, // 按钮将会调用saveRow(editParams)方法
+                    //savetitle : " 保存",
+                    cancel: true, // 按钮将会调用restoreRow(editParams)方法
+                    canceltitle: "取消操作",
+                    canceltext: "",
+                    searchtext: "",
+                    searchtitle: "查询",
+                    refreshtext: "",
+                    refreshtitle: "恢复",
+                }, {
+                    addParams: { // 点击添加按钮后传递给addRow方法的参数
+                        position: "afterSelected",
+                        addRowParams: {
+                            keys: true,
+                            oneditfunc: function (rowid) {
+                                alert("addRowParams " + rowid);
+                            }
+                        }
+                    },
+                    editParams: { // 点击导航栏按钮的编辑，保存，取消按钮，传递给 editRow, saveRow, restoreRow 方法的参数
+                        keys: true,
+                        oneditfunc: function (rowid) {
+                            alert("edit params " + rowid);
+                        }
+                    }
+                });
+                /* Add tooltips */
+                $('.navtable .ui-pg-button').tooltip({
+                    container: 'body'
+                });
+                // remove classes
+                $(".ui-jqgrid").removeClass("ui-widget ui-widget-content");
+                $(".ui-jqgrid-view").children().removeClass("ui-widget-header ui-state-default");
+                $(".ui-jqgrid-labels, .ui-search-toolbar").children().removeClass("ui-state-default ui-th-column ui-th-ltr");
+                $(".ui-jqgrid-pager").removeClass("ui-state-default");
+                $(".ui-jqgrid").removeClass("ui-widget-content");
+                // add classes
+                $(".ui-jqgrid-htable").addClass("table table-bordered table-hover");
+                $(".ui-jqgrid-btable").addClass("table table-bordered table-striped");
+                $(".ui-pg-div").removeClass().addClass("btn btn-sm btn-primary");
+                $(".ui-icon.ui-icon-plus").removeClass().addClass("fa fa-plus");
+                $(".ui-icon.ui-icon-pencil").removeClass().addClass("fa fa-pencil");
+                $(".ui-icon.ui-icon-trash").removeClass().addClass("fa fa-trash-o");
+                $(".ui-icon.ui-icon-search").removeClass().addClass("fa fa-search");
+                $(".ui-icon.ui-icon-refresh").removeClass().addClass("fa fa-refresh");
+                $(".ui-icon.ui-icon-disk").removeClass().addClass("fa fa-save").parent(".btn-primary").removeClass("btn-primary").addClass("btn-success");
+                $(".ui-icon.ui-icon-cancel").removeClass().addClass("fa fa-times").parent(".btn-primary").removeClass("btn-primary").addClass("btn-danger");
+                $(".ui-icon.ui-icon-seek-prev").wrap("<div class='btn btn-sm btn-default'></div>");
+                $(".ui-icon.ui-icon-seek-prev").removeClass().addClass("fa fa-backward");
+                $(".ui-icon.ui-icon-seek-first").wrap("<div class='btn btn-sm btn-default'></div>");
+                $(".ui-icon.ui-icon-seek-first").removeClass().addClass("fa fa-fast-backward");
+                $(".ui-icon.ui-icon-seek-next").wrap("<div class='btn btn-sm btn-default'></div>");
+                $(".ui-icon.ui-icon-seek-next").removeClass().addClass("fa fa-forward");
+                $(".ui-icon.ui-icon-seek-end").wrap("<div class='btn btn-sm btn-default'></div>");
+                $(".ui-icon.ui-icon-seek-end").removeClass().addClass("fa fa-fast-forward");
+            }
+        });
+    }
+
+    /**
+     * 刷新菜单
+     */
+    $("#roleMenuRefreshBtn").click(function () {
+        refreshMenuByRoleIdAjax();
+    });
+
+    function refreshMenuByRoleIdAjax() {
+        $("#jqgridOverlay").css("display", "block");
+        $.ajax({
+            url: $.psu.back("roleMenuInit"),
+            type: "GET",
+            data: {"tokenid": $.dfp.tokenid(), "roleId": $("#allRoleList").val()},
+            dataType: "json",
+            success: function (data) {
+                showMenuWithMenuList(data.menuList);
+                $("#jqgridOverlay").css("display", "none");
+            }
+        });
+    }
+
+    // TODO 刷新操作后重新加载表格，数据不统一
+    function showMenuWithMenuList(menuList) {
+        var jqgrid_data = [];
+        for (var j = 0, length = menuList.length || 0; j < length; j++) {
+            // TODO col val is null
+            var obj = {
+                menuId: $.dfp.isStrNull(menuList[j].menu_id) ? '' : menuList[j].menu_id,
+                menuCode: $.dfp.isStrNull(menuList[j].menu_code) ? '' : menuList[j].menu_code,
+                menuName: $.dfp.isStrNull(menuList[j].menu_name) ? '' : menuList[j].menu_name,
+                menuLevel: $.dfp.isStrNull(menuList[j].menu_level) ? '' : menuList[j].menu_level,
+                menuUrl: $.dfp.isStrNull(menuList[j].menu_url) ? '' : menuList[j].menu_url,
+                roleId: $.dfp.isStrNull(menuList[j].role_id) ? '' : menuList[j].role_id,
+                roleCode: $.dfp.isStrNull(menuList[j].role_code) ? '' : menuList[j].role_code,
+                roleName: $.dfp.isStrNull(menuList[j].role_name) ? '' : menuList[j].role_name,
+                linkId: $.dfp.isStrNull(menuList[j].link_id) ? '' : menuList[j].link_id,
+                linkType: $.dfp.isStrNull(menuList[j].link_type) ? '' : menuList[j].link_type,
+                linkTitle: $.dfp.isStrNull(menuList[j].link_title) ? '' : menuList[j].link_title,
+                linkOrder: $.dfp.isStrNull(menuList[j].link_order) ? '' : menuList[j].link_order,
+                linkUrl: $.dfp.isStrNull(menuList[j].link_url) ? '' : menuList[j].link_url,
+                pageId: $.dfp.isStrNull(menuList[j].page_id) ? '' : menuList[j].page_id,
+                pageTitle: $.dfp.isStrNull(menuList[j].page_title) ? '' : menuList[j].page_title,
+                pgTitle: $.dfp.isStrNull(menuList[j].pg_title) ? '' : menuList[j].pg_title,
+                pgId: $.dfp.isStrNull(menuList[j].pg_Id) ? '' : menuList[j]
+            };
+            jqgrid_data.push(obj);
+        }
+        $("#roleMenuCurPageName").html(($("#allRoleList").val() === "" || jqgrid_data.length < 1) ? "全部" : jqgrid_data[0]["pageTitle"]);
+        $.ps.jqgrid.refresh("jqgrid", jqgrid_data);
+    }
+
+    // 动态调整页面内表格宽度
+    $(window).on('resize.jqGrid', function () {
+        $("#jqgrid").jqGrid('setGridWidth', $("#roleMenuTable").width());
+    });
+
+    /**
+     * 自定义操作
+     */
+    var self_jqgrid = {
+        editRow: function (ids) {
+            jQuery('#jqgrid').editRow(ids, {
+                keys: true, // 设置为true可以使用 [Enter]保存数据或者[Esc] 取消编辑
+                url: $.dfp.fullUrl($.psu.back("roleMenuUpdate")) + "&linkId=" + $.ps.jqgrid.getSelRowColData("jqgrid", ids, "linkId"),
+                mtype: "POST",
+                restoreAfterError: true,
+                extraparam: {},
+                oneditfunc: function (rowid) {
+                }, // 在行成功转为编辑模式下触发的事件，参数为此行数据id
+                successfunc: function (data) {
+                    $.ps.layer.confirm(data.responseJSON.updateFlag);
+                    return true;
+                },
+                errorfunc: function (rowid, res) {
+                }
+            });
+        },
+        /**
+         * 保存行信息 - editRow时自动调用保存方法
+         */
+        saveRow: function (ids) {
+            jQuery('#jqgrid').saveRow(ids, {
+                url: $.dfp.fullUrl($.psu.back("roleMenuSave")) + "&linkId=" + $.ps.jqgrid.getSelRowColData("jqgrid", ids, "linkId"),
+                mtype: "POST",
+                restoreAfterError: true,
+                extraparam: {},
+                successfunc: function (data) {
+                    $.ps.layer.confirm(data.responseJSON.updateFlag);
+                    return true;
+                },
+                errorfunc: function (rowid, res) {
+                }
+            });
+        },
+        deleteRow: function (ids) {
+            var linkIds = [];
+            for (var i in ids) {
+                if (!ids.hasOwnProperty(i)) continue;
+                var linkId = $.ps.jqgrid.getSelRowColData("jqgrid", ids[i], "linkId");
+                linkIds.push(linkId);
+            }
+            $.post($.psu.back("roleMenuDelete"),
+                {"linkIds": linkIds.join(","), "tokenid": $.dfp.tokenid()},
+                function (data) {
+                    $.ps.layer.confirm(data.updateFlag);
+                    // 页面删除一行（行为不会传到服务器）
+                    jQuery('#jqgrid').delRowData(ids);
+                });
+        },
+        /**
+         * 将指定行恢复到正常状态
+         */
+        restoreRow: function (ids) {
+            jQuery('#jqgrid').restoreRow(ids);
+        }
+
+    };
+
+    /**
+     * 菜单发布按钮
+     */
+    // 获取页面模块
+    function pageModalSelectOption() {
+        $.get($.psu.back("roleMenuPagePortlet"),
+            {"tokenid": $.dfp.tokenid(), "pageId": $("#selectPageForRoleMenu").val()},
+            function (data) {
+                var pagePortletList = data.pagePortletList;
+                var _pagePortletList = [];
+                for (var i in pagePortletList) {
+                    if (!pagePortletList.hasOwnProperty(i)) continue;
+                    var o = {};
+                    o.val = pagePortletList[i].id;
+                    o.name = pagePortletList[i].title;
+                    _pagePortletList.push(o);
+                }
+                $("#selectPageModalForRoleMenu").html($.dfp.selectOptionsHtml(_pagePortletList || [])).find("option:eq(0)").attr("selected", true);
+            });
+    };
+    // 页面模块
+    $("#selectPageForRoleMenu").on("change", function () {
+        pageModalSelectOption();
+    });
+    $("#roleMenuPublishModalBtn").on("click", function () {
+        $("#roleMenuPublishModal").modal({
+            keyboard: true
+        }).on("shown.bs.modal", function () {
+            $("#selectPageForRoleMenu").html($.psu.selectOptionsPage()).find("option:eq(0)").attr("selected", true);
+            pageModalSelectOption();
+        });
+    });
+    // 确认发布
+    $("#roleMenuPublishModalSub").on("click", function () {
+        var pageId = $("#selectPageForRoleMenu").val(),
+            pgId = $("#selectPageModalForRoleMenu").val();
+        var rows = $.ps.jqgrid.getSelRowData("jqgrid");
+        var rowsLength = rows.length || 0;
+        if (rowsLength == 0) {
+            alert("请选择操作行");
+            return;
+        }
+        var _rows = [];
+        for (var i = 0; i < rowsLength; i++) {
+            var row = rows[i];
+            var _row = {};
+            _row.menuId = $.dfp.isStrNull(row.menuId) ? '' : row.menuId;
+            _row.menuCode = $.dfp.isStrNull(row.menuCode) ? '' : row.menuCode;
+            _row.menuName = $.dfp.isStrNull(row.menuName) ? '' : row.menuName;
+            _row.menuLevel = $.dfp.isStrNull(row.menuLevel) ? '' : row.menuLevel;
+            _row.menuUrl = $.dfp.isStrNull(row.menuUrl) ? '' : row.menuUrl;
+            _row.roleId = $.dfp.isStrNull(row.roleId) ? '' : row.roleId;
+            _row.roleCode = $.dfp.isStrNull(row.roleCode) ? '' : row.roleCode;
+            _row.roleName = $.dfp.isStrNull(row.roleName) ? '' : row.roleName;
+            _row.linkId = $.dfp.isStrNull(row.linkId) ? '' : row.linkId;
+            _row.linkType = $.dfp.isStrNull(row.linkType) ? '' : row.linkType;
+            _row.linkTitle = $.dfp.isStrNull(row.linkTitle) ? '' : row.linkTitle;
+            _row.linkUrl = $.dfp.isStrNull(row.linkUrl) ? '' : row.linkUrl;
+            _row.linkOrder = $.dfp.isStrNull(row.linkOrder) ? '' : row.linkOrder;
+            _row.pageId = $.dfp.isStrNull(row.pageId) ? '' : row.pageId;
+            _row.pageTitle = $.dfp.isStrNull(row.pageTitle) ? '' : row.pageTitle;
+            _row.pgTitle = pageId;
+            _row.pgId = pgId;
+            _rows.push(_row);
+        }
+        $.post($.psu.back("roleMenuToPagePortlet"),
+            {"tokenid": $.dfp.tokenid(), "rows": JSON.stringify(_rows)},
+            function (data) {
+                $.ps.layer.confirm(data.flag);
+                $("#roleMenuPublishModal").modal("hide");
+                refreshMenuByRoleIdAjax();
+            });
+    });
+
+    // 删除发布菜单
+    $("#roleMenuPublishDeleteBtn").on("click", function () {
+        var rows = $.ps.jqgrid.getSelRowData("jqgrid");
+        var _rows = [];
+        for (var i in rows) {
+            if (!rows.hasOwnProperty(i)) continue;
+            var row = {};
+            row.linkId = rows[i].linkId;
+            row.roleId = rows[i].roleId;
+            _rows.push(row);
+        }
+        $.post($.psu.back("roleMenuDeletePublishMenu"),
+            {"tokenid": $.dfp.tokenid(), "rows": JSON.stringify(_rows)},
+            function (data) {
+                $.ps.layer.confirm(data.flag);
+                refreshMenuByRoleIdAjax();
+            });
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema elementFormDefault="qualified" attributeFormDefault="unqualified"
+	xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.omg.org/spec/BPMN/20100524/MODEL">
+	<xsd:element name="approveUserTask" type="tApproveUserTask" substitutionGroup="flowElement"/>
+	<xsd:complexType name="tApproveUserTask">
+		<xsd:complexContent>
+			<xsd:extension base="tTask">
+				<xsd:sequence>
+					<xsd:element ref="rendering" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+				<xsd:attribute name="implementation" type="tImplementation" default="##unspecified"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+</xsd:schema>

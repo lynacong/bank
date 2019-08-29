@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:distributed="http://www.springframework.org/schema/fasp2/distributed"
+	xmlns:dic="http://www.springframework.org/schema/fasp2/dic"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/fasp2/dic
+        http://www.springframework.org/schema/fasp2/dic/dic.xsd
+        http://www.springframework.org/schema/fasp2/distributed
+        http://www.springframework.org/schema/fasp2/distributed/distributed.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+        ">
+	<!-- 使用同平台相同的spring上下文注入方式 -->
+	<bean id="df.serviceFactory"
+		class="gov.df.fap.util.factory.ServiceFactory" />
+	<!-- <bean id="df.TxProxy" abstract="true" lazy-init="true" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"> 
+		<property name="transactionManager"> <ref bean="df.transactionManager" /> 
+		</property> <property name="transactionAttributes"> <props> <prop key="find*">PROPAGATION_SUPPORTS,readOnly</prop> 
+		<prop key="*"> PROPAGATION_REQUIRED,+NoRollbackException,-Exception </prop> 
+		</props> </property> </bean> -->
+	<!-- <bean id="df.transactionManager" class="org.springframework.transaction.jta.JtaTransactionManager" 
+		/> -->
+	<!--以下是SessionFactory配置信息 -->
+	<!-- SessionFactory定义 -->
+	<bean autowire="default"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
+		id="mysessionFactory" lazy-init="default">
+		<property name="dataSource">
+			<ref bean="multiDataSource" />
+		</property>
+		<property name="mappingDirectoryLocations">
+			<list>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle9Dialect</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.c3p0.min_size">10</prop>
+				<prop key="hibernate.c3p0.max_size">20</prop>
+				<prop key="hibernate.c3p0.max_statements">100</prop>
+				<prop key="hibernate.c3p0.idle_test_period">3000</prop>
+				<prop key="hibernate.c3p0.acquire_increment">2</prop>
+				<prop key="hibernate.c3p0.timeout">10000</prop>
+				<prop key="hibernate.jdbc.fetch_size">150</prop>
+				<prop key="hibernate.jdbc.batch_size">20</prop>
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+				<prop key="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory
+				</prop>
+				<prop key="javax.persistence.validation.mode">none</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean autowire="default"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager"
+		id="hibernateTransManager" lazy-init="default">
+		<property name="sessionFactory">
+			<ref bean="mysessionFactory" />
+		</property>
+	</bean>
+
+	<context:component-scan
+		base-package="gov.df,com.crux">
+		<!-- <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/> 
+			<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/> 
+			<context:include-filter type="regex" expression="gov.df.*(Service|Impl|Dao|DAO|Business|BO)*"/> -->
+
+	</context:component-scan>
+
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	<context:property-placeholder
+		location="classpath:redis.properties,classpath:application.properties,classpath:f_ebank/ebank-conf.properties" />
+
+	<!-- <aop:config proxy-target-class="true" /> -->
+	<!-- 配置事务管理器 指定其作用的sessionFactory把事务交给Spring去处理 -->
+	<!-- <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate"> -->
+	<bean id="hibernateTemplate"
+		class="gov.df.fap.service.hibernate.GovHibernateTemplate">
+		<property name="sessionFactory" ref="mysessionFactory"></property>
+	</bean>
+
+	<!-- <bean id="df.hibernateTransProxy" abstract="true" lazy-init="true" 
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"> 
+		<property name="transactionManager"> <ref bean="hibernateTransManager" /> 
+		</property> <property name="transactionAttributes"> <props> <prop key="newTransExecute">PROPAGATION_REQUIRES_NEW,-Exception</prop> 
+		<prop key="*">PROPAGATION_REQUIRED,-Exception</prop> <prop key="insertCcidBatch">PROPAGATION_REQUIRES_NEW,-Exception</prop> 
+		<prop key="insertCcid">PROPAGATION_REQUIRES_NEW,-Exception</prop> <prop key="saveCcidTransCache">PROPAGATION_REQUIRES_NEW,-Exception</prop> 
+		</props> </property> <property name="preInterceptors"> <ref bean="framework.log.logErrorAdvisor"/> 
+		</property> </bean> -->
+
+	<!-- 配置事务的传播特性 -->
+	<import resource="SpringmvcContex.xml"/>
+	<tx:advice id="df.txAdvice"
+		transaction-manager="hibernateTransManager">
+		<tx:attributes>
+			<tx:method name="newTransExecute"
+				propagation="REQUIRES_NEW" rollback-for="java.lang.Exception" />
+			<tx:method name="*" propagation="REQUIRED"
+				rollback-for="java.lang.Exception" />
+			<tx:method name="insertCcidBatch"
+				propagation="REQUIRES_NEW" rollback-for="java.lang.Exception" />
+			<tx:method name="insertCcid" propagation="REQUIRES_NEW"
+				rollback-for="java.lang.Exception" />
+			<tx:method name="saveCcidTransCache"
+				propagation="REQUIRES_NEW" rollback-for="java.lang.Exception" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 那些类的哪些方法参与事务 -->
+	<aop:config>
+		<aop:pointcut id="allServiceMethod"
+			expression="(execution(* gov.df..*Service.*(..))) or (execution(* gov.df..*BO.*(..)))" /><!-- 
+			给外界调用的附加事务的类名需要以Service结尾 -->
+		<aop:advisor pointcut-ref="allServiceMethod"
+			advice-ref="df.txAdvice" />
+	</aop:config>
+	<!-- enable aspectj auto proxy -->
+
+	<bean id="df.fap.userLogin"
+		class="gov.df.fap.service.login.UsersLoginService"></bean>
+	<bean id="df.fap.menu" class="gov.df.fap.service.menu.MenuFilter"></bean>
+	<bean id="sys.heartbeatservice"
+		class="gov.df.fap.service.heartbeat.HeartBeatService"
+		init-method="initServer" destroy-method="destroyServer">
+	</bean>
+
+	<import resource="yy-datasource.xml" />
+	<import resource="yy-applications.xml" />
+
+	<import resource="webservices-context.xml" />
+	<!-- <import resource="./webservicetest/test-services.xml" /> -->
+
+	<import resource="applicationContext-dubbo-consumer.xml" />
+
+	<!-- <import resource="applicationContext-dubbo-provider.xml"/> -->
+	<!-- 门户发布webService用 -->
+	<!--<import resource="portal-webService.xml" /> -->
+</beans>

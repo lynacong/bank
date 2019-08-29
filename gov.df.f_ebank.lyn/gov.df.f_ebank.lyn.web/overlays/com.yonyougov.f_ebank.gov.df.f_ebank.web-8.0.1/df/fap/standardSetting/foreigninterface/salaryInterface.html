@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>工资接口</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+	    <link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css" />
+		<link rel="stylesheet" type="text/css" href="./payCard.css">
+		<link rel="stylesheet" type="text/css" href="../common.css">
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12">
+						<h3 class="title">工资接口</h3>
+  						<!-- 工资定值 ---面板开始-->
+  						<div class="panel panel-info">
+    						<div class="panel-heading">
+       							 <h3 class="panel-title">工资定值</h3>
+   						    </div>
+    						<div class="panel-body">
+    						
+    							<div class="form-group clearfix panel-padding">
+									<label for="intfsalarysalaryMatchFlag" class="col-sm-3 control-label">工资是否定值:</label>
+									<div class="col-sm-9">
+											<label class="checkbox-inline">
+												<input type="radio" name="intfsalarysalaryMatchFlag" id="optionsRadios3" value="false" checked>否
+											</label>
+											<label class="checkbox-inline">
+												<input type="radio" name="intfsalarysalaryMatchFlag" id="optionsRadios4"  value="true"> 是
+											</label>
+									</div>
+								</div>
+								
+						    </div>
+						</div>
+  						<!-- 工资定值 ---面板结束-->
+  						
+  						<!-- 接口设置---面板开始-->
+  						<div class="panel panel-info">
+    						<div class="panel-heading">
+       							 <h3 class="panel-title">接口设置</h3>
+   						    </div>
+    						<div class="panel-body">
+    						
+    							<div class="form-group clearfix panel-padding">
+									<label for="intfsalaryisPatchPlan" class="col-sm-3 control-label">实拨是否补计划:</label>
+									<div class="col-sm-9">
+											<label class="checkbox-inline">
+												<input type="radio" name="intfsalaryisPatchPlan" id="optionsRadios3" value="false" checked>否
+											</label>
+											<label class="checkbox-inline">
+												<input type="radio" name="intfsalaryisPatchPlan" id="optionsRadios4"  value="true"> 是
+											</label>
+									</div>
+								</div>
+								
+								<div class="form-group clearfix panel-padding">
+									<label for="intfsalaryisVoucher" class="col-sm-3 control-label">仅生成支付申请:</label>
+									<div class="col-sm-9">
+											<label class="checkbox-inline">
+												<input type="radio" name="intfsalaryisVoucher" id="optionsRadios3" value="false" checked>否
+											</label>
+											<label class="checkbox-inline">
+												<input type="radio" name="intfsalaryisVoucher" id="optionsRadios4"  value="true"> 是
+											</label>
+									</div>
+								</div>
+								
+								<div class="form-group clearfix panel-padding">
+									<label for="" class="col-sm-3 control-label">批量录入规则</label>
+									<div class="col-sm-9">
+										<div class="form-group">
+											<select  id="intfsalarysalaryBatchCode" data-bind="foreach: dataArr" class="form-control">
+												<option data-bind="attr:{value: code}, text: value"></option>
+											</select>
+										</div>
+									</div>
+								</div>
+								
+								<div class="form-group clearfix panel-padding">
+									<label for="intfsalarypk" class="col-sm-3 control-label">工资数据的支付方式:</label>
+									<div class="col-sm-9">
+										<div class="input-group">
+								            <input type="text" class="form-control" id="intfsalarypk">
+								            <span class="input-group-addon" ><span class="glyphicon glyphicon-th-large" onclick="ip.showAssitTree('intfsalarypk','PAYEE_BANK',0,{},'','支付方式');"></span></span></span>
+								        </div>
+									</div>
+								</div>
+								<div class="form-group clearfix panel-padding">
+									<label for="" class="col-sm-3"></label>
+									<div class="col-sm-9">
+										<button class="btn btn-primary"  id="save" data-bind="click:saveSalaryInterfaceData">保存</button> 
+									</div>
+								</div>
+						    </div>
+						</div>
+  						<!-- 接口设置 ---面板结束-->
+						
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="/df/trd/requirejs/require.js"></script>
+	<script src="/df/require.config.js"></script>
+	<script src="./salaryInterface.js"></script>
+</body>
+</html>

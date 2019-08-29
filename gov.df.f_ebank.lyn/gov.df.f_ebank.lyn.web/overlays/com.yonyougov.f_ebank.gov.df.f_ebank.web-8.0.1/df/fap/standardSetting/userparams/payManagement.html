@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>支付管理</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css" />
+		<link rel="stylesheet" type="text/css" href="../common.css" />
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12">
+						<h3 class="title">支付管理</h3>
+  						<!-- 交换中心相关 ---面板开始-->
+  						<div class="panel panel-info">
+    						<div class="panel-heading">
+       							 <h3 class="panel-title">交换中心相关</h3>
+   						    </div>
+    						<div class="panel-body">
+    						    <div class="form-group clearfix panel-padding">
+										<label for="uparapayPAY_EXCHANGE_SENDAPP" class="col-sm-4 control-label">交换中心支付子系统:</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="uparapayPAY_EXCHANGE_SENDAPP" >
+										</div>
+								</div>
+								
+								<div class="form-group clearfix panel-padding">
+										<label for="uparapayPAY_EXCHANGE_IP" class="col-sm-4 control-label">交换中心地址:</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="uparapayPAY_EXCHANGE_IP" >
+										</div>
+								</div>
+								
+								<div class="form-group clearfix panel-padding">
+										<label for="uparapayPAY_EXCHANGE_PORT" class="col-sm-4 control-label">交换中心端口:</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="uparapayPAY_EXCHANGE_PORT" >
+										</div>
+								</div>
+								
+								 <div class="form-group clearfix panel-padding">
+										<label for="uparapayPAY_EXCHANGE_USER" class="col-sm-4 control-label">交换中心用户名:</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="uparapayPAY_EXCHANGE_USER" >
+										</div>
+								</div>
+								
+								 <div class="form-group clearfix panel-padding">
+										<label for="uparapayPAY_EXCHANGE_PASSWORD" class="col-sm-4 control-label">交换中心密码:</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="uparapayPAY_EXCHANGE_PASSWORD" >
+										</div>
+								</div>
+								
+								
+								<div class="form-group clearfix panel-padding">
+										<label for="uparapayPAY_EXCHANGE_DIR" class="col-sm-4 control-label">交换中心下载文件目录:</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="uparapayPAY_EXCHANGE_DIR" >
+										</div>
+								</div>
+								
+								
+								 <div class="form-group clearfix panel-padding">
+										<label for="uparapayPAY_EXCHANGE_ERROR_DIR" class="col-sm-4 control-label">下载的错误xml文件的存放目录:</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="uparapayPAY_EXCHANGE_ERROR_DIR" >
+										</div>
+								</div>
+								
+								<div class="form-group clearfix panel-padding">
+										<label for="uparapayPAY_EXCHANGE_SLEEPTIME" class="col-sm-4 control-label">交换中心线程休眠时间:</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="uparapayPAY_EXCHANGE_SLEEPTIME" >
+										</div>
+								</div>
+								
+						    </div>
+						</div>
+  						<!-- 交换中心相关---面板结束-->
+  						
+  						
+  					   <!-- 其他参数 ---面板开始-->
+  						<div class="panel panel-info">
+    						<div class="panel-heading">
+       							 <h3 class="panel-title">交换中心相关</h3>
+   						    </div>
+    						<div class="panel-body">
+    						    <div class="form-group clearfix panel-padding">
+										<label for="uparapayPAY_LICENSE_DATE" class="col-sm-4 control-label">支付系统许可证到期提示时间:</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="uparapayPAY_LICENSE_DATE" >
+										</div>
+								</div>
+								
+								<div class="form-group clearfix panel-padding">
+										<label for="uparapayPAY_BUDGET_SUMTYPECODE" class="col-sm-4 control-label">单位可执行指标的汇总类型编码:</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="uparapayPAY_BUDGET_SUMTYPECODE" >
+										</div>
+								</div>
+								
+								<div class="form-group clearfix panel-padding">
+										<label for="uparapayPAY_GB_FLAG" class="col-sm-4 control-label">政府采购模式:</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="uparapayPAY_GB_FLAG" >
+										</div>
+								</div>
+								
+								 <div class="form-group clearfix panel-padding">
+										<label for="uparapayPAY_SALARY_REWRITING_ELE" class="col-sm-4 control-label">生成支付所需的工资要素:</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="uparapayPAY_SALARY_REWRITING_ELE" >
+										</div>
+								</div>
+								
+								 <div class="form-group clearfix panel-padding">
+										<label for="payupload_path" class="col-sm-4 control-label">上传附件目录的绝对路径:</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="payupload_path" >
+										</div>
+								</div>
+								
+								
+								<div class="form-group clearfix panel-padding">
+										<label for="payupload_size" class="col-sm-4 control-label">附件大小控制（参数格式见操作手册）:</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="payupload_size" >
+										</div>
+								</div>
+								
+								
+								 <div class="form-group clearfix panel-padding">
+										<label for="payImportisRollBack" class="col-sm-4 control-label">支付导入指标链接失败时是否回退:</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="payImportisRollBack" >
+										</div>
+								</div>
+								
+								<div class="form-group clearfix panel-padding">
+										<label for="payautoShowAcc" class="col-sm-4 control-label">录入支付时是否默认自动显示收款人:</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="payautoShowAcc" >
+										</div>
+								</div>
+								
+								<div class="form-group clearfix panel-padding">
+										<label for="pay_budgetModify_bankcare" class="col-sm-4 control-label">银行是否参与指标修正流程:</label>
+										<div class="col-sm-8">
+											<input type="text" class="form-control" id="pay_budgetModify_bankcare" >
+										</div>
+								</div>
+								
+								<div class="form-group clearfix panel-padding">
+										<label for="clearbankbillNoModifyBankCode" class="col-sm-4 control-label">支持单号修改的人行编码:</label>
+										<div class="col-sm-8">
+											<p>
+												<input type="text" class="form-control" id="clearbankbillNoModifyBankCode" disabled style="display: inline-block;">
+												<span>若要修改请点击<a href="javascript: void(0)" data-bind="click: directToBankSetting">银行配置</a></span>
+											</p>
+										</div>
+								</div>
+								<div class="form-group clearfix panel-padding">
+										<label class="col-sm-4"></label>
+										<div class="col-sm-8">
+											<button class="btn btn-primary"  id="save" data-bind='click:savePayManagementData'>保存</button> 
+										</div>
+								</div>
+								
+								
+						    </div>
+						</div>
+  						<!-- 其他参数 ---面板结束-->
+  						
+  						
+  				
+						
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="/df/trd/requirejs/require.js"></script>
+	<script src="/df/require.config.js"></script>
+	<script src="./payManagement.js"></script>
+</body>
+</html>

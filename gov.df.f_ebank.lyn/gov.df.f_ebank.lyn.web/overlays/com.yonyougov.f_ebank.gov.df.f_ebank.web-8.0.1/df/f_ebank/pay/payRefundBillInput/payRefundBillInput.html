@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>退款通知书录入</title>
+<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/datetimepicker/css/bootstrap-datetimepicker.min.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/theme/blue.css" />
+<link rel="stylesheet" type="text/css" href="../../css/fbStyle.css" />
+<link rel="stylesheet" type="text/css" href="../../css/image.css" />
+<link rel="stylesheet" type="text/css" href="../../css/fbcommon.css" />
+</head>
+<body>
+	<div class="wrapper" style="margin:0 auto;">
+		<div style="height: 40px;">
+			<div class="btn-grid-group-btn ip-content-btn-area" >
+						<div class="icon-buttons">
+							<div  id="input" class="icon-box" onclick="input()">
+								<i class="iconbtn icon-enter"></i>录入</div>
+							<div id="check" class="icon-box" onclick="check()">
+								<i class="iconbtn icon-examine"></i>审核</div>
+							<div id="view" class="icon-box" data-bind="click:fSelect">
+								<i class="iconbtn icon-query-state"></i>查询</div>
+					         <div id="delete" class="icon-box" onclick="deleteBill()">
+								<i class="iconbtn icon-to-void"></i>作废</div>
+							<div id="cancelCheck" class="icon-box" onclick="cancelcheck()" style="display:none;">
+								<i class="iconbtn icon-cancel-examine"></i>撤销送审</div>
+						    
+						</div>
+					</div>
+	        </div>
+				<div class="btn-group-content"
+			style="margin-top:5px; display: block;overflow-y: scroll; border: 1px solid #ccc;">
+			
+			
+				<label style="">查询区：</label> <br>
+				<div
+					style="border-radius: 2px;border: 1px solid #ccc;overflow:auto;padding:4px;">
+					<div class="" style="margin:4px 0px 0px 0px;height:35px">
+						<div id="paySearchArea"></div>
+					</div>
+				</div>
+		
+			<div style="float:left;padding-top:13px;">
+				<label id="zfpz">退款凭证：</label>
+			<select id="pz_status" style="border-radius: 2px;border: 1px solid #ccc;" onchange="fGetGrid()">
+					<option value="001" selected="selected">未审批</option>
+					<option value="002">已审批</option>
+			</select>
+			</div>
+			<div id="mianDiv" style=" display: block;height:289px" onClick="getDetail()">
+				<div id="modalMainGridArea" class="tabbed-grid tabbed-grid-modal"></div>
+			</div>
+			
+			<label style="float:left;padding-top:13px;">支付凭证明细：</label>	 
+			<div id="subDiv" style=" display: block; height:289px">
+	 			<div id="modalSubsysGridArea" class="tabbed-grid tabbed-grid-modal"></div>  
+			</div>
+		</div>
+		
+		
+				<!-- 退款通知书录入 -->
+		 <div class="modal fade" id="payRefundBillInput" tabindex="-1" role="dialog"
+			aria-labelledby="ylModalLabel" data-backdrop="static"  style="height: 800px;">
+			<div class="modal-dialog" role="document" style="margin-top:20px; width:1000px;height: 800px">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-bind="click:closePayRefundBillInput"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="titleText">退款通知书录入</h4>
+					</div>
+					<div class="modal-body display-container" style="height: 400px;">
+						<div id="confirmPayDiv" style="display: block;">
+						<div style="border: 1px solid #ccc; padding:5px">
+						<label id="voucher_no_name" style="margin:1px 0px 5px 10px;">原支付凭证单号：</label> 
+				          <label>
+					       <input type="text" style="border-radius: 2px;height:30;margin:5px 0px 0px 0px;" id="bill_no" value=""> 
+				        </label>
+				        <label style="margin:1px 0px 5px 10px;">财政机构： </label> 
+				          <select id="finance_code" style="border-radius: 2px;border: 1px solid #ccc;">
+				        </select>
+				        <button type="button" class="btn btn-primary" onclick="searchBill()">查询</button>	
+						<label id="refundSerchText" style="margin:1px 0px 5px 10px; width:380px"></label> 
+						</div>
+						
+						
+						<div style="border: 1px solid #ccc; padding:5px">
+						
+						<label id="refundMoney" style="margin:1px 0px 5px 10px;">退款金额：</label> 
+				          <label>
+					       <input type="text" style="border-radius: 2px;height:30;margin:5px 0px 0px 0px;" id="refund_money" value=""> 
+				        </label>
+				        <label id="refundReason" style="margin:1px 0px 5px 10px;">退款原因：</label> 
+				          <label>
+					       <input type="text" style="border-radius: 2px;height:30;margin:5px 0px 0px 0px;" id="refund_reason" value=""> 
+				        </label>
+				        <input type="checkbox" id="isAllBatchCheck" value="保存记录" >是否全额批量退款</input>													
+						</div>
+						
+							<div id="modalPayRefundListArea" class="tabbed-grid tabbed-grid-modal"></div>
+												
+					</div>
+					<div class="modal-footer" style="float:left;">
+						<input type="checkbox" id="continueCheck" value="保存记录" >连续录入</input>
+					</div>
+					<div class="modal-footer" style="float:right;">
+						<button type="button" class="btn btn-primary" data-bind="click:doSavePayRefundBillInput">确定</button>
+						<button type="button" class="btn btn-primary" data-bind="click:doClearPayRefundBillInput">清空</button>
+						<button type="button" class="btn btn-primary" data-bind="click:closePayRefundBillInput">退出</button>
+					</div>
+				</div>
+			</div>
+		</div>  
+		
+		</div>  
+		
+	</div>
+	<script src="../../../trd/knockout/knockout-3.2.0.debug.js"></script>
+	<script src="../../../trd/requirejs/require.js"></script>
+	<script src="../../../require.config.js"></script>
+	<script src="./payRefundBillInput.js"></script>
+	<script src="../../common/ebankConstants.js"></script>
+	<script src="../../common/ebankCommonUtil.js"></script>
+</body>
+</html>

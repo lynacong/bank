@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible"
+	content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+<title>电子报文配置</title>
+<meta name="author" content="ip">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+<!-- <link rel="stylesheet" type="text/css" href="/df/trd/ip/css/platform.css" /> -->
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/ip/css/theme/blue.css" />
+<link rel="stylesheet" type="text/css" href="../voucherTypeManage/voucherTypeManage.css" />
+</head>
+
+<body style="height: 100%;">
+	<div class="container-fluid h100per">
+		<div class="row btn-bar btn-group epay-header" role="group"
+			aria-label="">
+			<button type="button" class="btn btn-primary" data-bind="click: add" id="add">新增</button>
+			<button type="button" class="btn btn-primary" data-bind="click: update" id="update">修改</button>
+			<button type="button" class="btn btn-primary" disabled="true" id="save" data-bind="click: saveData">保存</button>
+			<button type="button" class="btn btn-primary" disabled="true" id="cancel" data-bind="click: cancel">取消</button>
+			<button type="button" class="btn btn-primary" id="del" data-bind="click: del">删除</button>
+			<button type="button" class="btn btn-primary" id="refresh" data-bind="click: refresh">刷新</button>
+		</div>
+		<div class="row top-content"  id="tabbed-plan">
+				<label for="finance_code" class="col-md-1 col-sm-2 text-right">财政机构</label>
+				<div class="col-md-2 col-sm-2 ip-input-group">
+					<select class="form-control" id="finance_code" onchange="fGetGrid()">
+					</select>
+				</div>
+		</div>
+		<div class="row epay-content">
+			<div class="h100per p10">
+				<div class="col-sm-4 tree-sidebar border p10">
+					<div id="gridTest"
+						u-meta='{"id":"grid","type":"grid","data":"dataTable","showNumCol":"true","columnMenu":true,"canDrag":true,"sortable":false,"canSwap":false,"editable":false,"noScroll":false,"onRowSelected":"onRowSelectedFun","height": 550,"headerHeight":32,"rowHeight":32,"sumRowHeight":32}'>
+						<div
+							options='{"field":"chr_code","width":80,"dataType":"String","title":"编码"}'></div>
+						<div
+							options='{"field":"chr_name","dataType":"String","title":"名称"}'></div>
+					</div>
+				</div>
+				<div class="col-sm-8 h100per">
+					<div class="h35per">
+						<div class="form-horizontal h100per border p10"
+							id="interface-form">
+							<div class="form-group form-group-sm col-sm-6">
+								<label for="" class="col-sm-4 control-label"><span style="color: red">*</span>编码</label>
+								<div class="col-sm-8">
+									<!-- <input type="text" onblur="validateName1('chrCode',this.value)" class="form-control" id="chrCode" value="" disabled="disabled"> -->
+									<input type="text" class="form-control" id="chrCode" value="" disabled="disabled">
+								</div>
+							</div>
+							<div class="form-group form-group-sm col-sm-6">
+								<label for="" class="col-sm-4 control-label"><span style="color: red">*</span>名称</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" id="chrName" value="" disabled="disabled">
+								</div>
+							</div>
+							<div class="form-group form-group-sm col-sm-6">
+								<label style="padding-left: 0" for="" class="col-sm-4 control-label"><span style="color: red">*</span>主单表名称</label>
+								<div class="col-sm-8">
+									<!-- <input type="text" onblur="validateName1('billtable',this.value)"  class="form-control" id="billtable" value="" disabled="disabled"> -->
+									<input type="text" class="form-control" id="billtable" value="" disabled="disabled">
+								</div>
+							</div>
+							<div class="form-group form-group-sm col-sm-6">
+								<label style="padding-left: 0" for="" class="col-sm-4 control-label"><span style="color: red">*</span>明细表名称</label>
+								<div class="col-sm-8">
+									<!-- <input type="text" onblur="validateName1('vouchertable',this.value)"  class="form-control" id="vouchertable" value="" disabled="disabled"> -->
+									<input type="text" class="form-control" id="vouchertable" value="" disabled="disabled">
+								</div>
+							</div>
+							<div class="form-group form-group-sm col-sm-6">
+								<label for="" class="col-sm-4 control-label">主单dto</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" id="billdto" value="" disabled="disabled">
+								</div>
+							</div>
+							<div class="form-group form-group-sm col-sm-6">
+								<label for="" class="col-sm-4 control-label">明细dto</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" id="voucherdto" value="" disabled="disabled">
+								</div>
+							</div>
+							<div class="form-group form-group-sm col-sm-6" >
+								<label style="padding-left: 0" for="" class="col-sm-4 control-label">主单凭证号</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" id="billId" value="" disabled="disabled">
+								</div>
+							</div>
+							<div class="form-group form-group-sm col-sm-6" style="display:none">
+								<label  for="" class="col-sm-4 control-label">明细单id</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" id="voucherId" value="" disabled="disabled">
+								</div>
+							</div>
+							<div class="form-group form-group-sm col-sm-6">
+								<label style="padding-left: 0" for="" class="col-sm-4 control-label">主联凭证号</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" id="referenceId" value="" disabled="disabled">
+								</div>
+							</div>
+							<div class="form-group form-group-sm col-sm-6" style="display:none">
+								<label for="" class="col-sm-4 control-label">编码对照id</label>
+								<div class="col-sm-8">
+									<div class="input-group input-group-sm">
+										<input type="text" class="form-control" value=""
+											id="codeCompar"> <input type="hidden"
+											class="form-control" value="" id="codeCompar-h"> <span
+											class="input-group-btn" >
+											<button
+												class="btn btn-default glyphicon glyphicon-option-horizontal"
+												type="button" disabled="disabled" data-bind="click: showCode"></button> </span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group form-group-sm col-sm-6">
+								<label for="" class="col-sm-4 control-label">回调类</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" id="callback_class" value="" disabled="disabled">
+								</div>
+							</div>
+							<div class="form-group form-group-sm col-sm-6">
+								<label for="" class="col-sm-4 control-label">发送方</label>
+								<div class="col-sm-8">
+									<select class="form-control input-sm" name="" id="sender" disabled="disabled">
+										<option value="" disabled selected></option>
+										<option value="1">财政</option>
+										<option value="2">代理银行</option>
+										<option value="3">清算银行</option>
+										<option value="4">单位</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group form-group-sm col-sm-6">
+								<label for="" class="col-sm-4 control-label">接受方</label>
+								<div class="col-sm-8">
+									<select class="form-control input-sm" name="" id="receiver" disabled="disabled">
+										<option value="" disabled selected></option>
+										<option value="1">财政</option>
+										<option value="2">代理银行</option>
+										<option value="3">清算银行</option>
+										<option value="4">单位</option>
+									</select>
+								</div>
+							</div>
+							<!-- <div class="form-group form-group-sm col-sm-6">
+								<label for="" class="col-sm-4 control-label">回调类</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" id="callback_class" value="" disabled="disabled">
+								</div>
+							</div> -->
+
+						</div>
+					</div>
+					<div class="h70per pt10">
+						<div class="tree-sidebar border p10">
+							<ul class="nav nav-tabs" role="tablist">
+								<li role="presentation" class="active"><a href="#home"
+									aria-controls="home" role="tab" data-toggle="tab">主单字段列表</a>
+								</li>
+								<li role="presentation"><a href="#profile"
+									aria-controls="profile" role="tab" data-toggle="tab">明细字段列表</a>
+								</li>
+							</ul>
+
+							<!-- Tab panes -->
+							<div class="tab-content">
+								<div role="tabpanel" class="tab-pane active" id="home">
+									<div class="btn-grid-group-btn ip-content-btn-area" id="bill-btn-container" style="display: none">
+										<div class="icon-buttons">
+											<span id="btn-del" class="icon-box" data-bind="event:{click: delField.bind($data, 'bill')}"> <i
+												class="iconbtn icon-del"></i>删除字段 
+											</span> 
+											<span id="btn-enter"
+												class="icon-box" data-bind="event:{click: addField.bind($data, 'add','bill')}"> 
+												<i class="iconbtn icon-enter"></i>添加字段 
+											</span> 
+											<span id="btn-edit"
+												class="icon-box" data-bind="event:{click: addField.bind($data, 'update','bill')}"> 
+												<i class="iconbtn icon-consult"></i>修改信息
+										    </span>
+										</div>
+									</div>
+									<div id="myGridArea" class="tabbed-grid"
+										u-meta='{"id":"grid2","type":"grid","data":"gridDataTable","showNumCol":"false","columnMenu":false,"canDrag":false,"sortable":false,"canSwap":false,"multiSelect": true,"columnMenu": true,"showNumCol": true,"height": 375,"headerHeight":32,"rowHeight":32,"sumRowHeight":32}'>
+										<div
+											options='{"field":"field_name","width":150,"dataType":"String","title":"字段名称"}'></div>
+										<div
+											options='{"field":"description","dataType":"String","title":"字段中文名"}'></div>
+										<div
+											options='{"field":"disp_field_name","width":150,"dataType":"String","title":"导出字段名"}'></div>
+										<div
+											options='{"field":"display_order","width":100,"dataType":"String","title":"导出顺序"}'></div>
+										<div
+											options='{"field":"data_type","width":100,"dataType":"String","title":"数据类型"}'></div>
+										<div
+											options='{"field":"data_format","dataType":"String","title":"数据格式"}'></div>
+										<div
+											options='{"field":"default_value","width":100,"dataType":"String","title":"默认值"}'></div>
+										<div
+											options='{"field":"is_null","width":100,"dataType":"String","title":"是否允许空","renderType": "myRenderType"}'></div>
+										<div
+											options='{"field":"len_min","width":100,"dataType":"String","title":"最小长度"}'></div>
+										<div
+											options='{"field":"len_max","width":100,"dataType":"String","title":"最大长度"}'></div>
+										<div
+											options='{"field":"val_set","width":150,"dataType":"String","title":"取值范围"}'></div>
+									</div>
+								</div>
+								<div role="tabpanel" class="tab-pane" id="profile">
+									<div class="btn-grid-group-btn ip-content-btn-area" id="voucher-btn-container" style="display:none">
+										<div class="icon-buttons">
+											<span id="btn-del" class="icon-box" data-bind="event:{click: delField.bind($data, 'voucher')}"> <i
+												class="iconbtn icon-del"></i>删除字段 </span> 
+												<span id="btn-enter"
+												class="icon-box" data-bind="event:{click: addField.bind($data, 'add','voucher')}"> <i
+												class="iconbtn icon-enter"></i>添加字段 </span> <span id="btn-edit"
+												class="icon-box" data-bind="event:{click: addField.bind($data, 'update','voucher')}"> <i
+												class="iconbtn icon-consult"></i>修改信息 </span>
+										</div>
+									</div>
+									<div id="myGridArea1" class="tabbed-grid"
+										u-meta='{"id":"grid3","type":"grid","data":"gridDataTable1","showNumCol":"false","columnMenu":false,"canDrag":false,"sortable":false,"canSwap":false,"multiSelect": true,"columnMenu": true,"showNumCol": true,"height": 375, "headerHeight":32,"rowHeight":32,"sumRowHeight":32}'>
+										<div
+											options='{"field":"field_name","width":150,"dataType":"String","title":"字段名称"}'></div>
+										<div
+											options='{"field":"description","dataType":"String","title":"字段中文名"}'></div>
+										<div
+											options='{"field":"disp_field_name","width":150,"dataType":"String","title":"导出字段名"}'></div>
+										<div
+											options='{"field":"display_order","width":100,"dataType":"String","title":"导出顺序"}'></div>
+										<div
+											options='{"field":"data_type","width":100,"dataType":"String","title":"数据类型"}'></div>
+										<div
+											options='{"field":"data_format","dataType":"String","title":"数据格式"}'></div>
+										<div
+											options='{"field":"default_value","width":100,"dataType":"String","title":"默认值"}'></div>
+										<div
+											options='{"field":"is_null","width":100,"dataType":"String","title":"是否允许空","renderType": "myRenderType"}'></div>
+										<div
+											options='{"field":"len_min","width":100,"dataType":"String","title":"最小长度"}'></div>
+										<div
+											options='{"field":"len_max","width":100,"dataType":"String","title":"最大长度"}'></div>
+										<div
+											options='{"field":"val_set","width":150,"dataType":"String","title":"取值范围"}'></div>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+
+		<!--  
+	  编码对照
+	 -->
+		<div class="modal fade" tabindex="-1" role="dialog" id="modalElE"
+			data-backdrop="static">
+			<div class="modal-dialog" role="document"
+				style="width: 40%; height:400px">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<span class="modal-title">要素选择</span>
+					</div>
+					<div class="modal-body modal-body-input">
+						<label for="" class="col-sm-3 text-right"
+							style="font-weight:normal">快速定位：</label> <input
+							type="hidden" id="choiced-node">
+						<div class="col-sm-4 ip-input-group">
+							<input type="text" class="form-control" id="user-write">
+						</div>
+						<button id="btn-eleTree" class="btn btn-primary top-button"
+							type="button" name="btnFind" onClick="ip.search(this.id);"
+							style="margin-right: 10px">
+							查找<span class="glyphicon glyphicon-search search-addon"></span>
+						</button>
+						<button id="nex-eleTree" class="btn btn-default top-button-next"
+							style="margin-left:10px;" type="button" name="btnNext"
+							onClick="ip.next(this.id);">下一个</button>
+						<div class="modal-treemodal">
+							<div id="eleTreediv" class="ztree"
+								u-meta='{"id":"eleTree","data":"eleDataTable","type":"tree","idField":"id","pidField":"parent_id","nameField":"cp_name"}'>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary modal-addele-btn"
+							data-bind="click: sureBtn" id="sur-eleTree">确定</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 修改表单字段 -->
+<div class="modal fade" tabindex="-1" role="dialog" id="updateModalfield"
+	data-backdrop="static">
+	<div class="modal-dialog" role="document"
+		style="width: 50%; height:400px">
+		<div class="modal-content" id ="addFieldInfo">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<span class="modal-title" id="modelTitleText"></span>
+			</div>
+			<div class="modal-body modal-body-input">
+				<div class="form-horizontal">
+				  <div class="form-group col-md-6">
+				    <label style="padding-right: 0" for="filedName" class="col-sm-5 control-label"><span style="color: red">*</span>字段名</label>
+				    <div class="col-sm-7" style="float: left">
+				      <!-- <input type="email" class="form-control" id="filedName" onblur="isNull(this)"> -->
+				      <input type="email" class="form-control" id="filedName">
+				    </div>
+				  </div>
+				  <div class="form-group col-md-6">
+				    <label style="padding-right: 0" for="description" class="col-sm-5 control-label"><span style="color: red">*</span>字段中文</label>
+				    <div class="col-sm-7">
+				      <!-- <input type="text" class="form-control" id="description" onblur="isNull(this)"> -->
+				      <input type="text" class="form-control" id="description">
+				    </div>
+				  </div>
+				  <div class="form-group col-md-6">
+				    <label style="padding-right: 0" for="dispfieldname" class="col-sm-5 control-label">导出字段</label>
+				    <div class="col-sm-7">
+				      <input type="text" class="form-control" id="dispfieldname">
+				    </div>
+				  </div>
+				  <div class="form-group col-md-6">
+				    <label style="padding-right: 0" for="inputPassword3" class="col-sm-5 control-label" >数据类型</label>
+				    <div class="col-sm-7">
+				      <select  class="form-control" id="datatype">
+				      	<option value=''>请选择</option>
+				      	<option value="VARCHAR2">VARCHAR2</option>
+				      	<option value="NUMBER">NUMBER</option>
+				      	<option value="DATE">DATE</option>
+				      </select>
+				    </div>
+				  </div>
+				  <div class="form-group col-md-6">
+				    <label style="padding-right: 0" for="inputPassword3" class="col-sm-5 control-label"><span style="color: red">*</span>导出顺序</label>
+				    <div class="col-sm-7">
+				      <input type="text" class="form-control" id="displayorder">
+				    </div>
+				  </div>
+				  <div class="form-group col-md-6">
+				    <label style="padding-right: 0" for="inputPassword3" class="col-sm-5 control-label">数据格式</label>
+				    <div class="col-sm-7">
+				      <input type="text" class="form-control" id="dataformate">
+				    </div>
+				  </div>
+				  <div class="form-group col-md-6">
+				    <label style="padding-right: 0" for="inputPassword3" class="col-sm-5 control-label">缺省值</label>
+				    <div class="col-sm-7">
+				      <input type="text" class="form-control" id=defaultvalue>
+				    </div>
+				  </div>
+				   <div class="form-group col-md-6">
+				    <label style="padding-right: 0" for="inputPassword3" class="col-sm-5 control-label">是否允许空</label>
+				    <div class="col-sm-7">
+				      <select  class="form-control" id="isnull" >
+				      	<option value=''>请选择</option>
+				      	<option value='1'>是</option>
+				      	<option value='0'>否</option>
+				      </select>
+				    </div>
+				  </div>
+				  <div class="form-group col-md-6">
+				    <label style="padding-right: 0" for="inputPassword3" class="col-sm-5 control-label">最小长度</label>
+				    <div class="col-sm-7">
+				      <input type="text" class="form-control" id="lenmin">
+				    </div>
+				  </div>
+				  <div class="form-group col-md-6">
+				    <label style="padding-right: 0" for="inputPassword3" class="col-sm-5 control-label">最大长度</label>
+				    <div class="col-sm-7">
+				      <input type="text" class="form-control" id="lenmax">
+				    </div>
+				  </div>
+				  <div class="form-group col-md-6">
+				    <label style="padding-right: 0" for="inputPassword3" class="col-sm-5 control-label">取值范围</label>
+				    <div class="col-sm-7">
+				      <input type="text" class="form-control" id="valset">
+				    </div>
+				  </div>
+				</div>
+			</div>
+			<div class="modal-footer" style="clear: both;">
+				<button type="button" class="btn btn-primary modal-addele-btn"
+					data-bind="event:{click: saveAddField.bind($data, 'primary', 'add')}" id="bill-sur-eleTree">确定</button>
+					<button type="button" class="btn btn-primary modal-addele-btn"
+					data-bind="event:{click: saveAddField.bind($data, 'voucher','add')}" id="voucher-sur-eleTree">确定</button>
+					
+				<button type="button" class="btn btn-primary modal-addele-btn"
+					data-bind="event:{click: saveAddField.bind($data, 'primary', 'update')}" id="bill-update-eleTree">确定</button>
+					<button type="button" class="btn btn-primary modal-addele-btn"
+					data-bind="event:{click: saveAddField.bind($data, 'voucher','update')}" id="voucher-update-eleTree">确定</button>
+					
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+<script src="/df/trd/knockout/knockout-3.2.0.debug.js"></script>
+<script src="/df/trd/requirejs/require.js"></script>
+<script src="/df/require.config.js"></script>
+<script src="./msgConfig.js"></script>
+</html>

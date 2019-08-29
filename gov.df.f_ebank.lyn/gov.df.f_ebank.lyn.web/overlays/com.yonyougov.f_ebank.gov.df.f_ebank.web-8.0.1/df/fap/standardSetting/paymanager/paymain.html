@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>支付管理</title>
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css" />
+<link rel="stylesheet" type="text/css" href="../common.css" />
+
+</head>
+<body>
+	  <div class="">
+			<h3 class="title">支付管理</h3>
+		<div class="panel panel-info">
+	      <div class="panel-heading">
+			 <h3 class="panel-title">支付配置</h3>
+		  </div>
+		  <div class="panel-body">
+		      <div class="row row-item">
+		      	<div class="col-sm-4 col-md-4">
+		      		<label>是否允许普通用户退款功能录入公务卡退款</label>
+		      	</div>
+		      	<div class="col-sm-8 col-md-8">
+		      		<input type="radio" name="payrefundallowNorlRefundForPayCard" value="1">是
+		      		<input type="radio" name="payrefundallowNorlRefundForPayCard" value="0">否
+		      	</div>
+		      </div>
+		      <div class="row row-item">
+		      	<div class="col-sm-4 col-md-4">
+		      		<label>直接支付入账通知书生成是否合单</label>
+		      	</div>
+		      	<div class="col-sm-8 col-md-8">
+		      		<input type="radio" name="doUnitType" value="1">是
+		      		<input type="radio" name="doUnitType" value="0">否
+		      	</div>
+		      </div>
+		      <div class="row row-item">
+		      	<div class="col-sm-4 col-md-4">
+		      		<label>中央快速录入origin_model标志</label>
+		      	</div>
+		      	<div class="col-sm-8 col-md-8">
+		      		<input type="text" name="A" class="form-control" id="payquickInputModel">
+		      	</div>
+		      </div>
+		      <div class="row row-item">
+		      	<div class="col-sm-4 col-md-4">
+		      		<label>托收支付申请所用计划额度的过滤要素</label>
+		      	</div>
+		      	<div class="col-sm-8 col-md-8">
+		      		<input type="text" name="A" class="form-control" id="payconsignsumFiltElEs">
+		      	</div>
+		      </div>
+		      <div class="row row-item">
+		      	<div class="col-sm-4 col-md-4">
+		      		<label>托管额度导出对应CCID字段</label>
+		      	</div>
+		      	<div class="col-sm-8 col-md-8">
+		      		<input type="text" name="A" class="form-control" id="payconsignconsignValue">
+		      	</div>
+		      </div>
+		      <div class="row row-item">
+		      	<div class="col-sm-4 col-md-4">
+		      		<label>托收支付默认规则</label>
+		      	</div>
+		      	<div class="col-sm-8 col-md-8">
+		      		<input type="text" name="A" class="form-control" id="payconsignconsignDefaultValue">
+		      	</div>
+		      </div>
+		      <div class="row row-item">
+		      	<div class="col-sm-4 col-md-4">
+		      	</div>
+		      	<div class="col-sm-8 col-md-8">
+		      		 <button class="btn btn-primary" data-bind="click: savePageInfo">保存</button>
+		      	</div>
+		      </div>
+		     
+		  </div>
+		  </div>
+		  </div>
+		<script src="/df/trd/requirejs/require.js"></script>
+		<script src="/df/require.config.js"></script>
+		<script src="./paymain.js"></script>
+</body>
+
+</html>

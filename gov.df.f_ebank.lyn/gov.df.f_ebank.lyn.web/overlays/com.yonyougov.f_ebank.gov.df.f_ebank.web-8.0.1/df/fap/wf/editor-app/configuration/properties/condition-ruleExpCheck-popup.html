@@ -1,0 +1,53 @@
+
+
+<div class="modal" ng-controller="KisBpmRuleExpCheckCtrl">
+    <div class="modal-dialog">
+        <div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close editor-pop-close" data-dismiss="modal" aria-hidden="true" ng-click="closeP()">&times;</button>
+			    <span >录入变量值</span>
+			</div>
+			<div class="modal-body">
+			  
+			  <div class="table-container">
+
+				    <table  id="gridTest" class="gridTest_out">
+
+				      <thead style="display: table; table-layout: fixed;">
+
+				        <tr id="1st" style="display: table; table-layout: fixed;width:100%;">  
+
+			                    <td style="text-align: center;">设置</td>  
+
+			                    <td style="text-align: center;">参数名称</td>  
+
+			                    <td style="text-align: center;">参数值</td>  
+
+			            </tr> 
+
+			          </thead> 
+
+				     
+				      <tbody>
+				      	<tr id="1st" style="display: table; table-layout: fixed;width:100%;" ng-repeat="data in writeInfoDatas" ng-click="mainEleSelected($index)"
+								ng-class='{focus_out: $index==focus_out}'>
+						   <td id='writeParamID{{$index}}'>{{$index + 1}}</td>
+						   <td id='writeFieldName{{$index}}'>{{data.writeFieldName}}</td>
+						   <td id='writeFieldNameVal{{$index}}'><input type="text"></td>	
+					     </tr>
+				      </tbody>
+				      
+
+				    </table>
+
+				</div>
+			  
+			
+			</div>
+			<div class="editor-modal-footer modal-footer">
+				<button ng-click="insertParamVal()" class="btn btn-primary" translate >确定</button>
+				<button ng-click="closeP()" class="btn btn-primary" translate >取消</button>
+			</div>
+		</div>
+	</div>
+</div>

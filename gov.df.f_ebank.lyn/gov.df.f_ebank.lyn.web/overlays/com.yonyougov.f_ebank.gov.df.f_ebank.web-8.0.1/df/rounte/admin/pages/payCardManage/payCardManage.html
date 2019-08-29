@@ -1,0 +1,125 @@
+	<div class="wrapper" style="margin:0 auto;">
+		<div class="button-fixed">
+			<div class="btn-grid-group-btn ip-content-btn-area">
+				<div id="buttonArea" class="icon-buttons"></div>
+			</div>
+	    </div>
+		<div class="btn-group-content  button-fixed-select">
+			<div class="common-border">
+				<span class="common-surround-header">查询区</span>
+				<div id="searchArea" class="search-area"></div>
+			</div>
+			<div class = "mainLabel clearfix">
+				<label id="gwkxx">公务卡信息：</label>
+			</div>
+			<div class="mainTable">
+				<table id="mainGridArea" class="table-striped table nowrap table-bordered table-hover table-condensed"  style="width:100%;"></table>
+			</div>
+		</div>
+	</div>
+	<!-- 详情弹窗 -->
+	<div id="detailContainer"></div>
+	<!-- 手工录入弹出框 -->
+	<div class="modal fade" id="cardInputSetModel" tabindex="-1" role="dialog"
+			aria-labelledby="ylModalLabel" data-backdrop="static">
+		<div class="modal-dialog" role="document" style="width:810px;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>	
+					<h4 class="modal-title" id="titleTextCardInput"></h4>
+				</div>
+				<div class="modal-body display-container">		
+					    <div id="cardInputSetArea" class="form-group col-md-12"></div>										
+				</div>
+				
+				<div class="modal-footer" style="clear: both;">					
+					<button type="button" class="btn btn-primary" onclick="cardInputEnsure()">确定</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">退出</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 变更卡号或单位弹出框 -->
+	<div class="modal fade" id="changeModal" tabindex="-1" role="dialog"
+			aria-labelledby="ylModalLabel" data-backdrop="static">
+		<div class="modal-dialog" role="document" style="width:530px;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>	
+					<h4 class="modal-title" id="changeModalTitle"></h4>
+				</div>
+				<div class="modal-body">
+					<div id="cardNoSetArea" class="form-group col-md-12">
+						<div class="col-md-12 col-sm-12">
+							<label for="cardholder" class="col-md-3 col-sm-3 text-right">持卡人姓名</label>
+							<div class="col-md-9 ip-input-group">
+								<input type="text" id="cardholder" name="cardholder" class="form-control">
+							</div>
+						</div>
+						<div class="col-md-12 col-sm-12 mt10">
+							<label for="cardholderno" class="col-md-3 col-sm-3 text-right">身份证号码</label>
+							<div class="col-md-9 ip-input-group">
+								<input type="text" id="cardholderno" name="cardholderno" class="form-control">
+							</div>
+						</div>
+						<div class="col-md-12 col-sm-12 mt10">
+							<label for="" class="col-md-3 col-sm-3 text-right">卡类型</label>
+							<div class="col-md-9 ip-input-group">
+								<select id="cardtype" name="cardtype" class="form-control" >
+									<option value="1">个人卡</option>
+									<option value="2">单位卡</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-12 col-sm-12 mt10">
+							<label for="cardno" class="col-md-3 col-sm-3 text-right">卡号</label>
+							<div class="col-md-9 ip-input-group">
+								<input type="text" id="cardno" name="cardno" class="form-control">
+							</div>
+						</div>
+						<div class="col-md-12 col-sm-12 mt10" id="newCardNoDiv">
+							<label for="newcardno" class="col-md-3 col-sm-3 text-right"><span class="color-red">*</span>新卡号</label>
+							<div class="col-md-9 ip-input-group">
+								<input type="text" id="newcardno" name="newcardno" class="form-control">
+							</div>
+						</div>
+						<div class="col-md-12 col-sm-12 mt10" id="originAgencyDiv" style="display:none;">
+							<label for="agencycode" class="col-sm-3 text-right">原预算单位</label>
+							<div class="input-group col-md-9 modal-input-group">
+								<input id="AGENCY-inputOrigin" type="text" name="agency" class="form-control">
+								<input id="AGENCY-inputOrigin-h" type="hidden" name="AGENCY-inputOrigin-h">
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-default glyphicon glyphicon-list" 
+									style="color: #b3a9a9;font-size: 12px;height:30px;margin-top:-2px;"  disabled
+									onclick="showAssitTreeByFinance('AGENCY-inputOrigin','AGENCY','原预算单位');"></button>
+								</span>
+							</div>
+						</div>
+						<div class="col-md-12 col-sm-12 mt10" id="newAgencyDiv" style="display:none;">
+							<label class="col-sm-3 text-right"><span class="color-red">*</span>新预算单位</label>
+							<div class="input-group col-md-9 modal-input-group">
+								<input id="AGENCY-inputNew" type="text" name="agencynew" class="form-control">
+								<input id="AGENCY-inputNew-h" type="hidden" name="AGENCY-inputNew-h">
+								<span class="input-control-feedback" onclick="ip.clearText('AGENCY-inputNew')">X</span>
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-default glyphicon glyphicon-list" 
+									style="color: #b3a9a9;font-size: 12px;height:30px;margin-top:-2px;"
+									onclick="showAssitTreeByFinance('AGENCY-inputNew','AGENCY','新预算单位');"></button>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer" style="clear: both;">
+					<button type="button" class="btn btn-primary" onclick="changeEnsure()">确定</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">退出</button>
+				</div>
+			</div>
+		</div>
+	</div>

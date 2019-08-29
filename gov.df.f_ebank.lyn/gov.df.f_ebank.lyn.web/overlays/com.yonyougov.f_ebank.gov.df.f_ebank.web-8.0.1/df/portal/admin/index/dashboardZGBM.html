@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>主管部门</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="css/lte/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/lte/AdminLTE.min.css">
+    <link rel="stylesheet" href="css/lte/_all-skins.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/zgbm/dashboardZGBM.css">-->
+    <link rel="stylesheet" href="css/dfp.css">
+
+    <style>
+        #paymentLawContent > div > ul { height: 31px; z-index: 2; border-bottom: solid 2px #108ee9; }
+        #paymentLawContent > div > ul > li { z-index: 3; border-top: 0; width: 215px; position: relative; top: -1px; border-bottom: solid 1px #108ee9; }
+        #paymentLawContent > div > ul > li.active { top: 1px; border-bottom: none; }
+        #paymentLawContent > div > ul > li > a { width: 215px; height: 30px; position: relative; text-align: center; font-size: 14px; color: #000; background: #E5F4FF; padding-top: 3px; font-family: "微软雅黑"; border-top-left-radius: 5px; border-top-right-radius: 5px; border: solid 2px #108ee9; border-bottom: none; }
+        #paymentLawContent > div > ul > li.active > a { color: #108ee9; background: #FFFFFF; font-weight: bold; font-size: 15px; }
+    </style>
+
+</head>
+<body class="hold-transition sidebar-mini sidebar-collapse" style="margin-left: 0;">
+<div class="wrapper">
+
+    <div class="content-wrapper" style="background: #f8f8f8;margin-left: 0 !important;">
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="row">
+
+                <!-- 常用操作 -->
+                <!--<div id="topOften" class="row" style="margin-left: 15px;margin-right: 15px;">-->
+                    <!--<div id="often" class="box box-default col-xs-11">-->
+                        <!--<div id="oftenContent" class="box-body">-->
+                            <!--<ul id="oftenUl">-->
+                                <!--<li id="oftenUlZhu" class="oftenUl-li" style="background: #f8f8f8;border: none;"><a href="javascript:void(0);" title="主题分析" class=""><img src="img/menu/icon-cha.png">&nbsp;&nbsp;主题分析</a></li>-->
+                                <!--<li id="oftenUlCha" class="oftenUl-li" style="background: #f8f8f8;border: none;"><a href="javascript:void(0);" title="常用报表" class=""><img src="img/menu/icon-bao.png">&nbsp;&nbsp;常用报表</a></li>-->
+                            <!--</ul>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div id="oftenSetting" class="box box-default col-xs-1">-->
+                        <!--<i class="fa fa-fw fa-cog"></i>-->
+                        <!--<span>页面设置</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div id="topOften" class="row" style="margin-left: 15px;margin-right: 15px;">
+                    <div id="often" class="box box-default col-xs-11">
+                        <div id="oftenContent" class="box-body"></div>
+                    </div>
+                    <div id="oftenSetting" class="box box-default col-xs-1">
+                        <i class="fa fa-fw fa-cog"></i>
+                        <span>页面设置</span>
+                    </div>
+                </div>
+                <!-- /.常用操作 -->
+                <!-- left -->
+                <div class="col-md-8  col-lg-8 dfp-left">
+                    <!--左侧-->
+                    <!--支出规律分析-->
+                    <div id="overallSituation" class="box box-default">
+                        <div class="box-header with-border dfp-box-header">
+                            <h3 class="box-title dfp-box-title">支出规律分析</h3>
+                            <div class="pull-right box-tools">
+                                <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="刷新" id="overallSituationRefresh">
+                                    <i class="fa fa-fw fa-refresh" style="padding: 0;"></i>
+                                </button>
+                                <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="最大化" id="overallSituationMaxium">
+                                    <i class="fa fa-fw fa-square-o" style="padding: 0;"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="overallSituationContent" class="box-body" style="height: 250px;">
+                            <iframe id="overallSituationContentIframe" src="" class="dfp-ele-iframe" style="overflow-y: auto;"></iframe>
+                        </div>
+                    </div>
+                    <!--/支出规律分析-->
+                    <!--支出执行进度页签-->
+                    <div class="box box-default">
+                        <div id="paymentLawContent" class="box-body" style="height: 287px;padding: 0;">
+                            <!--<iframe id="paymentLawIframe" src="" class="dfp-ele-iframe"></iframe>-->
+                            <div class="nav-tabs-custom" style="margin-bottom: 0px;box-shadow: none;">
+                                <ul class="nav nav-tabs">
+                                    <li class="active" style="margin-left: 5px;">
+                                        <a style="padding: 4px;" href="#paymentLawContentDW" data-toggle="tab">支出执行进度（按单位）</a>
+                                    </li>
+                                    <li>
+                                        <a style="padding: 4px;" href="#paymentLawContentYSXM" data-toggle="tab">支出执行进度（按预算项目）</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" style="padding: 0;">
+                                    <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="最大化" id="paymentLawContentMaxium" style="position: relative;float: right;margin-top: -30px;margin-right: 10px;">
+                                        <i class="fa fa-fw fa-square-o" style="padding: 0;"></i>
+                                    </button>
+                                    <div class="tab-pane active" id="paymentLawContentDW" style="height: 10px;padding: 0px;margin-bottom: -10px;">
+                                        <div class="box" style="border: none;">
+                                            <div class="box-body table-responsive no-padding" style="height: 255px;overflow-y: hidden;">
+                                                <iframe id="paymentLawContentDWIframe" src="" class="dfp-ele-iframe"></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="paymentLawContentYSXM" style="height: 10px;padding: 0px;margin-bottom: -10px;">
+                                        <div class="box" style="border: none;">
+                                            <div class="box-body table-responsive no-padding" style="height: 255px;overflow-y: hidden;">
+                                                <iframe id="paymentLawContentYSXMIframe" src="" class="dfp-ele-iframe"></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--/支出执行进度页签-->
+                    <!--/左侧-->
+                </div>
+                <!-- /left -->
+                <!-- right -->
+                <div class="col-md-4 col-lg-4 dfp-right">
+
+                    <!-- 待办事项 -->
+                    <div id="dealing" class="box box-default dfp-box">
+                        <div class="box-header with-border dfp-box-header">
+                            <h3 class="box-title dfp-box-title">待办事项</h3>
+                            <div class="pull-right box-tools">
+                                <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="刷新" id="dealingRefresh">
+                                    <i class="fa fa-fw fa-refresh" style="padding: 0;"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!--<div id="agencyTopProgress" class="box-body" style="height: 350px;padding-top: 10px;">-->
+                            <!--<iframe id="agencyTopProgressProjectPaymentIframe" style="width:102%;height:339px;border: none;overflow: hidden;" src=""></iframe>-->
+                        <!--</div>-->
+                        <div id="dealingContent" class="box-body" style="height: 250px;overflow-y: auto;">
+                            <ul></ul>
+                        </div>
+                        <div id="dealingRefreshCover" class="overlay" style="display: none;">
+                            <img style="position: absolute;height: 65px;left: 50%;top: 50%;margin-left: -40px;margin-top: -30px;" src="/df/portal/admin/index/img/loading-refresh.gif">
+                        </div>
+                    </div>
+                    <!-- /待办事项 -->
+
+                    <!--公告-->
+                    <div id="article" class="box box-default dfp-box">
+                        <div class="box-header with-border dfp-box-header">
+                            <h3 class="box-title dfp-box-title">公告信息</h3>
+                            <div class=" box-tools">
+                                <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="刷新" id="articleRefresh">
+                                    <i class="fa fa-fw fa-refresh" style="padding: 0;"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="articleContent" class="box-body" style="height: 250px;overflow-y: auto;">
+                            <ul></ul>
+                        </div>
+                        <div id="articleRefreshCover" class="overlay" style="display: none;">
+                            <img style="position: absolute;height: 65px;left: 50%;top: 50%;margin-left: -40px;margin-top: -30px;" src="/df/portal/admin/index/img/loading-refresh.gif">
+                        </div>
+                    </div>
+                    <!--/公告-->
+                </div>
+                <!-- /right -->
+
+            </div>
+
+        </section>
+    </div>
+
+</div>
+<!-- ./wrapper -->
+
+<footer style="margin-left: 60px;margin-top: 15px;">
+	山东省财政厅 北京用友政务软件有限公司  联合研发
+</footer>
+
+<script src="js/lte/jQuery-2.1.4.min.js"></script>
+<script src="js/lte/jquery-ui.min.js"></script>
+<script>
+    $.widget.bridge('uibutton', $.ui.button);
+</script>
+<script src="js/lte/bootstrap.min.js"></script>
+<script src="js/lte/app.min.js"></script>
+
+<script charset="utf-8" type="text/javascript" src="js/Base64.js"></script>
+<script charset="utf-8" type="text/javascript" src="js/md5.min.js"></script>
+<script type="text/javascript" src="js/zTree_v3/js/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="js/zTree_v3/js/jquery.ztree.excheck.js"></script>
+
+<script type="text/javascript" src="js/layer/layer.js"></script>
+
+<script charset="utf-8" type="text/javascript" src="js/dfp/dfp.js"></script>
+<script charset="utf-8" type="text/javascript" src="js/dfp/dfpMenu.js"></script>
+<script charset="utf-8" type="text/javascript" src="js/dfp/dfpArticle.js"></script>
+<script charset="utf-8" type="text/javascript" src="js/dfp/dfpDealing.js"></script>
+<script charset="utf-8" type="text/javascript" src="js/dashboardZGBM.js"></script>
+
+</body>
+</html>

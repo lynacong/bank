@@ -1,0 +1,186 @@
+@CHARSET "UTF-8";
+.ncrd .panel{
+	margin: 2px;
+	padding: 4px;
+	border-radius: 0;
+}
+.ncrd .col-md-4, 
+.ncrd .col-md-6, 
+.ncrd .col-md-8, 
+.ncrd .col-md-12,
+.ncrd .col-sm-4, 
+.ncrd .col-sm-6, 
+.ncrd .col-sm-8 
+{
+	padding: 0;
+}
+
+.ncrd .panel-body{
+	overflow-y: auto; 
+	height: calc(100% - 44px);
+}
+
+
+.ncrd .relation-panel-body{
+	overflow-y: auto; 
+	height: calc(100% - 27px);
+	padding: 0;
+	margin: -3px -4px -4px -4px;
+}
+
+.ncrd .nav{
+	margin-bottom: 5px;
+}
+
+.ncrd .left-tree{
+	height: calc(100vh - 4px);
+}
+
+.ncrd .left-tree-scroll{
+    margin: 4px -4px -4px -4px;
+    overflow-y: auto;
+    height: calc(100% - 36px);
+}
+
+.ncrd .relation-edit-tree{
+	height: calc(100vh - 180px);
+}
+
+.ncrd .right-btngroup{
+	border: none;
+	box-shadow: none;
+}
+
+.ncrd .right-grid{
+	height: calc(100vh - 56px);
+    overflow: auto;
+}
+.ncrd .right-grid div[u-meta] {
+	height: -moz-calc(100% - 38px);
+	height: -webkit-calc(100% - 38px);
+    height: calc(100% - 38px);
+}
+.u-grid-content{
+	height: -moz-calc(100% - 31px);
+	height: -webkit-calc(100% - 31px);
+	height: calc(100% - 31px);
+}
+.u-grid,.u-grid-grid,.u-grid-content-div{
+	height:100%!important;
+}
+.u-grid.u-grid-header-drag-clue,.u-pagination{
+	height:auto!important;
+}
+.ncrd .btn{
+	margin: 2px;
+}
+
+.ncrd .tree-search{
+	background: #F2F9FF;
+	height: 44px;
+	margin: -4px;
+	padding: 8px
+}
+
+.ncrd .tree-search .form-control{
+	height: 25px;
+}
+
+.ncrd .tree-search .btn{
+	height: 25px;
+	margin-top: 0;
+	padding: 0 10px;
+}
+
+.ncrd .panel-title{
+	margin: -4px -4px 4px -4px;
+}
+
+.ncrd .only-border-bottom{
+	border-left: none;
+	border-top: none;
+	border-right: none;	
+}
+
+.ncrd .addElementBody{
+	height: calc(100vh - 290px);
+	overflow-y: auto;	
+}
+
+.ncrd#billno-editAdd-contanier #edit>div:first-child,
+.ncrd#editNoRule #edit>div:first-child{
+	width:785px;
+	height:400px;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+
+.ncrd#billno-editAdd-contanier #editTable,
+.ncrd#editNoRule #editTable{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.ncrd#billno-editAdd-contanier #edit-grid,
+.ncrd#editNoRule #edit-grid{
+	height: 250px!important;
+	border-bottom: solid 1px #cecece;
+}
+
+.ncrd#billno-editAdd-contanier #edit-grid_grid,
+.ncrd#editNoRule #edit-grid_grid{
+	max-height: 250px;
+}
+
+.ncrd#billno-editAdd-contanier #edit-grid_content,
+.ncrd#editNoRule #edit-grid_content{
+	max-height: 222px;
+	overflow-y: auto;
+	padding-bottom: 1px;
+}
+
+.ncrd .bg-sys{
+	background:#F2F9FF;
+}
+
+.ncrd .color-sys{
+	color:#4990E2;
+}
+
+.ncrd .border-none{
+	border: none;
+}
+
+.ncrd .label-font-normal label{
+	font-weight: normal;
+}
+
+.ncrd .padding-0{
+	padding: 0;
+}
+
+.ncrd .search-btn{
+	height: 25px;
+	margin-top: 0;
+	padding: 0 10px;
+}
+
+.ncrd .tree-root-div{
+	margin: 11px 11px -11px 11px;
+}
+
+.ncrd .tree-root-icon{
+	vertical-align: top;
+	display: inline-block;
+	height: 20px; 
+	width: 20px;
+	background: url(/df/trd/ip/changeTree/images/base.gif) 50% 50% no-repeat;
+}
+
+.ncrd .tree-root-label{
+	maring-left:-2px;
+}
+
+#billType .form-horizontal .form-group{
+	margin-right:0;
+}

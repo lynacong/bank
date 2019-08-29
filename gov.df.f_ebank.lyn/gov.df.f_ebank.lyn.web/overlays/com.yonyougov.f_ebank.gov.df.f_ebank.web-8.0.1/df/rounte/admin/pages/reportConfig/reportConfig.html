@@ -1,0 +1,165 @@
+	<!-- 报表配置 -->
+	<div class="container-fluid h">
+		<OBJECT id='ocx'  height='0' width='0' classid='clsid:EAF9360D-B3E4-4CC0-B3D7-456489ED249D' style="position: absolute;" ></OBJECT>
+		<div class="config-btn">
+			<button type="button" class="btn btn-config" onclick="refreshTree()">刷新</button>
+			<button type="button" class="btn btn-config" onclick="addReport()">新增</button>
+			<button type="button" class="btn btn-config" onclick="editReport()">修改</button>
+			<button type="button" class="btn btn-config" onclick="copyReport()">复制</button>
+			<div class="report-import">
+				导入 <input type="file" class="file-input" id="leadinRow" name="imgFile" value="" />
+			</div>
+			<button type="button" class="btn btn-config" onclick="expReport()">导出</button>
+			<button type="button" class="btn btn-danger" onclick="delReport()">删除</button>
+		</div>
+		
+		<div class="config-search mb5">
+			<label for="finance_code">财政机构</label>
+			<select id="finance_code" class="form-control ebank-input" onchange="getReportTreeByFinance()"></select>
+		</div>
+		
+		<div class="config-main-hassearch">
+			<!-- 报表信息 -->
+			<div class="col-sm-4 border tree-sidebar">
+				<div class="ztree" u-meta='{"id":"reportTree","data":"treeDataTable","type":"tree","idField":"report_id","pidField":"parent_id","nameField":"show_name","setting":"treeSetting"}'></div>
+			</div>
+			<!-- 报表详细信息 -->
+			<div class="col-sm-8 h"  style="margin-top:-30px">
+				<ul class="nav nav-tabs" role="tablist">
+					<li role="presentation" class="gridtables active" >
+						<a href="#dataInfo" aria-controls="home" role="tab" data-toggle="tab" >基本信息</a>
+					</li>
+					<li id="view" role="presentation" class="gridtables template">
+						<a href="#mouldInfo" aria-controls="profile" role="tab" data-toggle="tab" >模板</a>
+					</li>
+				</ul>
+				<!-- Tab panes -->
+				<div class="tab-content height_pct_92" >
+					<!-- 基础信息 -->
+					<div role="tabpanel" class="tab-pane active" id="dataInfo" style="margin-top: 20px;margin-left: -30px">
+						<div class="form-group col-sm-6">
+						<label class="col-sm-4 text-right">编码：</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" id="report_code" readonly>
+							</div>
+						</div>
+						<div class="form-group col-sm-6">
+							<label class="col-sm-4 text-right">名称：</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" id="report_name" readonly>
+							</div>
+						</div>
+						<div class="form-group  col-sm-12">
+							<label class="col-sm-2 text-right">数据源：</label>
+								<textarea id="data_source" rows="15" class="col-sm-10" readonly></textarea>
+						</div>
+					</div>
+					<!-- 报表模板设计 -->
+					<div role="tabpanel" class="tab-pane h" id="mouldInfo">		
+						<div class="row height_pct_8 pt_pct_1 pl15" role="group" aria-label="">
+							<button type="button" class="btn btn-config" onclick="addMould()">新增</button>
+							<button type="button" class="btn btn-config" onclick="delMould()">删除</button>
+							<button type="button" class="btn btn-config" onclick="editMould()">设计</button>
+						</div>	
+						<div class="border height_pct_92" style="margin-top:10px">
+							<div id="mouldTab">
+								<ul id="tabList" class="nav nav-tabs" role="tablist">
+								</ul>
+							</div>
+							<OBJECT id='ocxDSc'  height='100%' width='100%' classid='clsid:EAF9360D-B3E4-4CC0-B3D7-456489ED249D'></OBJECT>
+						</div>		
+					</div>
+				</div>
+			</div>			
+		</div>	
+	</div>
+	<!-- 新增/修改Modal start-->
+		<div class="modal fade" id="addReportModal" tabindex="-1" role="dialog"
+			aria-labelledby="ylModalLabel" data-backdrop="static">
+			<iframe id='iframebar' src="about:blank"
+			  style="position:absolute;top:0px;left:0;height:100%;width:100%;border:none;opacity:0;filter:Alpha(opacity=0);">
+			</iframe>
+			<div class="modal-dialog" role="document" style="width:600px;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="titleText"></h4>
+					</div>
+					<div class="modal-body clearfix">				
+						<div class="col-sm-12 mt15">
+							<label class="col-sm-3 text-right" for="reportCode"><span class="color-red">*</span>报表编码：</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="reportCode">
+							</div>
+						</div>
+						<div class="col-sm-12 mt15">
+							<label class="col-sm-3 text-right" for="reportName"><span class="color-red">*</span>报表名称：</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="reportName">
+							</div>
+						</div>
+						<div id="finance" class="col-sm-12 mt15">
+							<label class="col-sm-3 text-right" for="financeCode"><span class="color-red">*</span>财政机构：</label>
+							<div class="col-sm-9">
+								<select id="financeCode" class="form-control"></select>
+							</div>
+						</div>
+						<div class="col-sm-12 mt15">
+							<label class="col-sm-3 text-right" for="dataSource"><span class="color-red">*</span>数&nbsp;&nbsp;据&nbsp;&nbsp;源：</label>
+							<div class="col-sm-9">
+								<textarea class="form-control" id="dataSource" rows="10" cols="50"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">					
+						<button type="button" class="btn btn-primary" onclick="saveOrUpdate()">确定</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal">退出</button>
+					</div>
+				</div>
+			</div>
+	</div>
+	<!-- 新增/修改Modal end-->
+	
+	<!-- 新增Mould start-->
+		<div class="modal fade" id="addReportMould" tabindex="-1" role="dialog"
+			aria-labelledby="ylModalLabel" data-backdrop="static">
+			<iframe id='iframebar' src="about:blank"
+			  style="position:absolute;top:0px;left:0;height:100%;width:100%;border:none;opacity:0;filter:Alpha(opacity=0);">
+			</iframe>
+			<div class="modal-dialog" role="document" style="width:600px;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title">模板选择</h4>
+					</div>
+					<div class="modal-body clearfix">
+						<div class="col-sm-12 mt15">
+							<label class="col-sm-3 text-right" for="mouldNum"><span class="color-red">*</span>模板联数：</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="mouldNum">
+							</div>
+						</div>
+						<div class="col-sm-12 mt15">
+							<label class="col-sm-3 text-right" for="mould"><span class="color-red">*</span>模板样式：</label>
+							<div class="col-sm-9">
+								<select  class="form-control" id="mould"> 
+									<option value = "-1" selected="selected">空模板</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">					
+						<button type="button" class="btn btn-primary" onclick="saveMouldInfo()">确定</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal">退出</button>
+					</div>
+				</div>
+			</div>
+	</div>
+	<!-- 新增Mould end-->
+

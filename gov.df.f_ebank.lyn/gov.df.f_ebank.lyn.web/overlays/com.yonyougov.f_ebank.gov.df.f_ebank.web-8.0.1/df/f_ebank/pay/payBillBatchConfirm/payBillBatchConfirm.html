@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>直接支付复核确认</title>
+<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/datetimepicker/css/bootstrap-datetimepicker.min.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/theme/blue.css" />
+<link rel="stylesheet" type="text/css" href="../../css/fbStyle.css" />
+<link rel="stylesheet" type="text/css" href="../../css/fbcommon.css" />
+<link rel="stylesheet" type="text/css" href="../../css/image.css" />
+
+</head>
+<body>
+	<div class="wrapper" style="margin:0 auto;">
+		<div style="height: 35px;">
+			<div class="btn-grid-group-btn ip-content-btn-area" >
+				<div class="icon-buttons">
+					<div  id="pay" class="icon-box" onclick="pay()">
+						<i class="iconbtn icon-clearing-bank-amendment"></i>支付</div>
+					<div  id="input" class="icon-box" onclick="input()">
+						<i class="iconbtn icon-enter"></i>补录交易流水号</div>
+					<!-- <div id="ref" class="icon-box" onclick="ref()">
+						<i class="iconbtn icon-recover"></i>退回</div> -->
+					<div id="view" class="icon-box" data-bind="click:fSelect">
+						<i class="iconbtn icon-query-state"></i>查询</div>
+			       <!--   <div id="inputBankNo" class="icon-box" onclick="Input()">
+						<i class="iconbtn icon-enter"></i>行号补录</div> -->
+					<!-- <div id="asspview" class="icon-box"  onclick="doVoucherSee()">
+						<i class="iconbtn icon-previews"></i>凭证查看</div> -->
+				</div>
+			</div>
+		</div>
+	
+	
+		<div class="btn-group-content"
+			style="margin-top:5px; display: block;overflow-y: scroll; border: 1px solid #ccc;">
+			
+			
+				<label style="">查询区：</label> <br>
+				<div
+					style="border-radius: 2px;border: 1px solid #ccc;overflow:auto;padding:4px">
+					<div class="" style="margin:4px 0px 0px 0px;height:35px">
+						<div id="paySearchArea"></div>
+					</div>
+				</div>
+		
+			<div style="float:left;padding-top:13px;">
+				<label id="zfpz">支付凭证：</label>
+			<select id="pz_status" style="border-radius: 2px;border: 1px solid #ccc;" onchange="fGetGrid()">
+					<option value="001" selected="selected">未审批</option>
+					<option value="002">已审批</option>
+					<!-- <option value="003">已退回</option> -->
+			</select>
+			</div>
+			<div id="mianDiv" style=" display: block;height:289px;" onClick="getDetail()">
+				<div id="modalMianGridArea" class="tabbed-grid tabbed-grid-modal"></div>
+			</div>
+			
+			<label style="float:left;padding-top:13px;">支付凭证明细：</label>	 
+			<div id="subDiv" style=" display: block;height:289px;">
+	 			<div id="modalSubsysGridArea" class="tabbed-grid tabbed-grid-modal"></div>  
+			</div>
+		</div>
+		
+		
+		
+		
+				
+		<!-- 收款行号补录窗口 -->
+	   <div class="modal fade" id="payeeBankNoAddDialog" tabindex="-1" role="dialog"
+			aria-labelledby="ylModalLabel" data-backdrop="static">
+			<div class="modal-dialog" role="document" style="width:700px;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-bind="click:closePayeeBankNo"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="titleText">补录收款行行号</h4>
+					</div>
+					<div  style="padding:10px;">
+					<div >
+							<button type="button" class="btn btn-primary" data-bind="click:payeeBankNoSearch">查询</button>
+							<button type="button" class="btn btn-primary" data-bind="click:payeeBankNoAdd">新增</button>	
+							<button type="button" class="btn btn-primary" data-bind="click:payeeBankNoClear">清空</button>	
+					</div>	
+				<label style="padding-top:13px;">查询区：</label> <br>
+				<div
+					style="border-radius: 2px;border: 1px solid #ccc;overflow:auto;padding:4px">
+					<div class="" style="margin:4px 0px 0px 0px;">
+						<div id="payeeBankNoSearch"></div>
+					</div>
+				</div>
+				<label style="float:left;padding-top:13px;">银行明细：</label>	 
+			         <div id="subDiv" style=" display: block;height:280px;">
+	 			        <div id="payeeBankNoList" class="tabbed-grid tabbed-grid-modal"></div>  
+			         </div>						
+					 </div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-bind="click:savePayeeBankNo">确定</button>
+						<button type="button" class="btn btn-primary" data-bind="click:closePayeeBankNo">退出</button>
+					</div>
+				</div>
+				
+				
+			</div>
+		</div>  
+		
+		
+		<!-- 收款行号新增窗口 -->
+	    <div class="modal fade" id="newpayeeBankNoAddDialog" tabindex="-1" role="dialog"
+			aria-labelledby="ylModalLabel" data-backdrop="static"  style="height: 600px;">
+			<div class="modal-dialog" role="document" style="height: 600px;width:600px">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-bind="click:closeAddPayeeBankNo"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="titleText">新增收款行行号</h4>
+					</div>
+                    <br>
+				<div
+					style="border-radius: 2px;border: 1px solid #ccc;overflow:auto;padding:4px">
+					<div class="" style="margin:4px 0px 0px 0px;height:35px">
+						<div id="payeeBankNoInput"></div>
+					</div>
+				</div>					
+					<br>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-bind="click:saveAddPayeeBankNo">确定</button>
+						<button type="button" class="btn btn-primary" data-bind="click:closeAddPayeeBankNo">退出</button>
+					</div>
+				</div>
+				
+				
+			</div>
+		</div> 
+		
+	</div>
+	
+	
+	<!-- 托收补录收款人信息 -->
+	    <div class="modal fade" id="payeeMessageAddDialog" tabindex="-1" role="dialog"
+			aria-labelledby="ylModalLabel" data-backdrop="static"  style="height: 600px;">
+			<div class="modal-dialog" role="document" style="height: 600px;width:600px">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-bind="click:closeAddPayeeBankNo"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="titleText">补录收款人信息</h4>
+					</div>
+                    <br>
+				<div
+					style="border-radius: 2px;border: 1px solid #ccc;overflow:auto;padding:4px">
+					<div class="" style="margin:4px 0px 0px 0px;height:35px">
+						<div id="payeeBankNoInput"></div>
+					</div>
+				</div>					
+					<br>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-bind="click:saveAddPayeeBankNo">确定</button>
+						<button type="button" class="btn btn-primary" data-bind="click:closeAddPayeeBankNo">退出</button>
+					</div>
+				</div>
+				
+				
+			</div>
+		</div> 
+		
+		
+				<!-- 交易流水号补录窗口 -->
+	   <div class="modal fade" id="agentBusinessNoAddDialog" tabindex="-1" role="dialog"
+			aria-labelledby="ylModalLabel" data-backdrop="static">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-bind="click:closeAgentBusinessNo"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="titleText">交易流水号</h4>
+					</div>
+					<div  style="padding:10px;">
+						<label style="float:left;padding-top:6px;">交易流水号：</label>	 
+			         	<input type="text" style="border-radius: 2px;height:30;margin:5px 0px 0px 0px;" id="agent_business_no" value=""> 	
+					 </div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-bind="click:saveAgentBusinessNo">确定</button>
+						<button type="button" class="btn btn-primary" data-bind="click:closeAgentBusinessNo">取消</button>
+					</div>
+				</div>
+			</div>
+		</div> 
+		
+		
+		<!--  <div class="modal fade" id="userCodeInput" tabindex="-1" role="dialog"
+			aria-labelledby="ylModalLabel" data-backdrop="static">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-bind="click:closeuserCodeInput"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="titleText">指纹验证柜员号</h4>
+					</div>
+					<div class="modal-body display-container">
+					<div style="height: 50px;">
+					    <label id="user_code_name" style="margin:1px 0px 5px 10px;">柜员号：</label> 
+				          <label>
+					       <input type="text" style="border-radius: 2px;height:30;margin:5px 0px 0px 0px;" id="stiff_user_code" value=""> 
+				        </label>
+				     </div> 
+				     </div>
+					<div class="modal-footer" style="clear: both;">
+						<button type="button" class="btn btn-primary" data-bind="click:doSaveuserCodeInput">确定</button>
+						<button type="button" class="btn btn-primary" data-bind="click:closeuserCodeInput">退出</button>
+					</div>
+					</div>
+					
+				</div>
+				
+			</div>
+			<object classid="clsid:933DB2AB-51BF-4204-9E30-C907FE352A5E" width="0" height="0" id="dtm" codebase="../common/libFPDev_WL.ocx"> </object> 
+		</div>  -->
+		
+		
+	<script src="../../../trd/knockout/knockout-3.2.0.debug.js"></script>
+	<script src="../../../trd/requirejs/require.js"></script>
+	<script src="../../../require.config.js"></script>
+	<script src="../../common/ebankConstants.js"></script>
+	<script src="../../common/ebankCommonUtil.js"></script>
+	<script src="./payBillBatchConfirm.js"></script>
+</body>
+</html>

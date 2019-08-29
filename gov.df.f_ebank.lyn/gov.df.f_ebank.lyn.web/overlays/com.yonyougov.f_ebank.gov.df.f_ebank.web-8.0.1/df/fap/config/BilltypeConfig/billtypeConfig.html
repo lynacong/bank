@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>单据配置</title>
+<link rel="stylesheet" type="text/css" href="../../../trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="../../../trd/uui/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../../../trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="../../../trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css" href="../../../trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="../../../trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="../../../trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="../../../trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css" href="../../../trd/ip/css/bizSys.css" />
+<link rel="stylesheet" type="text/css" href="./billtypeConfig.css" />
+<link rel="stylesheet" type="text/css" href="/df/fap/standardSetting/common.css" />
+</head>
+
+<body>
+	<div class="" id="container">
+		<h3 class="title">单据配置</h3>
+		
+		<div class="clearfix row-div-set" style="margin-top:0;">
+			<div class="panel  panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">支付单据</h3>
+				</div>
+				<div class="panel-body panel-body-info">
+					<div class="row clearfix row-div-set">
+						<label class="col-sm-4 ">授权支付退款凭证单：</label>
+						<div class="input-group col-sm-8">
+							<select class="form-control" id="commonbilltypeaccreditRefundBill"></select>
+						</div>
+					</div>
+					<div class="row clearfix row-div-set">
+						<label class="col-sm-4 ">直接支付退款凭证单：</label>
+						<div class="input-group col-sm-8 ">
+							<select class="form-control" id="commonbilltypedirectRefundBill"></select>
+						</div>
+					</div>
+					<div class="row clearfix row-div-set">
+						<label class="col-sm-4 ">托收交易凭证：</label>
+						<div class="input-group col-sm-8 ">
+							<select class="form-control" id="commonbilltypecarePayBill"></select>
+						</div>
+					</div>
+					<div class="row clearfix row-div-set">
+						<label class="col-sm-4 ">是否右键显示预算执行报表：</label>
+						<div class="input-group col-sm-8 ">
+							<input type="radio" name="commonmenuShowBudgetReport" id="commonmenuShowBudgetReport1" value="0"> 不显示  
+        					<input type="radio" name="commonmenuShowBudgetReport" id="commonmenuShowBudgetReport2" value="1"> 显示
+        				</div>
+					</div>
+					<div class="row clearfix row-div-set">
+						<label class="col-sm-4 ">预算执行报表CPT：</label>
+						<div class="input-group col-sm-8 ">
+							<input type="text" class="form-control" id="commonpayExecutingReport"></select>
+						</div>
+					</div>
+					<div class="row clearfix row-div-set">
+						<label class="col-sm-4 "></label>
+						<div class="input-group col-sm-8 ">
+							<button class="btn btn-primary" data-bind="click: saveData"> 保存 </button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../../../trd/knockout/knockout-3.2.0.debug.js"></script>
+	<script src="../../../trd/requirejs/require.js"></script>
+	<script src="../../../require.config.js"></script>
+	<script src="../../../trd/ip/js/ip.js"></script>
+	<script src="./billtypeConfig.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>财政一体化系统</title>
+<script src="/df/trd/jquery/jquery-1.12.3.min.js"></script>
+<script src="/df/portal/admin/index/js/dfp/dfp.js"></script>
+</head>
+
+<script type="text/javascript">
+	$.ajax({
+		url : "/df/login/cloudLogin.do",
+		type : 'GET',
+		success : function(data) {
+			var flag = data.flag;
+			var tokenId = data.tokenid;
+			var usercode = data.usercode;
+			if (flag == "1") {
+				dfp_util.cookie.set("yysdczuname", usercode, 24 * 60 * 60 * 1000);
+				sessionStorage.setItem("select_agency_code", "");
+				sessionStorage.setItem("select_role_guid", "");
+				sessionStorage.setItem("tokenid", tokenId);
+				window.location.href = "/df/portal/admin/index/index.html";
+			}
+		}
+	});
+</script>
+
+<body>
+</body>
+
+</html>

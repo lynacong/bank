@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>标准值设置</title>
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css" />
+		<link rel="stylesheet" type="text/css" href="./main.css" />
+	</head>
+
+	<body>
+		<div class="row" style="margin: 0;">
+			<div class="col-md-2 left-panel">
+				<div class="model-list">目录</div>
+				<div class="left-content" style="width:100%; height:100%; overflow: auto;">
+					<div id="treeTest" class="ztree" u-meta='{"id":"user-tree1","data":"modelDataTable","type":"tree","idField":"id","pidField":"parent","nameField":"name","setting":"userTreeSetting"}'>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-10 right-content">
+				<iframe src="" width="100%" height="610px" style="border: none;" id="leftFrame"></iframe>
+			</div>
+		</div>
+
+		<!--
+        	作者：1569528869@qq.com
+        	时间：2017-03-27
+        	描述：添加角色弹窗
+        -->
+<!-- 		<div class="modal fade" tabindex="-1" role="dialog" id="addRoleModal" data-backdrop="static">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<img class="modal-img" src="/df/images/modal-img.png" />
+						<span class="modal-title">添加角色</span>
+					</div>
+					<div class="modal-body">
+						<div id="treeTest" class="ztree" u-meta='{"id":"addRoletree3","data":"roleDataTable","type":"tree","idField":"guid","pidField":"roletype","nameField":"name","setting":"roleTreeSetting"}'></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						<button type="button" class="btn btn-primary" data-bind="click: getSelectRoleTree">确定</button>
+					</div>
+				</div>
+			</div>
+		</div> -->
+		<!--
+    	作者：1569528869@qq.com
+    	时间：2017-03-27
+    	描述：选择权限弹窗
+    -->
+<!-- 		<div class="modal fade" tabindex="-1" role="dialog" id="selectAuthModal" data-backdrop="static">
+			<div class="modal-dialog" role="document" style="width: 35%;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<img class="modal-img" src="/df/images/modal-img.png" />
+						<span class="modal-title">权限组</span>
+					</div>
+					<div class="modal-body">
+						<p>权限组</p>
+						 
+						<ul class="rightList" id="rightList" data-bind="foreach: rightLists">
+							<li data-bind="attr:{id: rule_id},event: {click: $parent.setSelected.bind($data, $index())}">
+								<span class="glyphicon glyphicon-list-alt span-icon"></span>
+								<span class="char-name">
+									<span data-bind="text: chr_code"></span>
+									<span data-bind="text: chr_name"></span>
+								</span>
+							</li>
+						</ul>
+						
+						<div id="ruleTree" class="ztree"
+								u-meta='{"id":"ruleTree","data":"dataTableRuleGroup","type":"tree","idField":"rule_id","pidField":"pid","nameField":"name"}'>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						<button type="button" class="btn btn-primary" data-bind="click: showRightDetail">确定</button>
+					</div>
+				</div>
+			</div>
+		</div> -->
+		<script src="/df/trd/requirejs/require.js"></script>
+		<script src="/df/require.config.js"></script>
+		<script src="./main.js"></script>
+	</body>
+
+</html>

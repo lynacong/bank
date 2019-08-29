@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>山东财政</title>
+		<!--<link rel="stylesheet" href="css/highcharts.css" />-->
+		<link rel="stylesheet" href="css/foundation-datepicker.css" />
+		
+		<link rel="stylesheet" href="css/companyTree.css" type="text/css">
+		<link rel="stylesheet" href="css/zTreeStyle/zTreeStyle.css" type="text/css">
+		<link rel="stylesheet" href="css/subpage.css" />
+		<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+		<script type="text/javascript" src="js/highcharts.js"></script>
+		<script type="text/javascript" src="js/highcharts-more.js"></script>
+		<script type="text/javascript" src="js/solid-gauge.js"></script>
+		<script type="text/javascript" src="js/exporting.js"></script>
+		<script type="text/javascript" src="js/getHighchartsData3.js"></script>
+		<script type="text/javascript" src="js/highcharts-zh_CN.js"></script>
+		<script type="text/javascript" src="js/foundation-datepicker.js"></script>
+		<script type="text/javascript" src="js/foundation-datepicker.zh-CN.js"></script>
+		<script src="js/subpage.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>-->
+		<script type="text/javascript" src="js/jquery.ztree.core-3.1.js"></script>
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+		<!-- <div id="box"> -->
+			<div id="right">
+				<div id="search">
+					<div id="text">
+						<input type="text" name="" id="" value="" placeholder="请输入关键词"/>
+						<div id="pic"><img src="img/dashboard/search1.png"/></div>
+					</div>
+				</div>
+				<div class="cen1">
+					<div class="head-r">
+						<span>本日</span>
+						<span>本月</span>
+						<span>本年</span>
+					</div>
+					<div class="biao">
+						<table border="0" cellspacing="0" cellpadding="0">
+							<tr ><td width="100px"align="center">状态</td><td width="70px"align="center">笔数</td><td width="160px"align="center">金额（万元）</td></tr>
+							<tr><td>已支付</td><td>20笔</td><td align="right"class="c">2,000,00</td></tr>
+							<tr><td>已发送</td><td>10笔</td><td align="right"class="c">322,000,00</td></tr>
+							<tr><td>被退回</td><td>1笔</td><td align="right"class="c">2,000,00</td></tr>
+							<tr><td>已退回</td><td>2笔</td><td align="right"class="c">3,000,00</td></tr>
+							<tr><td>在途</td><td>10笔</td><td align="right"class="c">2,000,00</td></tr>
+							<tr><td>监控</td><td>3笔</td><td align="right"class="c">6,000,00</td></tr>
+						</table>
+					</div>
+		
+				</div>
+				<div class="cen2">
+					<div class="head-r2">
+						<span>代办事项</span>
+						<img src="img/dashboard/notice.png"/>
+					</div>
+					<div id="m-content1">
+						<ul>
+							<li><span class="icon1"></span><a href="javascript:void(0);">单位额度到账通知书登记<span class="c-red">未登记1条</span></a></li>
+							<li><span class="icon1"></span><a href="javascript:void(0);">授权支付退款通知书登记<span class="c-red">未登记1条</span></a></li>
+							<li><span class="icon1"></span><a href="javascript:void(0);">财政授权支付入账通知书登记<span class="c-red">未登记1条</span></a></li>
+							<li><span class="icon1"></span><a href="javascript:void(0);">财政授权支付退款入账通知书登记<span class="c-red">未登记1条</span></a></li>
+							<li><span class="icon1"></span><a href="javascript:void(0);">财政直接支付入账通知书登记<span class="c-red">未登记1条</span></a></li>
+							<li><span class="icon1"></span><a href="javascript:void(0);">财政直接支付退款入账通知书登记<span class="c-red">未登记1条</span></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="cen3">
+					<div class="head-r2">
+						<span>公告信息</span>
+						<img src="img/dashboard/notice.png"/>
+					</div>
+					<div id="m-content">
+						<ul>
+							<li><span class="icon1"></span><a href="javascript:void(0);">关于提醒自行纳税申报的函20161229</a></li>
+							<li><span class="icon1"></span><a href="javascript:void(0);">关于做好2017年集中支付系统升级相关工作</a></li>
+							<li><span class="icon1"></span><a href="javascript:void(0);">关于提醒自行纳税申报的函20161229</a></li>
+						</ul>
+					</div>
+					
+				</div>
+				
+			</div>
+			<div id="left">
+				<div class="cen-1">
+					<ul class="list">
+						<li><a href="javascript:void(0);">常用<br/>操作</a></li>
+						<li class="icon hid _portal_hid_ban_li" style="width:20%;"><a href="javascript:void(0);"><img src="img/icon-1.png"/><span>我要办</span></a>
+							<div class="hidContent" style="position: absolute;top: 40px;left: 0;z-index: 66;">
+								<ul style="width:200px; height:246px;">
+									<li><span class="icon2"></span><a href="javascript:void(0);">现金业务</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">普通转账</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">代扣代缴</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">柜台缴税</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">批量支付</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">公务卡</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">政府采购</a></li>
+								</ul>
+							</div>
+						</li>
+						<li class="icon hid _portal_hid_deng_li" style="width:20%;"><a href="javascript:void(0);"><img src="img/icon-2.png"/><span>我要登</span></a>
+							<div class="hidContent" style="position: absolute;top: 40px;left: 0;z-index: 66;">
+								<ul style="width:255px; height:212px;">
+									<li><span class="icon2"></span><a href="javascript:void(0);">单位额度到账通知书</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">授权支付退款通知书</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">财政授权支付入账通知书</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">财政授权支付退款入账通知书</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">财政直接支付入账通知书</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">财政直接支付退款入账通知书</a></li>
+								</ul>
+							</div>
+						</li>
+						<li class="icon hid _portal_hid_cha_li" style="width:20%;"><a href="javascript:void(0);"><img src="img/icon-3.png"/><span>我要查</span></a>
+							<div class="hidContent" style="position: absolute;top: 40px;left: 0;z-index: 66;">
+								<ul style="width:318px; height:282px;">
+									<li><span class="icon2"></span><a href="javascript:void(0);">财政直接支付申请书查询</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">财政授权支付凭证查询</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">指标明细查询</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">支付明细查询</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">预算执行情况查询</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">国库集中支付年终结余资金对账单查询</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">预算项目查询</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">自定义查询</a></li>
+								</ul>
+							</div>
+						</li>
+						<li class="icon hid _portal_hid_wen_li" style="width:20%;"><a href="javascript:void(0);"><img src="img/icon-4.png"/><span>我要问</span></a>
+							<div class="hidContent" style="position: absolute;top: 40px;left: 0;z-index: 66;">
+								<ul style="width:200px; height:318px;">
+									<li><span class="icon2"></span><a href="javascript:void(0);">操作手册</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">操作规范</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">公务卡</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">支付签章</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">凭证查询</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">凭证打印</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">资金监控</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">即时通讯</a></li>
+									<li><span class="icon2"></span><a href="javascript:void(0);">其他</a></li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="cen-2">
+					<div class="head-l">
+						<span>
+							支出进度情况
+						</span>
+						
+						<!--时间-->
+						<div class="selectDiv">
+							<span class="timespan">时间:</span>
+							<input id="budgetTime" type="text" class="form-control budgetTime" readonly="readonly"  data-bind="click:onFocus">
+							<span><i class="icon-calendar"></i></span>
+						</div>
+						<!--支出类型-->
+						<div class="selectDiv">
+							<span class="zcspan">支出类型:</span>
+							<select id="dwdwzcSelect" class="dwdwzcSelect">
+								
+								<option value="1">基本支出</option>
+								<option value="2">项目支出</option>
+								<option value="3">政府采购</option>
+								<option value="4">公务卡</option>
+							</select>
+						</div>
+						<!--预算类别-->
+						<div class="selectDiv">
+							<span class="budgetSpan">预算类别:</span>
+							<select id="budgetSelect" class="budgetSelect">
+								<option value="1">一般预算</option>
+								<option value="2">项目支出</option>
+								<option value="3">政府采购</option>
+								<option value="4">公务卡</option>
+							</select>
+						</div>
+					</div>
+					<div style="position: relative;">
+						<div class="zhibiao">
+							<span class="zbje">指标金额:<span class="zbjenum">30,000.00</span></span>
+							<span class="zfje">支付金额:<span class="zfjenum">10,000.00</span></span>
+							<span class="zbye">指标余额:<span class="zbyenum">20,000.00</span></span>
+						</div>
+						<div class="danweiType">
+							<span class="zbje">单位:</span>
+							<label><input name="Fruit" type="radio" value="" checked="true" />元 </label>
+							<label><input name="Fruit" type="radio" value="" />万元 </label>
+						</div>
+						<div id="dwzc" style="width:700px;height:130px;"></div>
+					</div>
+				
+				</div>
+				<div class="cen-3">
+					<div class="head-l">
+						<span>
+							预算指标
+						</span>
+						<!--时间-->
+						<div class="selectDiv1">
+							<span class="timespan">下达时间:</span>
+							<input id="budgetTime" type="text" class="form-control budgetTime" readonly="readonly"  data-bind="click:onFocus" value="2017-7">
+							<span><i class="icon-calendar"></i></span>
+						</div>
+						<!--预算类别-->
+						<div class="selectDiv1">
+							<span class="budgetSpan">可用额</span>
+							<select id="budgetSelect" class="budgetSelect">
+								<option value="1">全部</option>
+								<!--<option value="2">项目支出</option>
+								<option value="3">政府采购</option>
+								<option value="4">公务卡</option>-->
+							</select>
+						</div>
+						<div class="selectDiv1" style="position: relative;">
+							<span id="demand">高级查询</span>
+							<div class="demandContent">
+								<ul id="d-list">
+									<li style="position: relative;">指标文号<input type="text"/><span id="more" class="_portal_table_gaoji_zbwh" style="position: absolute;top: 5px;right: 18px; color: #999999;font-size: 16px;">...</span></li>
+									<li style="position: relative;">项目分类<input type="text"/><span class="_portal_table_gaoji_xbfl" style="position: absolute;top: 5px;right: 18px; color: #999999;font-size: 16px;">...</span></li>
+									<li style="position: relative;">预算项目<input type="text"/><span class="_portal_table_gaoji_ysxm" style="position: absolute;top: 5px;right: 18px; color: #999999;font-size: 16px;">...</span></li>
+									<li style="position: relative;">预算单位<input type="text"/><span class="_portal_table_gaoji_ysdw" style="position: absolute;top: 5px;right: 18px; color: #999999;font-size: 16px;">...</span></li>
+									<li style="position: relative;">支付方式<input type="text"/><span class="_portal_table_gaoji_zffs" style="position: absolute;top: 5px;right: 18px; color: #999999;font-size: 16px;">...</span></li>
+								</ul>
+								<input type="button" id="close" value="关闭" />
+								<input type="button" id="sure" value="确定" />
+							</div>
+							<div class="content_wrap" style="position: absolute;top: 40px;left: 30px;display: none;">
+								<div class="head-div">
+									<span>列表</span>
+									<a href="javascript:void(0);" id="close-div">
+										<span>×</span>
+									</a>
+								</div>	
+								<div class="inputDiv">
+									<span class="posi">快速定位:<input type="text" class="inputForm _portal_table_input"></span>
+									<button type="button" class="btn btnSearch">搜索</button>
+								</div>
+								<div class="zTreeDemoBackground left">
+									<ul id="zhibiaotree" class="ztree" style="width: 249px;height: 235px; margin-left: 18px;border: 1px solid #E5E5E5;"></ul>
+								</div>
+								<input type="button" id="over" value="关闭" />
+								<input type="button" id="ok" class="_portal_table_submit" value="确定" />
+							</div>
+						</div>
+						<div class="danwei">单位：元</div>
+					</div>
+					<div id="tableContent"style="padding:10px 10px;">
+						<table border="0" cellspacing="0" cellpadding="0" width="726px">
+							<tr height="36px" style="background: #E9E9E9;color: #333333;"><th width="140px">指标文号</th><th width="100px">功能分类</th><th width="120px">项目</th><th width="100px">经济分类</th>
+							<th width="100px">下达日期</th><th width="120px">指标额</th><th width="120px">可用额</th></tr>
+							<tr height="30px" ><td>鲁财预指[2017]号</td><td>人大事务</td><td>人大会议费</td><td>办公费</td><td>2017-7-7</td><td>32,000,00</td><td>2,000,00</td></tr>
+							<tr height="30px" ><td>鲁财预指[2017]号</td><td>人大事务</td><td>人大会议费</td><td>办公费</td><td>2017-7-7</td><td>32,000,00</td><td>2,000,00</td></tr>
+							<tr height="30px" ><td>鲁财预指[2017]号</td><td>人大事务</td><td>人大会议费</td><td>办公费</td><td>2017-7-7</td><td>32,000,00</td><td>2,000,00</td></tr>
+							<tr height="30px" ><td>鲁财预指[2017]号</td><td>人大事务</td><td>人大会议费</td><td>办公费</td><td>2017-7-7</td><td>32,000,00</td><td>2,000,00</td></tr>
+							<tr height="30px" ><td>鲁财预指[2017]号</td><td>人大事务</td><td>人大会议费</td><td>办公费</td><td>2017-7-7</td><td>32,000,00</td><td>2,000,00</td></tr>
+							<tr height="30px" ><td>鲁财预指[2017]号</td><td>人大事务</td><td>人大会议费</td><td>办公费</td><td>2017-7-7</td><td>32,000,00</td><td>2,000,00</td></tr>
+							<tr height="30px" ><td>鲁财预指[2017]号</td><td>人大事务</td><td>人大会议费</td><td>办公费</td><td>2017-7-7</td><td>32,000,00</td><td>2,000,00</td></tr>
+							<tr height="30px" ><td>鲁财预指[2017]号</td><td>人大事务</td><td>人大会议费</td><td>办公费</td><td>2017-7-7</td><td>32,000,00</td><td>2,000,00</td></tr>
+							<tr height="30px" ><td>鲁财预指[2017]号</td><td>人大事务</td><td>人大会议费</td><td>办公费</td><td>2017-7-7</td><td>32,000,00</td><td>2,000,00</td></tr>
+						</table>
+					</div>
+					
+				</div>
+			</div>
+			
+		<!-- </div> -->
+			<SCRIPT type="text/javascript">
+			var setting = {
+				view:{
+					selectedMulti: false	//禁止多点选中
+				},
+				callback: {  
+	                onClick: function(treeId, treeNode) {  
+	                    var treeObj = $.fn.zTree.getZTreeObj(treeNode);  
+	                    var selectedNode = treeObj.getSelectedNodes()[0];  
+	                    $("._portal_table_input").val(selectedNode.name);  
+	                }  
+	            }
+			};
+
+			var zNodes = [{
+					name: "单位会计科目",
+					open: true,
+					children: [{
+							name: "单位会计科目",
+							children: [{
+									name: "资产类",
+									children: [{
+											name: "现金"
+										},
+										{
+											name: "收入户存款",
+											children: [{
+												name: "现金"
+											}, ]
+
+										},
+										{
+											name: "支出户存款",
+											children: [{
+												name: "现金"
+											}, ]
+
+										},
+									]
+								},
+								{
+									name: "负债类",
+									children: [{
+											name: "现金"
+										},
+										{
+											name: "收入户存款",
+											children: [{
+												name: "现金"
+											}, ]
+
+										},
+										{
+											name: "支出户存款",
+											children: [{
+												name: "现金"
+											}, ]
+
+										},
+									]
+								},
+																{
+									name: "基金类",
+									children: [{
+											name: "现金"
+										},
+										{
+											name: "收入户存款",
+											children: [{
+												name: "现金"
+											}, ]
+
+										},
+										{
+											name: "支出户存款",
+											children: [{
+												name: "现金"
+											}, ]
+
+										},
+									]
+								},
+							]
+						}
+					]
+				}
+			];
+
+			$(document).ready(function() {
+				$.fn.zTree.init($("#zhibiaotree"), setting, zNodes);
+				//$("._portal_table_submit").on("click", function(){
+					
+				//});
+			});
+			
+		</SCRIPT>
+	</body>
+	
+	<script charset="utf-8" type="text/javascript" src="js/Base64.js"></script>
+	<script charset="utf-8" type="text/javascript" src="js/md5.min.js"></script>
+	<script charset="utf-8" type="text/javascript" src="js/dfp.js"></script>
+	<script charset="utf-8" type="text/javascript" src="js/dashboard.js"></script>
+	
+</html>

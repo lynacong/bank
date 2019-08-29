@@ -1,0 +1,39 @@
+	<div class="modal fade" id="bankNoInputModal" tabindex="-1"
+		role="dialog" aria-labelledby="ylModalLabel" data-backdrop="static">
+		<div class="modal-dialog" role="document" style="width:924px;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" onclick="closeBankNoInput()" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="titleText">补录收款行行号</h4>
+				</div>
+				<div class="modal-body" style="height:430px;">
+					<div>
+						<button type="button" class="btn btn-primary" onclick="payeeBankNoSearch()">查询</button>
+						<button type="button" class="btn btn-primary" onclick="payeeBankNoAdd()">新增</button>
+						<button type="button" class="btn btn-primary" onclick="payeeBankNoUpdate()">修改</button>
+						<button type="button" class="btn btn-primary" onclick="payeeBankNoDelete()">删除</button>
+						<button type="button" class="btn btn-primary" onclick="payeeBankNoClear()">清空</button>
+					</div>					
+					<div class="common-border" style="margin:16px 0 4px;">
+						<span class="common-surround-header">查询区</span>
+						<div class="search-area">
+							<div id="payeeBankNoSearch"></div>
+						</div>
+					</div>
+					<label>收款银行信息：</label>
+					<div id="subDiv1" class="noScrollTable">
+						<table id="payeeBankNoList"
+							class="table nowrap table-bordered table-hover table-condensed"
+							style="width:100%;">
+						</table>
+					</div>
+				</div>
+				<div class="modal-footer">					
+					<button type="button" class="btn btn-primary" onclick="saveBankNoInput()">确定</button>
+					<button type="button" class="btn btn-primary" onclick="closeBankNoInput()">退出</button>
+				</div>
+			</div>
+		</div>
+	</div>

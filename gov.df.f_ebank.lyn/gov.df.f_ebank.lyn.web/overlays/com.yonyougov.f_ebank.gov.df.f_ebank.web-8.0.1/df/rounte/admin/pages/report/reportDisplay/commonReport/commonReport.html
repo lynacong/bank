@@ -1,0 +1,37 @@
+<!-- 公共打印前台 -->
+<div class="wrapper" style="margin:0 auto;">
+	<div class="button-fixed">
+		<div class="btn-grid-group-btn ip-content-btn-area">
+			<div class="icon-buttons">
+				<div id="print" class="icon-box" onclick="doPrint()">
+					<i class="iconbtn icon-print"></i>打印
+				</div>
+				 <div id="drexcel" class="icon-box"  onclick="expExcel()">
+					<i class="iconbtn icon-in"></i>导出Excel
+				</div>
+			   <div id="drexcel" class="icon-box"  onclick="expPDF()">
+					<i class="iconbtn icon-in"></i>导出PDF
+				</div>
+				<div id="query" class="icon-box" onclick="fSelect()">
+					<i class="iconbtn icon-query-state"></i>查询
+				</div> 
+			</div>
+		</div>
+    </div>
+	<div class="btn-group-content  button-fixed-select">
+		<div class="common-border">
+			<span class="common-surround-header">查询区</span>
+			<div class="search-area">
+				<div id="modelQueryArea"></div>
+			</div>
+		</div>
+		<div class = "mainLabel clearfix">
+			<label id="gwkxx">直接支付明细报表：</label>
+		</div>
+		<div class="mainTable">                                                                     
+       <OBJECT id='ocxDSc'  height='480px' width='100%' classid='clsid:EAF9360D-B3E4-4CC0-B3D7-456489ED249D'></OBJECT>
+		</div>
+	</div>
+</div>
+	
+	

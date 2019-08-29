@@ -1,0 +1,492 @@
+	<div class="menuConfig-body h">
+		<div id="menubody" class="menubody row  h">
+			<div class="col-md-3 h">
+				<div class="bodyBackgroud h">
+					<div class='tree-block h'>
+						<div class="form-group search-form" style="margin: 5px;">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="模糊查询"
+									aria-describedby="basic-addon1"
+									data-bind="event:{keyup:quickQuery}"
+									onkeydown='if(event.keyCode==13){menuTreeNext();}'
+									id="quickquery"> <span class="input-group-addon"
+									onclick="menuTreeNext()"><span
+									class="glyphicon glyphicon-search"></span> </span>
+							</div>
+						</div>
+						<div class="menuTree">
+							<div id="menuConfigTree" class="ztree"
+								u-meta='{"id":"user-tree1","data":"treeDataTable","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"chr_name","setting":"treeSetting"}'></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-9 form-type">
+				<div class="btnlist">
+					<button type="button" class="btn btn-primary" data-toggle="modal"
+						data-bind="click: addbtnSubmit">新&nbsp;增</button>
+					<button type="button" class="btn btn-primary" data-toggle="modal"
+						data-bind="click: editbtnSubmit">修&nbsp;改</button>
+					<button type="button" class="btn btn-danger"
+						data-bind="click: delbtnSubmit">删&nbsp;除</button>
+					<button type="button" class="btn btn-primary" data-toggle="modal"
+						onclick="refresh()">刷&nbsp;新</button>
+					<!-- <button type="button" class="btn btn-primary" data-toggle="modal"
+						data-bind="click: lockbtnSubmit">锁&nbsp;定</button>
+					<button type="button" class="btn btn-primary" data-toggle="modal"
+						data-bind="click: unlockbtnSubmit">解&nbsp;锁</button> -->
+				</div>
+				<div style="width:100%;">
+					<table class="table-striped table table-bordered nowrap" id="write-grid" style="width:100%;"></table>  
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="addModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabelnew" data-backdrop="static">
+		<div class="modal-dialog" role="document"  style="width:650px;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabelnew">新增用户</h4>
+				</div>
+				<div class="modal-body clearfix" style="height:454px;">
+						<ul id="myTabs" class="nav nav-tabs" role="tablist">
+							<li id="jbsz" role="presentation" class="active"><a
+								href="#homes" aria-controls="home" role="tab" data-toggle="tab">基本设置</a>
+							</li>
+							<li role="presentation"><a href="#profile"
+								aria-controls="profile" role="tab" data-toggle="tab">机构权限</a></li>
+							<li role="presentation"><a href="#messages"
+								aria-controls="messages" role="tab" data-toggle="tab">数据权限</a></li>
+							<li role="presentation"><a href="#settings"
+								aria-controls="settings" role="tab" data-toggle="tab">角色信息</a></li>
+						</ul>
+						<div id="myTabContent" class="tab-content form-block2">
+							<div role="tabpanel" class="tab-pane active backcolor" id="homes">
+
+								<div class="common-border clearfix" style="margin-bottom:26px;">
+									<span class="common-surround-header">系统信息</span>
+									<!-- <div id="basemsg1">
+										<h4>系统信息</h4>
+									</div> -->
+									<div id="info2" class="container-fluid">
+										<div class="row">
+											<label for="" class="col-md-2 text-right"> <span
+												style="font-size: 15px;color:red;">*</span>用户编码:</label>
+											<div class="col-md-4 ip-input-group">
+												<input id="usercode" type="text" class="form-control">
+											</div>
+											<label for="" class="col-md-2 text-right"> <span
+												style="font-size: 15px;color:red;">*</span>密&nbsp;&nbsp;码:</label>
+											<div class="col-md-4 ip-input-group">
+												<input id="password" type="password" class="form-control" onblur="passwordChange()">
+											</div>
+										</div>
+										<div class="row">
+												<label for="" class="col-md-2 text-right"> <span
+													style="font-size: 15px;color:red;">*</span>用户名称:</label>
+												<div class="col-md-4 ip-input-group">
+													<input id="username" type="text" class="form-control">
+												</div>
+												<label for="" class="col-md-2 text-right"> <span
+													style="font-size: 15px;color:red;">*</span>确认密码:</label>
+												<div class="col-md-4 ip-input-group">
+													<input id="confirmpsd" type="password" class="form-control" onblur="confirmpsdChange()">
+												</div>
+										</div>
+										<div class="row">
+											<label for="" class="col-md-2 text-right">用户昵称:</label>
+											<div class="col-md-4 ip-input-group">
+												<input id="nickname" type="text" class="form-control">
+											</div>
+											<label for="" class="col-md-2 text-right" style="color:red">密码强度:</label>
+											<div id="psdstrth" class="col-md-4 ip-input-group"
+												style="color:red"></div>
+										</div>
+										<div class="row">
+												<label for="" class="col-md-2 text-right"> <span
+													style="font-size: 15px;color:red;">*</span>所属类型:</label>
+												<div class="col-md-4 ip-input-group">
+													<select id="userorgtype" class="form-control" onpropertychange="userorgtypeChange()">
+													
+													</select>
+												</div>
+												<label class="col-md-2 text-right"><span id="belon-star"
+													style="font-size: 15px;color:red;display: none;">*</span>用户所属:</label>
+												<div class="input-group col-md-4 ip-input-group">
+													<input id="beloneorg" type="text"
+														class="form-control col-md-6" readonly="readonly">
+													<input id="beloneorg-h" type="hidden"> <span
+														id="beloneorg-span" class="input-group-addon belon-class">
+														<span class="glyphicon glyphicon-list"></span></span> 
+												</div>
+										</div>
+										<div class="row">
+												<label for="security_level" class="col-md-2 text-right">安全级别:</label>
+												<div class="col-md-4 ip-input-group">
+													<select id="security_level" disabled
+														class="form-control">
+														<option value="0" selected>密码认证</option>
+														<!-- <option value="1">CA认证</option> -->
+													</select>
+												</div>
+												<label for="" class="col-md-2 text-right">启用标识:</label>
+												<div class="col-md-4 ip-input-group">
+													<label><input id="enabled" type="checkbox" value=""
+														checked> </label>
+												</div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="common-border clearfix">
+									<span class="common-surround-header">基本信息</span>
+									<!-- <div id="basemsg">
+										<h4>基本信息</h4>
+									</div> -->
+									<div id="info1" class="container-fluid">
+										<div class="row">
+												<label for="" class="col-md-2 text-right">联系电话:</label>
+												<div class="col-md-4 ip-input-group">
+													<input id="mobile" type="text" class="form-control"
+														onKeyUp="value=value.replace(/[^\d+-]/g,'')"
+														placeholder="请输入数字">
+												</div>
+												<label for="" class="col-md-2 text-right">身份证号:</label>
+												<div class="col-md-4 ip-input-group">
+													<input id="identity_card" type="text" class="form-control">
+												</div>
+										</div>
+										<div class="row">
+												<label for="" class="col-md-2 text-right">性&nbsp;&nbsp;别:</label>
+												<div class="col-md-4 ip-input-group">
+													<label><input type="radio" name="optionsRadios"
+														id="1" value="1" checked>男</label> <label><input
+														type="radio" name="optionsRadios" id="0"
+														value="0">女</label>
+												</div>
+												<label for="" class="col-md-2 text-right">出生日期:</label>
+												<div
+													class="input-group date form_date col-md-4 ip-input-group"
+													data-date="" data-date-format="yyyy-mm-dd"
+													data-link-field="birthday" data-link-format="yyyy-mm-dd">
+													<input class="form-control" size="16" id="birthday"
+														type="text" value=""> <span
+														class="input-group-addon"><span
+														class="glyphicon glyphicon-remove"></span> </span> <span
+														class="input-group-addon"><span
+														class="glyphicon glyphicon-calendar"></span> </span>
+												</div>
+										</div>
+										<div class="row">
+												<label for="" class="col-md-2 text-right">手机IMSI:</label>
+												<div class="col-md-4 ip-input-group">
+													<input id="imsi" type="text" class="form-control">
+												</div>
+												<label for="" class="col-md-2 text-right">手机IMEI:</label>
+												<div class="col-md-4 ip-input-group">
+													<input id="imei" type="text" class="form-control"
+														onKeyUp="value=value.replace(/[^\d]/g,'')"
+														placeholder="请输入数字">
+												</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div role="tabpanel" class="tab-pane" id="profile">
+								<div class="row">
+									<label class="col-md-2 text-right">机构权限</label>
+									<div class="col-md-4 ip-input-group">
+										<select id="organSelectList" disabled class="form-control" onchange="orgTypeChange(this)">
+										</select>
+									</div>
+								</div>
+								<div>
+									<div class="panel panel-default panel-tree">
+										<div class="panel-body">
+											<span class="modal-tree-root"><img
+												src="/df/trd/ip/changeTree/images/base.gif">全部</span>
+											<div id="treeTest" class="ztree"
+												u-meta='{"id":"oragn-tree","data":"organRightDataTable","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"codename","setting":"organTreeSetting"}'
+												style="padding:0;margin-left: 10px;"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div role="tabpanel" class="tab-pane" id="messages">
+								<div class="row">
+									<label class="col-md-2 text-right">数据权限</label>
+									<div class="col-md-4 ip-input-group">
+										<input id="dataRightInput" class="form-control" />
+									</div>
+									<div class="col-md-4">
+										<button class="btn btn-primary btn-data-authority" style="margin-top:0;"
+										data-bind="click: getRightGroup">选择</button>
+									<button class="btn btn-danger btn-data-authority" style="margin-top:0;"
+										data-bind="click: delDataRight">删除</button>
+									</div>
+									
+								</div>
+								<!-- <div class="form-inline">
+									<label>数据权限</label> <input class="form-control"
+										id="dataRightInput" />
+									<button class="btn btn-primary btn-data-authority"
+										data-bind="click: getRightGroup">选择</button>
+									<button class="btn btn-danger btn-data-authority"
+										data-bind="click: delDataRight">删除</button>
+								</div> -->
+								<div>
+									<div class="panel panel-default panel-tree">
+										<div class="panel-body" style="height:330px;">
+											<div id="rigntTree" class="ztree"
+												u-meta='{"id":"rightDetaile","data":"rightDetaileDataTable","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"chr_name"}'>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="settings">
+								<div class="panel panel-default" id="user-role-info">
+									<div class="panel-body" style="height:150px;">
+										<div onclick="ulroleSelected()">
+											<ul id="ulroleSelectedRight" style="margin-left: 20px;">
+											</ul>
+										</div>
+									</div>
+									<div class="panel-footer" style="text-align: right;">
+										<button class="btn btn-primary btn-data-authority"
+											data-bind="click: showAddRolesModal">添加角色</button>
+										<button class="btn btn-danger btn-data-authority"
+											data-bind="click: delRole">删除角色</button>
+									</div>
+								</div>
+								<div>
+									<div class="row">
+										<div class="col-md-3" style="padding-right:0;">
+											<input type="radio" name="optionsRadios1"
+												id="optionsRadios3" value="option1" onclick="allClick()"
+												checked disabled><label>使用用户权限</label>
+										</div>
+										<div class="col-md-3">
+											<input type="radio" name="optionsRadios1"
+												id="optionsRadios4" value="option2"
+												onclick="userDefinedClick()" disabled><label>自定义权限</label>
+										</div>
+										<div class="col-md-3">
+											<input class="form-control" id="dataRightInput2"
+												readonly="readonly" />
+										</div>
+										<div class="col-md-3">
+											<button
+												class="btn btn-primary btn-data-authority" style="margin-top:0;"
+												id="checkbtn" data-bind="click: getRightGroup1" disabled>选择</button>
+										</div>
+									</div>
+									<div class="panel panel-default" style="margin-bottom:0">
+										<div class="panel-body" style="height:100px;">
+											<div>
+												<div id="rigntTree1" class="ztree"
+													u-meta='{"id":"rightDetaile1","data":"rightDetaileDataTable1","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"chr_name"}'>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bind="click: userSave">确定</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" tabindex="-1" role="dialog" id="selectAuthModal" data-backdrop="static">
+		<div class="modal-dialog" role="document" style="width: 35%;">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<span class="modal-title">增加权限组</span>
+				</div>
+				<div class="modal-body panel-body" style="height:360px;">
+					<span class="modal-tree-root"><img
+						src="/df/trd/ip/changeTree/images/base.gif">权限组</span>
+					<div id="ruleTree1" class="ztree"
+						u-meta='{"id":"ruleTree1","data":"dataTableRuleGroup","type":"tree","idField":"rule_id","pidField":"pid","nameField":"name"}'></div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bind="click: addGroup">新增</button>
+					<button type="button" class="btn btn-primary"
+						data-bind="click: showRightDetail">确定</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" tabindex="-1" role="dialog" id="rightModal" data-backdrop="static">
+		<div class="modal-dialog" role="document" style="width: 50%;">
+			<div class='modal-content modal-content-bc'>
+				<div class='modal-header'>
+					<button type="button" class="close"
+						data-bind="click:rightModelCloseButton">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class='modal-title'>设定规则</h4>
+				</div>
+				<div class="modal-body panel-body">
+					<div class="container-fluid">
+						<div class="row">
+						<label class="col-md-2 text-right">编号：</label>
+						<div class="col-md-4 ip-input-group">
+							<input id="rule_code" class="form-control" />
+						</div>
+						<label class="col-md-2 text-right">名称：</label>
+						<div class="col-md-4 ip-input-group">
+							<input id="rule_name" class="form-control" />
+						</div>
+					</div>
+					<div class="row">
+						<label class="col-md-2 text-right">说明：</label>
+						<div class="col-md-4 ip-input-group">
+							<input id="remark" class="form-control" />
+						</div>
+					</div>
+					<!-- <form class="form-inline">
+						<div class="form-group">
+							<label for="rule_code">编号：</label> <input type="text"
+								class="form-control" id="rule_code">
+						</div>
+						<div class="form-group">
+							<label for="rule_name">名称：</label> <input type="text"
+								class="form-control" id="rule_name">
+						</div>
+						<div class="form-group m-top">
+							<label for="remark">说明：</label> <input type="text"
+								class="form-control spe-input" id="remark">
+						</div>
+					</form> -->
+					<div class="m-top">
+
+						<!-- Nav tabs -->
+						<ul id="addNewRule" class="nav nav-tabs" role="tablist">
+						</ul>
+
+						<!-- Tab panes -->
+						<div id="myTabContent1" class="tab-content"
+							style="height: 200px; overflow-y:auto; overflow-x:hidden;"></div>
+					</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bind="click: showYLModelDialog">预览</button>
+					<button type="button" class="btn btn-primary"
+						data-bind="click: rightSure">确定</button>
+					<button type="button" class="btn btn-primary"
+						data-bind="click:rightModelCloseButton">取消</button>
+				</div>
+				
+			</div>
+		</div>
+		
+	</div>
+	<div class="modal fade" tabindex="-1" role="dialog" >
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<!-- 预览Modal start-->
+				<div id="ylModal" style="display:none">
+					<div id='ylModal-modal' class='bs-modal-sm'>
+						<div class='modal-dialog' style="width: 400px;">
+							<div class='modal-content modal-content-bc'>
+								<div class='modal-header'>
+									<button type="button" class="close"
+									data-bind="click:drCloseButton">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class='modal-title'>预览权限组信息</h4>
+								</div>
+								<div class="modal-body display-container panel-body">
+									<ul id="detail_list"></ul>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-primary"
+									data-bind="click:drCloseButton">关闭</button>
+								</div>
+							</div>
+	
+						</div>
+					</div>
+				</div>
+				<!-- 预览Modal end-->
+			</div>
+		</div>
+		
+	</div>
+	<div class="modal fade" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<!-- 查看Modal begin-->
+				<div id="drDisplayModal" style="display:none">
+					<div id='ylModal-modal' class='bs-modal-sm'>
+						<div class='modal-dialog' style="width: 400px;">
+							<div class='modal-content modal-content-bc'>
+								<div class='modal-header'>
+									<button type="button" class="close"
+										data-bind="click:drCloseButton">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class='modal-title'>权限预览</h4>
+								</div>
+								<div class="modal-body display-container panel-body">
+									<ul id="detail_list"></ul>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-primary"
+										data-bind="click:drCloseButton">关闭</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 查看Modal end-->
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" tabindex="-1" role="dialog" id="addRoleModal"
+		data-backdrop="static" >
+		<div class="modal-dialog" role="document" style="width: 35%;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<span class="modal-title">添加角色</span>
+				</div>
+				<div class="modal-body panel-body">
+					<div id="treeTest" class="ztree"
+						u-meta='{"id":"addRoletree3","data":"roleDataTable","type":"tree","idField":"id","pidField":"parentid","nameField":"name","setting":"roleTreeSetting"}'></div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bind="click: getSelectRoleTree">确定</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>

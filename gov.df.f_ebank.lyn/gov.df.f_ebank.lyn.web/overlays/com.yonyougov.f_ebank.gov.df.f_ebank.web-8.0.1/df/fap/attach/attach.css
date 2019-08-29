@@ -1,0 +1,207 @@
+body {
+  min-width: 600px;
+}
+
+th,
+td,
+li {
+  word-wrap:break-word;
+  word-break:break-all;
+}
+
+.left-sort-list {
+  height: calc(100vh - 105px);
+  border: 1px solid #ddd;
+  padding: 5px;
+  overflow: auto;
+}
+
+.sort-group {
+  background: #F2F9FF;
+  height: 50px;
+  margin: -4px;
+  padding: 8px;
+}
+
+.attach-sort,
+.attach-files {
+  font-size: larger;
+  font-weight: bold;
+}
+
+.clear-fix {
+  overflow: auto;
+}
+
+.sort-button {
+  float: right;
+  height: 25px;
+  margin-top: 0;
+  padding: 0 10px;
+}
+
+.sort-list {
+  margin: 4px -4px -4px -4px;
+  overflow-y: auto;
+  height: calc(100% - 36px);
+}
+
+#sort-table,
+#attach-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.attach-button {
+  height: 25px;
+  margin-top: 0;
+  padding: 0 10px;
+}
+
+.attach-table-bordered {
+  border: 1px solid #ddd;
+}
+
+.checkError {
+  color: red;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.list-group-item:active,
+.sortActive,
+.attachActive {
+  background-color: #ddd;
+}
+
+.require-input:after {
+  content: ' *';
+  color: red;
+  font-size: 100%;
+}
+
+.no-require-input:after {
+  content: ' ';
+  font-size: 100%;
+}
+
+/* 上传按钮样式美化 */
+
+.a-upload {
+  padding: 0 10px;
+  height: 30px;
+  line-height: 30px;
+  position: relative;
+  cursor: pointer;
+  color: #888;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1
+}
+
+.a-upload input {
+  position: absolute;
+  font-size: 100px;
+  right: 0;
+  top: 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  cursor: pointer
+}
+
+.a-upload:hover {
+  background: #AADFFD;
+  border-color: #78C3F3;
+  color: #004974;
+  text-decoration: none;
+}
+
+
+/* 复选框样式美化 */
+
+.checkbox {
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.checkBox+label {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #d9d9d9;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.checkBox:checked+label {
+  border: 1px solid #108EE9;
+  font-weight: 700;
+}
+
+.checkBox:checked+label::after {
+  margin: auto;
+  content: '√';
+  color: #108EE9;
+  width: 8px;
+  height: 8px;
+  line-height: 8px;
+  text-align: center;
+  font-size: 12px;
+}
+
+input[type="checkbox"] {
+  margin: 0;
+  display: none;
+}
+
+.attach-glyphicon {
+  color: #f8f0ff;
+}
+
+.attach-glyphicon :hover {
+  color: #f5e9ff;
+}
+
+.file-glyphicon {
+  color: #108EE9;
+}
+
+.file-glyphicon :hover{
+  color: #EA1343;
+}
+
+
+/*单元格宽度*/
+.pct5 {
+  width: 5%;
+}
+.pct10 {
+  width: 10%;
+}
+
+.pct15 {
+  width: 15%;
+}
+
+.pct20 {
+  width: 20%;
+}
+
+.pct25 {
+  width: 25%;
+}
+
+.pct30 {
+  width: 30%;
+}
+
+.pct33 {
+  width: 33.3%;
+}
+
+.pct40 {
+  width: 40%;
+}

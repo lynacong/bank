@@ -1,0 +1,76 @@
+.fl{float:left;}
+.disb{display:block!important;}
+.pr{position:relative;}
+.pa{position:absolute;}
+.mr10{margin-right:10px;}
+.ml10{margin-left:10px;}
+.p10{padding:10px;}
+.pt10{padding-top:10px;}
+.pt30{padding-top:30px;}
+.pb10{padding-bottom:10px;}
+.w70per{width:70%;}
+.h40per{height:40%; overflow:auto;}
+.h60per{height:60%; overflow:auto;}
+.h35per{height:35%; overflow:auto;}
+.h30per{height:30%; overflow:auto;}
+.h70per{height:70%; overflow:auto;}
+.h100per{height:100%; overflow:auto;}
+.border{border:1px solid #ccc;}
+
+.btn-bar{
+	padding:4px 10px;
+	background:#EBF2F9;
+}
+.checkbox-bar .checkbox{
+	margin-top:0;
+	margin-bottom:0;
+	padding:10px;
+}
+.epay-header{
+	position:absolute;
+	width:100%;
+}
+.top-content{
+	padding-top:45px;
+
+}
+.epay-content{
+	height:85%;
+}
+.tree-sidebar{
+	height:100%;
+	overflow-y:auto;
+	overflow-x:hidden;
+}
+.btn-grid-group-btn {
+    padding: 5px;
+}
+
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+::-webkit-scrollbar
+{
+	height:10px;
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0);
+	border-radius: 10px;
+	background-color: #ededed;
+}
+
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: none;
+	background-color: #d0d0d0;
+}
+
+
+
+
+

@@ -1,0 +1,75 @@
+
+
+<div class="modal" ng-controller="KisBpmGetParamValueCtrl">
+    <div class="modal-dialog">
+        <div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close editor-pop-close" data-dismiss="modal" aria-hidden="true" ng-click="closeP()">&times;</button>
+			    <span >规则参数选择</span>
+			</div>
+			<div class="modal-body">
+			  <div style="margin: 0px 10px 38px 0;">
+						<div class="col-sm-3 col-md-3">
+					  		 <span>参数类型：</span>
+					   	</div>
+					   	<div class="col-sm-8 col-md-8">
+						   <select id="selectMainInfo" ng-init="selectedNameParamTypeSel = paramTypeSel[0]"
+												ng-model="selectedNameParamTypeSel" ng-change='noEleChanged(selectedNameParamTypeSel)' ng-options="x for x in paramTypeSel" style="text-align: center;width: 100%;">
+						 	</select>
+						</div>
+			  </div>
+			  
+			  <div class="table-container">
+
+				    <table  id="gridTest" class="gridTest_out">
+
+				      <thead style="display: table; table-layout: fixed;">
+
+				        <tr id="1st" style="display: table; table-layout: fixed;width:100%;">  
+
+			                    <td style="text-align: center;">设置</td>  
+
+			                    <td style="text-align: center;">返回类型</td>  
+
+			                    <td style="text-align: center;">参数名称</td> 
+			                     
+			                    <td style="text-align: center;">参数描述</td>  
+			                    
+			                    <td style="text-align: center;">是否公用</td>  
+			                    
+			                    <td ng-hide=true style="text-align: center;">id值</td>  
+			                    
+			            </tr> 
+
+			          </thead> 
+
+				     
+				      <tbody>
+				      	<tr id="1st" style="display: table; table-layout: fixed;width:100%;" ng-repeat="data in noEleData" ng-click="noEleDataSelected($index)"
+								ng-class='{focus_out: $index==focus_out}'>
+						   <td id='noEleID_t{{$index}}'>{{$index + 1}}</td>
+						   <td id='noElePara_valuetype_t{{$index}}'>{{data.para_valuetype}}</td>
+						   <td id='noElePara_name{{$index}}'>{{data.para_name}}</td>	
+						   <td id='noElePara_desc{{$index}}'>{{data.para_desc}}</td>	
+						   <td id='noEleIs_shared{{$index}}'>{{data.is_shared}}</td>	
+						   <td id='noElePara_id{{$index}}' ng-hide=true>{{data.para_id}}</td>	
+					     </tr>
+				      </tbody>
+
+				    </table>
+				</div>
+			  
+			   <div class="editor-modal-footer modal-footer" style="text-align: left;">
+						<button ng-click="addNewNoEleByEleType(selectedNameParamTypeSel)" class="btn btn-primary" translate >新增</button>
+						<button ng-click="ruleParamFix()" class="btn btn-primary" translate >修改</button>
+						<button ng-click="delNewNoEleByEleType()" class="btn btn-primary" translate >删除</button>
+			        </div>
+			
+			</div>
+			<div class="editor-modal-footer modal-footer">
+				<button ng-click="selNoElementContent()" class="btn btn-primary" translate >选择</button>
+				<button ng-click="closeP()" class="btn btn-primary" translate >取消</button>
+			</div>
+		</div>
+	</div>
+</div>

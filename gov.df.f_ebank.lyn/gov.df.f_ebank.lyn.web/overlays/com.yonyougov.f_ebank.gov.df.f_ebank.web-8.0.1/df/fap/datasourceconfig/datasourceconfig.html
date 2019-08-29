@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+	<title>数据源配置</title>
+	<meta name="author" content="ip">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/platform.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+	<link rel="stylesheet" type="text/css" href="./datasourceconfig.css" />
+</head>
+<body>
+
+	<div class="wrapper">
+		<div class="subsystem-content">
+			<div class="operate-area">
+		    	<button class="btn btn-primary config-btn" data-bind="click: refreshRows">刷新</button>
+		    	<button class="btn btn-primary config-btn" data-bind="click: testRow">测试</button>
+		    	<button class="btn btn-primary config-btn" data-bind="click: addRow">新增</button>
+		    	<button class="btn btn-primary config-btn" data-bind="click: deleteRows">删除</button>
+		    	<button class="btn btn-primary config-btn" data-bind="click: saveRows">保存</button>
+		    	<button class="btn btn-primary config-btn" id="configRelations" data-toggle="modal" data-whatever="配置关联关系" data-target="#relationModal">配置关联关系</button>
+		    	
+			</div>
+			<div class="databaseconfig-grid-area">
+					<div class="databaseconfig-containe" u-meta='{"id":"databaseconfig-grid","type":"grid","data":"gridDataTable","columnMenu":true,"multiSelect":true,"showNumCol": true,"editable":true,"headerHeight":25,"rowHeight":25,"contentFocus":true,"cancelSelect":false,"cancelFocus":false}'>
+					<div options='{"field":"tablespace","dataType":"String","title":"数据库表空间"}'></div>
+					<div options='{"field":"type","dataType":"time","editOptions":{"id":"loanlend1","type":"combo","datasource":"type","onlySelect": true},"editType":"combo","renderType":"comboRender","title":"数据库类型"}'></div>
+					<div options='{"field":"name","dataType":"String","title":"JNDI名称"}'></div>
+					<div options='{"field":"ip","dataType":"String","title":"IP"}'></div>
+					<div options='{"field":"port","dataType":"String","title":"端口"}'></div>
+					<div options='{"field":"sid","dataType":"String","title":"SID"}'></div>
+					<div options='{"field":"username","dataType":"String","title":"账号"}'></div>
+					<div options='{"field":"passwd","dataType":"String","title":"密码","renderType":"passwordRender"}'></div>
+					<div options='{"field":"updatetime","dataType":"String","title":"更新时间"}'></div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 数据源关联关系配置modal -->
+	
+		<div class="modal fade" id="relationModal" tabindex="-1" role="dialog"
+			aria-labelledby="elementModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="elementModalLabel">关联关系</h4>
+					</div>
+					<div class="modal-body clearfix">
+						<div id="datasourceTree-area" class="ztree col-md-4" u-meta='{"id":"datasourceTree-area","data":"datasourceTree","type":"tree","idField":"id","pidField":"parentid","nameField":"name","setting":"treeSetting"}'></div>
+						<div class="appdata-grid col-md-7">
+							<div class="app-grid" u-meta='{"id":"app-grid","type":"grid","data":"appgridDataTable","columnMenu":true,"multiSelect":true,"showNumCol": true,"editable":false,"headerHeight":25,"rowHeight":25,"contentFocus":true,"cancelSelect":false,"cancelFocus":false}'>
+								<div options='{"field":"id","dataType":"time","title":"系统标识"}'></div>
+								<div options='{"field":"name","dataType":"time","title":"系统名称"}'></div>
+							</div>
+						</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" id = "saveConfigRelations" data-dismiss="modal">保存</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+	
+	
+	
+	<script src="/df/trd/jquery/jquery-1.12.3.min.js"></script>
+    <script src="/df/trd/knockout/knockout-3.2.0.debug.js"></script>
+	<script src="/df/trd/requirejs/require.js"></script>
+    <script src="/df/require.config.js"></script>
+	<script src="./datasourceconfig.js"></script>
+	<script>
+		
+	</script>
+</body>
+</html>

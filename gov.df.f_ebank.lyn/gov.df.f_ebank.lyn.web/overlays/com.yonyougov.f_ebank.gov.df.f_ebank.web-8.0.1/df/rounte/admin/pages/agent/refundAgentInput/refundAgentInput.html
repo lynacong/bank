@@ -1,0 +1,65 @@
+	<div class="wrapper" style="margin:0 auto;">
+		<div class="button-fixed">
+			<div class="btn-grid-group-btn ip-content-btn-area">
+				<div id="buttonArea" class="icon-buttons"></div>
+			</div>
+		</div>
+		<div class="btn-group-content button-fixed-select">
+			<div class="common-border">
+				<span class="common-surround-header">查询区</span>
+				<div class="search-area" id="searchArea"></div>
+			</div>
+			<div class="mainLabel clearfix">
+				<label>退款凭证：</label>
+				<select id="statusArea"></select>
+			</div>
+			<div class="mainTable">
+			<table id="mainGridArea"
+				class="table-striped table nowrap table-bordered table-hover table-condensed"
+				style="width: 100%;"></table>
+			</div>
+		</div>
+		
+		<!-- 详情弹窗 -->
+		<div id="detailContainer"></div>
+		
+		<!-- 退款通知书录入 -->
+		 <div class="modal fade" id="refundAgentInput" tabindex="-1" role="dialog"
+			aria-labelledby="ylModalLabel" data-backdrop="static">
+			<div class="modal-dialog" role="document" style="width:400px;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" onclick="closeAgentRefundBillInput()"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="titleText">退款信息补录</h4>
+					</div>
+					<div class="modal-body display-container" >
+					  <div style="height: 50px;">
+					     <label id="voucher_no_name" style="margin:1px 0px 5px 10px;">支付报文类型：</label>
+					     <input type="text" id="pay_msg_no" class="form-control" style="width:200px;display:inline-block;" > 
+				      </div>
+					  <div style="height: 50px;">
+					    <label id="voucher_no_name" style="margin:1px 0px 5px 10px;">支付交易序号：</label>
+					    <input type="text" id="pay_dictate_no" class="form-control" style="width:200px;display:inline-block;" >  
+				      </div>
+				     <div style="height: 50px;">
+				       <label id="voucher_no_name" style="margin:1px 0px 5px 10px; float:left;">交易委托日期：</label>
+					   <div class="col-sm-4 ip-input-group dateCalendar" style="padding-left:5px;width:206px;" style="float:left;">
+						<input id="pay_entrust_date" class="form-control calendarTime" type="text"
+							 onfocus="this.blur()"> 
+					    <i class="glyphicon glyphicon-remove" style="top:8px;right:8px;"></i> 
+					  </div>
+				    </div>  
+					<div class="modal-footer" >
+						<button type="button" class="btn btn-primary" onclick="doSaveAgentRefundBillInput()">确定</button>
+						<button type="button" class="btn btn-primary" onclick="doClearAgentRefundBillInput()">清空</button>
+					    <button type="button" class="btn btn-primary" onclick="closeAgentRefundBillInput()">退出</button>						
+					</div>
+				  </div>
+				</div>
+			</div>
+		</div>  
+		
+	</div>

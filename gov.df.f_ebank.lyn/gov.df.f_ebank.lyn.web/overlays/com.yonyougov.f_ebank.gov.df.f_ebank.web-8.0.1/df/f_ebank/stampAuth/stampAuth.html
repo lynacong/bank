@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible"
+	content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+<title>用户印章授权</title>
+<meta name="author" content="ip">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css" />
+<link rel="stylesheet" type="text/css" href="./stampAuth.css" />
+
+<body>
+	<div class="container-fluid h100per">
+		<div class="row h100per p10">
+			<div class="col-sm-4 tree-sidebar border">
+				<span class="modal-tree-root"><img src="../images/wj2.png">用户</span>
+				<div class="ztree"  u-meta='{"id":"tree_users","data":"treeUserDataTable","type":"tree","idField":"guid","pidField":"belong_type","nameField":"name","setting":"treeSettingUser"}'></div>
+			</div>
+			<div class="col-sm-8 h100per">
+			<div class="row top-content"  id="tabbed-plan">
+				<label for="finance_code" class="col-md-2 col-sm-2 text-right">财政机构:</label>
+				<div class="col-md-3 col-sm-4 ip-input-group">
+					<select class="form-control" id="finance_code" onchange="getStampsByFinanceUser()">
+					</select>
+				</div>
+		</div>
+				<!-- <label>财政机构：</label>
+				
+				<select id="finance_code" style="border-radius: 2px;border: 1px solid #ccc;width: 70px" onchange="getStampsByFinanceUser()"  >
+				</select> -->
+				<div class="tree-sidebar border">
+					<span class="modal-tree-root"><img src="../images/wj2.png">印章</span>
+					<div class="ztree"  u-meta='{"id":"tree_stamps","data":"treeStampDataTable","type":"tree","idField":"chr_id","pidField":"finance_code","nameField":"show_name","setting":"treeSettingStamp"}'></div>
+					<!-- <div class="ztree"  u-meta='{"id":"tree_stamps","data":"treeStampDataTable","type":"tree","idField":"chr_id","nameField":"chr_name","setting":"treeSettingStamp"}'></div> -->
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+<script src="../../trd/requirejs/require.js"></script>
+<script src="../../require.config.js"></script></head>
+<script src="./stampAuth.js"></script>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+		<title>grid的使用</title>
+		<meta name="description" content="grid的使用方法总结">
+		<meta name="keywords" content="grid的使用方法总结">
+		<meta name="author" content="ip">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="../../../trd/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../../../trd/uui/css/u.css" />
+		<link rel="stylesheet" type="text/css" href="../../../trd/uui/css/grid.css" />
+		<link rel="stylesheet" type="text/css" href="../../../trd/uui/css/u.core.css" />
+		<link rel="stylesheet" href="../../../trd/ip/css/ip.css" />
+		<link rel="stylesheet" type="text/css" href="../../../trd/ip/css/platform.css" />
+		<!-- <link rel="stylesheet" type="text/css" href="../../../trd/ip/css/bizSys.css" /> -->
+		<style>
+			.p-setting {
+				font-size: 18px;
+				color:#085177;
+			}
+			li{
+				margin-top:20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="demo-continer">
+			<div class="u-widget-body">
+				<h3>gird表格</h3>
+				<div id="gridTest" u-meta='{"id":"grid","type":"grid","data":"dataTable","columnMenu":false,"canDrag":true,"sortable":true,"canSwap":false,"multiSelect": true,"showNumCol": true,"columnMenu": true,"editable":true,"onDblClickFun":"onDblClickFun1","onSortFun":"sortFun","height":300,"headerHeight":25,"canRowDrag":true,"onValueChange":"onValueChange1","onBeforeValueChange":"onBeforeValueChange1"}'>
+					<div options='{"field":"name","dataType":"String","title":"姓名"}'></div>
+					<div options='{"field":"time","dataType":"time","title":"日期","editType":"editTypeFun"}'></div>
+					<div options='{"field":"distance","dataType":"String","title":"距离","sumCol":true,"sumRenderType":"summ","renderType":"dateFun","editType":"editTypeFun1"}'></div>
+					<div options='{"field":"currency","dataType":"String","title":"金额","sumCol":true,"sumRenderType":"summ"}'></div>
+					<div options='{"field":"catagory","dataType":"String","title":"类别","editOptions":{"id":"combobox1","type":"combo","datasource":"comItems2"},"editType":"combo"}'></div>
+					<div options='{"field":"catagory1","dataType":"String","title":"类别","editOptions":{"id":"combobox1","type":"combo","datasource":"comItems2"},"editType":"combo"}'></div>
+					<div options='{"field":"catagory2","dataType":"String","title":"类别","editOptions":{"id":"combobox1","type":"combo","datasource":"comItems2"},"editType":"combo"}'></div>
+					<div options='{"field":"catagory3","dataType":"String","title":"类别","editOptions":{"id":"combobox1","type":"combo","datasource":"comItems2"},"editType":"combo"}'></div>
+				</div>
+				<h3>表格方法总结</h3>
+				<div>
+					<ul>
+						<li>
+							<p class="p-setting">(1)、添加行方法：addRows(rows, index)</p>
+							<button class="btn btn-primary" data-bind="click: addRow">新增一行</button>
+						</li>
+						<li>
+							<p class="p-setting">(2)、删除行：deleteRows(indexs) 参数：要删除的行索引组成的数组，点击按钮删除2、3、4行</p>
+							<button class="btn btn-danger" data-bind="click:delRows">删除行</button>
+						</li>
+						<li>
+							<p class="p-setting">(3)、修改行：updateRow()，点击按钮修改第一行</p>
+							<button class="btn btn-default" data-bind="click:updateRow">修改行</button>
+						</li>
+						<li>
+							<p class="p-setting">(4)、获取选中行getSelectRows()</p>
+							<button class="btn btn-primary" data-bind="click:getSelectRows">获取选中行</button>
+						</li>
+						<li>
+							<p class="p-setting">(5)、双击表格行事件onDblClickFun，如下</p>
+							<img src="grid.png" />
+						</li>
+						
+						
+						<li>
+							<p class="p-setting">(6)、显示复选框和数字列的设置</p>
+							<p>显示复选框和数字列在html表头设置"multiSelect": true,"showNumCol": true</p>
+						</li>
+						<li>
+							<p class="p-setting">(7)、是否显示调栏</p>
+							<p>显示调栏在html设置表头"columnMenu": true</p>
+						</li>
+						<li>
+							<p class="p-setting">(8)、合计</p>
+							<p>显示合计在html设置表头"showSumRow": true，然后在要合计的列中设置属性"sumCol":true</p>
+						</li>
+						<li>
+							<p class="p-setting">(9)、editType设置编辑方式。default表示在数据行上进行编辑，form表示在单独的form区域进行编辑</p>
+						    <p>设置所有列的编辑方式一致时，在html表头设置中加参数"editable":true,默认编辑形式是行内编辑</p>
+						</li><li>
+							<p class="p-setting">(10)、编辑某字段的时候出现下拉框，请点击表格的“种类”列进行查看</p>
+						    <p>在html类型列中添加属性："editOptions":{"id":"combobox2","type":"combo","single":false,"mutil":true,"datasource":"comItems2"},"editType":"combo"</p>
+						    <p></p>
+						   
+						</li>
+					</ul>
+				</div>
+				<h3>多级表头gird表格</h3>
+				<div id="gridTest1" u-meta='{"id":"grid1","type":"grid","data":"dataTable","columnMenu":false,"canDrag":false,"sortable":true,"canSwap":false,"multiSelect": false,"showNumCol": true,"columnMenu": true,"showSumRow":true,"editable":true,"onDblClickFun":"onDblClickFun1","onSortFun":"sortFun","maxHeaderLevel":3,"sumRowFirst":true,"headerHeight":32}'>
+
+					<div options='{"field":"nametimedistancecurrencycatagory","title":"姓名+日期+距离+金额+类别","headerLevel":3,"startField":"name","endField":"catagory"}'></div>
+					<div options='{"field":"nametime","title":"姓名+日期","headerLevel":2,"startField":"name","endField":"time"}'></div>
+    				<div options='{"field":"distancecurrencycatagory","title":"距离+金额+类别","headerLevel":2,"startField":"distance","endField":"catagory"}'></div>
+					<div options='{"field":"name","dataType":"String","title":"姓名"}'></div>
+					<div options='{"field":"time","dataType":"time","title":"日期","editType":"editTypeFun"}'></div>
+					<div options='{"field":"distance","dataType":"String","title":"距离","sumCol":true,"sumRenderType":"summ"}'></div>
+					<div options='{"field":"currency","dataType":"String","title":"金额","sumCol":true,"sumRenderType":"summ"}'></div>
+					<div options='{"field":"catagory","dataType":"String","title":"类别","editOptions":{"id":"combobox1","type":"combo","datasource":"comItems2"},"editType":"combo"}'></div>
+					<div options='{"field":"catagory1","dataType":"String","title":"类别","editOptions":{"id":"combobox1","type":"combo","datasource":"comItems2"},"editType":"combo"}'></div>
+					<div options='{"field":"catagory2","dataType":"String","title":"类别","editOptions":{"id":"combobox1","type":"combo","datasource":"comItems2"},"editType":"combo"}'></div>
+					<div options='{"field":"catagory3","dataType":"String","title":"类别","editOptions":{"id":"combobox1","type":"combo","datasource":"comItems2"},"editType":"combo"}'></div>
+				</div>
+				<h3>多级表头方法总结</h3>
+				<ul>
+					<li>1、设置多级表头总级次，在u-meta中添加："maxHeaderLevel":3</li>
+					<li>2、添加对应的3级表头filed行（此field字段需在dataTable中声明），并添加表头的级次"headerLevel"：3，"startField":"","endFeild":""</li>
+					<li>2、添加对应的2级表头filed行（此field字段需在dataTable中声明），并添加表头的级次"headerLevel"：2，"startField":"","endFeild":""</li>
+				</ul>
+			</div>
+		</div>
+		<script src="../../../trd/knockout/knockout-3.2.0.debug.js"></script>
+		<script src="../../../trd/requirejs/require.js"></script>
+		<script src="../require.config.js"></script>
+		<script src="grid.js"></script>
+	</body>
+</html>

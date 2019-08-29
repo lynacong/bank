@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>门户管理</title>
+<!-- 	 	<link rel="stylesheet" href="/pf/portal/login/css/bootstrap.min.css" /> 
+	 	<link href="/pf/portal/login/css/bootstrap-combined.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" media="screen" href="/pf/portal/login/css/bootstrap-datetimepicker.min.css"> -->
+<link rel="stylesheet" href="/pf/portal/portalManager/login/css/style.css" />
+<link rel="stylesheet" href="/pf/portal/portalManager/login/css/login.css" />
+<link rel="stylesheet"
+	href="/pf/portal/portalManager/login/css/foundation-datepicker.css" />
+
+</head>
+<body>
+	<div id="wrap">
+		<div id="head">
+			<div id="head-in">
+				<div id="logo">门户管理</div>
+			</div>
+		</div>
+		<div id="main">
+			<div class="lubo">
+				<!--轮播图-->
+				<ul class="lubo_box">
+					<li style="opacity: 1;filter:alpha(opacity=100)"><a href=""
+						style="background: url(/pf/portal/portalManager/login/img/list1.png) no-repeat center center"></a>
+					</li>
+					<li style="opacity: 0;filter:alpha(opacity=0)"><a href=""
+						style="background:url(/pf/portal/portalManager/login/img/list2.png) no-repeat center center"></a>
+					</li>
+					<li style="opacity: 0;filter:alpha(opacity=0)"><a href=""
+						style="background:url(/pf/portal/portalManager/login/img/list3.png) no-repeat center center"></a>
+					</li>
+				</ul>
+				<ul class="cir_box"
+					style="left: 50%; margin-left: -200px; bottom: 10%;">
+					<li value="0"></li>
+					<li value="1"></li>
+					<li value="2"></li>
+				</ul>
+				<!--登录框-->
+				<div id="login-in"
+					style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;width: 100%;height: 600px;margin: auto;">
+					<div id="login-wrap">
+						<div class="login">
+							<h3>用户登录</h3>
+							<form name="login_form" class="form-horizontal" action=""
+								method="post">
+								<div class="box">
+									<input id="username" type="text" class="form-control user"
+										name="username" placeholder="请输入账号/邮箱/手机号码"
+										data-bind="click:onFocus"> <span><i
+										class="icon-person"></i> </span>
+								</div>
+								<div class="box">
+									<input id="password" type="password" class="form-control pwd"
+										name="password" placeholder="请输入密码" data-bind="click:onFocus">
+									<span><i class="icon-password"></i> </span>
+								</div>
+<!-- 								<div class="box">
+									<input id="datetimepickerValue" type="text"
+										class="form-control" readonly="readonly"
+										onclick="showCalendar()" placeholder="请输入业务日期"
+										data-bind="click:onFocus"> <span><i
+										class="icon-calendar"></i> </span>
+								</div> -->
+								<div class="box">
+									<input type="text" class="form-control" id="code_input"
+										name="identify" placeholder="请输入验证码" data-bind="click:onFocus">
+									<span><i class="icon-identify"></i> </span>
+									<p id="v_container"></p>
+
+								</div>
+								<div class="checkbox" id="checkbox">
+									<span id="error"></span> <a href="#" id="check">忘记密码？</a>
+								</div>
+
+								<div class="box"
+									style="border:none !important;position: relative;">
+									<input type="button" id="loginBtn" value="登  录"
+										style="padding-left: 0;" data-bind="click:valiSubmit" />
+									<div class="loading">
+										<img src="/pf/portal/portalManager/login/img/loading.gif" />
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="foot">
+			<div id="foot-in">
+				<div id="copyright">
+					用友政务<span>版权所有</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/pf/trd/jquery/jquery-1.12.3.min.js"></script>
+<script src="/pf/trd/knockout/knockout-3.2.0.debug.js"></script>
+<script src="/pf/trd/requirejs/require.js"></script>
+<script type="text/javascript" src="/pf/require.config.js"></script>
+<script src="/pf/portal/portalManager/login/js/cookie.js"></script>
+<!-- <script type="text/javascript" src="js/jquery.min.js" ></script> -->
+<script type="text/javascript" src="/pf/portal/portalManager/login/js/gVerify.js"></script>
+<script type="text/javascript"
+	src="/pf/portal/portalManager/login/js/foundation-datepicker.js"></script>
+<script type="text/javascript"
+	src="/pf/portal/portalManager/login/js/foundation-datepicker.zh-CN.js"></script>
+<script type="text/javascript" src="/pf/portal/portalManager/login/js/login.js"></script>
+<script type="text/javascript" src="/pf/portal/portalManager/login/js/lubo.js"></script>
+
+<!-- 	<script type="text/javascript" src="/pf/portal/login/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/pf/portal/login/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="/pf/portal/login/js/bootstrap-datetimepicker.zh-CN.js"></script> -->
+<script type="text/javascript">
+	var verifyCode = new GVerify("v_container");
+	$('#datetimepickerValue').fdatepicker({
+		format : 'yyyy-mm-dd'
+	})
+
+	$('#datetimepickerValue').val(getNowFormatDate());
+
+	$(".lubo").lubo();
+	function getNowFormatDate() {
+		var date = new Date();
+		var seperator1 = "-";
+		var seperator2 = ":";
+		var month = date.getMonth() + 1;
+		var strDate = date.getDate();
+		if (month >= 1 && month <= 9) {
+			month = "0" + month;
+		}
+		if (strDate >= 0 && strDate <= 9) {
+			strDate = "0" + strDate;
+		}
+		var currentdate = date.getFullYear() + seperator1 + month + seperator1
+				+ strDate;
+
+		return currentdate;
+	}
+</script>
+</html>

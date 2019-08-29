@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta name="content-type" content="text/html; charset=UTF-8">
+  </head>
+  <body>
+  </body>
+  <script>
+  	url = window.location.href;
+  	
+  	//window.open("http://ip:port/xxx.html?xxx", "_blank", "height=1,width=1,top=50000, left=50000, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no");
+  	
+  	window.localStorage.setItem("dfFiscalSelectedUrl", url.split("?")[1]);
+  	window.opener=null;
+	window.open('', '_self');
+	window.close();
+  </script>
+</html>

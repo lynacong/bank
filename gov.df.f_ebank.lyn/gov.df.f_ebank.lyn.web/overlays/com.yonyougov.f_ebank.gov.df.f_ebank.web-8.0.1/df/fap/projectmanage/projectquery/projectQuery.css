@@ -1,0 +1,62 @@
+.wrapper{
+	padding:10px;
+}
+.fixed-select{
+	display:inline-block;
+	width:220px;
+}
+.u-grid-header-link{
+	padding-left:5px;
+	padding-right:5px;
+}
+.input-other{
+	position:relative;
+}
+.icon-other{
+	position: absolute;
+    right: 16px;
+    background: #4A90E2;
+    height: 26px;
+    width: 26px;
+    line-height: 29px;
+    text-align: center;
+    font-size: 16px;
+    color:#fff;
+}
+.form-control{
+	height:28px;
+}
+.addviewInput{
+	width:210px;
+}
+#addBudgetItem .control-label{
+	text-align:right;
+}
+#addBudgetItem .modal-body{
+	padding-left:0px;
+}
+#addBudgetItem .modal-dialog{
+	width:500px;
+}
+#addChoiceModel .modal-dialog{
+	width:520px;
+}
+
+.tree-block {
+	min-height:430px;
+	border:1px #e5e5e5 solid;
+}
+.menuTree {
+	height: 400px;
+	overflow: auto;
+}
+
+.menu-grid {
+	margin-top: 10px;
+}
+.quik-find,.quik-next{
+	margin-left: 3px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 2px;
+}

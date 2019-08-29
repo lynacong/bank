@@ -1,0 +1,43 @@
+<div class="modal" ng-controller="KisBpmRoleReferenceTreePopupCtrl">
+    <div class="modal-dialog" ng-class="{ 'modal-wide-tree': !property.multiSelect, 'modal-wide-multi-tree': property.multiSelect }" style="width: 845px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="editor-pop-close close" data-dismiss="modal" aria-hidden="true" ng-click="close()">&times;</button>
+                <span>{{property.title}}</span>
+            </div>
+            <div class="modal-body modal-body-ref">
+                <div class="row row-no-gutter row-ref">
+                	<div ng-class="{'tree-col-xs-1':property.multiSelect, 'tree-col-xs-0':!property.multiSelect}">
+                        <ul id="treeref1_zTree" class="ztree t_ztree"></ul>
+                    </div>
+                    <div class="tree-col-xs-3 row-ref" ng-class="{'tree-hidden':!property.multiSelect}">
+                        <div class="tree-btn-group btn-group">
+                        	<a class="btn btn-icon btn-lg" rel="tooltip" data-title="{{'ACTION.ADD' | translate}}" data-placement="bottom" data-original-title="" title="" ng-click="addProperty()"><i class="glyphicon glyphicon-plus"></i></a>
+                        	<a class="btn btn-icon btn-lg" rel="tooltip" data-title="{{'ACTION.REMOVE' | translate}}" data-placement="bottom" data-original-title="" title="" ng-click="removeProperty()"><i class="glyphicon glyphicon-minus"></i></a>
+                        </div>
+                    </div>
+                    <div class="tree-col-xs-2" ng-class="{'tree-hidden':!property.multiSelect}" style="width:450px;">
+                    	<input id="parentDept" type="hidden" value="parentDept" />
+                    	<div ng-if="translationsRetrieved" class="default-tree" ng-grid="resultGridOptions"></div>
+                    </div>
+                    <div class="tree-col-xs-3 margin_left" ng-class="{'tree-hidden':!property.multiSelect}">
+                        <div class="tree-btn-group btn-group">
+                            <a class="btn btn-icon btn-lg" rel="tooltip" data-title="{{'ACTION.MOVE.UP' | translate}}" data-placement="bottom" data-original-title="" title="" ng-click="movePropertyUp()"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                        	<a class="btn btn-icon btn-lg" rel="tooltip" data-title="{{'ACTION.MOVE.DOWN' | translate}}" data-placement="bottom" data-original-title="" title="" ng-click="movePropertyDown()"><i class="glyphicon glyphicon-arrow-down"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="editor-modal-footer modal-footer">
+				<button ng-click="save()" class="btn btn-primary" translate>ACTION.OK</button>
+                <button ng-click="cancel()" class="btn btn-primary" translate>ACTION.CANCEL</button>
+            </div>
+            <div id="selectDept" style="position: absolute;visibility: hidden;overflow: hidden;border:1px solid #CCC;background-color:#F9F9F9;border:1px solid #333;padding:5px;z-index:100000">
+				123
+			</div>
+			<input type="hidden" id="deptData"/>
+        </div>
+    </div>
+    
+</div>
+<!-- <script src="reference-popup-cancel.js"></script> -->

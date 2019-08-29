@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>账户关联设置</title>
+<link rel="stylesheet" type="text/css" href="../../../df/trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="../../../df/trd/datetimepicker/css/bootstrap-datetimepicker.min.css" />
+<link rel="stylesheet" type="text/css" href="../../../df/trd/uui/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../../../df/trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="../../../df/trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css" href="../../../df/trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="../../../df/trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="../../../df/trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="../../../df/trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css" href="../../../df/trd/ip/css/bizSys.css" />
+<link rel="stylesheet" type="text/css" href="../../../df/trd/ip/css/theme/blue.css" />
+<link rel="stylesheet" type="text/css" href="../css/fbStyle.css" />
+<link rel="stylesheet" type="text/css" href="accountRelation.css" />
+
+</head>
+<body>
+	<div class="wrapper" style="margin:0 auto;">
+		<div class="btn-bar">
+			<div>
+				<button id="sx" class="btn btn-primary" data-bind="click:fRefRec">刷新</button>
+				<button id="bd" class="btn btn-primary" data-bind="click:fBandRec">绑定</button>
+			</div>
+		</div>
+		<div class="btn-group-content" style=" display: block;overflow-y: scroll;">
+
+			<div id="leftDiv" class="left-container">
+
+				<div style="border: 0px solid #ccc;padding:6px;overflow-x: hidden;overflow-y: auto;height:94%">
+
+					<label style="margin:4px 0px 0px 5px;text-align:left; ">支付账户： </label> <input type="text" id="findText1" style="text-align:left;border-radius: 2px;border: 1px solid #ccc;margin:-1px 0px 0px 3px;"
+						value="">&nbsp;
+					<button id="cz" type="button" class="btn btn-primary" data-bind="click:fFindFirst1">查找</button>
+					<button id="xyg" type="button" class="btn btn-primary" data-bind="click:fFindRef1">刷新</button>
+					<div style="height:2px"></div>
+					<div style=" display: block; overflow-x: hidden;">
+						<div id="subSystemGrid" class="subsystem-grid-area"
+							u-meta='{"id":"subsystem-grid","class":"","type":"grid","data":"gridDatatable","columnMenu":true,"multiSelect":false,"showNumCol": true,"editable":false,"canVisible":true,"headerHeight":33,"rowHeight":32,"contentFocus":true,"cancelSelect":false,"cancelFocus":false}'
+							onclick="subsysRowCheck()" style="overflow-x: hidden;">
+							<div options='{"field":"account_name","width":150,"dataType":"String","title":"账户名称","editType":""}'></div>
+							<div options='{"field":"account_no","width":150,"dataType":"String","title":"账号","editType":""}'></div>
+							<div options='{"field":"bank_name","width":169,"dataType":"String","title":"开户行","editType":""}'></div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+			<div id="rightDiv" class="right-container">
+
+				<div style="border: 1px solid #ccc;padding:6px;overflow-x: hidden;overflow-y: auto;height:50%">
+					<label style="margin:0px 0px 0px 5px;text-align:left; ">清算账户： </label>
+					<div style=" display: block; overflow-x: hidden;">
+						<div id="qsGrid" class="subsystem-grid-area"
+							u-meta='{"id":"qs-grid","class":"","type":"grid","data":"qsDatatable","columnMenu":true,"multiSelect":false,"showNumCol": true,"editable":false,"canVisible":true,"headerHeight":33,"rowHeight":32,"contentFocus":true,"cancelSelect":false,"cancelFocus":false}'
+							ondblclick="" style="overflow-x: hidden;">
+							<div options='{"field":"account_name","width":150,"dataType":"String","title":"账户名称","editType":""}'></div>
+							<div options='{"field":"account_no","width":150,"dataType":"String","title":"账号","editType":""}'></div>
+							<div options='{"field":"bank_name","width":169,"dataType":"String","title":"开户行","editType":""}'></div>
+						</div>
+
+					</div>
+				</div>
+
+				<div style="border: 0px solid #ccc;padding:6px;overflow-x: hidden;overflow-y: auto;height:50%">
+					<label style="margin:0px 0px 0px 5px;text-align:left; ">划款账户： </label>
+					<div style=" display: block; overflow-x: hidden;">
+						<div id="hkGrid" class="subsystem-grid-area"
+							u-meta='{"id":"hk-grid","class":"","type":"grid","data":"hkDatatable","columnMenu":true,"multiSelect":false,"showNumCol": true,"editable":false,"canVisible":true,"headerHeight":33,"rowHeight":32,"contentFocus":true,"cancelSelect":false,"cancelFocus":false}'
+							ondblclick="" style="overflow-x: hidden;">
+							<div options='{"field":"account_name","width":150,"dataType":"String","title":"账户名称","editType":""}'></div>
+							<div options='{"field":"account_no","width":150,"dataType":"String","title":"账号","editType":""}'></div>
+							<div options='{"field":"bank_name","width":169,"dataType":"String","title":"开户行","editType":""}'></div>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+	<!-- 弹出浮动 -->
+	<div class="modal fade" tabindex="-1" id="wizardModal">
+
+		<div class="modal-dialog" role="document" style="width:1100px;height:70%">
+			<div class="modal-content">
+
+				<div class="modal-header ui-draggable-handle">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<label style="margin:4px 0px 0px 5px;text-align:left; ">账户选择： </label>
+					<div style="height:2px"></div>
+				</div>
+
+				<div class="modal-body">
+					<input id="balance_account_id" type="hidden" value="">
+					<input id="balance_account_no" type="hidden" value="">
+					<div style="margin:0px 0px 0px 0px;border: 1px solid #ccc;overflow:hidden;height:400px">
+
+						<div style="float: left;border: 1px solid #ccc;padding:6px;overflow-x: hidden;overflow-y: auto;width:48%;height: 100%;">
+							<label style="margin:4px 0px 0px 5px;text-align:left; ">清算账户： </label> <input type="text" id="findText2"
+								style="text-align:left;border-radius: 2px;border: 1px solid #ccc;margin:-1px 0px 0px 3px;" value="">&nbsp;
+							<button id="cz" type="button" class="btn btn-primary" data-bind="click:fFindFirst2">查找</button>
+							<button id="xyg" type="button" class="btn btn-primary" data-bind="click:fFindRef2">刷新</button>
+							<div style="height:2px"></div>
+							<div style=" display: block; overflow-x: hidden;">
+								<div id="qsGridM" class="subsystem-grid-area"
+									u-meta='{"id":"qs-grid-m","class":"","type":"grid","data":"qsDatatableM","columnMenu":true,"multiSelect":true,"showNumCol": true,"editable":false,"canVisible":true,"headerHeight":33,"rowHeight":32,"contentFocus":true,"cancelSelect":false,"onRowSelected":"qsRowSelected","onRowUnSelected":"qsRowSelected","cancelFocus":false,"height":350}'
+									ondblclick="" style="overflow-x: hidden;">
+									<div options='{"field":"account_name","width":150,"dataType":"String","title":"账户名称","editType":""}'></div>
+									<div options='{"field":"account_no","width":150,"dataType":"String","title":"账号","editType":""}'></div>
+									<div options='{"field":"bank_name","width":169,"dataType":"String","title":"开户行","editType":""}'></div>
+								</div>
+
+							</div>
+						</div>
+						<div style="float: left;border: 1px solid #ccc;padding:6px;overflow-x: hidden;overflow-y: auto;width:52%;height: 100%;">
+							<label style="margin:4px 0px 0px 5px;text-align:left; ">划款账户： </label> <input type="text" id="findText3"
+								style="text-align:left;border-radius: 2px;border: 1px solid #ccc;margin:-1px 0px 0px 3px;" value="">&nbsp;
+							<button id="cz" type="button" class="btn btn-primary" data-bind="click:fFindFirst3">查找</button>
+							<button id="xyg" type="button" class="btn btn-primary" data-bind="click:fFindRef3">刷新</button>
+							<div style="height:2px"></div>
+							<div style=" display: block; overflow-x: hidden;">
+								<div id="hkGridM" class="subsystem-grid-area"
+									u-meta='{"id":"hk-grid-m","class":"","type":"grid","data":"hkDatatableM","columnMenu":true,"multiSelect":true,"showNumCol": true,"editable":false,"canVisible":true,"headerHeight":33,"rowHeight":32,"contentFocus":true,"cancelSelect":false,"onRowSelected":"hkRowSelected","onRowUnSelected":"hkRowSelected","cancelFocus":false,"height":350}'
+									ondblclick="" style="overflow-x: hidden;">
+									<div options='{"field":"account_name","width":150,"dataType":"String","title":"账户名称","editType":""}'></div>
+									<div options='{"field":"account_no","width":150,"dataType":"String","title":"账号","editType":""}'></div>
+									<div options='{"field":"bank_name","width":169,"dataType":"String","title":"开户行","editType":""}'></div>
+								</div>
+
+							</div>
+						</div>
+
+
+					</div>
+					<br>
+					<div style="margin:0px 0px 0px 45.4%;">
+						<button id="modalok" type="button" class="btn btn-primary" onclick="fModalOk()">保存</button>
+						<button id="modalcancel" type="button" class="btn btn-primary" data-bind="click:fModalCancel">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script src="../../trd/knockout/knockout-3.2.0.debug.js"></script>
+	<script src="../../trd/requirejs/require.js"></script>
+	<script src="../../require.config.js"></script>
+	<script src="accountRelation.js"></script>
+
+</body>
+</html>

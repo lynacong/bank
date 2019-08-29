@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>国库-主管厅长</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="css/lte/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/lte/AdminLTE.min.css">
+    <link rel="stylesheet" href="css/lte/_all-skins.min.css">
+
+    <!--datepicker-->
+    <link rel="stylesheet" href="css/lte/foundation-datepicker.css">
+
+    <link rel="stylesheet" href="css/dfp.css">
+    <link rel="stylesheet" type="text/css" href="css/gkzgtz/dashboardGKZGTZ.css">
+
+</head>
+<body class="hold-transition sidebar-mini sidebar-collapse">
+<div class="wrapper">
+
+    <div class="content-wrapper" style="background: #f8f8f8;">
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+
+                <!-- left -->
+                <div class="col-md-9 col-lg-9 dfp-left">
+
+                    <!--支出进度情况-->
+                    <div id="payProgressStatement" class="box box-default dfp-box">
+                        <div id="payProgressStatementContent" class="box-body" style="height: 190px;">
+                            <iframe id="payProgressStatementIframe" src="" class="dfp-ele-iframe"></iframe>
+                        </div>
+                    </div>
+                    <!--/支出进度情况-->
+
+                    <!--支出大盘分析-->
+                    <div id="paymentMarketAnalysis" class="box box-default dfp-box">
+                        <div id="paymentMarketAnalysisContent" class="box-body" style="height: 410px;">
+                            <iframe id="paymentMarketAnalysisIframe" src="" class="dfp-ele-iframe"></iframe>
+                        </div>
+                    </div>
+                    <!--/支出大盘分析-->
+
+                </div>
+                <!-- /left -->
+
+                <!-- right -->
+                <div class="col-lg-3 col-md-3 dfp-right">
+
+                    <!--支出排名-->
+                    <div id="paymentRanking" class="box box-default dfp-box">
+                        <div id="paymentRankingContent" class="box-body" style="height: 260px;">
+                            <iframe id="paymentRankingIframe" src="" class="dfp-ele-iframe"></iframe>
+                        </div>
+                    </div>
+                    <!--/支出排名-->
+
+                    <!--支付情况-->
+                    <div id="paymentStatement" class="box box-default dfp-box">
+                        <div id="paymentStatementContent" class="box-body" style="height: 340px;">
+                            <iframe id="paymentStatementIframe" src="" class="dfp-ele-iframe"></iframe>
+                        </div>
+                    </div>
+                    <!--/支付情况-->
+
+                </div>
+                <!-- /right -->
+
+            </div>
+
+        </section>
+    </div>
+
+</div>
+<!-- ./wrapper -->
+
+<script src="js/lte/jQuery-2.1.4.min.js"></script>
+<script src="js/lte/jquery-ui.min.js"></script>
+<script>
+    $.widget.bridge('uibutton', $.ui.button);
+</script>
+<script src="js/lte/bootstrap.min.js"></script>
+<script src="js/lte/app.min.js"></script>
+
+<!--datepicker-->
+<script src="js/lte/foundation-datepicker.js"></script>
+<script src="js/lte/foundation-datepicker.zh-CN.js"></script>
+<!--layer-->
+<script src="js/layer/layer.js"></script>
+
+<script charset="utf-8" src="js/dfp/dfp.js"></script>
+<script charset="utf-8" src="js/dashboardGKZGTZ.js"></script>
+</body>
+</html>

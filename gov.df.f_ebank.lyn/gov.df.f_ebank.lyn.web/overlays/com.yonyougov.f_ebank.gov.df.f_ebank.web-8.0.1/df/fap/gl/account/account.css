@@ -1,0 +1,132 @@
+html, body, div, p, ul {
+    margin: 0;
+    padding: 0;
+    /* font-family: Microsoft YaHei; */
+}
+body{
+    margin-left: 10px;
+    margin-right: 10px;
+	min-width: 1050px;
+    overflow: hidden;
+    background: #fff;
+}
+.module-header{
+    overflow: hidden;
+    font-size: 13px;
+	border: 1px #e5e5e5 solid;
+    line-height: 38px;
+    color: #333;
+    background: #fbfbfb;
+	
+}
+.module-header ul li{
+    list-style: none;
+    float: left;
+    margin-left: 10px;
+}
+
+.left-module{
+	margin-top: 10px;
+    float: left;
+    padding: 0px 0px;
+    overflow: auto;
+    border: 1px solid #e5e5e5;
+    border-top: 0px none;
+    background: #ffffff;
+    text-align: left;
+}
+.right-module{
+	float: left;
+	margin-left: 10px;
+	margin-top: 10px;
+	overflow: auto;
+	border: none;
+}
+.gl-module-header{
+	width: 380px;
+	height: 44px;
+	border-left: none;
+	border-right: none;
+}
+.gl-left-module{
+	width: 280px;
+    height: 570px;
+}
+.gl-right-module{
+	width: 900px;
+}
+.gl-form-module-header{
+	margin-top: 15px;
+	height: 46px;
+	width: 100%;
+}
+.gl-input-text{
+	margin-top: 10px;
+}
+.gl-text-left{
+	font-size: 12px;
+	font-weight: normal;
+}
+.gl-text-left b{
+	width:30px;
+	font-family: MicrosoftYaHei;
+	font-size: 14px;
+}
+.gl-star{
+	line-height: 44px;
+	margin-right: 5px;
+	color: #D81E06;
+}
+.gl-code-name{
+	line-hegiht: 40px;
+	font-weight: normal;
+	
+}
+.gl-table-module-header{
+	margin-top: 10px;
+	width: 100%;
+	font-size: 16px;
+}
+.gl-form-container{
+	margin-top: 10px;
+}
+.gl-btn{
+	margin-left: 10px;
+	
+}
+input.form-control{
+	height: 25px;
+	background: #FFFFFF;
+	border: 1px solid #DBDBDB;
+}	
+.gl-form-container-busvou{
+	display: none;
+}
+.m-top{
+	margin-top: 10px;
+}
+#addEle,#deleteEle{
+	float: right;
+	
+}
+。col-sm-5{
+	
+	width: 100%;
+}
+#addNewRule{
+	margin-top: 50px;
+	
+}
+.tabs-tree{
+	
+	height:300px;
+	overflow: scroll;
+}
+.modal-body{
+	overflow: auto;
+}
+#inlineRadio1{
+	    margin-top: 12px;
+    	margin-left: 15px;
+	
+}

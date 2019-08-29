@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>计划管理</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css" />
+		<link rel="stylesheet" type="text/css" href="../common.css" />
+</head>
+<body>
+	<div class="wrapper">
+		<div class="">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12">
+						<h3 class="title">计划管理</h3>
+						
+						
+  						<!-- 交换中心相关 ---面板开始-->
+  						<div class="panel panel-info">
+    						<div class="panel-heading">
+       							 <h3 class="panel-title">交换中心相关</h3>
+   						    </div>
+    						<div class="panel-body">
+    						
+    					    <div class="form-group clearfix panel-padding">
+									<label for="uparaplanPLAN_EXCHANGE_SENDAPP" class="col-sm-3 control-label">交换中心支付子系统:</label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" id="uparaplanPLAN_EXCHANGE_SENDAPP" >
+									</div>
+								</div>
+								
+						    </div>
+						</div>
+  						<!-- 交换中心相关---面板结束-->
+  						
+  						
+  						<!-- 自动操作相关 ---面板开始-->
+  						<div class="panel panel-info">
+    						<div class="panel-heading">
+       							 <h3 class="panel-title">自动操作相关</h3>
+   						    </div>
+    						<div class="panel-body">
+    						
+    						
+    							<div class="form-group clearfix panel-padding">
+									<label for="uparaplanAUTO_CHECK" class="col-sm-3 control-label">选择自动操作类型：</label>
+									<div class="col-sm-9">
+											<label class="checkbox-inline">
+												<input type="radio" name="uparaplanAUTO_CHECK" value="true" checked>自动审核
+											</label>
+											<label class="checkbox-inline">
+												<input type="radio" name="uparaplanAUTO_CHECK"   value="false"> 自动作废
+											</label>
+									</div>
+								</div>
+    						
+	    					    <div class="form-group clearfix panel-padding">
+										<label for="uparaplanAUTO_CHECK_USER" class="col-sm-3 control-label">计划自动操作用户:</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control" id="uparaplanAUTO_CHECK_USER" >
+										</div>
+								</div>
+								
+								<div class="form-group clearfix panel-padding">
+										<label for="uparaplanAUTO_CHECK_ROLE" class="col-sm-3 control-label">计划自动操作角色:</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control" id="uparaplanAUTO_CHECK_ROLE" >
+										</div>
+								</div>
+								
+								<div class="form-group clearfix panel-padding">
+										<label for="uparaplanAUTO_CHECK_MODULE" class="col-sm-3 control-label">计划自动操作功能号:</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control" id="uparaplanAUTO_CHECK_MODULE" >
+										</div>
+								</div>
+								
+								<div class="form-group clearfix panel-padding">
+										<label for="uparaplanAUTO_CHECK_DAY" class="col-sm-3 control-label">计划自动操作天数:</label>
+										<div class="col-sm-9">
+											<input type="text" class="form-control" id="uparaplanAUTO_CHECK_DAY" >
+										</div>
+								</div>
+								<div class="form-group clearfix panel-padding">
+									<label for="" class="col-sm-3"></label>
+									<div class="col-sm-9">
+										<button class="btn btn-primary"  id="save" data-bind="click:savePlanManagementData">保存</button> 
+									</div>
+								</div>
+								
+						    </div>
+						</div>
+  						<!-- 自动操作相关---面板结束-->
+  						
+  				
+						
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="/df/trd/requirejs/require.js"></script>
+	<script src="/df/require.config.js"></script>
+	<script src="./planManagement.js"></script>
+</body>
+</html>

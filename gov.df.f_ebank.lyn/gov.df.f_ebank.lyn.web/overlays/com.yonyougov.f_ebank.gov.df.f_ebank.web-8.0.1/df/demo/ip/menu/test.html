@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>JS无缝滚动图片</title>
+<meta charset=UTF-8 />
+<style type="text/css">
+* {
+    margin: 0;
+    padding: 0;
+}
+#div2 {
+    margin: auto;
+    width: 602px;
+    overflow: hidden;
+    left: 200px;
+}
+#div1 {
+    position: relative;
+    left: 0px;
+    width: 1200px;
+}
+#div1 li {
+    list-style-type: none;
+    float: left;
+    width: 200px;
+    height: 180px;
+}
+img {
+    width: 200px;
+    height: 180px;
+}
+ul#ul1 {
+    position: relative;
+}
+</style>
+<script type="text/javascript">
+    window.onload = function ()
+   {
+       var oUl = document.getElementById ('ul1');
+       var t,o;
+       var speed = 0;
+       var funny = function ()
+       {
+           t && clearInterval(t);
+           t = setInterval (function ()
+           {
+                speed -= 200/11;
+                if(speed<-200){
+                    speed=0;
+                    oUl.appendChild (oUl.children[0]);
+                    t && clearInterval(t);
+                    t = null;
+                    o && clearTimeout(o);
+                    o=setTimeout(funny,1000);
+                    }
+               oUl.style.left = speed + "px";
+           }, 60);
+       }
+        funny ();
+   }
+</script>
+</head>
+<body>
+    <div id="div2">
+        <div id="div1">
+            <ul id="ul1">
+                <li><img src="../../images/choose.png">
+                </li>
+                <li><img src="../../images/deck.png">
+                </li>
+                <li><img src="../../images/duel.png">
+                </li>
+                <li><img src="../../images/list.png">
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

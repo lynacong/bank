@@ -1,0 +1,38 @@
+html, body, div, p, ul {
+    margin: 0;
+    padding: 0;
+    /* font-family: Microsoft YaHei; */
+}
+body{
+    margin-left: 10px;
+    margin-right: 10px;
+	min-width: 1050px;
+    overflow: hidden;
+    background: #fff;
+
+}
+.wrapper{
+	width: 90%;
+}
+.operate-area{
+	margin-top:10px;
+}
+
+.databaseconfig-grid-area{
+    margin-top:10px;
+}
+
+#datasourceTree-area{
+	    width: 207px;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.config-btn{
+	margin-right: 8px;
+}
+
+.appdata-grid{
+	min-height: 380px;
+	overflow:hidden;
+}

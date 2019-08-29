@@ -1,0 +1,80 @@
+<div class="container-fluid h">
+	<div class="config-btn">
+		<button type="button" class="btn btn-config" onclick="btnSynClick()">同步</button>
+		<button type="button" class="btn btn-config" onclick="refreshTree()">刷新</button>
+		<button type="button" class="btn btn-config" onclick="addElectronicsEle()">新增</button>
+		<button type="button" class="btn btn-config" onclick="modifyElectronicsEle()">修改</button>
+		<button type="button" class="btn btn-danger" onclick="delElectronicsEle()">删除</button>
+	</div>
+	
+	<div class="config-search clearfix mb5"  id="tabbed-plan">
+		<label for="finance_code">财政机构</label>
+		<select class="form-control ebank-input" id="finance_code" onchange="fGetGrid()">
+		</select>
+	</div>
+	<div class="config-main-hassearch clearfix">
+		<div class="col-md-4 col-sm-4 border tree-sidebar">
+			<div id="treeTest2" class="ztree" u-meta='{"id":"tree_elerule","data":"treeDataTable","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"show_name","setting":"treeSetting"}'></div>
+		</div>
+		<div class="col-md-8 col-sm-8">
+			<table class="table-striped table table-bordered table-hover table-condensed" id="gridTest" style="width:100%;">  
+	           <thead>  
+	               <tr>  
+	                   <th>编码</th>  
+	                   <th>名称</th>  
+	               </tr>  
+	           </thead>  
+	            <tbody>  
+	            </tbody>  
+       	 	</table>  
+		</div>
+		<!-- <div class="col-md-8 col-sm-7 pt10">
+			<div id="gridTest" u-meta='{"id":"grid","type":"grid","data":"gridDataTable","showNumCol":"true","canDrag":false,"sortable":false,"canSwap":false,"columnMenu": true}'>
+				<div options='{"field":"chr_code","dataType":"String","title":"编码"}'></div>
+				<div options='{"field":"chr_name","dataType":"String","title":"名称"}'></div>
+			</div>
+		</div> -->
+	</div>
+	
+	<!-- 新增/修改Modal start-->
+	<div class="modal fade" id="msgAddBillTypeSetModel" tabindex="-1" role="dialog"
+		aria-labelledby="ylModalLabel" data-backdrop="static">
+		<div class="modal-dialog" role="document" style="width:500px;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="titleText"></h4>
+				</div>
+				<div class="modal-body row">
+						<div class="form-group col-sm-12">
+							<label class="col-sm-3 text-right" for="billTypeCode"><span class="color-red">*</span>编码：</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="billTypeCode" />
+							</div>
+						</div>
+						<div class="form-group col-sm-12">
+							<label class="col-sm-3 text-right" for="billTypeName"><span class="color-red">*</span>名称：</label>
+							<div class="col-sm-9">
+								<input type="text"  id="billTypeName" class="form-control" />
+							</div> 
+						</div>
+						
+						<div class="form-group col-sm-12">
+							<label class="col-sm-3 text-right" for="paramValue">凭证类型：</label> 
+							<div class="col-sm-9">
+								<select id="billType"  class="form-control"></select>
+							</div> 
+						</div>
+				</div>
+				<div class="modal-footer">	
+					<button type="button" class="btn btn-primary" onclick="saveOrUpdate()">确定</button>				
+					<button type="button" class="btn btn-primary" data-dismiss="modal">退出</button>
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- 新增/修改Modal end-->
+</div>

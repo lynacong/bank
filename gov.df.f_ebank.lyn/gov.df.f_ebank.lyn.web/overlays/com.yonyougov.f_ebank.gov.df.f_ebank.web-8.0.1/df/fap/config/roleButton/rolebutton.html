@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible"
+	content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+<title>用户资源权限</title>
+<meta name="author" content="ip">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/platform.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css" href="./rolebutton.css" />
+</head>
+<body>
+	<div class="body">
+		<div class="row">
+			<div class="col-md-4">
+				<div class = "main-layout">
+				      <div class='row headtype'>
+						<label class="col-md-3 headforent" >角色</label>
+					</div>
+					<div class="robtnTree">
+						 <div class='robtn-quickquery'>
+						
+								<!-- <div class='input-group ip-input-group'>
+									<input type="text" class="form-control col-md-6"
+										id="quickquery" name="quickquery"
+										data-bind="event:{keyup:quickQuery}"
+										onkeydown='if(event.keyCode==13){menuTreeNext();}'>
+										<span class="input-group-btn">
+									<button class="btn btn-default" type="button"
+										onclick="menuTreeNext()">
+										<span class="glyphicon glyphicon-search search-state"></span>
+									</button>
+									</span>
+								</div>  -->
+								<div class="form-group search-form" style="margin: 5px;">
+								<div class="input-group">
+								<input type="text" class="form-control" placeholder="模糊查询" id="quickquery" aria-describedby="basic-addon1" data-bind="event:{keyup:quickQuery}" onkeydown='if(event.keyCode==13){menuTreeNext();}' id="quickquery">
+								<span class="input-group-addon" onclick="menuTreeNext()"><span class="glyphicon glyphicon-search"></span></span>
+								</div>
+							</div>
+						</div>
+						<div id="robtnRoleTree" class="ztree treeht"
+							u-meta='{"id":"robtnRoleTree1","data":"treeDataTable","type":"tree","idField":"guid","pidField":"roletype","nameField":"name","setting":"treeSetting"}'></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+			     <div class = "main-layout">
+					<div class='row headtype'>
+						<label class="col-md-3 headforent" >菜单</label>
+					</div>
+					<div class="robtnTree">
+						<div class='row robtn-quickquery'>
+						<!-- 
+							<div class='input-group ip-input-group'>
+								<input type="text" class="form-control col-md-6" id="quickquery1"
+									name="quickquery" data-bind="event:{keyup:quickQuery1}"
+									onkeydown='if(event.keyCode==13){menuTreeNext1();}'> <span
+									class="input-group-btn">
+									<button class="btn btn-default" type="button"
+										onclick="menuTreeNext1()">
+										<span class="glyphicon glyphicon-search search-state"></span>
+									</button> </span>
+							</div>
+							 -->
+							<div class="form-group search-form" style="margin: 5px;">
+								<div class="input-group">
+								<input type="text" class="form-control" id="quickquery1" placeholder="模糊查询" aria-describedby="basic-addon1" data-bind="event:{keyup:quickQuery1}" onkeydown='if(event.keyCode==13){menuTreeNext1();}' id="quickquery">
+								<span class="input-group-addon" onclick="menuTreeNext1()"><span class="glyphicon glyphicon-search"></span></span>
+								</div>
+							</div>
+						</div>
+						<div id="robtnMenuTree" class="ztree treeht"
+							u-meta='{"id":"robtnRoleTree2","data":"treeDataTable1","type":"tree","idField":"guid","pidField":"parentid","nameField":"name","setting":"treeSetting1"}'></div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class = "main-layout">
+					<div class='row headtype'>
+						<label class="headforent">资源列表</label>
+					</div>
+					<div class="robtnTree treeht">
+						<div id="checklist" class="checkList">
+						
+						</div>
+					</div>
+				</div>
+					<div class="checkbox">
+			                   全选： <label>
+			                <input id ="resSelAll" type="checkbox" value="" onclick="selAllOpt(this)">
+			            </label>
+	              </div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/df/trd/requirejs/require.js"></script>
+<script src="/df/require.config.js"></script>
+<script src="./rolebutton.js"></script>
+</html>

@@ -1,0 +1,152 @@
+.info-content{
+	min-height:378px;
+	height: 378px;
+	border:1px #e5e5e5 solid;
+	overflow:auto;
+}
+.m-top{
+	margin-top:10px;
+}
+.form-inline .spe-input{
+	width:521px;
+}
+#ylModal .modal-dialog{
+	width:450px;
+	margin-top:50px;
+}
+.radio-box{
+	margin:10px 20px;
+    overflow: auto;
+}
+.classify-box{
+	margin-left:320px;
+}
+#elementModal .modal-dialog{
+	width:950px;
+}
+
+.list-icon-color{
+	color:#02A2F8;
+	font-size:12px;
+	margin-right: 5px;
+}
+
+.display-li
+{
+	padding-left: 20px;
+    line-height: 2em;
+    font-size: 12px;
+}
+.display-ul
+{
+	padding-left: 20px;
+	font-size: 12px;
+}
+
+.display-container
+{
+    height: 300px;
+    overflow: auto;
+}
+
+.add-delete{
+	padding:0;
+	text-align:center;
+	margin-top:120px;
+	width:100px;
+}
+.add-delete .btn{
+	padding:6px 10px;
+	margin-bottom:5px;
+}
+.no-right-col{
+	padding-right:0;
+}
+.has-right-col{
+	padding-left:0;
+}
+.no-right-col,.has-right-col{
+	width:405px;
+}
+#notRightGrid .u-grid-content,#hasRightGrid .u-grid-content{
+	height:320px;
+	overflow:auto;
+}
+/*#notRightGrid,#hasRightGrid{
+	max-height:316px;
+	overflow:auto;
+}*/
+.set-cols{
+	margin-top:5px;
+}
+#setColModal .modal-dialog{
+	width:550px;
+}
+.rights-box{
+	border:1px solid #cecece;
+	height: 200px;
+    overflow: auto;
+}
+.sortable{
+	list-style:none;
+	padding:5px;
+}
+.sortable li{
+	height:28px;
+	line-height:28px;
+	padding-left:10px;
+}
+.sortable li input{
+	margin-right:5px;
+}
+.sets-box{
+	margin-top: 40px;
+	text-align:center;
+}
+.sets-box .col-sm-8{
+	padding-right:0;
+}
+.tab-content .active{
+	background:#fff;
+}
+.modal-body dl{
+	margin-bottom:10px;
+}
+.modal-body dt{
+	background: #e9e9e9;
+	height: 22px;
+    line-height: 22px;
+    padding: 0 10px;
+}
+.modal-body dd{
+	padding-left:30px;
+	background: #f9f9f9;
+}
+.group-list{
+	margin-bottom:5px;
+	cursor:pointer;
+}
+.group-list span{
+	margin-right:8px;
+}
+.list-focus{
+	background: #0364b5;
+    padding: 1px 3px;
+    color: #fff;
+}
+#myTabContent{
+    height: 247px;
+    overflow: scroll
+}
+
+.btn-eleset-style
+{
+	padding: 0;
+    border: 0
+}
+.u-grid tbody tr:last-child td {
+    border-bottom-width: 1px;
+}
+.u-grid-content-left>div:last-child {
+    border-bottom-width: 1px;
+}

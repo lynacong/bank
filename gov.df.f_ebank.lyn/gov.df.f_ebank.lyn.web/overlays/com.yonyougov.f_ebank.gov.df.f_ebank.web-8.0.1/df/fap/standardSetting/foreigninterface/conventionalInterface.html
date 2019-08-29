@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>常规接口</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+		<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css" />
+		<link rel="stylesheet" type="text/css" href="../common.css" />
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="">
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-12">
+						<h3 class="title">常规接口</h3>
+  						<!-- 数据导入接口 ---面板开始-->
+  						<div class="panel panel-info  commonSetting">
+    						<div class="panel-heading">
+       							 <h3 class="panel-title">数据导入接口</h3>
+   						    </div>
+    						<div class="panel-body">
+    						
+    							<div class="form-group clearfix panel-padding">
+								   <label for="intfimportbudgetBlanceAccount" class="col-sm-4 control-label">指标科目编码：</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="intfimportbudgetBlanceAccount">
+									</div>
+								</div>
+								
+								<div class="form-group clearfix panel-padding">
+								   <label for="intfimportbudgetBlanceCoa" class="col-sm-4 control-label">指标额度COA编码：</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="intfimportbudgetBlanceCoa" > 
+									</div>
+								</div>
+								
+								<div class="form-group clearfix panel-padding">
+								   <label for="intfimportpayDetailCoa" class="col-sm-4 control-label">支付明细COA编码：</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="intfimportpayDetailCoa"> 
+									</div>
+								</div>
+								
+						    </div>
+						</div>
+  						<!-- 数据导入接口 ---面板结束-->
+  						
+  						<!-- 导出相关--面板开始-->
+  						<div class="panel panel-info commonSetting">
+    						<div class="panel-heading">
+       							 <h3 class="panel-title">导出相关</h3>
+   						    </div>
+    						<div class="panel-body">
+    						
+    							<div class="form-group clearfix panel-padding">
+									<label for="intfexportisOrDivideByMoney" class="col-sm-4 control-label">人行接口导出是否按零额度拆分：</label>
+									<div class="col-sm-8">
+											<label class="checkbox-inline">
+												<input type="radio" name="intfexportisOrDivideByMoney" id="optionsRadios3" value="false" checked>否
+											</label>
+											<label class="checkbox-inline">
+												<input type="radio" name="intfexportisOrDivideByMoney" id="optionsRadios4"  value="true"> 是
+											</label>
+									</div>
+								</div>
+						    </div>
+						</div>
+  						<!-- 导出相关 ---面板结束-->
+  						
+  						<!-- 核销相关--面板开始-->
+  						<div class="panel panel-info commonSetting">
+    						<div class="panel-heading">
+       							 <h3 class="panel-title">核销相关</h3>
+   						    </div>
+    						<div class="panel-body">
+    						
+    							<div class="form-group clearfix panel-padding">
+									<label for="intfbudgetfeedbackautoPayBudget" class="col-sm-4 control-label">是否执行自动核销：</label>
+									<div class="col-sm-8">
+											<label class="checkbox-inline">
+												<input type="radio" name="intfbudgetfeedbackautoPayBudget" id="optionsRadios3" value="0" checked>不执行
+											</label>
+											<label class="checkbox-inline">
+												<input type="radio" name="intfbudgetfeedbackautoPayBudget" id="optionsRadios4"  value="1"> 执行
+											</label>
+									</div>
+								</div>
+								
+								
+								<div class="form-group clearfix panel-padding">
+									<label for="intfbudgetfeedbackpayBudgetIsUse" class="col-sm-4 control-label">是否指标核销正在执行：</label>
+									<div class="col-sm-8">
+											<label class="checkbox-inline">
+												<input type="radio" name="intfbudgetfeedbackpayBudgetIsUse"  value="0" checked>否
+											</label>
+											<label class="checkbox-inline">
+												<input type="radio" name="intfbudgetfeedbackpayBudgetIsUse"  value="1">是
+											</label>
+									</div>
+								</div>
+								
+								<div class="form-group clearfix panel-padding">
+									<label for="intfbudgetfeedbackpayBudgetMonthConf" class="col-sm-4 control-label">华青接口按月份扣减额度规则：</label>
+									<div class="col-sm-8">
+											<label class="checkbox-inline">
+												<input type="radio" name="intfbudgetfeedbackpayBudgetMonthConf" id="optionsRadios3" value="0" checked>从小到大扣减
+											</label>
+											<label class="checkbox-inline">
+												<input type="radio" name="intfbudgetfeedbackpayBudgetMonthConf" id="optionsRadios4"  value="1">从大到小扣减
+											</label>
+									</div>
+								</div>
+								
+								<div class="form-group clearfix panel-padding">
+									<label for="intfbudgetfeedbackpayBudgetType" class="col-sm-4 control-label">指标核销类型：</label>
+									<div class="col-sm-8">
+											<label class="checkbox-inline">
+												<input type="radio" name="intfbudgetfeedbackpayBudgetType" id="optionsRadios3" value="0" checked>太极华青
+											</label>
+											<label class="checkbox-inline">
+												<input type="radio" name="intfbudgetfeedbackpayBudgetType" id="optionsRadios4"  value="1">预算执行指标系统
+											</label>
+									</div>
+								</div>
+								
+								<div class="form-group clearfix panel-padding">
+									<label for="intfbudgetfeedbackrelate_field" class="col-sm-4 control-label">核销关联条件：</label>
+									<div class="col-sm-8">
+											<label class="checkbox-inline">
+												<input type="radio" name="intfbudgetfeedbackrelate_field" id="optionsRadios3" value="id" checked>正常情况
+											</label>
+											<label class="checkbox-inline">
+												<input type="radio" name="intfbudgetfeedbackrelate_field" id="optionsRadios4"  value="voucher_no"> 2.0升级3.0
+											</label>
+									</div>
+								</div>
+								
+						    </div>
+						</div>
+  						<!-- 核销相关 ---面板结束-->
+  						
+  						<!-- 指标修正相关 ---面板开始-->
+  						<div class="panel panel-info commonSetting">
+    						<div class="panel-heading">
+       							 <h3 class="panel-title">指标修正相关</h3>
+   						    </div>
+    						<div class="panel-body">
+    						
+    							<div class="form-group clearfix panel-padding">
+								   <label for="intfbudgetmodifymodifyELE" class="col-sm-4 control-label">指标修正要素范围：</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="intfbudgetmodifymodifyELE" value="115950001" >
+									</div>
+								</div>
+								
+								<div class="form-group clearfix panel-padding">
+								   <label for="intfbudgetmodifymodifyELERuleCode" class="col-sm-4 control-label">指标修正定值规则：</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="intfbudgetmodifymodifyELERuleCode" value="22" > 
+									</div>
+								</div>
+								
+						    </div>
+						</div>
+  						<!-- 指标修正相关 ---面板结束-->
+  						
+  						
+  						<!-- 交换中心相关 ---面板开始-->
+  						<div class="panel panel-info commonSetting">
+    						<div class="panel-heading">
+       							 <h3 class="panel-title">交换中心相关</h3>
+   						    </div>
+    						<div class="panel-body">
+    						
+    							<div class="form-group clearfix panel-padding">
+								   <label for="intfexpsysIdsclearBank" class="col-sm-4 control-label">清算银行类别：</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="intfexpsysIdsclearBank"  >
+									</div>
+								</div>
+								
+								<div class="form-group clearfix panel-padding">
+								   <label for="intfexpsysIdsproxyBank" class="col-sm-4 control-label">代理银行类别：</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="intfexpsysIdsproxyBank"  > 
+									</div>
+								</div>
+								
+								<div class="form-group clearfix panel-padding">
+								   <label for=" intfexpsysIdsfinanceMinistry" class="col-sm-4 control-label">财政类别：</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="intfexpsysIdsfinanceMinistry"  > 
+									</div>
+								</div>
+								
+								<div class="form-group clearfix panel-padding">
+								   <label for="intfdxpmoneyShowPattern " class="col-sm-4 control-label">银行报文金额显示格式：</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control" id="intfdxpmoneyShowPattern"  > 
+									</div>
+								</div>
+								
+						    </div>
+						</div>
+  						<!-- 交换中心相关---面板结束-->
+  						
+  						
+  						<!-- 核销器配置--面板开始-->
+  						<div class="panel panel-info">
+    						<div class="panel-heading">
+       							 <h3 class="panel-title">核销器配置</h3>
+   						    </div>
+    						<div class="panel-body">
+    						<div class="row">
+    						     <div class="col-sm-7 ">
+									<div type="text"
+										u-meta='{"id":"intfbudgetfeedbackverifiers_grid","data":"gridDataTableClassList","type":"grid","editable":false,"autoExpand":false,"onRowSelected":"clickGridColumn","showNumCol":true,"showTree":false,"keyField":"plt_key"}'>
+										<div options='{"field":"descript","dataType":"String","title":"类说明","editType":"string","width": 150}'></div>
+										<div options='{"field":"value","dataType":"String","title":"处理类","editType":"string","width": 150}'></div>
+									</div>
+									<center>
+										<button class="btn btn-primary"  id="save" data-bind="click:saveConventionalInterfaceData" style="margin:0 auto">保存</button> 
+									</center>
+								</div>
+								<div class="col-sm-5"> 
+										<div class="form-group">
+											<label for="descript" class="col-sm-4 control-label" >类说明：</label>
+											<div class="col-sm-8">
+												<input type="text" class="form-control" id="descript" style="width: 100%"> 
+											</div>
+										</div>
+										<div class="form-group">
+											<label for="value" class="col-sm-4 control-label">处理类：</label>
+											<div class="col-sm-8">
+												<input type="text" class="form-control" id="value" style="width: 100%"> 
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-sm-offset-4 col-sm-8">
+												<button class="btn btn-primary" data-bind="click:gridAdd">添加</button> 
+												<button class="btn btn-danger" data-bind="click:gridDel">删除</button> 
+											</div>
+										</div>
+										
+								</div>
+								</div>
+								
+						    </div>
+						</div>
+						<div class="row">
+							
+						 </div>
+  						<!-- 核销器配置- ---面板结束-->
+						
+					
+				</div>
+			</div>
+		</div>
+	
+	</div>
+	<script src="/df/trd/requirejs/require.js"></script>
+	<script src="/df/require.config.js"></script>
+	<script src="./conventionalInterface.js"></script>
+</body>
+</html>

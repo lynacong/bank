@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>业务配置</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css"/>
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+    a:hover {
+      color: #108EE9;
+    }
+    .m-box {
+      display: flex;
+      height: 100%;
+    }
+    .m-item {
+      flex-grow: 1;
+      padding: 10px 7px 10px 15px;
+      height: 100%;
+    }
+    .m-item .title {
+      color: #108EE9;
+      font-size: 16px;
+    }
+    .m-item .panel {
+      height: 100%;
+      margin: 0;
+    }
+    .m-item .panel-body {
+      height: calc( 100% - 45px );
+      overflow: auto;
+    }
+    .m-item.two {
+      padding-left: 8px;
+      padding-right: 15px;
+    }
+    .m-item .item {
+      position: relative;
+      padding-left: 12px;
+    }
+    .m-item .item:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 0;
+      height: 0;
+      border: 2px solid orange;
+    }
+  </style>
+</head>
+
+<body>
+<div class="m-box" id="app">
+  <div class="m-item">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <span class="title">待办事项</span>
+      </div>
+      <div class="panel-body">
+        <p v-if="!todoList.length">暂时没有待办事项</p>
+        <ul v-else class="list-unstyled m-body">
+          <li v-for="item in todoList" class="item">
+            <a href="javascript:;" v-text="item.name"></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="m-item two" style="padding-left: 8px;">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <span class="title">信息提醒</span>
+        </div>
+        <div class="panel-body">
+          <p v-if="!infoList.length">暂无消息</p>
+          <ul v-else class="list-unstyled m-body">
+            <li v-for="item in infoList" class="item">
+              <a href="javascript:;" v-text="item.name"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</div>
+
+<script src="js/jquery-2.2.3.min.js"></script>
+<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/vue.min.js"></script>
+<script>
+//  999999999用户新首页
+  new Vue({
+    el: '#app',
+    data: {
+      todoList: [
+        {name: '待办事项1'},
+        {name: '待办事项1'},
+        {name: '待办事项1'},
+        {name: '待办事项1'},
+      ],
+      infoList: [],
+    },
+
+  })
+</script>
+</body>
+
+</html>

@@ -1,0 +1,173 @@
+	<div class="container-fluid h">
+		<div class="config-btn">
+			<button id="sx" class="btn btn-config" onclick="fRefRec()">刷新</button>
+			<button id="zj" class="btn btn-config" onclick="fAddRec()">增加</button>
+			<button id="xg" class="btn btn-config" onclick="fEditRec()">修改</button>
+			<button id="sc" class="btn btn-danger" onclick="fDelRec()">删除</button>
+		</div>
+		<div class="config-main">
+			<ul id="ul" class="nav nav-tabs" role="tablist">
+				<li id="002" role="presentation" class="active"><a id="a001" aria-controls="home" role="tab" data-toggle="tab" onclick="tabclick002()">支付账户</a>
+				</li>
+				<li id="001" role="presentation"><a id="a002" aria-controls="profile" role="tab" data-toggle="tab" onclick="tabclick001()">清算账户</a>
+				</li>
+				<li id="003" role="presentation"><a id="a003" aria-controls="messages" role="tab" data-toggle="tab" onclick="tabclick003()">划款账户</a>
+				</li>
+				<li id="005" role="presentation"><a id="a005" aria-controls="messages" role="tab" data-toggle="tab" onclick="tabclick005()">垫款账户</a>
+				</li>
+				<li id="004" role="presentation"><a id="a004" aria-controls="messages" role="tab" data-toggle="tab" onclick="tabclick004()">其他账户</a>
+				</li>
+			</ul>
+			<div style="border: 1px solid #ccc;padding:6px;height:92%;overflow: auto;">
+				<div id="tableAcc" style=" display: block;height:100%;">
+					<table class="table-striped table table-bordered nowrap table-hover table-condensed" id="subSystemGrid" style="width:100%;">  
+			            <thead>  
+			                <tr>
+				                <th>id</th>
+				                <th>账户类型</th> 
+			                    <th>账户名称</th>  
+			                    <th>账号</th>
+			                    <th>办理行</th>
+			                    <th>开户行</th>  
+			                    <th>账户类型</th>
+			                    <th>资金性质（mk=11#BS=99）</th>  
+			                    <th>财政机构</th>
+			                    <th>办理行编码</th>
+			                    <th>开户行编码</th> 
+			                </tr>  
+			            </thead>  
+			            <tbody>  
+			            </tbody>  
+		       	  </table>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+	
+	<!-- 新增/修改Modal start-->
+		<div class="modal fade" id="accSetModel" tabindex="-1" role="dialog"
+			aria-labelledby="ylModalLabel" data-backdrop="static">
+			<div class="modal-dialog" role="document" style="width:530px;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>	
+						<h4 class="modal-title" id="titleText"></h4>
+					</div>
+					<div class="modal-body display-container">
+						<div class="clearfix" style="margin:10px;">
+							<div class="form-group col-md-12">
+								<label for="account_no" class="col-md-3 text-right"><span class="color-red">*</span>账号：</label> 
+								<div class="input-group col-md-9">
+									<input type="text" id="account_no" class="form-control"  />
+								</div>
+							</div>
+                            <div class="form-group col-md-12">
+								<label for="account_name" class="col-md-3 text-right"><span class="color-red">*</span>账户名称：</label> 
+								<div class="input-group col-md-9">
+									<input type="text"  id="account_name" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group col-md-12" style="display:none;">
+								<label for="bank_code" class="col-md-3 text-right">办理行编码：</label> 
+								<div class="input-group col-md-9">
+									<input type="text"  id="bank_code" class="form-control"/>
+								</div>
+							</div>
+							<div class="form-group col-md-12" id="pb_bank">
+								<label for="bank_name" class="col-md-3 text-right"><span class="color-red">*</span>办理行：</label>
+								<div class="input-group col-md-9">
+									<input type="text"  id="bank_name" class="form-control" onFocus="getBank('0')"/>
+								</div>
+							</div>
+							<div class="form-group col-md-12" style="display:none;">
+								<label for="deposit_bank_code" class="col-md-3 text-right">开户行编码：</label> 
+								<div class="input-group col-md-9">
+									<input type="text"  id="deposit_bank_code" class="form-control"/>
+								</div>
+							</div>
+							<div class="form-group col-md-12" id="deposit_bank">
+								<label for="deposit_bank_name" class="col-md-3 text-right"><span class="color-red">*</span>开户行：</label>
+								<div class="input-group col-md-9">
+									<input type="text"  id="deposit_bank_name" class="form-control" onFocus="getBank('1')"/>
+								</div>
+							</div>
+							<div class="form-group col-md-12">
+								<label for="account_type_name" class="col-md-3 text-right"><span class="color-red">*</span>账户类型：</label> 
+								<div class="input-group col-md-9">
+									<select id="account_type_name" class="form-control">
+									</select>
+								</div>
+							</div>
+							<div class="form-group col-md-12" id="relation" style="position:relative;">
+								<label for="account_relation_ele" class="col-md-3 text-right" style="line-height:18px;">资金性质：</label>
+								<span style="position:absolute;top:12px;left:3px;">(mk=11#BS=99)</span> 
+								<div class="input-group col-md-9">
+									<input type="text" id="account_relation_ele" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group col-md-12" id='finance'>
+								<label for="finance_code" class="col-md-3 text-right"><span class="color-red">*</span>财政机构：</label>
+								<div class="input-group col-md-9">
+									<select id="finance_code" class="form-control">
+									</select>
+								</div>
+							</div>
+						</div>	
+					</div>
+					<div class="modal-footer" style="clear: both;">
+						<button type="button" class="btn btn-primary" onclick="fSaveRec()">确定</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal">退出</button>
+					</div>
+				</div>
+			</div>
+	</div>
+	
+	
+	
+	<!-- 弹出浮动 -->
+	<div class="modal fade" tabindex="-1" id="wizardModal" role="dialog"
+			aria-labelledby="ylModalLabel" data-backdrop="static">
+		<div class="modal-dialog" role="document" style="width:400px;">
+			<div class="modal-content">
+
+				<div class="modal-header ui-draggable-handle">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">银行机构选择</h4>
+				</div>
+
+				<div class="modal-body">
+					<div style="margin:0px 0px 0px 0px;border: 1px solid #ccc;">
+						<input id="modal_chr_id" type="hidden" value="">
+						<label  style="margin:5px 0px 0px 5px; ">选择银行： </label>
+						<div id="treeMain" class="ztree" style="height:300px;overflow-x: hidden;overflow-y: scroll;margin:0px 0px 0px 0px; "
+							u-meta='{
+                                "id":"bankTree",
+                                "data":"dataTable",
+                                "type":"tree",
+                                "idField":"chr_id",
+                                "pidField":"parent_id",
+                                "nameField":"show_name",
+                                "setting":"treeSetting"
+                            }'>
+						</div>
+					</div>
+					<br>
+					<div style="margin:0px 0px 0px 225px;">	
+					</div>	
+					</div>															    
+			   <div class="modal-footer">
+					  <button id="modalok" type="button" class="btn btn-primary" onclick="fModalOk()">确定</button>
+					  <button id="modalcancel" type="button" class="btn btn-primary" onclick="fModalCancel()">取消</button>				   
+			   </div>
+					
+				
+			</div>
+		</div>
+	</div>

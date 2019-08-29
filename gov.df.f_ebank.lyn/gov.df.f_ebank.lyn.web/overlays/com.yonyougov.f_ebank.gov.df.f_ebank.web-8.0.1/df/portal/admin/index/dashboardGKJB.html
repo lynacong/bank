@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>国库会计经办</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="css/lte/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/lte/AdminLTE.min.css">
+    <link rel="stylesheet" href="css/lte/_all-skins.min.css">
+    <link rel="stylesheet" href="css/dfp.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/GKJB/dashboardGKJB.css">-->
+
+	<!-- 中部图片样式 -->
+	<style>
+		div.inner > h3 {
+			margin-left: 10px !important;
+		}
+		.gkjb-marginleft-15 {
+			margin-left: 15px;
+			margin-bottom: 1px;
+		}
+		.gkjb-marginleft-15 + a {
+			position: relative;
+			float: right;
+		}
+	</style>
+
+</head>
+<body class="hold-transition sidebar-mini sidebar-collapse" style="width: auto;">
+<div class="wrapper">
+
+    <div class="content-wrapper" style="background: #fff;">
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row" style="margin: 0 0 0 0;">
+
+                <!-- 常用操作 -->
+                <div id="topOften" class="row" style="margin:0;">
+                    <div id="often" class="box box-default col-xs-11">
+                        <div id="oftenContent" class="box-body"></div>
+                    </div>
+                    <div id="oftenSetting" class="box box-default col-xs-1">
+                        <i class="fa fa-fw fa-cog"></i>
+                        <span>页面设置</span>
+                    </div>
+                </div>
+                <!-- /.常用操作 -->
+
+                <div class="box box-default" style="border:none;box-shadow:0 0px 0px rgba(0,0,0,0.1);margin-bottom: 10px;">
+                    <div id="agencyOperation" class="box-body" style="padding:0px;">
+                        <div class="col-lg-3 col-md-3 col-xs-3 " style="padding: 0px;height: 155px;">
+                            <div class="small-box bg-green" style="background: #ffffff !important;height: 100%;border: solid 1px #e4d4d4; border-top: 3px solid #F04134;margin-bottom: 0px;">
+                                <div class="inner" style="color: #0c0c0c;overflow: auto;">
+                                    <h3 style="width:26%;text-align:center;float:left;font-weight: normal;margin-left:2px;margin-top:10px;">
+                                        <img style="height: 60px;margin-top:10px;margin-bottom:10px;" src="img/gkjb-paysum.png">
+                                        <div style="font-size: 16px; margin-top: 10px; font-weight: bold;">额度清算单</div>
+                                    </h3>
+                                    <div style="float:right; font-size: 14px;margin-right:10px;width: 60%;margin-top: 10px;">
+                                        <div style="margin-top: 0px;margin-bottom: 20px;">
+                                            <div>授权支付汇总清算单</div>
+                                            <div>
+	                                			<span style="display: inline-block;" class="gkjb-marginleft-15">
+	                                				<span style="color: #F56A00;" id="authPaymentSumAndSetSheetBi">0</span>&nbsp;笔
+	                                			</span>
+                                                <a href="javascript:void(0);"><span style="color: #108EE9;" class="agencyOperationSpanToClick" id="authPaymentSumAndSetSheetA">去签章>></span></a>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div>直接支付汇总清算单</div>
+                                            <div>
+	                                			<span style="display: inline-block;" class="gkjb-marginleft-15">
+	                                				<span style="color: #F56A00;" id="directPaymentSumAndSetSheetBi">0</span>&nbsp;笔
+	                                			</span>
+                                                <a href="javascript:void(0);"><span style="color: #108EE9;" class="agencyOperationSpanToClick" id="directPaymentSumAndSetSheetA">去签章>></span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-3 " style="padding: 0px;height: 155px;">
+                            <div class="small-box bg-green" style="background: #ffffff !important;height: 100%;border: solid 1px #e4d4d4;border-top:3px solid #37A66E;margin-bottom: 0px;">
+                                <div class="inner" style="color: #0c0c0c;">
+                                    <h3 style="width:26%;text-align:center;float:left;font-weight: normal;margin-left:30px;margin-top:10px;">
+                                        <img style="height: 60px;margin-top:10px;margin-bottom:10px;" src="img/gkjb-real.png">
+                                        <div style="font-size: 16px; margin-top: 10px;font-weight: bold;">拨款凭证</div>
+                                    </h3>
+                                    <div style="float:right; font-size: 14px;margin-right:10px;width: 60%;">
+                                        <div style="margin-top: 10px;margin-bottom: 20px;">
+                                            <div>实拨凭证</div>
+                                            <div>
+											 	<span style="display: inline-block;" class="gkjb-marginleft-15">
+											 		<span style="color: #F56A00;" id="actualAppropriationCredenceBi">0</span>&nbsp;笔
+											 	</span>
+                                                <a href="javascript:void(0);"><span style="color: #108EE9;" class="agencyOperationSpanToClick" id="actualAppropriationCredenceA">去签章>></span></a>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div>调度款凭证</div>
+                                            <div>
+										 		<span style="display: inline-block;" class="gkjb-marginleft-15">
+										 			<span style="color: #F56A00;" id="dispatchingFundCredenceBi">0</span>&nbsp;笔
+										 		</span>
+                                                <a href="javascript:void(0);"><span style="color: #108EE9;" class="agencyOperationSpanToClick" id="dispatchingFundCredenceA">去登记>></span></a>
+                                            </div>
+                                            <div>
+										 		<span style="display: inline-block;" class="gkjb-marginleft-15">
+										 			<span style="color: #F56A00;"></span>&nbsp;
+										 		</span>
+                                                <a href="javascript:void(0);"><span style="color: #108EE9;" id="dispatchingFundCredenceIn">去录入>></span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-3 " style="padding: 0px;height: 155px;">
+                            <div class="small-box bg-green" style="background: #ffffff !important;height: 100%;border: solid 1px #e4d4d4;border-top:3px solid #31708F;margin-bottom: 0px;">
+                                <div class="inner" style="color: #0c0c0c;">
+                                    <h3 style="width:26%;text-align:center;float:left;font-weight: normal;margin-left:30px;margin-top:10px;">
+                                        <img style="height: 60px;margin-top:10px;margin-bottom:10px;" src="img/gkjb-paydirc.png">
+                                        <div style="font-size: 16px; margin-top: 10px;font-weight: bold;">划款清算</div>
+                                    </h3>
+                                    <div style="float:right; font-size: 14px;margin-right:10px;width: 60%;">
+                                        <div style="margin-top: 0px;margin-bottom: 10px;">
+                                            <div>直接支付</div>
+                                            <div>
+										 		<span style="display: inline-block;margin-right: 5px;" class="gkjb-marginleft-15">
+										 			正常 <span style="color: #F56A00;" id="directPaymentNormalBi">0</span>&nbsp;笔
+										 		</span>
+                                                <a href="javascript:void(0);"><span style="color: #108EE9;" class="agencyOperationSpanToClick" id="directPaymentNormalA">去登记>></span></a>
+                                            </div>
+                                            <div>
+										 		<span style="display: inline-block;margin-right: 5px;" class="gkjb-marginleft-15">
+										 			退款 <span style="color: #F56A00;" id="directPaymentTuiBi">0</span>&nbsp;笔
+										 		</span>
+                                                <a href="javascript:void(0);"><span style="color: #108EE9;" class="agencyOperationSpanToClick" id="directPaymentTuiA">去登记>></span></a>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div>授权支付</div>
+                                            <div>
+										 		<span style="display: inline-block;margin-right: 5px;" class="gkjb-marginleft-15">
+										 			正常 <span style="color: #F56A00;" id="authPaymentNormalBi">0</span>&nbsp;笔
+										 		</span>
+                                                <a href="javascript:void(0);"><span style="color: #108EE9;" class="agencyOperationSpanToClick" id="authPaymentNormalA">去登记>></span></a>
+                                            </div>
+                                            <div>
+										 		<span style="display: inline-block;margin-right: 5px;" class="gkjb-marginleft-15">
+										 			退款 <span style="color: #F56A00;" id="authPaymentTuiBi">0</span>&nbsp;笔
+										 		</span>
+                                                <a href="javascript:void(0);"><span style="color: #108EE9;" class="agencyOperationSpanToClick" id="authPaymentTuiA">去登记>></span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-3 " style="padding: 0px;height: 155px;">
+                            <div class="small-box bg-green" style="background: #ffffff !important;height: 100%;border: solid 1px #e4d4d4;border-top:3px solid #6D65BC;margin-bottom: 0px;">
+                                <div class="inner" style="color: #0c0c0c;">
+                                    <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="刷新" id="middleRefresh" style="position: absolute;right: 2px;top: 0px;">
+                                        <i class="fa fa-fw fa-refresh" style="padding: 0;"></i>
+                                    </button>
+                                    <h3 style="width:26%;text-align:center;float:left;font-weight: normal;margin-left:30px;margin-top:10px;">
+                                        <img style="height: 60px;margin-top:10px;margin-bottom:10px;" src="img/gkjb-paycount.png">
+                                        <div style="font-size: 16px; margin-top: 10px;font-weight: bold;">对账处理</div>
+                                    </h3>
+                                    <div style="float:right; font-size: 14px;margin-right:10px;width: 60%;">
+                                        <div style="margin-top: 10px;margin-bottom: 20px;">
+                                            <div>支付对账</div>
+                                            <div>
+										 		<span style="display: inline-block;" class="gkjb-marginleft-15">
+										 			<span style="color: #F56A00;" id="paymentReconciliationBi">0</span>&nbsp;笔
+										 		</span>
+                                                <a href="javascript:void(0);"><span style="color: #108EE9;" class="agencyOperationSpanToClick" id="paymentReconciliationA">去签名>></span></a>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div>实拨对账</div>
+                                            <div>
+										 		<span style="display: inline-block;" class="gkjb-marginleft-15">
+										 			<span style="color: #F56A00;" id="actualAppropriationReconciliationBi">0</span>&nbsp;笔
+										 		</span>
+                                                <a href="javascript:void(0);"><span style="color: #108EE9;" class="agencyOperationSpanToClick" id="actualAppropriationReconciliationA">去签名>></span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 对账管理 -->
+                <div class="col-md-9 col-lg-9" style="padding-left: 0px;">
+
+                    <div class="box box-default dfp-box" style="height: 420px;">
+                        <div class="box-header with-border dfp-box-header">
+                            <h3 class="box-title dfp-box-title">对账管理</h3>
+                            <div class=" box-tools">
+                                <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="刷新" id="checkPaymentRefresh">
+                                    <i class="fa fa-fw fa-refresh" style="padding: 0;"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="checkPayment" class="box-body">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
+                                    <div id="checkPaymentChart" style="height: 100%;min-height: 360px;border: 1px solid #ccc; padding: 10px;"></div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-xs-6 col-sm-6">
+                                    <!--<span style="color: #108ee9;font-size: 16px;">支付清算业务</span> ：&nbsp;&nbsp;-->
+                                    <!--<select class="dfp-ele-select" style="font-size: 14px;">-->
+                                        <!--<option value="0" selected>全部</option>-->
+                                    <!--</select>-->
+                                    <div id="checkPaymentContent" style="height: 360px;border: solid 1px #ccc;overflow-y: auto;font-size: 14px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div id="checkPaymentRefreshCover" class="overlay" style="display: none;">-->
+                        <!--<img style="position: absolute;height: 65px;left: 50%;top: 50%;margin-left: -40px;margin-top: -30px;" src="/df/portal/admin/index/img/loading-refresh.gif">-->
+                        <!--</div>-->
+                    </div>
+
+                </div>
+                <!-- /对账管理 -->
+
+                <div class="col-md-3 col-lg-3" style="padding-left: 0px;padding-right: 0px;">
+                    <!-- 公告 -->
+                    <div id="article" class="box box-default dfp-box" style="height: 420px;">
+                        <div class="box-header with-border dfp-box-header">
+                            <h3 class="box-title dfp-box-title">公告信息</h3>
+                            <div class=" box-tools">
+                                <button type="button"  class="btn btn-info btn-sm dfp-ele-btn-sm" title="刷新" id="articleRefresh">
+                                    <i class="fa fa-fw fa-refresh" style="padding: 0;"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div id="articleContent" class="box-body" style="height: 380px;overflow-y: auto;overflow-x: hidden;">
+                            <ul></ul>
+                        </div>
+                        <!-- /.box-body -->
+                        <div id="articleRefreshCover" class="overlay" style="display: none;">
+                            <img style="position: absolute;height: 65px;left: 50%;top: 50%;margin-left: -40px;margin-top: -30px;" src="/df/portal/admin/index/img/loading-refresh.gif">
+                        </div>
+                    </div>
+                    <!-- /.公告 -->
+                </div>
+
+            </div>
+
+        </section>
+    </div>
+
+</div>
+<!-- ./wrapper -->
+
+<footer style="margin-left: 60px;margin-top: 0px;">
+	山东省财政厅 北京用友政务软件有限公司  联合研发
+</footer>
+
+<script src="js/lte/jQuery-2.1.4.min.js"></script>
+<script src="js/lte/jquery-ui.min.js"></script>
+<script>
+    $.widget.bridge('uibutton', $.ui.button);
+</script>
+<script src="js/lte/bootstrap.min.js"></script>
+<script src="js/lte/app.min.js"></script>
+
+<script src="js/echarts.min.js"></script>
+
+<script src="/df/trd/md5/js/md5.js"></script>
+<script charset="utf-8" src="js/dfp/dfp.js"></script>
+<script charset="utf-8" src="js/dfp/dfpMenu.js"></script>
+<script charset="utf-8" src="js/dfp/dfpDealing.js"></script>
+<script charset="utf-8" src="js/dfp/dfpArticle.js"></script>
+<script charset="utf-8" src="js/dashboardGKJB.js"></script>
+</body>
+</html>

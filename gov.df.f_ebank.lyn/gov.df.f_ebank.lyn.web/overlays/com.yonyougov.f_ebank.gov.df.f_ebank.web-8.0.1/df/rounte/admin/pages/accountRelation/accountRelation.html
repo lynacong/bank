@@ -1,0 +1,87 @@
+	<div class="container-fluid h">
+		<div class="config-btn">
+			<button id="bd" class="btn btn-config" onclick="fBandRec()">绑定</button>
+		</div>
+		<div class="config-main">
+			<div id="leftDiv" class="col-sm-7 border-box" style="padding:10px 6px 6px;overflow:hidden;">
+				<label style="margin:4px 0px 0px 5px;text-align:left; ">支付账户</label>
+				<div style="margin-top:-27px;">
+					<div id="subSystemGrid" >
+						<table id="gridDatatable" style="width:100%;table-layout:fixed;" class="table-striped table nowrap table-bordered table-hover table-condensed">  
+	            				<thead><tr> <th></th><th>账户名称</th><th>账号</th> <th>办理行</th><th></th><th></th><th></th><th></th></tr></thead>  
+	           					 <tbody> </tbody>  
+	       	 			</table> 
+       	 			</div> 
+				</div>
+			</div>
+
+			<div id="rightDiv" class="col-sm-5 h">
+				<div class="border-box p5">
+					<div style="height:50%;">
+						<label class="ml5">清算账户： </label>
+						<div style="height: 92%;overflow:auto;">
+							<table id="qsDatatable" style="width:100%;table-layout:fixed;" class="table-striped table nowrap table-bordered table-hover table-condensed">  
+	            				<thead><tr> <th></th><th>账户名称</th> <th>账号</th> <th>开户行</th><th></th><th></th></tr></thead>  
+	           					 <tbody> </tbody>  
+		       	 			</table>
+						</div>
+					</div>
+					<div style="height:48%;border-top:1px solid #ccc;margin-top:10px;">
+						<label class="ml5">划款账户： </label>
+						<div style="height: 90%;overflow: auto">
+							<table id="hkDatatable" style="width:100%;table-layout:fixed;" class="table-striped table nowrap table-bordered table-hover table-condensed">  
+		            				<thead><tr> <th></th><th>账户名称</th> <th>账号</th> <th>开户行</th><th></th><th></th></tr></thead>  
+		           					 <tbody> </tbody>  
+		       	 			</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 弹出浮动 -->
+	<div class="modal fade" tabindex="-1" id="wizardModal">
+		<div class="modal-dialog" role="document" style="width:1120px;height:70%;margin:40px auto;">
+			<div class="modal-content">
+				<div class="modal-header ui-draggable-handle">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<label style="margin:4px 0px 0px 5px;text-align:left; ">账户选择 </label>
+				</div>
+
+				<div class="modal-body">
+					<input id="balance_account_id" type="hidden" value="">
+					<input id="balance_account_no" type="hidden" value="">
+					<div class="row" style="margin:0;overflow:hidden;height:400px">
+						<div class="col-md-6 col-sm-6 border-box pt10" style="float:left;height:100%;border-right:0;">
+							<label style="margin:4px 0px 0px 5px;text-align:left;">清算账户</label>
+							<div style="margin-top:-27px;">
+								<div id="qsGridM">
+									<table id="qsDatatableM" style="width:100%;table-layout:fixed;" class="table-striped table nowrap table-bordered table-hover table-condensed">  
+		            					<thead><tr>  <th></th><th>账户名称</th> <th>账号</th> <th>开户行</th><th></th><th></th></tr></thead>  
+		           					 	<tbody> </tbody>  
+		       	 					</table>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6 border-box pt10" style="float:left;height:100%;">
+							<label style="margin:4px 0px 0px 5px;text-align:left; ">划款账户</label>
+							<div style="margin-top:-27px;">
+								<div id="hkGridM">
+									<table id="hkDatatableM" style="width:100%;table-layout:fixed;" class="table-striped table nowrap table-bordered table-hover table-condensed">  
+		            					<thead><tr>  <th></th><th>账户名称</th> <th>账号</th> <th>开户行</th><th></th><th></th></tr></thead>  
+		           					 	<tbody> </tbody> 
+		           					 </table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer" style="clear: both;">						
+					    <button id="modalok" type="button" class="btn btn-primary" onclick="fModalOk()">保存</button>
+					    <button id="modalcancel" type="button" class="btn btn-primary" onclick="fModalCancel()">取消</button>
+					</div>
+			</div>
+		</div>
+	</div>

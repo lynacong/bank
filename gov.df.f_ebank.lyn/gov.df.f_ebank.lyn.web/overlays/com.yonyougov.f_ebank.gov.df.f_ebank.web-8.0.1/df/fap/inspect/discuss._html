@@ -1,0 +1,67 @@
+<div class="modal fade" id="inspectDiscussModalAdd">
+		<div class="modal-dialog inspectDiscussModalAdd-dialog" >
+			<div class="modal-content inspectDiscussModalAdd-content" style="margin-top:-24px;">
+				<div class="modal-header">
+					<button type="button" class="close inspectDiscussModalAdd-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="inspectDiscussModalAddLabel">新增问题共商</h4>
+				</div>
+				<div class="modal-body inspectDiscussModalAdd-body">
+					<div class="tab-content tabbed-content add-two">
+								<form class="form-inline col-sm-12" style="padding-bottom: 2px;">
+									<div class="form-group form-group-sm ">
+										<label for="" class="control-label">共商主题：</label>
+									</div>
+									<div class="form-group form-group-sm " style="padding-top: 2px;">
+										<div class="input-group input-group-sm">
+											<input type="text" id="discussTheme" class="form-control" value="" style="width:698px">
+										</div>
+									</div>
+									<div class="little-content fourth" style="margin-top: 8px;">
+									<label for="inputEmail3" class="f14 send-label" style="margin-left: 0px;">常用部门：</label>
+										<div u-meta='{"id":"c2","type":"u-checkbox","data":"dt3","field":"f3","datasource":"checkboxData3"}'>
+	    									<label  id = "discuss-checkbox" class="u-checkbox">
+	       				   	 				<input type="checkbox" class="u-checkbox-input" >
+	        				 				<span  id = "checkboxName" class="u-checkbox-label" data-role="name"></span>
+	    									</label>
+										</div>
+									</div>
+								</form>
+								<div class="flex flex-v" style="height:364px;width:808px;">
+									<div class="flex-3 flex" style ="height:100%">
+										<div class="step-tree  step-border func-div" style=" width: 360px;margin-top: 30px;padding-top: 10px;height:92%;">
+										<ul class="nav nav-tabs nav-adds" id="navuser-tabs" style="margin-top: -42px;margin-left: 0px;">
+										<li class="active tabbed-Item"><a href="#commonuser" data-toggle="tab" onclick="showCommonUserTab()">常用人员</a></li>
+										<li class=" tabbed-Item"><a href="#allmbuser" onclick="showAllMbTab();">全部处室</a></li>
+										</ul>
+										<div class="tab-content tabbed-content add-user" style="height: calc(100% - -12px);overflow: auto;">
+											<!-- 常用人员选项卡 -->
+											<div class="tab-pane h flex-1 flex flex-v active" id="commonuser">
+												<ul id="commonUserTree" class="ztree" style="padding:5px;"></ul>
+											</div>
+											<!-- 全部处室选项卡 -->
+											<div class="tab-pane flex-1 flex flex-v" id="allmbuser">
+												<ul id="allUserTree" class="ztree" style="padding:5px;"></ul>
+											</div>
+										</div>
+										</div>
+										<div class="btn-arrow" >
+											<button type="button"  class="btn btn-default arrow-right" onclick="addUserToList()">添加-></button>
+											<button type="button"  class="btn btn-default arrow-left" onclick="removeUserFromList()">删除<-</button>
+											<!-- <button type="button"  class="btn btn-default arrow-right-all" onclick="addUserAllToList()">全部添加->></button>
+											<button type="button"  class="btn btn-default arrow-left-all" onclick="removeUserAllFromList()">全部删除<<-</button> -->
+										</div>
+										<div class="btn-grid-group  func-div" style="width: 384px;margin-top: 30px;height:92%;">
+										<div id="discussUserArea" class="tabbed-grid" style="height: calc(100% - -93px);"></div>
+										</div>
+									</div>
+								</div>
+							<!-- </div> -->
+					</div>
+				</div>
+					<div class="modal-footer">
+						<button type="button"  class="btn btn-primary" onclick="doSaveDiscuss();">确定</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>

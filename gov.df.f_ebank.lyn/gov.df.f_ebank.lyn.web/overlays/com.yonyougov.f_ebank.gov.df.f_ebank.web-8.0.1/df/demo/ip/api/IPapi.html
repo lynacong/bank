@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>IPapi</title>
+		<style>
+			body{
+				font-family: "微软雅黑";
+			}
+			.title{
+				font-size: 18px;
+				color: #005DE6;
+				text-align: center;
+			}
+			span{
+				display: block;
+				margin-top: 10px ;
+			}
+			span.run-result{
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<p class="title">ip.js中的公共方法说明</p>
+		<ul>
+			 <li>
+				<h3>1、ip.getCommonOptions()</h3>
+				<p>
+					<span>获取页面公共参数</span>
+				</p>
+ 			</li>
+ 			<li>
+				<h3>2、ip.coaRelation(ele_code, coa_id, eleRelations, flag, areaId,viewModel,ele_name,ele_value)</h3>
+				<p>
+					<span>关联关系函数</span>
+					<span>参数1：要素字段</span>
+					<span>参数2：coa的id</span>
+					<span>参数3：要素关联关系</span>
+					<span>参数4：0（单选树） 1（复选树）</span>
+					<span>参数5：区域id</span>
+					<span>参数6：1表格内使用，传入当前表格的viewModel；2其他场景使用，传入{}</span>
+					<span>参数7：1录入区域使用，传入当前字段名称；2、其他场景使用，请传入0</span>
+					<span>参数8：1录入区域使用，基于关联关系，数据源细化前缀；2其他场景使用，不需传入</span>
+					<span>例：</span>
+				</p>
+ 			</li>
+			<li>
+				<h3>3、ip.isShow(data)</h3>
+				<p>传递资源数据，根据data[i].flag资源标识为1或0来判断是否在页面中显示该资源</p>
+			</li>
+			<li>
+				<h3>4、ip.warnJumpMsg(msg,sureId,cancelCla,flag)</h3>
+				<p>
+					<span>确认消息弹框</span>
+					<span>参数1：提示消息文字</span>
+					<span>参数2：确定按钮id</span>
+					<span>参数3：取消按钮class</span>
+					<span>参数4：是否仅仅显示确定按钮</span>
+					<span>
+					1、viewModel.warnJump=function(){
+				        warnJumpMsg("确定删除吗？",0,0,true);
+				    }
+					</span>
+					<span>2、 warnJumpMsg("确定删除吗？","sid","cCla");</span>
+					<span>
+					“确定”按钮的逻辑代码
+						$("#sid").on("click",function(){
+		                    alert("删除成功！");
+	                    });
+					</span>
+					<span>
+					 “取消” 按钮，关闭消息提示
+						$(".cCla").on("click",function(){
+							$("#config-modal").remove();
+						})
+					</span>
+					<span class="run-result">
+						运行效果截图
+					</span>
+					<img src="img/message.png"/>
+				</p>
+ 			</li>
+ 			<li>
+				<h3>4-1、ip.warnJumpMsgSys(titleMsg,msg,sureId,cancelCla,flag)</h3>
+				<p>
+					<span>确认消息弹框</span>
+					<span>参数1：弹窗标题</span>
+					<span>参数2：可编辑的提示消息文字</span>
+					<span>参数3：确定按钮id</span>
+					<span>参数4：取消按钮class</span>
+					<span>参数5：是否仅仅显示确定按钮</span>
+					<span>
+					1、viewModel.warnJumpSys=function(){
+				        ip.warnJumpMsgSys("提示信息","确定删除吗？",0,0,true);
+				    }
+					</span>
+					<span>2、 ip.warnJumpMsgSys("提示信息","此处可编辑信息","sidsys","cClasys");</span>
+					<span>
+					“确定”按钮的逻辑代码
+						$("#sidsys").on("click",function(){
+							alert($("#msg-notice-sys").val());
+		                    alert("删除成功！");
+	                    });
+					</span>
+					<span>
+					 “取消” 按钮，关闭消息提示
+						$(".cClasys").on("click",function(){
+							$("#config-modal-sys").remove();
+						})
+					</span>
+					<span class="run-result">
+						运行效果截图
+					</span>
+					<img src="img/message1.png"/>
+				</p>
+ 			</li>
+ 			<li>
+				<h3>5、ip.getUrlParameter()</h3>
+				<p>
+					<span>获取url中的参数</span>
+					<span>例如：var menuid = ip.getUrlParameter("menuid"); </span>
+				</p>
+ 			</li>
+ 			<li>
+				<h3>6、ip.getTokenId()</h3>
+				<p>
+					<span>获取当前用户的tokenid</span>
+					<span>return String </span>
+				</p>
+ 			</li>
+ 			<li>
+				<h3>7、ip.ipInfoJump(msg,flag)</h3>
+				<p>
+					<span>提示消息  4000毫秒之后消失</span>
+					<span>参数1：提示消息文字</span>
+					<span>参数2:flag有三种值：</span>
+					<span>1、success 成功</span>
+					<span>2、error 错误</span>
+					<span>3、info 提示信息</span>
+					<span class="run-result">
+						运行效果截图
+					</span>
+					<img src="img/infomsg.png"/>
+				</p>
+ 			</li>
+ 			<li>
+				<h3>8、ip.dealThousands(value)</h3>
+				<p>
+					<span>处理千分位</span>
+					<span>例如：var demo_value = ip.dealThousands("123456.789") //123,456.79</span>
+				</p>
+ 			</li>
+ 			<li>
+				<h3>9、ip.dealTH(id,dataTable,field)</h3>
+				<p>
+					<span>表格内处理千分位,grid的editType方法使用</span>
+					<span>参数1：input的id</span>
+					<span>参数2：grid的datatable</span>
+					<span>参数3：选中的字段(obj.firld)</span>
+				</p>
+ 			</li>
+			<li>
+				<h3>10、ip.createGrid(viewId,areaId,url,options,flag,operateFlag,selectFlag)</h3>
+				<p>
+					<span>动态创建grid表格</span>
+					<span>参数1：视图的id</span>
+					<span>参数2：grid放置的页面区域的id</span>
+					<span>参数3：请求grid中的数据的url地址</span>
+					<span>参数4：获取数据时的参数例如{"mame":"name1"}</span>
+					<span>参数5：flag: 0 页面初始化不加载数据，1 页面初始化加载数据</span>
+					<span>参数6：操作列显示与否 true(默认) or false</span>
+					<span>参数7：多选框列显示与否 true(默认) or false</span>
+					<span>return: 返回一个viewModel</span>
+					<span>例如：viewModel = createGrid(viewid, 'grid-area', url, {}, 1,true,"true");</span>
+				</p>
+ 			</li>
+ 			<li>
+				<h3>11、ip.setGrid(viewModel, url, options)</h3>
+				<p>
+					<span>为表格grid填充数据</span>
+					<span>参数1：调用createGrid返回的viewModel</span>
+					<span>参数2：获取表格json数据的url</span>
+					<span>参数3：获取表格json数据的时所需参数</span>
+				</p>
+ 			</li>
+			<li>
+				<h3>12、ip.loading(flag)</h3>
+				<p>
+					<span>数据加载过渡，加载中。。。</span>
+					<span>参数1：传值true/false 控制loading显示与隐藏</span>
+				</p>
+ 			</li>
+ 			<li>
+				<h3>13、ip.createArea(areaType,viewId,areaId)</h3>
+				<p>
+					<span>创建编辑区域或者搜索条件区域</span>
+					<span>参数1：areaType编辑或者搜索 取值为（edit 或者 search）</span>
+					<span>参数2：viewId 视图id</span>
+					<span>参数3：areaId视图区域的id</span>
+				</p>
+ 			</li>
+ 			<li>
+				<h3>14、ip.getAreaData(data)</h3>
+				<p>
+					<span>获取创建编辑区域或者搜索条件区域填入的值</span>
+					<span>参数1：调用ip.createArea() 返回的值</span>
+				</p>
+ 			</li>
+ 			<li>
+				<h3>15、ip.clearText(id)</h3>
+				<p>
+					<span>清除录入区域填入的值</span>
+					<span>参数1：input的id</span>
+				</p>
+ 			</li>
+ 			<li>
+				<h3>16、ip.moneyQuset(id)</h3>
+				<p>
+					<span>金额框js逻辑</span>
+					<span>参数1：金额框id</span>
+				</p>
+ 			</li>
+ 			<li>
+				<h3>17、ip.showAssitTree(id, element, flag, viewModel, areaId, ele_name)</h3>
+				<p>
+					<span>辅助录入树的弹窗</span>
+					<span>参数1：目标输入框的id</span>
+					<span>参数2：要素的标识 例如RZ</span>
+					<span>参数3:树是否为单选还是多选树的标识，0为单选，1为复选</span>
+					<span>参数4:当表格中使用辅助录入树时传入表格声明时的viewModel，或自动生成表格时返回的viewModel，其他地方使用传递为空对象</span>
+					<span>参数5:可以为空，但是当为自动生成的表格使用辅助录入树时，</span>
+					<span>参数6:辅助录入的弹窗的标题</span>
+					<xmp><div class="col-md-6">
+                        <label class="col-md-4 text-right">预算项目</label>
+                        <div class="input-group col-md-8 modal-input-group">
+                            <input id="BIS-editspecialenter" type="text" class="form-control ">
+                            <input id="BIS-editspecialenter-h" type="hidden">
+                            <span class="input-group-btn"  onclick="showAssitTree('BIS','editspecialenter','1',{},'0','预算项目')">
+                                <button class="btn btn-default glyphicon glyphicon-option-horizontal controlTreeIcon"></button>
+                            </span>
+                        </div>
+                    </div>
+					</xmp>
+					<span class="run-result">运行效果截图</span>
+					<img  src="img/assitTree.png" width="500" height="300"/>
+				</p>
+ 			</li>
+ 			<li>
+				<h3>18、ip.getTreeValue(ele, id, data)</h3>
+				<p>
+					<span>获取辅助录入数选中的值</span>
+					<span>参数1：要素标示</span>
+					<span>参数1：输入框id</span>
+					<span>参数1：输入框-h的值</span>
+				</p>
+ 			</li>
+		</ul>
+	</body>
+</html>

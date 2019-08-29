@@ -1,0 +1,496 @@
+<!-- Created by 文奔 BENcorry -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单据类型</title>
+    <link rel="stylesheet" type="text/css" href="../../../../trd/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/u.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/tree.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/ip/changeTree/changeTree.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/grid.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/ip.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/platform.css" />
+    <link rel="stylesheet" type="text/css" href="../ncrd.css" />
+	<!--[if lte IE 9]>
+		<link rel="stylesheet" type="text/css" href="../ncrd-ie9.css" />
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="list.css">
+</head>
+<body>
+<div id="billType" class="collapse in" style="height:100%;">
+    <!-- list块 -->
+    <div id="list-page" class="container-fluid ncrd" style="height:100%;">
+        <div class="row" style="height:100%;">
+            <div class="col-sm-4 col-md-4" style="height:100%;">
+                <div class="panel panel-default panel-body left-tree" style="height:99%;">
+                    <div class="tree-search">
+                        <div class="input-group">
+                            <input id="treeValue" type="text" class="form-control" placeholder="请输入关键词" data-bind="value:treeKeyWord">
+					      <span class="input-group-btn">
+					        <button class="btn btn-default" type="button" data-bind="click:findTree">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </button>
+					      </span>
+                        </div><!-- /input-group -->
+                    </div>
+                    <!-- 左侧树 -->
+                    <div class="ncrd left-tree-scroll">
+	                    <div>
+							<div class="tree-root-div">
+								<div class="tree-root-icon"></div>
+								<span class="tree-root-label">单据列表</span>
+							</div>
+	                        <div id="treeMain" class="ztree" u-meta='{"id":"tree","data":"treeDataTable","type":"tree","idField":"tree_id","pidField":"tree_pid","nameField":"title","setting":"treeSetting"}'></div>
+	                    </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-sm-8 col-md-8" style="height:100%;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default panel-heading right-btngroup">
+                            <!-- 按钮组 -->
+                            <button id="addBill" class="btn btn-primary " data-toggle="modal" data-target="#addModal" data-bind="click:addBill">新增</button>
+                            <button id="editBill" class="btn btn-primary " data-toggle="modal" data-target="#addModal" data-bind="click:editBill">修改</button>
+                            <button class="btn btn-danger " data-bind="click:delBillType">删除</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="height: calc(100% - 48px);">
+                    <div class="col-md-12" style="height:100%;">
+                                <!-- Nav tabs -->
+                                <ul id="myTabs" class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active"><a href="#baseInf" aria-controls="home" role="tab" data-toggle="tab">基本信息</a></li>
+                                    <li role="presentation"><a href="#printMod" aria-controls="profile" role="tab" data-toggle="tab">打印模板</a></li>
+                                    <li role="presentation"><a href="#assistSet" aria-controls="profile" role="tab" data-toggle="tab">辅助要素设置</a></li>
+                                    <li role="presentation"><a href="#searchCusRole" aria-controls="profile" role="tab" data-toggle="tab">查看定值规则</a></li>
+                                    <li role="presentation"><a href="#searchNoRole" aria-controls="profile" role="tab" data-toggle="tab">查看单号规则</a></li>
+                                </ul>
+
+                        <div class="panel panel-default panel-body right-grid"  style="height: calc(100% - 40px);">
+                            <!--表格列表 -->
+                            <div style="height:100%;">
+                                <!-- Tab panes -->
+                                <div id="myTabContent" class="tab-content bt-content" style="height:100%;">
+                                    <!-- 基本信息 -->
+                                    <div role="tabpanel" class="tab-pane active bg-white" id="baseInf" style="height:100%;">
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label for="billTypeNo" class="col-sm-4 control-label">单据类型编号：</label>
+                                                <div class="col-sm-5">
+                                                    <input type="text" class="form-control" id="billTypeNo" data-bind="value:billNoIN" disabled />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="billTypeName" class="col-sm-4 control-label">单据类型名称：</label>
+                                                <div class="col-sm-5">
+                                                    <input type="text" class="form-control" id="billTypeName" data-bind="value:billNameIN" disabled />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">对应子系统：</label>
+                                                <div class="col-sm-5">
+                                                    <select id="sys" class="form-control" data-bind="foreach:sys,value:sysIN" disabled>
+                                                        <option data-bind="text: sys_name ,value:sys_id "></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">COA：</label>
+                                                <div class="col-sm-5">
+                                                    <select id="COA" class="form-control" data-bind="foreach:COA,value:COAIN" disabled>
+                                                        <option data-bind="text:coa_name,value:coa_id "></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">单据形式：</label>
+                                                <div class="col-sm-5">
+                                                    <label class="radio-inline">
+                                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="0" data-bind="checked:radioIn" disabled /> 主单
+                                                    </label>
+                                                    <label class="radio-inline">
+                                                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="1" data-bind="checked:radioIn" disabled /> 明细单
+                                                    </label>
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label  class="col-sm-4 control-label">对应主单/明细单：</label>
+                                                <div class="col-sm-5">
+                                                   <!--  <select id="billTypeList" class="form-control" data-bind="foreach:billType,value:billTypeIN" disabled>
+                                                        <option data-bind="text:table_name ,value:table_code "></option>
+                                                    </select> -->
+                                                    <select id="billTypeList" class="form-control" data-bind="valueAllowUnset: true,options:billType,optionsText: 'table_name', optionsValue: 'table_code', value: billTypeIN" disabled>
+                                                        <!--<option data-bind="text:table_name ,value:table_code "></option>-->
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label  class="col-sm-4 control-label">单号规则：</label>
+                                                <div class="col-sm-5">
+                                                    <select id="billNoRule" class="form-control" data-bind="foreach:billNoRule,value:billNoRuleIN" disabled>
+                                                        <option data-bind="text:billnorule_name ,value:billnorule_id "></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="yield" class="col-sm-4 control-label">对应编码字段：</label>
+                                                <div class="col-sm-5">
+                                                    <input type="text" class="form-control" id="yield" data-bind="value:yieldIN" disabled />
+                                                </div>
+                                            </div>
+                                            <div class="bt-layout">
+                                                <h5>主单对应的明细单据类型</h5>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">来源单据明细类型：</label>
+                                                <div class="col-sm-5">
+                                                   <!--  <select id="fromBillType" class="form-control" data-bind="foreach:fromBillType,value:fromBillTypeIN" disabled>
+                                                        <option data-bind="text:billtype_name,value:billtype_id"></option>
+                                                    </select> -->
+                                                    <select id="fromBillType" class="form-control" data-bind="valueAllowUnset: true,options:fromBillType,optionsText: 'billtype_name', optionsValue: 'billtype_id', value: fromBillTypeIN" disabled>
+                                                        <!--<option data-bind="text:table_name ,value:table_code "></option>-->
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">去向单据明细类型：</label>
+                                                <div class="col-sm-5">
+                                                    <!-- <select id="toBillType" class="form-control" data-bind="foreach:toBillType,value:toBillTypeIN" disabled>
+                                                        <option data-bind="text:billtype_name,value:billtype_id"></option>
+                                                    </select> -->
+                                                     <select id="toBillType" class="form-control" data-bind="valueAllowUnset: true,options:toBillType,optionsText: 'billtype_name', optionsValue: 'billtype_id', value: toBillTypeIN" disabled>
+                                                        <!--<option data-bind="text:table_name ,value:table_code "></option>-->
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="bt-layout">
+                                                <h5>明细单对应的记账类型</h5>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">记账凭证类型：</label>
+                                                <div class="col-sm-5">
+                                                    <select id="busVouType" class="form-control" data-bind="foreach:busVouType,value:busVouTypeIN" disabled>
+                                                        <option data-bind="text:vou_type_name ,value:vou_type_id "></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label">参考录入额度控制类型：</label>
+                                                <div class="col-sm-5">
+                                                    <select id="vouControl" class="form-control" data-bind="foreach:vouControl,value:vouControlIN" disabled>
+                                                        <option data-bind="text:sum_type_name,value:sum_type_id"></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="startFlag" class="col-sm-4 control-label">启用标志：</label>
+                                                <div class="col-sm-5">
+                                                    <input type="checkbox" id="startFlag" value="0" data-bind="checked:checkboxOneAdd" disabled />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="noSpeDeal" class="col-sm-4 control-label">无指标特殊处理：</label>
+                                                <div class="col-sm-5">
+                                                    <input type="checkbox" id="noSpeDeal" value="1" data-bind="checked:checkboxTwoAdd"  disabled />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- 打印模板 -->
+                                    <div role="tabpanel" class="tab-pane" id="printMod">
+                                        <div type="text"
+                                             u-meta='{"id":"write-printMod","data":"printDataTable","type":"grid","columnMenu":false,"canDrag":true,"sortable":true,"canSwap":true}'>
+                                            <div options='{"field":"index","dataType":"String","title":"设置","width": 150,"renderType":"rowIndex"}'></div>
+                                            <div options='{"field":"report_name","dataType":"String","title":"打印格式","width": 150}'></div>
+                                            <div options='{"field":"enabled","dataType":"String","title":"是否启用","width": 150}'></div>
+                                            <div options='{"field":"is_default","dataType":"String","title":"是否默认","width": 100}'></div>
+                                        </div>
+                                    </div>
+                                    <!-- 辅助要素设置 -->
+                                    <div role="tabpanel" class="tab-pane" id="assistSet">
+                                        <div type="text"
+                                             u-meta='{"id":"write-assistSet","data":"assistDataTable","type":"grid","columnMenu":false,"editable":false,"autoExpand":false,"showTree":false,"keyField":"theId","parentKeyField":"parentId"}'>
+                                            <div options='{"field":"index","dataType":"String","title":"序号","editType":"string","width": 150,"renderType":"rowIndex"}'></div>
+                                            <div options='{"field":"enabled","dataType":"String","title":"启用","editType":"string","width": 150,"renderType":"showTrue"}'></div>
+                                            <div options='{"field":"ele_code","dataType":"String","title":"要素简称","editType":"string","width": 150}'></div>
+                                            <div options='{"field":"ele_name","dataType":"String","title":"要素","editType":"string","width": 150}'></div>
+                                            <div options='{"field":"level_num","dataType":"String","title":"级次","editType":"string","width": 150,"renderType":"comboRender","editOptions":{"id":"combobox6","type":"combo","datasource":"comItemsAssis"},"editType":"combo"}'></div>
+                                        </div>
+                                    </div>
+                                    <!-- 查看定制规则 -->
+                                    <div role="tabpanel" class="tab-pane" id="searchCusRole">
+                                        <div type="text"
+                                             u-meta='{"id":"write-searchCusRole","data":"cusRoleDataTable","type":"grid","showNumCol":"false","columnMenu":false,"editable":false,"autoExpand":false,"showTree":false,"keyField":"theId","parentKeyField":"parentId"}'>
+                                            <div options='{"field":"index","dataType":"String","title":"序号","editType":"string","width": 100,"renderType":"rowIndex"}'></div>
+                                            <div options='{"field":"field_code","dataType":"String","title":"字段英文名","editType":"string","width": 150}'></div>
+                                            <div options='{"field":"field_name","dataType":"String","title":"字段中文名","editType":"string","width": 150}'></div>
+                                            <div options='{"field":"valueset_type","dataType":"String","title":"处理方式","editType":"string","width": 120,"renderType":"comboRender","editOptions":{"id":"combobox7","type":"combo","datasource":"comItemsSearch2"},"editType":"combo"}'></div>
+                                            <div options='{"field":"default_value","dataType":"Int","title":"默认值","editType":"string","width": 100}'></div>
+                                            <div options='{"field":"ele_rule_name","dataType":"String","title":"要素定制规则","editType":"string","width": 100}'></div>
+                                        </div>
+                                    </div>
+                                    <!-- 查看单号规则 -->
+                                    <div role="tabpanel" class="tab-pane" id="searchNoRole">
+                                        <div type="text"
+                                             u-meta='{"id":"write-searchNoRole","data":"noRoleDataTable","type":"grid","columnMenu":false,"showNumCol":"false","editable":false,"autoExpand":false,"showTree":false,"keyField":"theId","parentKeyField":"parentId"}'>
+                                            <div options='{"field":"line_no","dataType":"String","title":"序号","editType":"string","width": 100}'></div>
+                                            <div options='{"field":"line_type","dataType":"String","title":"类型","editType":"string","renderType":"changeValue","width": 150}'></div>
+                                            <div options='{"field":"ele_code","dataType":"String","title":"要素","editType":"string","width": 150}'></div>
+                                            <div options='{"field":"line_format","dataType":"String","title":"格式名称","editType":"string","width": 150}'></div>
+                                            <div options='{"field":"level_num","dataType":"String","title":"级次","editType":"string","width": 100}'></div>
+                                            <div options='{"field":"init_value","dataType":"String","title":"初始值","editType":"string","width": 100}'></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- edit块 -->
+    <div id="addModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body" >
+                    <div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="" style="padding: 10px">
+                        <!-- 页签头部 -->
+                        <ul id="myTabs-md" class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#baseInf-add" aria-controls="home" role="tab" data-toggle="tab">基本信息</a></li>
+                            <li role="presentation"><a href="#printMod-add" aria-controls="profile" role="tab" data-toggle="tab">打印模板</a></li>
+                            <li role="presentation"><a href="#assistSet-add" aria-controls="profile" role="tab" data-toggle="tab">辅助要素设置</a></li>
+                            <li role="presentation"><a href="#searchCusRole-add" aria-controls="profile" role="tab" data-toggle="tab">查看定值规则</a></li>
+                            <li role="presentation"><a href="#searchNoRole-add" aria-controls="profile" role="tab" data-toggle="tab">查看单号规则</a></li>
+                        </ul>
+
+                        <!-- 页签内容 -->
+                        <div id="myTabContent-add" class="tab-content bt-content" style="height: 400px;overflow: auto;">
+                            <!-- 基本信息 -->
+                            <div role="tabpanel" class="tab-pane active bg-white" id="baseInf-add">
+                                <form id="editForm" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="billTypeNo-ed" class="col-sm-4 control-label">单据类型编号：</label>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" id="billTypeNo-ed" placeholder="单据类型编号为必填" data-bind="value:billNoInAdd,style:{border:billNoInAdd()==''?'solid 1px #666':'solid 1px #ccc'}"  />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="billTypeName-ed" class="col-sm-4 control-label">单据类型名称：</label>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" id="billTypeName-ed" placeholder="单据类型名称为必填" data-bind="value:billNameInAdd,style:{border:billNameInAdd()==''?'solid 1px #666':'solid 1px #ccc'}"  />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">对应子系统：</label>
+                                        <div class="col-sm-5">
+                                            <select id="sysEdit" class="form-control" data-bind="foreach:sys,value:sysAdd">
+                                                <option data-bind="text: sys_name ,value:sys_id "></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">COA：</label>
+                                        <div class="col-sm-5">
+                                            <select id="COAEdit" class="form-control" data-bind="foreach:COA,value:COAAdd" >
+                                                <option data-bind="text:coa_name,value:coa_id "></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">单据形式：</label>
+                                        <div class="col-sm-5">
+                                            <label class="radio-inline">
+                                                <input type="radio" name="inlineRadioOptions" id="inlineRadio1-ed" value="0" data-bind="checked:radioAdd "  /> 主单
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input type="radio" name="inlineRadioOptions" id="inlineRadio2-ed" value="1" data-bind="checked:radioAdd " /> 明细单
+                                            </label>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">对应主单/明细单：</label>
+                                        <div class="col-sm-5">
+                                           <!--  <select id="billTypeEdit" class="form-control" data-bind="foreach:billType,value:billTypeIN">
+                                                <option data-bind="text:table_name ,value:table_code "></option>
+                                            </select> -->
+                                             <select id="billTypeEdit" class="form-control" data-bind="valueAllowUnset: true,options:billType,optionsText: 'table_name', optionsValue: 'table_code', value: billTypeIN" >
+                                                       <!--<option data-bind="text:table_name ,value:table_code "></option>-->
+                                              </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">单号规则：</label>
+                                        <div class="col-sm-5">
+                                            <select id="billNoRuleEdit" class="form-control" data-bind="foreach:billNoRule,value:billNoRuleAdd">
+                                                <option data-bind="text:billnorule_name ,value:billnorule_id "></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="yield-ed" class="col-sm-4 control-label">对应编码字段：</label>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" id="yield-ed" data-bind="value:yieldAdd" />
+                                        </div>
+                                    </div>
+                                    <div class="bt-layout">
+                                        <h5>主单对应的明细单据类型</h5>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">来源单据明细类型：</label>
+                                        <div class="col-sm-5">
+                                            <!-- <select id="fromBillTypeEdit" class="form-control" data-bind="foreach:fromBillType,value:fromBillTypeAdd">
+                                                <option data-bind="text:billtype_name,value:billtype_id"></option>
+                                            </select> -->
+                                            <select id="fromBillTypeEdit" class="form-control" data-bind="valueAllowUnset: true,options:fromBillType,optionsText: 'billtype_name', optionsValue: 'billtype_id', value: fromBillTypeIN" >
+                                                        <!--<option data-bind="text:table_name ,value:table_code "></option>-->
+                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">去向单据明细类型：</label>
+                                        <div class="col-sm-5">
+                                           <!--  <select id="toBillTypeEdit" class="form-control" data-bind="foreach:toBillType,value:toBillTypeAdd">
+                                                <option data-bind="text:billtype_name,value:billtype_id"></option>
+                                            </select> -->
+                                             <select id="toBillTypeEdit" class="form-control" data-bind="valueAllowUnset: true,options:toBillType,optionsText: 'billtype_name', optionsValue: 'billtype_id', value: toBillTypeIN" >
+                                                        <!--<option data-bind="text:table_name ,value:table_code "></option>-->
+                                                </select>
+                                        </div>
+                                    </div>
+                                    <div class="bt-layout">
+                                        <h5>明细单对应的记账类型</h5>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">记账凭证类型：</label>
+                                        <div class="col-sm-5">
+                                            <select id="busVouTypeEdit" class="form-control" data-bind="foreach:busVouType,value:busVouTypeAdd">
+                                                <option data-bind="text:vou_type_name ,value:vou_type_id "></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">参考录入额度控制类型：</label>
+                                        <div class="col-sm-5">
+                                            <select id="vouControlEdit" class="form-control" data-bind="foreach:vouControl,value:vouControlAdd">
+                                                <option data-bind="text:sum_type_name,value:sum_type_id"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="startFlag-ed" class="col-sm-4 control-label">启用标志：</label>
+                                        <div class="col-sm-5">
+                                            <input type="checkbox" id="startFlag-ed" value="0" data-bind="checked:checkboxOneAdd" checked />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="noSpeDeal-ed" class="col-sm-4 control-label">无指标特殊处理：</label>
+                                        <div class="col-sm-5">
+                                            <input type="checkbox" id="noSpeDeal-ed" value="1" data-bind="checked:checkboxTwoAdd" checked />
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                            <!-- 打印模板 -->
+                            <div role="tabpanel" class="tab-pane bg-white" id="printMod-add">
+                                <div type="text"
+                                     u-meta='{"id":"write-printMod-md","data":"printDataTableAdd","type":"grid","columnMenu":false,"canDrag":true,"sortable":true,"canSwap":true,"editable":true,"editType":"default"}'>
+                                    <div options='{"field":"index","dataType":"String","title":"设置","width": 50,"renderType":"rowIndex"}'></div>
+                                    <div options='{"field":"report_name","dataType":"String","title":"打印格式","width": 150,"editOptions":{"id":"combobox1","type":"combo","datasource":"comItemsPrint"},"editType":"combo","renderType":"comboRender","editable":false}'></div>
+                                    <div options='{"field":"is_default","dataType":"String","title":"是否默认","width": 80,"renderType":"booleanRender"}'></div>
+                                    <div options='{"field":"arg_list","dataType":"String","title":"报表参数","width": 100,"renderType":"inputData"}'></div>
+                                    <div options='{"field":"para_list","dataType":"String","title":"过滤条件","width": 100,"renderType":"inputData"}'></div>
+                                    <div options='{"field":"display_order","dataType":"String","title":"显示顺序","width": 80,"renderType":"inputData"}'></div>
+                                    <div options='{"field":"enabled","dataType":"String","title":"是否启用","width": 100,"renderType":"booleanRender"}'></div>
+                                </div>
+                                <div style="margin-top:20px;">
+                                    <button class="btn btn-primary" data-toggle="collapse" data-parent="#accordion" href="#printOut" data-bind="click:btnReport ">新增</button>
+                                    <button class="btn btn-danger" data-bind="click:deletePrintRow">删除</button>
+                                </div>
+                            </div>
+                            <!-- 辅助要素设置 -->
+                            <div role="tabpanel" class="tab-pane bg-white" id="assistSet-add">
+                                <div type="text"
+                                     u-meta='{"id":"write-assistSet-md","data":"assistDataTableAdd","type":"grid","columnMenu":false,"editable":false,"autoExpand":false,"showTree":false,"keyField":"theId","parentKeyField":"parentId","editable":true,"editType":"default"}'>
+                                    <div options='{"field":"index","dataType":"String","title":"序号","editType":"string","width": 100,"renderType":"rowIndex"}'></div>
+                                    <div options='{"field":"enabled","dataType":"String","title":"启用","editType":"string","width": 100,"renderType":"booleanRender"}'></div>
+                                    <div options='{"field":"ele_code","dataType":"String","title":"要素简称","editType":"string","width": 150,"editable":"false"}'></div>
+                                    <div options='{"field":"ele_name","dataType":"String","title":"要素","editType":"string","width": 100,"editable":"false"}'></div>
+                                    <div options='{"field":"level_num","dataType":"String","title":"级次","editType":"string","width": 150,"renderType":"comboRender","editOptions":{"id":"combobox2","type":"combo","datasource":"comItemsAssis"},"editType":"combo"}'></div>
+                                    <div options='{"field":"rg_code","dataType":"String","title":"区域编号","editType":"integer","width": 100}'></div>
+                                 </div>
+                               
+                            </div>
+                            <!-- 查看定值规则 -->
+                            <div role="tabpanel" class="tab-pane bg-white" id="searchCusRole-add">
+                                <div type="text"
+                                     u-meta='{"id":"write-searchCusRole-md","data":"cusRoleDataTableAdd","onValueChange":"testValueChange","onBeforeEditFun":"isEdit","type":"grid","columnMenu":false,"editable":false,"autoExpand":false,"showNumCol": false,"showTree":false,"keyField":"theId","parentKeyField":"parentId","editable":true,"editType":"default"}'>
+                                    <div options='{"field":"ele_rule_code","dataType":"String","title":"序号","editType":"string","width": 50,"renderType":"rowIndex"}'></div>
+                                    <div options='{"field":"field_code","dataType":"String","title":"字段英文名","editType":"string","width": 150,"renderType":"comboRender","editOptions":{"id":"combobox3","type":"combo","datasource":"comItemsSearch1"},"editType":"combo"}'></div>
+                                    <div options='{"field":"field_name","dataType":"String","title":"字段中文名","editType":"string","width": 150,"editable":false}'></div>
+                                    <div options='{"field":"valueset_type","dataType":"String","title":"处理方式","editType":"string","width": 120,"renderType":"comboRender","editOptions":{"id":"combobox4","type":"combo","datasource":"comItemsSearch2"},"editType":"combo"}'></div>
+                                    <div options='{"field":"default_value","dataType":"Int","title":"默认值","editType":"string","width": 100,"editable":true}'></div>
+                                    <div options='{"field":"ele_rule_id","dataType":"String","title":"要素定值规则","editType":"string","width": 100,"renderType":"comboRender","editOptions":{"id":"combobox5","type":"combo","datasource":"comItemsSearch3"},"editType":"combo"}'></div>
+                                </div>
+                                <div style="margin-top: 20px;">
+                                    <button class="btn btn-primary" data-bind="click:addCusRoleRow">增加行</button>
+                                    <button class="btn btn-danger" data-bind="click:deleteCusRoleRow">删除行</button>
+                                    <button id="btnRule" class="btn btn-primary" data-bind="click:btnEditRuleClick">定值规则</button>
+                                </div>
+                            </div>
+                            <!-- 查看单号规则 -->
+                            <div role="tabpanel" class="tab-pane bg-white" id="searchNoRole-add">
+                                <div type="text"
+                                     u-meta='{"id":"write-grid-md","data":"noRoleDataTableAdd","type":"grid","columnMenu":false,"editable":false,"autoExpand":false,"showTree":false,"keyField":"theId","parentKeyField":"parentId"}'>
+                                    <div options='{"field":"line_no","dataType":"String","title":"序号","editType":"string","width": 100}'></div>
+                                    <div options='{"field":"line_type","dataType":"String","title":"类型","editType":"string","width": 100 }'></div>
+                                    <div options='{"field":"ele_code","dataType":"String","title":"要素","editType":"string","renderType":"changeValue","width": 120}'></div>
+                                    <div options='{"field":"line_format","dataType":"String","title":"格式名称","editType":"string","width": 100}'></div>
+                                    <div options='{"field":"level_num","dataType":"String","title":"级次","editType":"string","width": 100}'></div>
+                                    <div options='{"field":"init_value","dataType":"String","title":"初始值","editType":"string","width": 100}'></div>
+                                </div>
+                                <div style="margin-top:20px;">
+                                    <button class="btn btn-primary" data-bind="click:btnEditNoClick">修改规则</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bind="click:saveAdd">确认保存</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 定值规则编辑模块 -->
+<div id="editRule" class="container-fluid ncrd collapse">
+	<button type="button" id="iFrameClick" class="close pull-right" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <iframe id="editRuleIFrame" height="800" style="width:100%;height:calc(800vh-64px);border:0px"></iframe>
+</div>
+
+<!-- 单号规则编辑模块 -->
+<div id="editNoRule" class="container-fluid ncrd collapse in"></div>
+
+<!-- 打印模板编辑模块 -->
+<div id="report" class="container-fluid ncrd collapse in"></div>
+</body>
+</html>
+<script src="../../../../trd/requirejs/require.debug.js"></script>
+<script src="../../../../require.config.js"></script>
+<script src="./list.js"></script>

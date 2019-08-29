@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible"
+	content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+<title>关联关系</title>
+
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="this is my page">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/platform.css" />
+	<link rel="stylesheet" type="text/css" href="../ncrd.css" />
+	<!--[if lte IE 9]>
+		<link rel="stylesheet" type="text/css" href="../ncrd-ie9.css" />
+	<![endif]-->
+</head>
+
+<body>
+	<div class="container-fluid ncrd collapse in" id="list-contanier">
+		<!-- 按钮 -->
+		<div class="row">
+			<div class="col-sm-4 col-md-4">
+				<div class="panel panel-default panel-body left-tree">
+					<div class="tree-search" style="display:none">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="请输入关键词" data-bind="value:treeKeyword">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button" data-bind="click:findTree">
+									<span class="glyphicon glyphicon-search" aria-hidden="true" ></span>
+								</button> </span>
+						</div>
+						<!-- /input-group -->
+					</div>
+					<!-- 左侧树 -->
+                    <div class="ncrd left-tree-scroll">
+						<div id="treeTest2" class="ztree"
+							u-meta='{"id":"tree2","data":"associationDataTable","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"chr_name","setting":"listTreeSetting"}'></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-sm-8 col-md-8">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="panel panel-default panel-heading right-btngroup">
+							<!-- 按钮组 -->
+							<button class="btn btn-primary" type="button" data-bind="click:addModify.bind($data,1)" style="margin-left:-4px">新增</button>
+							<button class="btn btn-primary" type="button" data-bind="click:addModify.bind($data,0)">修改</button>
+							<button class="btn btn-danger" type="button" data-bind="click:warnJump">刪除</button>
+
+							<!-- 	<button type="button" class="btn btn-primary pull-right">取消规则</button>   -->
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6 col-md-6">
+						<div class="panel panel-default right-grid">
+							<!--主控要素 -->
+							<p class="panel-heading panel-title">主控要素</p>
+							<div class="panel-body">
+								<div id="treeTest1" class="ztree"
+									u-meta='{"id":"listmaintree","data":"listMainElementDataTable","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"chr_name","setting":"listMainTreeSetting"}'></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6 col-md-6">
+						<div class="panel panel-default right-grid">
+							<!--被控要素 -->
+							<p class="panel-heading panel-title">被控要素</p>
+							<div class="panel-body">
+								<div id="treeTest3" class="ztree"
+									u-meta='{"id":"listcontree","data":"listConElementDataTable","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"chr_name","setting":"listConTreeSetting"}'></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		
+		<div class="container-fluid ncrd collapse" id="edit-contanier">
+
+		</div>
+
+		<script src="/df/trd/requirejs/require.js"></script>
+		<script src="/df/require.config.js"></script>
+		<script src="list.js" charset="UTF-8" type="text/javascript"></script>
+</body>
+</html>

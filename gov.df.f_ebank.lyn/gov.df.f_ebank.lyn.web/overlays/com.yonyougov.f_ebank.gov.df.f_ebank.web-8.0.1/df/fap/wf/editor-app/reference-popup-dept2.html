@@ -1,0 +1,408 @@
+<html>
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+<script src="scripts/boot.js"></script>
+<script src="scripts/iuap_bpm_baseButton.js"></script>
+<script src="scripts/iuap_bpm_selectUserButton.js"></script>
+<script src="scripts/iuap_bpm_selectUserTree.js"></script>
+<script src="scripts/iuap_bpm_baseTree.js"></script>
+
+</head>
+<body>
+<!-- <div id="limitDept" class="mini-radiobuttonlist" repeatLayout="table" repeatDirection="vertical" valuechanged="selectLimitDept" -->
+<!--     textField="text" valueField="id" value="101"  style="width:550px;height:50px;" -->
+<!--     url="limitDept.txt" > -->
+<!-- </div>   -->
+	<input type="radio" name="radio" id="td_radio" value="101" checked onclick="selectedDept(this)">特定部门
+	<input type="radio" name="radio" id="xd_radio" value="102" onclick="selectedDept(this)">相对部门
+	<br>
+<!-- 	<div class="mini-tabs" activeIndex="0"  style="width:550px;height:400px;"> -->
+		    <div title="特定部门" id="specifiedDept" style="display:block">
+				<div style="width:550px;">
+				        <div class="mini-toolbar" style="border-bottom:0;padding:0px;">
+				            <table style="width:100%;">
+				                <tr>
+				                    <td style="width:100%;">
+				                        <a class="mini-iuapselectuserbutton" iconCls="icon-add">增加</a>
+				                        <a class="mini-button" iconCls="icon-remove" onclick="remove()">删除</a>       
+				                    </td>
+				                </tr>
+				            </table>           
+				        </div>
+   				 </div>
+				
+			    <div id="datagrid1" class="mini-datagrid" style="width:550px;height:380px;"  allowResize="false"
+        					 idField="id" multiSelect="true" showPager="false">
+		        		<div property="columns">      
+		        					<div type="indexcolumn"></div>        
+						            <div field="name" width="120" headerAlign="center" allowSort="true">部门名称</div>                
+						            <div field="all_path_name" width="100" allowSort="true" renderer="onGenderRenderer" align="center" headerAlign="center">全路径</div>            
+		        		</div>
+    			</div> 
+		    </div>
+		    <div title="相对部门" id="relativeDept" style="display:none">
+		            <div id="datagrid2" class="mini-datagrid" style="width:550px;height:400px;"
+        					  idField="id" multiSelect="false" showPager="false"  allowUnselect="true">
+		        		<div property="columns">    
+		        					<div type="checkcolumn"></div>          
+						            <div field="value" width="120" headerAlign="center" align="center"  allowSort="true">部门级别</div>                
+		        		</div>
+    			</div> 
+		    </div>
+<!-- 	</div> -->
+	<div style="float:right;position:relative;">
+			<input type="button" value="确定" onclick="addRoleDept()" style="margin-right:30px;margin-top:10px;"/>         
+		    <input type="button" value="取消" onclick="cancel()" style="margin-right:100px;margin-top:10px;"/>
+	</div>
+</body>
+<script>
+//页面加载
+
+var tArray_selected=new Array();
+var path = (window.location+'').split('/'); 
+var basePath = path[0]+'//'+path[2]+'/'+path[3];
+var modelId=getParamValue("modelId");
+var activityId=getParamValue("activityId");
+var roleId=getParamValue("roleId");
+$(document).ready(function(){
+
+	//给datagrid1初始化值
+
+	var url1=basePath+"/service/reference/role_info/list";
+	 $.ajax({ 
+			type : "post",
+			url : url1,
+			data: {modelId:modelId,activityId:activityId,roleId:roleId},
+ 			dataType : "json",
+			success : function(result, textStatus) {
+				//判断是否是火狐浏览器
+				if(typeof(result)=='string'){
+					result=eval('('+result+')');
+				}
+				var grid1=mini.get("datagrid1");
+				 var tArray=new Array();
+				 var refResultData=window.parent.angular.element("#treeref1_zTree").scope().refResultData;
+				 for(var r=0;r<refResultData.length;r++){
+				 		var obj=refResultData[r];
+				 		var roleid=refResultData[r].role_id;
+				 		if(roleid==roleId){
+				 			var orgobj=refResultData[r].orgobj;
+				 			for(var o=0;o<orgobj.length;o++){
+				 				var org=orgobj[o];
+				 				var limitType=org.dict_id;
+				 				if(limitType=="101"){
+				 					 var obj={};
+				               		obj.all_path_name=org.all_path_name;
+				               		obj.name=org.name;
+				               		obj.deptCode=org.deptCode;
+				               		tArray.push(obj);
+				 				}else{
+				 					document.getElementById("xd_radio").checked=true;
+	                    			//给datagrid2初始化值
+	                    			var url=basePath+"/service/reference/dept_dict/list";
+	                    		   $.ajax({ 
+	                    				type : "post", 
+	                    				contentType : "application/json;charset=utf-8",
+	                    				url : url,
+	                    				success : function(result, textStatus) {
+	                    					//判断是否是火狐浏览器
+	                    					if(typeof(result)=='string'){
+	                    						result=eval('('+result+')');
+	                    					}
+	                    					var grid=mini.get("datagrid2");
+	                    					var tArray=new Array();
+	                    					for(var k=0;k<result.length;k++){
+	                    						var dict_type_id=result[k].dict_type_id;
+	                    						var dict_id=result[k].dict_id;
+	                    						if(dict_type_id=='102'){
+	                    							result[k].value=result[k].dict_value;
+	                    							tArray.push(result[k]);
+	                    						}
+	                    					}
+	                    					grid.setData(tArray);
+	                    					//判断是否有已选项
+	                    					if(tArray_selected[0]){
+	                    						var selected_idctid=tArray_selected[0].limitType;
+	                    					}					
+	                    					for(var x=0;x<tArray.length;x++){
+	                    						var dict_id=tArray[x].dict_id;
+	                    						if(dict_id==selected_idctid){
+	                    							grid.select(x,false);
+	                    						}
+	                    					}
+	                    								
+	                    				},
+	                    				error:function(err, textStatus, errorThrown){
+	                    				}
+	                    			});
+	                        		var obj_sel={};
+	                        		obj_sel.limitType=limitType;
+	                        		tArray_selected.push(obj_sel);	
+	                        		
+	                        		var specified=document.getElementById("specifiedDept");
+	                    			specified.style.display="none";
+	                    			var relative=document.getElementById("relativeDept");
+	                    			relative.style.display="block";
+				 				}
+				 			}
+				 		}
+				 }
+//                     if (result && grid1) {
+//                     	for(var i=0;i<result.length;i++){
+//                     		var dict_id=result[i].limitType;
+//                     		if(dict_id=="101"){
+//                     			 var obj={};
+//  	                    		obj.all_path_name=result[i].all_path_name;
+//  	                    		obj.name=result[i].name;
+//  	                    		obj.deptCode=result[i].deptCode;
+//  	                    		tArray.push(obj);	
+//                     		}else{
+//                     			document.getElementById("xd_radio").checked=true;
+//                     			//给datagrid2初始化值
+//                     			var url=basePath+"/service/reference/dept_dict/list";
+//                     		   $.ajax({ 
+//                     				type : "post", 
+//                     				contentType : "application/json;charset=utf-8",
+//                     				url : url,
+//                     				success : function(result, textStatus) {
+//                     					//判断是否是火狐浏览器
+//                     					if(typeof(result)=='string'){
+//                     						result=eval('('+result+')');
+//                     					}
+//                     					var grid=mini.get("datagrid2");
+//                     					var tArray=new Array();
+//                     					for(var k=0;k<result.length;k++){
+//                     						var dict_type_id=result[k].dict_type_id;
+//                     						var dict_id=result[k].dict_id;
+//                     						if(dict_type_id=='102'){
+//                     							result[k].value=result[k].dict_value;
+//                     							tArray.push(result[k]);
+//                     						}
+//                     					}
+//                     					grid.setData(tArray);
+//                     					//判断是否有已选项
+//                     					if(tArray_selected[0]){
+//                     						var selected_idctid=tArray_selected[0].limitType;
+//                     					}					
+//                     					for(var x=0;x<tArray.length;x++){
+//                     						var dict_id=tArray[x].dict_id;
+//                     						if(dict_id==selected_idctid){
+//                     							grid.select(x,false);
+//                     						}
+//                     					}
+                    								
+//                     				},
+//                     				error:function(err, textStatus, errorThrown){
+//                     				}
+//                     			});
+//                         		var obj_sel={};
+//                         		obj_sel.limitType=result[i].limitType;
+//                         		tArray_selected.push(obj_sel);	
+                        		
+//                         		var specified=document.getElementById("specifiedDept");
+//                     			specified.style.display="none";
+//                     			var relative=document.getElementById("relativeDept");
+//                     			relative.style.display="block";
+//                     		}
+                    		
+//                     	}
+                    	grid1.setData(tArray);
+//                     }
+			},
+			error:function(err, textStatus, errorThrown){
+			}
+		});
+})
+function selectedDept(e){
+		var value=e.value;
+		if(value=="101"){
+			var specified=document.getElementById("specifiedDept");
+			specified.style.display="block";
+			var relative=document.getElementById("relativeDept");
+			relative.style.display="none";
+		}else if(value=="102"){
+		    //给datagrid2初始化值
+			var url=basePath+"/service/reference/dept_dict/list";
+		   $.ajax({ 
+				type : "post", 
+				contentType : "application/json;charset=utf-8",
+				url : url,
+				success : function(result, textStatus) {
+					//判断是否是火狐浏览器
+					if(typeof(result)=='string'){
+						result=eval('('+result+')');
+					}
+					var grid=mini.get("datagrid2");
+					var tArray=new Array();
+					for(var k=0;k<result.length;k++){
+						var dict_type_id=result[k].dict_type_id;
+						var dict_id=result[k].dict_id;
+						if(dict_type_id=='102'){
+							result[k].value=result[k].dict_value;
+							tArray.push(result[k]);
+						}
+					}
+					grid.setData(tArray);
+					//判断是否有已选项
+					if(tArray_selected[0]){
+						var selected_idctid=tArray_selected[0].limitType;
+					}					
+					for(var x=0;x<tArray.length;x++){
+						var dict_id=tArray[x].dict_id;
+						if(dict_id==selected_idctid){
+							grid.select(x,false);
+						}
+					}
+								
+				},
+				error:function(err, textStatus, errorThrown){
+				}
+			});
+			var specified=document.getElementById("specifiedDept");
+			specified.style.display="none";
+			var relative=document.getElementById("relativeDept");
+			relative.style.display="block";
+		}
+	}
+	//确定按钮
+	function addRoleDept(){
+		var modelId=getParamValue("modelId");
+		var activityId=getParamValue("activityId");
+		var roleId=getParamValue("roleId");
+		var roleName=getParamValue("roleName");
+		var path = (window.location+'').split('/'); 
+	    var basePath = path[0]+'//'+path[2]+'/'+path[3];
+		//获取所有数据集，批量保存
+		var grid1=mini.get("datagrid1");
+		grid1.selectAll(false);
+		var rows1=grid1.getSelecteds();
+		var grid2=mini.get("datagrid2");
+		var rows2=grid2.getSelecteds();
+		var tArray=new Array();
+		//判断当前选中数据
+		 var radio = document.getElementsByName("radio");
+		 for(var i=0;i<radio.length;i++){
+		  if(radio[i].checked==true){
+			  var radio=radio[i].value;
+		  	  if(radio=="101"){
+		  		if(grid1 && rows1){
+					for(var m=0;m<rows1.length;m++){
+						var obj1={};
+						obj1.all_path_name=rows1[m].all_path_name;
+						obj1.name=rows1[m].name;
+						obj1.deptCode=rows1[m].id||rows1[m].deptCode;
+						obj1.dict_id="101";
+						obj1.modelId=modelId;
+						obj1.activityId=activityId;
+						obj1.roleId=roleId;
+						obj1.roleName=roleName;
+						tArray.push(obj1);
+					}
+				}
+		      }else if(radio=="102"){
+		    	  if(grid2 && rows2){
+		    		  if(rows2.length<1){
+		    			  var obj2={};
+			  				obj2.dict_id="";
+			  				obj2.modelId=modelId;
+			  				obj2.activityId=activityId;
+			  				obj2.roleId=roleId;
+			  				obj2.roleName=roleName;
+			  				tArray.push(obj2);
+		    		  }else{
+		    			  for(var j=0;j<rows2.length;j++){
+				  				var obj2={};
+				  				obj2.dict_id=rows2[j].dict_id;
+				  				obj2.modelId=modelId;
+				  				obj2.activityId=activityId;
+				  				obj2.roleId=roleId;
+				  				obj2.roleName=roleName;
+				  				tArray.push(obj2);
+				  			}
+		    		  }
+		  		}
+		      }
+		  }
+		 }
+// 		var value=window.parent.document.getElementById("deptData").value;
+// 		if(value!=""){
+// 			value=value.substr(0, value.length-1);
+// 			var tvalue=JSON.stringify(tArray).substr(1,JSON.stringify(tArray).length);
+// 			window.parent.document.getElementById("deptData").value=value+","+tvalue;
+// 		}else{
+// 			window.parent.document.getElementById("deptData").value=JSON.stringify(tArray);
+// 		}
+// 		//删除表数据
+// 		var url_dl=basePath+"/service/reference/role_info/delete";
+// 		$.ajax({ 
+// 				type : "post", 
+// 				url : url_dl,
+// 				data: {modelId:modelId,activityId:activityId,roleId:roleId},
+// 	 			dataType : "json",
+// 				success : function(result, textStatus) {
+// 					//保存
+// 					var url=basePath+"/service/reference/role_info/update";
+// 					$.ajax({ 
+// 							type : "post", 
+// 							url : url,
+// 							data: "jsonData="+JSON.stringify(tArray),
+// 				 			dataType : "json",
+// 							success : function(result, textStatus) {
+							
+// 							},
+// 							error:function(err, textStatus, errorThrown){
+// 							}
+// 						});
+// 				},
+// 				error:function(err, textStatus, errorThrown){
+// 				}
+// 			});
+// 		var deptobj=window.parent.angular.element("#treeref1_zTree").scope().refResultData;	
+// 		for(var k=0;k<deptobj.length;k++){
+// 			var role_Id=deptobj[k].id;
+// 			if(roleId==role_Id){
+// 				deptobj[k].orgobj=tArray;
+// 				deptobj[k].orgPk=tArray[0].roleName;
+// 			}
+// 		}
+		
+		var div=window.parent.document.getElementById("selectDept");
+		div.style.visibility="hidden";
+		window.parent.angular.element("#treeref1_zTree").scope().updateProperty(tArray);
+	}
+	//-按钮
+	function remove(){
+		var grid=mini.get("datagrid1");
+		var rows = grid.getSelecteds();
+		if (rows.length > 0) {
+            grid.removeRows(rows, true);
+        }
+	}
+	//取消按钮
+	function cancel(){
+		var div=window.parent.document.getElementById("selectDept");
+		div.style.visibility="hidden";
+	}
+	
+	//获取url后带的参数值
+	function getParamValue(param){
+		var args = window.location.href.split("?"); 
+		var retval = ""; 
+		if(args[0] == window.location.href) /*参数为空*/ 
+		{ 
+		return retval; /*CuPlayer.com提示：无需做任何处理*/ 
+		} 
+		var str = args[1]; 
+		args = str.split("&"); 
+		for(var i = 0; i < args.length; i++ ) 
+		{ 
+		str = args[i]; 
+		var arg = str.split("="); 
+		if(arg.length <= 1) continue; 
+		if(arg[0] == param) retval = arg[1]; 
+		} 
+		return retval; 
+	}
+</script>
+</html>

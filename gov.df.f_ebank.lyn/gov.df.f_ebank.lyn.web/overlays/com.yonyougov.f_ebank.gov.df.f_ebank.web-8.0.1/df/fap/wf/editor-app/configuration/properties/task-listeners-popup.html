@@ -1,0 +1,109 @@
+
+<div class="modal" ng-controller="KisBpmTaskListenersPopupCtrl">
+    <div class="modal-dialog modal-wide">
+        <div class="modal-content">
+			<div class="modal-header">
+			    <button type="button" class="editor-pop-close close" data-dismiss="modal" aria-hidden="true" ng-click="close()">&times;</button>
+			    <span>{{'PROPERTY.PROPERTY.EDIT.TITLE' | translate:property}}</span>
+			</div>
+			<div class="modal-body">
+			
+			    <div class="row row-no-gutter">
+			        <div class="col-xs-6">
+			            <div ng-if="translationsRetrieved" class="kis-listener-grid" ng-grid="gridOptions"></div>
+			            <div class="pull-right">
+			                <div class="btn-group">
+			                    <a class="btn btn-icon btn-lg" rel="tooltip" data-title="{{ACTION.MOVE.UP | translate}}" data-placement="bottom" data-original-title="" title="" ng-click="moveListenerUp()"><i class="glyphicon glyphicon-arrow-up"></i></a>
+			                    <a class="btn btn-icon btn-lg" rel="tooltip" data-title="{{ACTION.MOVE.DOWN | translate}}" data-placement="bottom" data-original-title="" title="" ng-click="moveListenerDown()"><i class="glyphicon glyphicon-arrow-down"></i></a>
+			                </div>
+			                <div class="btn-group">
+			                    <a class="btn btn-icon btn-lg" rel="tooltip" data-title="{{ACTION.ADD | translate}}" data-placement="bottom" data-original-title="" title="" ng-click="addNewListener()"><i class="glyphicon glyphicon-plus"></i></a>
+			                    <a class="btn btn-icon btn-lg" rel="tooltip" data-title="{{ACTION.REMOVE | translate}}" data-placement="bottom" data-original-title="" title="" ng-click="removeListener()"><i class="glyphicon glyphicon-minus"></i></a>
+			                </div>
+			            </div>
+			        </div>
+			
+			        <div class="col-xs-6">
+			            <div ng-show="selectedListeners.length > 0">
+			
+			                <div class="form-group">
+						   		<label for="eventField">{{'PROPERTY.TASKLISTENERS.EVENT' | translate}}</label>
+						   		<select id="eventField" class="form-control" ng-model="selectedListeners[0].event" ng-change="eventChanged()">
+			                        <option value="create">{{'PROPERTIES.LISTENERS.CREATE' | translate}}</option>
+			                        <option value="assignment">{{'PROPERTIES.LISTENERS.ASSIGNMENT' | translate}}</option>
+			                        <option value="complete">{{'PROPERTIES.LISTENERS.COMPLETE' | translate}}</option>
+			                        <option value="delete">{{'PROPERTIES.LISTENERS.DELETE' | translate}}</option>
+			                        <option value="jump">{{'PROPERTIES.LISTENERS.JUMP' | translate}}</option>
+			                        <option value="withdraw">{{'PROPERTIES.LISTENERS.WITHDRAW' | translate}}</option>
+			                        <option value="timeout">{{'PROPERTIES.LISTENERS.TIMEOUT' | translate}}</option>
+			                    </select>
+							</div>
+							<div class="form-group">
+						   		<label for="implementations">{{'PROPERTY.TASKLISTENERS.FIELDS.IMPLEMENTATION' | translate}}</label>
+						   		<select id="implementations" class="form-control" ng-model="selectedListeners[0].clazz">
+			                        <option value="class">{{'PROPERTY.TASKLISTENERS.CLASS' | translate}}</option>
+			                        <option value="expression">{{'PROPERTY.TASKLISTENERS.EXPRESSION' | translate}}</option>
+			                        <option value="delegateexpression">{{'PROPERTY.TASKLISTENERS.DELEGATEEXPRESSION' | translate}}</option>
+			                    </select>
+							</div>
+							<div class="form-group" ng-show="selectedListeners[0].clazz == 'class'">
+						   		<label for="classField">{{'PROPERTY.TASKLISTENERS.CLASS' | translate}}</label>
+						   		<input type="text" id="classField" class="form-control" ng-model="selectedListeners[0].className" ng-change="listenerDetailsChanged('class')" placeholder="{{'PROPERTY.TASKLISTENERS.CLASS.PLACEHOLDER' | translate}}" />
+							</div>
+							<div class="form-group" ng-show="selectedListeners[0].clazz == 'expression'">
+						   		<label for="expressionField">{{'PROPERTY.TASKLISTENERS.EXPRESSION' | translate}}</label>
+						   		<input type="text" id="expressionField" class="form-control" ng-model="selectedListeners[0].expression" ng-change="listenerDetailsChanged('expression')" placeholder="{{'PROPERTY.TASKLISTENERS.EXPRESSION.PLACEHOLDER' | translate}}" />
+							</div>
+							<div class="form-group" ng-show="selectedListeners[0].clazz == 'delegateexpression'">
+						   		<label for="delegateExpressionField">{{'PROPERTY.TASKLISTENERS.DELEGATEEXPRESSION' | translate}}</label>
+						   		<input type="text" id="delegateExpressionField" class="form-control" ng-model="selectedListeners[0].delegateExpression" ng-change="listenerDetailsChanged('delegateexpression')" placeholder="{{'PROPERTY.TASKLISTENERS.DELEGATEEXPRESSION.PLACEHOLDER' | translate}}" />
+							</div>
+			            </div>
+			            <div ng-show="selectedListeners.length == 0" class="muted no-property-selected" translate>PROPERTY.TASKLISTENERS.UNSELECTED</div>
+			        </div>
+			    </div>
+			    
+			    <div class="row row-no-gutter" style="padding-top:10px">
+			        <div class="col-xs-6">
+			            <div ng-if="translationsRetrieved" class="kis-field-grid" ng-grid="gridFieldOptions"></div>
+			            <div class="pull-right">
+			                <div class="btn-group">
+			                    <a class="btn btn-icon btn-lg" rel="tooltip" data-title="{{ACTION.MOVE.UP | translate}}" data-placement="bottom" data-original-title="" title="" ng-click="moveFieldUp()"><i class="glyphicon glyphicon-arrow-up"></i></a>
+			                    <a class="btn btn-icon btn-lg" rel="tooltip" data-title="{{ACTION.MOVE.DOWN | translate}}" data-placement="bottom" data-original-title="" title="" ng-click="moveFieldDown()"><i class="glyphicon glyphicon-arrow-down"></i></a>
+			                </div>
+			                <div class="btn-group">
+			                    <a class="btn btn-icon btn-lg" rel="tooltip" data-title="{{ACTION.ADD | translate}}" data-placement="bottom" data-original-title="" title="" ng-click="addNewField()"><i class="glyphicon glyphicon-plus"></i></a>
+			                    <a class="btn btn-icon btn-lg" rel="tooltip" data-title="{{ACTION.REMOVE | translate}}" data-placement="bottom" data-original-title="" title="" ng-click="removeField()"><i class="glyphicon glyphicon-minus"></i></a>
+			                </div>
+			            </div>
+			        </div>
+			
+			        <div class="col-xs-6">
+			            <div ng-show="selectedFields.length > 0">
+			
+							<div class="form-group">
+						   		<label for="nameField">{{'PROPERTY.TASKLISTENERS.FIELDS.NAME' | translate}}</label>
+						   		<input type="text" id="nameField" class="form-control" ng-model="selectedFields[0].name" placeholder="{{'PROPERTY.TASKLISTENERS.FIELDS.NAME.PLACEHOLDER' | translate}}" />
+							</div>
+			                <div class="form-group">
+						   		<label for="stringValueField">{{'PROPERTY.TASKLISTENERS.FIELDS.STRINGVALUE' | translate}}</label>
+						   		<input type="text" id="stringValueField" class="form-control" ng-model="selectedFields[0].stringValue" ng-change="fieldDetailsChanged()" placeholder="{{'PROPERTY.TASKLISTENERS.FIELDS.STRINGVALUE.PLACEHOLDER' | translate}}" />
+							</div>
+							<div class="form-group">
+						   		<label for="expressionField">{{'PROPERTY.TASKLISTENERS.FIELDS.EXPRESSION' | translate}}</label>
+						   		<input type="text" id="expressionField" class="form-control" ng-model="selectedFields[0].expression" ng-change="fieldDetailsChanged()" placeholder="{{'PROPERTY.TASKLISTENERS.FIELDS.EXPRESSION.PLACEHOLDER' | translate}}" />
+							</div>
+			                
+			            </div>
+			            <div ng-show="selectedFields.length == 0" class="muted no-property-selected"translate>PROPERTY.TASKLISTENERS.FIELDS.EMPTY</div>
+			        </div>
+			    </div>
+			
+			</div>
+			<div class="editor-modal-footer modal-footer">
+				<button ng-click="save()" class="btn btn-primary" translate>ACTION.SAVE</button>
+			    <button ng-click="cancel()" class="btn btn-primary" translate>ACTION.CANCEL</button>
+			</div>
+		</div>
+	</div>
+</div>

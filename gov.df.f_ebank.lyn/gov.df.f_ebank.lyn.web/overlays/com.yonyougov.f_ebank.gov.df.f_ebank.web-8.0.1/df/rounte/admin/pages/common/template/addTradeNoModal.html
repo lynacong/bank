@@ -1,0 +1,23 @@
+<div class="modal fade" id="addTradeNoModal" tabindex="-1" role="dialog"
+		aria-labelledby="ylModalLabel" data-backdrop="static">
+	<div class="modal-dialog" role="document" style="width:400px">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" onclick="closeAgentBusinessNo()"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="titleText">交易流水号</h4>
+			</div>
+			<div  style="padding:10px;height:94px;margin-top:30px;">
+				<label style="margin-left:20px;padding-top:6px;">交易流水号：</label>		 
+	         	<input type="text" class="form-control" style="width:240px;display:inline-block;" id="agent_business_no"> 	
+			</div>
+			 
+			<div class="modal-footer">	
+				<button type="button" class="btn btn-primary" onclick="saveAgentBusinessNo()">确定</button>			
+				<button type="button" class="btn btn-primary" onclick="closeAgentBusinessNo()">取消</button>
+			</div>
+		</div>
+	</div>
+</div> 

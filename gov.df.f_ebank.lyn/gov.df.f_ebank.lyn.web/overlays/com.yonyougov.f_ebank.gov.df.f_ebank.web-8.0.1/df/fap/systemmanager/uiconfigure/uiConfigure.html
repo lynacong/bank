@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible"
+	content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+<title>视图管理</title>
+<meta name="author" content="ip">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/platform.css" />
+<link rel="stylesheet" type="text/css" href="./uiConfigure.css" />
+</head>
+
+<body>
+	<div class="wrapper" style="padding:10px;">
+		<div class="contain">
+			<div class="row">
+				<div class="col-sm-4 col-md-3 col-lg-3 ">
+					<div class="base-bg">
+						<div class="input-group ip-input-group">
+							<input type="text" name="quickquery" id="quickquery"
+								class="form-control col-md-6 search-h"  placeholder="请输入关键字" 
+								onkeydown='if(event.keyCode==13){menuTreeNext();}' /> <span
+								class="input-group-btn">
+								<button class="btn btn-default search-h" type="button"
+									onclick="menuTreeNext()">
+									<span class="glyphicon glyphicon-search search-state"></span>
+								</button> </span>
+						</div>
+					</div>
+					<div class="left-content pre-scrollable" style="min-height: 485px">
+						<div id="viewTree" class="ztree"
+							u-meta='{"id":"uiConfigureTree","data":"treeDataTable","type":"tree","idField":"ui_id","pidField":"parentid","nameField":"uiname","setting":"treeSetting"}'>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-8 col-md-9 col-lg-9">
+					<div class="header">
+						<button type="button" id="addButton" class="btn btn-primary"
+							data-toggle="modal" data-bind="click: addButton">新增</button>
+						<button type="button" id="modifyButton" class="btn btn-primary"
+							data-bind="click: modifyButton">修改</button>
+						<button type="button" id="delButton" class="btn btn-danger"
+							data-bind="click: delButton">删除</button>
+					</div>
+					<div class="labarea">
+						<span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+						&nbsp 视图基础信息
+					</div>
+					<div class="row clearfix" id="main-info">
+						<div id="main-info-hide" class="main-info-hide">
+							<input type="text" class="form-control" id="ui_id">
+						</div>
+						<div class="col-md-6 column">
+							<div class="col-md-12">
+								<label for="ui_code" class="col-md-4 text-right">视图编号：</label>
+								<div class="col-md-8 ip-input-group">
+									<input type="text" class="form-control" id="ui_code">
+								</div>
+							</div>
+							<div class="col-md-12 ">
+								<label for="ui_type" class="col-md-4 text-right">视图类型：</label>
+								<div class="col-md-8 ip-input-group">
+									<select class="form-control" id="ui_type" disabled="disabled">
+									</select>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<label for="title" class="col-md-4 text-right">控件标题：</label>
+								<div class="col-md-8 ip-input-group">
+									<input type="text" class="form-control" id="title">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<label for="sys_id" class="col-md-4 text-right">所属模块：</label>
+								<div class="col-md-8 ip-input-group">
+									<select class="form-control" id="sys_id">
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 column">
+							<div class="col-md-12">
+								<label for="ui_name" class="col-md-4 text-right">视图名称：</label>
+								<div class="col-md-8 ip-input-group">
+									<input type="text" class="form-control" id="ui_name">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<label for="id" class="col-md-4 text-right">控件ID：</label>
+								<div class="col-md-8 ip-input-group">
+									<input type="text" class="form-control" id="id">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<label for="columns" class="col-md-4 text-right">容器列：</label>
+								<div class="col-md-8 ip-input-group">
+									<input type="text" class="form-control" id="columns">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<label for="remark" class="col-md-4 text-right">备注：</label>
+								<div class="col-md-8 ip-input-group">
+									<input type="text" class="form-control" id="remark">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row clearfix">
+						<div class="view-show-content">
+							<div class="labarea">
+								<span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+								&nbsp 视图预览信息
+							</div>
+							<div class="info-content" id="info-content">
+								<!-- tree modal -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="addModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content modal-content-set">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">视图信息</h4>
+				</div>
+				<div class="all_info">
+					<!-- Nav tabs -->
+					<ul id="myTabs" class="nav nav-tabs" role="tablist">
+						<li id="fist-pane" role="presentation" class="active" onclick="clickBaseInfo()">
+							<a href="#baseinfo" aria-controls="home" role="tab"
+							data-toggle="tab">基本信息</a></li>
+						<li id="sec-pane" role="presentation" onclick="clickProfile()"><a href="#profiles"
+							aria-controls="profile" role="tab" data-toggle="tab">详细信息</a></li>
+					</ul>
+
+					<!-- Tab panes -->
+					<div id="myTabContent" class="tab-content">
+						<div role="tabpanel" class="tab-pane active" id="baseinfo">
+							<div style="display:none">
+								<input type="text" id="opt_type">
+							</div>
+							<div class="labarea-add">
+								<span class="glyphicon glyphicon-stop" aria-hidden="true">&nbsp 视图基础信息</span>
+								
+								
+								<span class="collab-set-right" data-bind="click: uiConfigureViewAdvanceEdit">高级属性</span>
+							
+							</div>
+							<div class="row clearfix" id="base-info">
+								<div style="display:none">
+									<input type="text" id="ui_id_base">
+								</div>
+								<div class="col-md-6 column">
+									<div class="col-md-12">
+										<label for="ui_code_base"
+											class="col-md-4 text-right view-text-right">视图编号：</label>
+										<div class="col-md-8 ip-input-group">
+											<input type="text" class="form-control view-text-left"
+												id="ui_code_base">
+										</div>
+									</div>
+									<div class="col-md-12 ">
+										<label for="ui_type_base"
+											class="col-md-4 text-right view-text-right">视图类型：</label>
+										<div class="col-md-8 ip-input-group">
+											<select class="form-control view-text-left" id="ui_type_base">
+											</select>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<label for="title_base"
+											class="col-md-4 text-right view-text-right">控件标题：</label>
+										<div class="col-md-8 ip-input-group">
+											<input type="text" class="form-control view-text-left"
+												id="title_base">
+										</div>
+									</div>
+									<div class="col-md-12">
+										<label for="sys_id_base"
+											class="col-md-4 text-right view-text-right">所属模块：</label>
+										<div class="col-md-8 ip-input-group">
+											<select class="form-control view-text-left" id="sys_id_base">
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6 column">
+									<div class="col-md-12">
+										<label for="ui_name_base"
+											class="col-md-4 text-right view-text-right">视图名称：</label>
+										<div class="col-md-8 ip-input-group">
+											<input type="text" class="form-control view-text-left"
+												id="ui_name_base">
+										</div>
+									</div>
+									<div class="col-md-12">
+										<label for="id_base"
+											class="col-md-4 text-right view-text-right">控件ID：</label>
+										<div class="col-md-8 ip-input-group">
+											<input type="text" class="form-control view-text-left"
+												id="id_base">
+										</div>
+									</div>
+									<div class="col-md-12">
+										<label for="columns_base"
+											class="col-md-4 text-right view-text-right">容器列：</label>
+										<div class="col-md-8 ip-input-group">
+											<input type="text" class="form-control view-text-left"
+												id="columns_base">
+										</div>
+									</div>
+									<div class="col-md-12">
+										<label for="remark_base"
+											class="col-md-4 text-right view-text-right">备注：</label>
+										<div class="col-md-8 ip-input-group">
+											<input type="text" class="form-control view-text-left"
+												id="remark_base">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="menuarea">
+								<div class="labarea-add">
+									<span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+									&nbsp 视图被引用的信息
+								</div>
+								<div type="text"
+									u-meta='{"id":"menu-view-grid","data":"menuGridDataTable","type":"grid","editable":false,"multiSelect":false,"autoExpand":false,"showTree":false,"showNumCol":true,"keyField":"theId","parentKeyField":"parentId","noScroll":true,"height":150}'>
+									<div
+										options='{"field":"code","dataType":"String","title":"菜单编码","editType":"string","width": 200}'></div>
+									<div
+										options='{"field":"name","dataType":"String","title":"菜单名称","editType":"string"}'></div>
+
+								</div>
+							</div>
+						</div>
+						<!-- 详细信息的panel 包括详细信息的弹出窗口 -->
+						<div role="tabpanel" class="tab-pane " id="profiles">
+							<div>
+								<div>
+									<ul class="ul-info">
+										<li><span class="glyphicon glyphicon-stop left-collab"></span>
+											<span class="collab-set">列信息</span> <span
+											class="glyphicon glyphicon-stop right-collab"></span> <span
+											class="collab-set">详细信息</span>
+											<span class="collab-set-right" data-bind="click: uiConfigureRowAdvanceEdit">高级属性</span></li>
+									</ul>
+								</div>
+								<!-- 详细信息 -->
+								<div class="row clearfix">
+									<div class="col-md-5">
+										<div class="col-info">
+											<div id="viewTree" class="ztree"
+												u-meta='{"id":"viewDetailTree","data":"viewDetailTree","type":"tree","idField":"ui_detail_id","pidField":"parent_id","nameField":"detailname","setting":"detailTreeSetting"}'>
+											</div>
+										</div>
+										<div class="col-button">
+											<button type="button" id="baseCloseButton"
+												class="btn btn-danger keep-right-btn" data-bind="click: delColumnButton">删除</button>
+											<button type="button" id="btn-add-column"
+												class="btn btn-primary keep-right-btn" data-bind="click: addColumnButton">添加</button>
+										</div>
+									</div>
+									
+									<div class="col-md-7">
+										<div id="view-detail">
+											<div style="display:none">
+												<input type="text" id="ui_detail_id_detail"> <input
+													type="text" id="ui_id_detail">
+											</div>
+											<label for="id_detail"
+												class="col-md-4 text-right detail-text-right">控件字段：</label>
+											<div class="col-md-8 ip-input-group">
+												<input type="text" class="form-control detail-text-left"
+													id="id_detail" onkeyup="changeDeatil(this)">
+											</div>
+											<label for="title_detail"
+												class="col-md-4 text-right detail-text-right">控件标题：</label>
+											<div class="col-md-8 ip-input-group">
+												<input type="text" class="form-control detail-text-left"
+													id="title_detail" onkeyup="changeDeatil(this)">
+											</div>
+											<label for="disp_mode_detail"
+												class="col-md-4 text-right detail-text-right">显示方式：</label>
+											<div class="col-md-8 ip-input-group">
+												<select class="form-control detail-text-left"
+													id="disp_mode_detail" onchange="changeDeatil(this)"></select>
+											</div>
+											<label for="source_detail"
+												class="col-md-4 text-right detail-text-right">数据源：</label>
+											<div class="col-md-8 ip-input-group">
+												<input type="text" id="source_detail" style="display:none">
+												<input type="text" class="form-control detail-text-btn"
+													id="source_name_detail" onkeyup="changeDeatil(this)"> 
+													<span id="ele_choice_detail"
+													data-bind="click: eleChoiceDetailButton" class="list-box">
+													<span class="glyphicon glyphicon-list icon-box"></span> </span>
+											</div>
+											<label for="ref_model_detail"
+												class="col-md-4 text-right detail-text-right">枚举项：</label>
+											<div class="col-md-8 ip-input-group">
+												<input type="text" class="form-control detail-text-left"
+													id="ref_model_detail" onkeyup="changeDeatil(this)">
+											</div>
+											<label for="value_detail"
+												class="col-md-4 text-right detail-text-right">默认值：</label>
+											<div class="col-md-8 ip-input-group">
+												<!-- <input type="text" class="form-control detail-text-left"
+													id="value_detail" onkeyup="changeDeatil(this)"> -->
+													<input type="text" id="value_detail-h" style="display:none">
+													<input type="text" class="form-control detail-text-btn"
+														id="value_detail" onchange="changeDeatil(this)" onfocus="getValueInfo(this)" >
+													<span id="value-detail-choice" 
+													data-bind="click: defaultValueDetailButton"
+														class="list-box"> <span
+														class="glyphicon glyphicon-list icon-box"></span> </span>
+											</div>
+											<label for="cols_detail"
+												class="col-md-4 text-right detail-text-right">显示列：</label>
+											<div class="col-md-8 ip-input-group">
+												<select class="form-control detail-text-left"
+													id="cols_detail" onchange="changeDeatil(this)"></select>
+											</div>
+											<label for="width_detail"
+												class="col-md-4 text-right detail-text-right">宽度：</label>
+											<div class="col-md-8 ip-input-group">
+												<input type="text" class="form-control detail-text-left"
+													id="width_detail" onkeyup="changeDeatil(this)">
+											</div>
+											<label for="query_relation_sign_detail"
+												class="col-md-4 text-right detail-text-right">查询关系：</label>
+											<div class="col-md-8 ip-input-group">
+												<select class="form-control detail-text-left"
+													id="query_relation_sign_detail"
+													onchange="changeDeatil(this)"></select>
+											</div>
+											<div class="check-sta">
+												<label class="checkbox-inline-ui"> 是否可见:</label>
+												<input type="checkbox" id="visible_detail" value="option1" onclick="changeDeatil(this)">  
+												<label class="checkbox-inline-ui"> 是否可编辑:</label>
+												<input type="checkbox" id="editable_detail" value="option1" onclick="changeDeatil(this)">   
+												<label class="checkbox-inline-ui"> 是否合计列:</label>
+												<input type="checkbox" id="sum_flag_detail" value="option1" onclick="changeDeatil(this)">
+											</div>
+											<div class="check-sta">
+												<label class="checkbox-inline-ui"> 是否启用:</label>
+												<input type="checkbox" id="is_enabled_detail" value="option1" onclick="changeDeatil(this)">
+												<!-- <label class="checkbox-inline-ui"> 是否可用:</label>
+												<input type="checkbox" id="enabled_detail" value="option1" onclick="changeDeatil(this)"> -->
+												<label class="checkbox-inline-ui"> 是否虚拟列:</label>
+												<input type="checkbox" id="is_virtual_column_detail" value="option1" onclick="changeDeatil(this)">  
+												<textarea class="form-control textarea"
+													id="virtual_column_sql_detail" onkeyup="changeDeatil(this)"></textarea>
+											
+											</div>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- 详细信息新增界面 -->
+							<div id="addCol" style="display:none">
+								<div id='add-config-modal' class='bs-modal-sm'>
+									<div class='modal-dialog modal-sm'>
+										<div class='modal-content modal-content-bc'>
+											<div class='modal-header'>
+												<button type='button' class='close closeBtn '
+													data-bind="click: cencelColumnButton">
+													<span>&times;</span>
+												</button>
+												<h4 class='modal-title'>列信息</h4>
+											</div>
+											<div id="col_body" class='modal-body'>
+												<label for="col_id"
+													class="col-md-4 text-right detail-text-right">控件字段：</label>
+												<div class="input-group col-md-8 ip-input-group">
+													<input type="text" class="form-control detail-text-btn"
+														id="col_id"> <span id="ele-btn-choice"
+														data-bind="click: eleChoiceButton" class="list-box">
+														<span class="glyphicon glyphicon-list icon-box"></span> </span>
+													<!--  <span class="input-group-btn">
+														<button  data-bind="click: eleChoiceButton"
+															class="btn btn-default btn-icon" type="button">
+															<span class="glyphicon glyphicon-list"></span>
+														</button> </span>-->
+												</div>
+												<label for="col_title"
+													class="col-md-4 text-right detail-text-right">控件标题：</label>
+												<div class="col-md-8 ip-input-group">
+													<input type="text" class="form-control detail-text-left"
+														id="col_title">
+												</div>
+												<label for="col_disp_mode"
+													class="col-md-4 text-right detail-text-right">显示方式：</label>
+												<div class="col-md-8 ip-input-group">
+													<select class="form-control detail-text-left"
+														id="col_disp_mode" ></select>
+												</div>
+												<label for="col_source"
+													class="col-md-4 text-right detail-text-right">数据源：</label>
+												<div class="col-md-8 ip-input-group">
+													<input type="text" id="col_source" style="display: none">
+													<input type="text" class="form-control detail-text-btn"
+														id="col_source_name" > <span
+														id="ele-addsource-choice"
+														data-bind="click: eleChoiceFromSourceButton"
+														class="list-box"> <span
+														class="glyphicon glyphicon-list icon-box"></span> </span>
+												</div>
+												<label for="col_ref_model"
+													class="col-md-4 text-right detail-text-right">枚举项：</label>
+												<div class="col-md-8 ip-input-group">
+													<input type="text" class="form-control detail-text-left"
+														id="col_ref_model">
+												</div>
+												<label for="col_value"
+													class="col-md-4 text-right detail-text-right">默认值：</label>
+													<!-- <div class="col-md-8 ip-input-group">
+													<input type="text" class="form-control detail-text-left"
+														id="col_value">
+														</div> -->
+												 <div class="col-md-8 ip-input-group">
+												 	<input type="text" id="col_value-h" style="display:none">
+													<input type="text" class="form-control detail-text-btn"
+														id="col_value">
+													<span id="default-value-choice" 
+													data-bind="click: defaultValueColButton"
+														class="list-box"> <span
+														class="glyphicon glyphicon-list icon-box"></span> </span>
+												</div>
+												<label for="col_cols"
+													class="col-md-4 text-right detail-text-right">显示列：</label>
+												<div class="col-md-8 ip-input-group">
+													<select class="form-control detail-text-left" id="col_cols"></select>
+												</div>
+												<label for="col_width"
+													class="col-md-4 text-right detail-text-right">宽度：</label>
+												<div class="col-md-8 ip-input-group">
+													<input type="text" class="form-control detail-text-left"
+														id="col_width">
+												</div>
+												<label for="col_query_relation_sign"
+													class="col-md-4 text-right detail-text-right">查询关系：</label>
+												<div class="col-md-8 ip-input-group">
+													<select class="form-control detail-text-left"
+														id="col_query_relation_sign"></select>
+												</div>
+												<div class="check-sta">
+													<label class="checkbox-inline-ui"> 是否可见:</label>
+													<input type="checkbox" id="col_visible" value="option1">
+													<label class="checkbox-inline-ui"> 是否可编辑:</label>
+													<input type="checkbox" id="col_editable" value="option1">
+													<label class="checkbox-inline-ui"> 是否合计列:</label>
+													<input type="checkbox" id="col_sum_flag" value="option1">
+												</div>
+												<div class="check-sta">
+													<label class="checkbox-inline-ui"> 是否启用:</label>
+													<input type="checkbox" id="col_is_enabled" value="option1" onclick="changeDeatil(this)">
+													<label class="checkbox-inline-ui"> 是否可用:</label>
+													<input type="checkbox" id="col_enabled" value="option1" onclick="changeDeatil(this)">
+													<label class="checkbox-inline-ui"> 是否虚拟列:</label>
+													<input type="checkbox" id="col_is_virtual_column" value="option1">	 
+													<textarea class="form-control textarea"
+														id="col_virtual_column_sql"></textarea>
+												</div>
+											</div>
+											<div class="col-add-button">
+												<button type="button" id="confirmColumnButton"
+													data-bind="click: confirmColumnButton"
+													class="btn btn-primary">保存</button>
+												<button type="button" id="cencelColumnButton"
+													data-bind="click: cencelColumnButton"
+													class="btn btn-primary">取消</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="ele-choice" style="display:none">
+								<div id='ele-config-modal' class='bs-modal-sm'>
+									<div class='modal-dialog modal-sm modal-dialog-bc'>
+										<div class='modal-content modal-content-bc'>
+											<div class='modal-header'>
+												<button type='button' data-bind="click: eleCloseButton"
+													class='close closeBtn '>
+													<span>&times;</span>
+												</button>
+												<h4 class='modal-title'>要素选择</h4>
+											</div>
+
+											<div id="col_body_ele" class='modal-body'>
+												<input type="text" id="ele-type-hide" style="display:none" />
+												<div class="input-group ip-input-group">
+													<span>快速定位:</span> <input type="text"
+														class="ele-text-search" id="elequickquery" /> <span>
+														<button class="ele-search-btn" type="button"
+															onclick="eleTreeNext()">
+															<span>查询</span> <span
+																class="glyphicon glyphicon-search search-state"></span>
+														</button> </span>
+												</div>
+												<div class="col-ele-dialog">
+													<div id="viewTree" class="ztree "
+														u-meta='{"id":"eleInfoTree","data":"eleInfoTree","type":"tree","idField":"chr_id","pidField":"parentid","nameField":"elename"}'>
+													</div>
+												</div>
+											</div>
+											<div class="col-add-button">
+												<button type="button" id="eleConfirmButton"
+													data-bind="click: eleConfirmButton" class="btn btn-primary">保存</button>
+												<button type="button" id="eleCloseButton"
+													data-bind="click: eleCloseButton" class="btn btn-primary">取消</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							</div>
+							<!-- 高级属性界面 -->
+							<div id="uiConfigureAdvance" style="display:none">
+								<div id='uiConfigureAdvance-modal' class='bs-modal-sm'>
+									<div class='modal-dialog modal-sm'>
+										<div class='modal-content modal-content-advance'>
+											<div class='modal-header'>
+														<button type='button' class='close closeBtn '
+															data-bind="click: cencelUiConfigureAdvance">
+															<span>&times;</span>
+														</button>
+														<h4 class='modal-title'>高级属性配置</h4>
+													</div>
+											<div id="uiConfigureAdvance_body" class='modal-body'>
+												<div type="text"
+													u-meta='{"id":"uiConfigureAdvance-grid","data":"uiConfigureAdvanceGrid","type":"grid","editable":false,"multiSelect":false,"autoExpand":false,"showTree":false,"showNumCol":true,"keyField":"theId","parentKeyField":"parentId","noScroll":true,"height":250}'>
+													<div
+														options='{"field":"uiconf_field","dataType":"String","title":"属性名","editType":"string","width": 100}'></div>
+													<div
+														options='{"field":"uiconf_field_name","dataType":"String","title":"属性中文名","editType":"string","width": 200}'></div>
+													<div
+														options='{"field":"uiconf_field_type","dataType":"String","title":"属性类型","editOptions":{"id":"comboboxValue","type":"combo","datasource":"uiconfValueItems"},"editType":"combo","renderType":"comboRender","width": 120}'></div>
+													<div
+														options='{"field":"uiconf_value","dataType":"String","title":"属性值","editType":"string","width": 80}'></div>
+												</div>
+											</div>
+											<div class="advance-edit-add-button">
+												<button type="button" id="advanceEditButton"
+													data-bind="click: advanceEditButton" class="btn btn-primary advance-edit-row-button">修改</button>
+												<button type="button" id="advanceConfirmButton"
+													data-bind="click: cencelUiConfigureAdvance" class="btn btn-primary advance-edit-row-button">保存</button>
+												<button type="button" id="advanceCloseButton"
+													data-bind="click: cencelUiConfigureAdvance" class="btn btn-primary advance-edit-row-button">取消</button>
+											</div>
+											<div style="display:none">
+												<input type="text" id="uiconf_id">
+												<input type="text" id="uiconf_flg">
+												<input type="text" id="uiconf_row_field">
+											</div>
+											<div id="advanceEditView"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						
+					</div>
+				</div>
+				<div>
+					<div class="tool-btn-h">
+						<button type="button" id="previewButton" class="btn btn-primary preview-btn fl"
+							data-bind="click: previewButton" style="display:none">预览</button>
+						<button type="button" id="add-close" class="btn btn-primary keep-right-btn"
+							data-dismiss="modal">取消</button>
+						<button type="button" id="baseSaveButton" class="btn btn-primary keep-right-btn"
+							data-bind="click: baseSaveButton">保存</button>
+					</div>
+					<div id="preview-content" style="display:none">
+						<div id='preview-content-modal' class='bs-modal-sm'>
+							<div class='modal-dialog modal-sm' >
+								<div class='modal-content modal-content-pre'>
+									<div class='modal-header'>
+										<button type='button' data-bind="click: pCloseButton"
+											class='close closeBtn '>
+											<span>&times;</span>
+										</button>
+										<h4 class='modal-title'>视图预览</h4>
+									</div>
+									<div id="preview-view" class='modal-body '></div>
+									<div >
+										<button type="button" id="preCloseButton"
+													data-bind="click: pCloseButton" class="btn btn-primary btn-pre">确定</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+<script src="/df/trd/requirejs/require.js"></script>
+<script src="/df/require.config.js"></script>
+<script src="./uiConfigure.js"></script>
+</html>

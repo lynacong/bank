@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>用户信息维护</title>
+<link rel="stylesheet" type="text/css"
+	href="../../../trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../../trd/uui/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../../../trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../../trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../../trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../../trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../../trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="../../../trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../../trd/ip/css/bizSys.css" />
+<link rel="stylesheet" type="text/css" href="./userinfoConfig.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/fap/standardSetting/common.css" />
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="top1"></div>
+		<div id="box">
+			<div class="main">
+				<div class="main-in">
+					<div class="content">
+						<h3>用户信息维护</h3>
+						<form name="login_form" class="form-horizontal" action=""
+							method="post">
+							<div>
+								<span class="reminder">用户编码：</span>
+								<div class="box">
+									<input id="user_code" type="text" class="form-control" readonly="readonly">
+								</div>
+							</div>
+							<div>
+								<span class="reminder">用户名称：</span>
+								<div class="box">
+									<input id="username" type="text" class="form-control" readonly="readonly">
+								</div>
+							</div>
+							<div>
+								<span class="reminder">单位电话：</span>
+								<div class="box">
+									<input id="telephone" type="text" class="form-control"
+										onKeyUp="value=value.replace(/[^\d+-]/g,'')" placeholder="请输入数字">
+								</div>
+							</div>
+							<div>
+								<span class="reminder">单位地址：</span>
+								<div class="box">
+									<input id="address" type="text" class="form-control">
+								</div>
+							</div>
+							<div >
+								<input id="changepw" type="button" class="subbtn" value="确定" data-bind="click: userSave"
+									style="margin:0 0 0 300px;" />
+							</div>
+						</form>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="/df/trd/requirejs/require.js"></script>
+	<script src="/df/require.config.js"></script>
+	<script src="./userinfoConfig.js"></script>
+</body>
+</html>

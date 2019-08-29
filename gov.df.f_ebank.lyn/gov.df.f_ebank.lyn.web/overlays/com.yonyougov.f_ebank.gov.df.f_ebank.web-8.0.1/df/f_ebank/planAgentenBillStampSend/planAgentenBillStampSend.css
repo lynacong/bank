@@ -1,0 +1,14 @@
+
+/* 主界面操作区域-操作按钮 */
+.btn-grid-group {
+	margin-top: 5px;
+	background: #FFFFFF;
+	border: 1px solid #E5E5E5;
+	box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.30);
+	border-radius: 2px;
+	overflow:hidden;
+}
+/* 主界面-操作按钮位置 */
+.btn-grid-group-btn {
+	padding:5px;
+}

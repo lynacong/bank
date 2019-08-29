@@ -1,0 +1,302 @@
+@charset "utf-8";
+*{margin: 0; padding: 0;box-sizing: border-box;}
+body{font-size: 12px;width: 100%;height: 100%;background: #EFF3F6;font-family:"微软雅黑","SimSun";overflow-x:hidden;overflow-y: auto;}
+ul,ol,li{list-style: none;}
+img{border: none;}
+a{text-decoration: none;}
+.clearfix{clear:both;display:block; overflow:hidden; visibility:hidden; width:0px; height:0px;}
+
+#box{width: 100%;min-width: 1130px;/*margin: 10px 15px 15px 12px;*/background: #F2F2F2;height: auto;position: relative;}
+#left{/*width:100%;*/height: auto;/*float: left;*/margin: -5px 378px 0 10px;/*position: absolute;top: 10px;left: 12px;*/}
+#left .cen-1{font-size:14px;width: 100%;height: 86px;background: #FFFFFF;border: 1px solid #D9D9D9;border-radius: 4px;margin-bottom: 10px;}
+#left .cen-1 .list{width: 100%;height: 66px;padding-top: 20px;}
+#left .cen-1 .list li{float: left;position: relative;}
+#left .cen-1 .list>li:first-child{width: 80px;text-align: center;height: 50px;border-right:1px solid #E9E9E9;padding: 0 16px;}
+#left .cen-1 .list>li:first-child>a{width: auto;height: auto;font-family: "微软雅黑";font-size: 16px;color: #333333;line-height: 23px;letter-spacing:3px;}
+#left .cen-1 .list li a img{display: inline-block;margin: 10px 20px 0 20px;}
+#left .cen-1 .list li a span{position: absolute;top: 13px;left: 66px;font-family: "微软雅黑";font-size: 16px;color: #333333;letter-spacing:1px;}
+#left .cen-1 .icon{width: 150px;height: 50px;background: #FFFFFF;border: 1px solid #E9E9E9;border-radius: 4px;margin-left: 12px;}
+/* start---顶部 */
+#top{ margin:5px;background:#FFF;margin-left:10px;}
+#top .cen-1{font-size:14px;width: 89%;height: 50px;background: #F8F8F8;border: 1px solid #D9D9D9;border-radius: 4px;margin-bottom: 10px;}
+#top .cen-1 .list{width: 100%;height: 50px;padding-top: 4px;margin-left:0px}
+#top .cen-1 .list li{float: left;position: relative;height:37px;}
+#top .cen-1 .list>li:first-child{width: 0px;text-align: center;height: 50px;padding: 0 16px;}
+#top .cen-1 .list>li:first-child>a{width: auto;height: auto;font-family: "微软雅黑";font-size: 16px;color: #333333;line-height: 23px;letter-spacing:3px;}
+#top .cen-1 .list li a img{width: 22px;height: 22px;display: inline-block;margin: 10px 126px 0 25px;margin-top: 10px; margin-left: 30px;}
+#top .cen-1 .list li a span{position: absolute;top: 8px;left: 66px;font-family: "微软雅黑";font-size: 16px;color: #333333;letter-spacing:1px;}
+#top .cen-1 .icon{width: 150px;height: 50px;background: #FFFFFF;border-right: 1px solid #E9E9E9;border-radius: 4px;margin-left: 12px;}
+
+#rightSetting{margin: 5px 0px 0px -142px;height: 50px;background: #CCE7F5; border: 1px solid rgb(217, 217, 217);width: 130px;border-radius: 4px;}
+/* end---顶部 */
+
+.hidContent{width: 150px;height: 10px;display: none;padding-top: 10px;background: transparent !important;}
+/* .hidContent>ul{width: 150px;height: 210px;background: #FFFFFF;border: 1px solid #D9D9D9;border-radius: 3px 0 0 0 3px 3px 3px;} */
+.hidContent>ul>li{width:100%;height: 35px;line-height: 36px;/* border: 1px dashed #E9E9E9; */border-top: 1px solid #D9D9D9;border-left: 1px solid #D9D9D9;border-right: 1px solid #D9D9D9;background: #ffffff;}
+.hidContent>ul>li:last-child{border-bottom: 1px solid #D9D9D9;}
+.hidContent > ul > li:hover{color: #108EE9;text-decoration: none;background-color:#108EE9;}
+.hidContent>ul>li>a{font-size: 14px;color: #333333;font-family: "微软雅黑";display: inline-block;}
+.icon2{    width: 3px;height: 3px;display: inline-block;background: #4B5F73;margin: 10px 10px 3px 10px;}
+
+#left .cen-2{width: 100%;height: 235px;background: #FFFFFF;border: 1px solid #D9D9D9;border-radius: 4px;margin-bottom: 10px;}
+.head-l{width: 100%;height: 35px; border-bottom: 2px solid #108EE9;}
+.head-l>span{width: 170px;padding-left:15px;height: 30px;line-height:30px;display: inline-block;font-family: "微软雅黑";font-size: 16px;color: #128FE9;/* background: url(../../img/zb-bg.png) no-repeat left center; */float: left;font-weight: bold;}
+.selectDiv{float: left;}
+.selectDiv input{width: 84px;height: 26px;background: #FFFFFF;border: 1px solid #D9D9D9;border-radius: 4px;margin: 5px 10px 0 5px;}
+.selectDiv select{width: auto;height: 26px;background: #FFFFFF;border: 1px solid #D9D9D9;border-radius: 4px;margin: 5px 10px 0 5px;}
+.zhibiao{margin: 12px 0 0 20px;font-family: "微软雅黑";font-size: 14px;color: #333333;}
+.zfjenum{color: #000;}
+.zbyenum{color: #000;}/* font-weight:bold;*/
+.zbje{margin-right: 10px;}
+.zfje{margin-right: 10px;}
+.danweiType{position: absolute;top: 0;right: 30px;}
+#left .cen-3{width: 100%;height: 388px;background: #FFFFFF;border: 1px solid #D9D9D9;border-radius: 4px;margin-top: -5px;}
+.selectDiv1{float: right;font-size: 14px;font-family: "微软雅黑";color: #333333;}
+.selectDiv1 input{width: 84px;height: 26px;background: #FFFFFF;border: 1px solid #D9D9D9;border-radius: 4px;margin: 5px 10px 0 5px;}
+.selectDiv1 select{width: 84px;height: 26px;background: #FFFFFF;border: 1px solid #D9D9D9;border-radius: 4px;margin: 5px 10px 0 5px;}
+.selectDiv1 #demand{font-family:"微软雅黑";color: #CBCBCB;display: inline-block; cursor: pointer;margin-right: 0px;}
+._yusuan_yue_span{font-family:"微软雅黑";font-size: 14px;color: #108EE9;display: inline-block; line-height: 36px;cursor: pointer;}
+
+/*left: -220px;*/
+.demandContent{width: 502px;height: 197px;background: #FFFFFF;box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);border-radius: 6px;position: absolute;top: 40px;display: none;z-index:9;}
+#d-list{width: 100%;height: 147px;padding: 8px 16px 0 16px;border-bottom: 1px solid #E9E9E9;}
+#d-list li{width: 289px;float: left;height: 32px;font-family: "微软雅黑";font-size: 14px;color: #333333;margin-bottom: 7px;}
+#d-list li input{display: inline-block;width: 164px;height: 30px;background: #FFFFFF;border: 1px solid #D9D9D9;border-radius: 4px;}
+#sure{width: 66px;height: 30px;background: #108EE9;outline: none;border: none;color: #FFFFFF;font-family: "微软雅黑";cursor: pointer;font-size: 14px;border-radius: 2px;float: right;}
+#close{width: 66px;height: 30px;background: #FFFFFF;outline: none;border: none;color: #333333;font-family: "微软雅黑";cursor: pointer;font-size: 14px;border: 1px solid #CCCCCC;border-radius: 2px;float: right;}
+.danwei{float: right;font-family: "微软雅黑";font-size: 14px;color: #333333;margin: 8px 10px 0 0;}
+
+.selectDiv2{float: left;font-size: 14px;font-family: "微软雅黑";color: #333333;}
+.selectDiv2 input{width: 84px;height: 26px;background: #FFFFFF;border: 1px solid #D9D9D9;border-radius: 4px;margin: 5px 10px 0 5px;}
+.selectDiv2 select{width: 84px;height: 26px;background: #FFFFFF;border: 1px solid #D9D9D9;border-radius: 4px;margin: 5px 10px 0 5px;}
+.selectDiv2 #demand{font-family:"微软雅黑";font-size: 14px;color: #108EE9;display: inline-block; line-height: 36px;cursor: pointer;}
+
+/* 支出进度高级查询 */
+#payProgressGaoji{width: 610px;height: 140px;background: #FFFFFF;box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);border-radius: 6px;
+     position: absolute;top: 28px;left: -588px;display: none; z-index:999;}
+#payProgressGaoji > ul > li > input {height: 32px;}
+#payProgressGaoji > ul > li > span:nth-child(3) {cursor:pointer;position: absolute;top: 5px;right: 38px; color: #999999;font-size: 16px;border: solid 1px #ccc;background: #FFF;z-index: 9;padding: 2px 7px 4px 9px;}
+#payProgressGaoji > ul > li > span:nth-child(4) {cursor:pointer;position: absolute;top: 5px;right: 18px; color: #999999;font-size: 16px;border: solid 1px #ccc;background: #FFF;z-index: 9;padding: 0px 6px 6px 8px;right: 11px;border-top-right-radius: 4px;border-bottom-right-radius: 4px;}
+#payProgressGaojiSubmit{width: 66px;height: 30px;background: #108EE9;outline: none;border: none;color: #FFFFFF;font-family: "微软雅黑";cursor: pointer;font-size: 14px;border-radius: 2px;float: right;margin-top: -55px;margin-right: 90px;}
+#payProgressGaojiClose{width: 66px;height: 30px;background: #FFFFFF;outline: none;border: none;color: #333333;font-family: "微软雅黑";cursor: pointer;font-size: 14px;border: 1px solid #CCCCCC;border-radius: 2px;float: right;margin-top: -55px;}
+#payProgressZTreeSubmit{width: 66px;margin-top: 8px;height: 30px;background: #108EE9;outline: none;border: none;color: #FFFFFF;font-family: "微软雅黑";cursor: pointer;font-size: 14px;border-radius: 2px;float: right;}
+#payProgressZTreeClose{width: 66px;margin-top: 8px;height: 30px;background: #FFFFFF;outline: none;border: none;color: #333333;font-family: "微软雅黑";cursor: pointer;font-size: 14px;border: 1px solid #CCCCCC;border-radius: 2px;float: right;}
+
+
+.content_wrap{width: 284px !important;height: 358px !important;background: #FFFFFF;box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);border-radius: 6px;z-index: 88;}
+.head-div{width: 100%;height: 36px;background: #108ee9;}
+.head-div>span{float: left;font-size: 14px;color: #FFFFFF;margin: 10px;}
+.head-div>a{float: right;font-size: 14px;color: #FFFFFF;margin: 10px;}
+.inputDiv{width: 100%;height: 30px;position: relative;}
+.posi{position: absolute;top: 3px;left: 5px;}
+.inputForm{border-radius: 5px; display: inline-block;border:1px solid #E5E5E5;
+height:25px !important;outline:none;margin-right: 20px; width: 123px !important;
+}
+.btnSearch{width:60px;display: inline-block;height: 25px;background-color: #108EE9;color: #FFFFFF !important;border-radius: 5px;border-width: 1px;outline: none;position:absolute ;top: 8px;right: 8px;}
+.zTreeDemoBackground{width: 100%;height: 235px;}
+#_portal_table_gaoji_submit_input{width: 66px;margin-top: 8px;height: 30px;background: #108EE9;outline: none;border: none;color: #FFFFFF;font-family: "微软雅黑";cursor: pointer;font-size: 14px;border-radius: 2px;float: right;}
+#_portal_table_gaoji_close_input{width: 66px;margin-top: 8px;height: 30px;background: #FFFFFF;outline: none;border: none;color: #333333;font-family: "微软雅黑";cursor: pointer;font-size: 14px;border: 1px solid #CCCCCC;border-radius: 2px;float: right;}
+
+/* #tableContent table tr:nth-child(2n+1){background: #E9E9E9;}
+#tableContent table{color: #333333;border: 1px solid #E9E9E9;} */
+
+
+#right{width: 358px;height: auto;/*background: yellow;*/float: right;margin: -15px 10px 0 0;/*position: absolute;top: 10px;right: 10px;*/}
+#search{width: 100%;padding-left: 6px;height: 41px;margin-bottom: 10px;}
+#search #text{display: inline-block;border-radius: 3px;height: 41px;background: #FFFFFF;border: 1px solid #D9D9D9;position: relative;}
+#search #text>input{background:none;border: none;width: 343px;height: 100%;display: inline-block;color: rgba(153,153,153,0.50);font-family: "微软雅黑";font-size: 14px;line-height: 18px;outline: none;}
+#search #pic{width: 47px;height: 41px;border: 1px solid #D9D9D9;position: absolute;top: -1px;right: -46px;}
+#search #pic>img{width: 14px;height: 14px;margin: 12px 0 0 15px;}
+#right .cen1{font-size:14px;width: 100%;height: 278px;background: #FFFFFF;border: 1px solid #D9D9D9;border-radius: 4px;margin-bottom: 10px;}
+
+#fundmonitor_tab_day > table > tbody > tr{cursor: pointer;}
+#fundmonitor_tab_day > table > tbody > tr:FIRST-CHILD{cursor: text;}
+#fundmonitor_tab_month > table > tbody > tr{cursor: pointer;}
+#fundmonitor_tab_month > table > tbody > tr:FIRST-CHILD{cursor: text;}
+#fundmonitor_tab_year > table > tbody > tr{cursor: pointer;}
+#fundmonitor_tab_year > table > tbody > tr:FIRST-CHILD{cursor: text;}
+
+#gridShow_content_tbody > tr{cursor: pointer;}
+
+.head-r{width: 100%;height: 30px;border-bottom: 2px solid #108EE9;}
+.head-r>span{cursor:pointer;text-align: center;line-height: 30px;height: 30px;display: inline-block;font-family: "微软雅黑";font-size: 16px;border-top-left-radius: 4px;
+    border-top-right-radius: 4px;color: #333333;margin-right: 10px;}
+.head-r>span:first-child{margin-left: 7px;}
+.biao{padding: 10px;}
+.biao table tr{height: 30px;line-height: 30px;}
+.biao table tr:nth-child(2n+1){background: #E9E9E9;}
+.biao table tr td{border:none;text-align: center;height:100%;line-height: 27px;}
+.ac{height:29px !important;width:85px !important;padding:1px !important; margin-top:1px !important;background: #ffffff !important;color: #128FE9 !important;font-weight: bold;border: 2px solid #128FE9;border-bottom: 2px solid #ffffff;}
+
+.hidden{display: none;}
+
+#right .cen2{width: 100%;height: 211px;background: #FFFFFF;border: 1px solid #D9D9D9;border-radius: 4px;margin-bottom: 10px;margin-top: -5px;}
+#m-content1>ul{margin: 10px 0 0 18px;}
+.icon1{width: 3px;height: 3px;display: inline-block;background: #F6A623;margin:0px 13px 15px 0px;}
+#m-content1 ul li{height: 27px;line-height: 27px;}
+#m-content1 ul li a{color: #151515;font-family: "微软雅黑";font-size: 14px;display: inline-block;width: 90%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+#m-content1 ul li a:hover{color: #108EE9;text-decoration: none;}
+#right .cen3{width: 100%;height: 169px;background: #FFFFFF;border: 1px solid #D9D9D9;border-radius: 4px;margin-top: -5px;}
+.head-r2{width: 100%;height: 30px;border-bottom: 2px solid #108EE9;}
+.head-r2>span{float: left;width: 114px;height: 30px;padding-left: 10px;line-height: 30px;display: inline-block;color: #128FE9;font-size: 16px;font-family: "微软雅黑";font-weight: bold;}
+.head-r2>a{float: right;margin: 10px;}
+.head-r2>a:hover{color: #108EE9;}
+#m-content>ul{margin: 6px 0 0 18px;}
+.icon1{width: 3px;height: 3px;display: inline-block;background: #F6A623;margin:0px 13px 15px 0px;}
+#m-content ul li{height: 30px;line-height: 30px;}
+#m-content ul li a{color: #151515;font-family: "微软雅黑";font-size: 14px;display: inline-block;width: 80%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+#m-content ul li a:hover{color: #108EE9;text-decoration: none;}
+.c-red{color: #F56A00;margin-left: 13px;}
+.c{color: #F56A00;font-weight:bold;}
+
+
+.check-box{float: right;font-family: "微软雅黑";font-size: 14px;color: #333333;margin: 8px 26px 0 0;}
+.check-box>input{background: #FFFFFF;border: 1px solid #D9D9D9;vertical-align: middle;margin-right:2px;}
+
+/*预算指标行颜色*/
+#grid_content_tbody > tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+._font_color_fundmonitor{color: #F56A00;font-weight:bold;float:right;margin-right:20px;}
+._font_color_fundmonitor_count{color: #000000;}
+
+._portal_cursor_pointer{cursor: pointer !important;}
+._portal_cursor_default{cursor: default !important;}
+
+#refreshFundmonitor{
+	float: right;
+    cursor: pointer;
+    text-align: center;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    margin: 0px;}
+
+/*预算指标右键*/
+#budgetWrapper {border: solid 1px #3385bd;}
+#budgetWrapper >ul{font-size: 14px;letter-spacing: 1px;width: 375px;text-align: center;}
+#budgetWrapper >ul li{ cursor: pointer !important; padding-bottom: 8px; padding-top: 8px;width: 125px; float:left;}
+
+
+/* 经办-支出进度放大镜*/
+
+#payProgressShowGaoji {
+	font-size: 16px;
+	padding: 2px 2px 2px 2px;
+    background: #fff;
+    color: #CBCBCB;
+    border: none;
+}
+#payProgressShowGaoji:HOVER {
+	background: #108ee9;
+    color: #f8f7f8;
+}
+#budgetGridchaifen {
+	font-size: 16px;
+	padding: 2px 2px 2px 2px;
+	background: #108ee9;
+    color: #f8f7f8 !important;
+   /*  background: #fff;
+    color: #CBCBCB; */
+    border: none;
+}
+/* #budgetGridchaifen:HOVER {
+	background: #108ee9;
+    color: #f8f7f8 !important;
+} */
+
+#payProgressRefreshGaoji {
+	font-size: 16px;
+	padding: 2px 2px 2px 2px;
+    background: #fff;
+    color: #CBCBCB;
+    border: none;
+}
+#payProgressRefreshGaoji:HOVER {
+	background: #108ee9;
+    color: #f8f7f8;
+}
+#refreshFundmonitor {
+	font-size: 16px;
+	padding: 2px 2px 2px 2px;
+    background: #fff;
+    color: #CBCBCB;
+    border: none;
+}
+#refreshFundmonitor:HOVER {
+	background: #108ee9;
+    color: #f8f7f8;
+}
+
+#dealingMore {
+	font-size: 16px;
+	padding: 2px 2px 2px 2px;
+    background: #fff;
+    color: #CBCBCB;
+    border: none;
+}
+#dealingMore:HOVER {
+	background: #108ee9;
+    color: #f8f7f8;
+}
+
+#demand {
+	font-size: 16px;
+	padding: 2px 2px 2px 2px;
+    background: #fff;
+    color: #CBCBCB;
+    border: none;
+}
+#demand:HOVER {
+	background: #108ee9;
+    color: #f8f7f8;
+}
+#budgetGridRefresh {
+	font-size: 16px;
+	padding: 2px 2px 2px 2px;
+    background: #fff;
+    color: #CBCBCB;
+    border: none;
+}
+#budgetGridRefresh:HOVER {
+	background: #108ee9;
+    color: #f8f7f8;
+}
+#payProgressMaxGaoji {
+	font-size: 16px;
+	padding: 2px 2px 2px 2px;
+    background: #fff;
+    color: #CBCBCB;
+    border: none;
+}
+#payProgressMaxGaoji:HOVER {
+	background: #108ee9;
+    color: #f8f7f8;
+}
+#budgetGridMax {
+	font-size: 16px;
+	padding: 2px 2px 2px 2px;
+    background: #fff;
+    color: #CBCBCB;
+    border: none;
+}
+#budgetGridMax:HOVER {
+	background: #108ee9;
+    color: #f8f7f8;
+}
+#articleRefresh {
+	font-size: 16px;
+	padding: 2px 2px 2px 2px;
+    background: #fff;
+    color: #CBCBCB;
+    border: none;
+}
+#articleRefresh:HOVER {
+	background: #108ee9;
+    color: #f8f7f8;
+}
+
+/* 金额字体颜色 */
+.zbjenum,.zfjenum,.zbyenum{
+	color:#F56A00;
+}

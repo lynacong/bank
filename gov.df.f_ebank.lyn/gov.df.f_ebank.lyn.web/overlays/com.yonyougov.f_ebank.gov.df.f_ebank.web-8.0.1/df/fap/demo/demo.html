@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>demo.html</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../trd/ip/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../../trd/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet"  href="../../trd/uui/css/font-awesome.min.css">
+  	<link rel="stylesheet" type="text/css" href="../../trd/uui/css/u.css" />
+  	<link rel="stylesheet" type="text/css" href="../../trd/uui/css/tree.css" />
+  	<link rel="stylesheet" type="text/css" href="../../trd/ip/changeTree/changeTree.css" />
+  	<link rel="stylesheet" type="text/css" href="../../trd/uui/css/grid.css" />
+  	<link rel="stylesheet" type="text/css" href="../../trd/ip/css/ip.css" />
+  	<link rel="stylesheet" type="text/css" href="../../trd/ip/css/platform.css" />
+    <link rel="stylesheet" type="text/css" href="./demo.css">
+    <script src="../../trd/jquery/jquery-1.12.3.min.js"></script>
+    <script src="../../trd/jquery-ui/jquery-ui.js"></script>
+	<script src="../../trd/knockout/knockout-3.2.0.debug.js"></script>
+	<script src="../../trd/bootstrap/js/bootstrap.js"></script>
+	<script src="../../trd/uui/js/u.js"></script>
+	<script src="../../trd/uui/js/u-tree.js"></script>
+	<script src="../../trd/uui/js/u-grid.js"></script>
+	<script src="./demo.js"></script>
+  </head>
+  
+  <body>
+    <div class="wrapper">
+    	<div class="header">
+    		<a class="btn btn-default" href="#" data-toggle="modal" data-target="#ylModal" role="button">预览</a>
+    		<a class="btn btn-default" href="#" role="button">修改</a>
+    		<a class="btn btn-default" href="#" role="button">删除</a>
+    		<a class="btn btn-default" href="#" data-toggle="modal" data-target="" role="button">数据权限要素设置</a>
+    	</div>
+    	<div class="contain">
+	    	<div class="row">
+	    		<div class="col-sm-4 col-md-3 col-lg-3 left-content">
+	    			<!-- tree modal -->
+	    			<div id="treeTest1" class="ztree" u-meta='{"id":"tree1","data":"dataTableTree1","type":"tree","idField":"id","pidField":"pid","nameField":"title","setting":"treeSetting"}'></div>
+	    		</div>
+	    		<div class="col-sm-8 col-md-9 col-lg-9">
+	    			<div class="form-group clearfix"><!-- 此时需加上clearfix 撑起高度-->
+			            <label for="inputEmail3" class="col-sm-1 control-label">编号:</label>
+			            <div class="col-sm-11">
+			                <input type="text" class="form-control" id="right-code">
+			            </div>
+	        		</div>
+			        <div class="form-group clearfix">
+			            <label for="inputPassword3" class="col-sm-1 control-label">名称:</label>
+			            <div class="col-sm-11">
+			                <input type="text" class="form-control" id="right-name">
+			            </div>
+			        </div>
+			        <div class="form-group">
+			            <label for="exampleInputName2">配置信息：</label>
+	                	<div class="info-content" id="">
+	                		<!-- tree modal -->
+	    					<div id="treeTest2" class="ztree" u-meta='{"id":"tree2","data":"dataTableTree1","type":"tree","idField":"id","pidField":"pid","nameField":"title","setting":"treeSetting"}'></div>
+	                	</div>
+			        </div>
+	    		</div>
+	    	</div>
+    	</div>
+    	
+	    <!-- 预览Modal start-->
+	    <div class="modal fade" id="ylModal" tabindex="-1" role="dialog" aria-labelledby="ylModalLabel">
+	        <div class="modal-dialog" role="document">
+	            <div class="modal-content">
+	                <div class="modal-header">
+	                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	                    <h4 class="modal-title" id="ylModalLabel">预览信息</h4>
+	                </div>
+	                <div class="modal-body">
+	                </div>
+	                <div class="modal-footer">
+	                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <!-- 预览Modal end-->
+    </div>
+  </body>
+</html>

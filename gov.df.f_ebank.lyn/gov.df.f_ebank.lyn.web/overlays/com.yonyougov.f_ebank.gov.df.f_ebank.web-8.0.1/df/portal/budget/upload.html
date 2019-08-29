@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>上传文件</title>
+		<link rel="stylesheet" href="css/upload.css" />
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="top"></div>
+			<div id="box">
+				<div class="main">
+					<div class="main-in">
+						<div class="content">
+							<h2>上传文件 </h2>
+							<form action="/servlet/UploadHandleServlet" enctype="multipart/form-data" method="post">
+								<div>
+									<span class="reminder">上传文件1：</span>
+									<div class="box">
+								   	 	<input type="file" name="file1">
+									</div>
+								</div>
+								<div>
+									<span class="reminder">上传文件2：</span>
+									<div class="box">
+								   	 	<input type="file" name="file2">
+									</div>
+								</div>
+								<div class="btn">
+									<input type="submit" value="提交" class="subbtn">
+								</div>
+								
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	</body>
+</html>

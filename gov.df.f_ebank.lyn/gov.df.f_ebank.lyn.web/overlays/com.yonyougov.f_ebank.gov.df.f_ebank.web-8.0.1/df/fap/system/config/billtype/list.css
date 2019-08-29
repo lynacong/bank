@@ -1,0 +1,40 @@
+.ncrd .nav{
+	margin: 0 2px -3px 2px;
+}
+
+.nav-tabs > li > a{
+	margin-right: 0;
+}
+
+#myTabContent-add{
+	border: solid 1px #ddd;
+	margin-top: -1px;
+	padding: 10px 5px 5px 5px;
+}
+
+.bt-content{
+    padding-top: 10px;
+}
+
+/* 分割线 */
+.bt-layout{
+    width: 98%;
+    height: 32px;
+    margin-left: 11px;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    background-color: #F2F9FF;
+    border:1px solid #D9E9F6;
+    color: #0099ff;
+}
+
+/* 改变radio的样式 */
+.radio-class{
+    background-color: #499BED;
+}
+
+/* edit块 */
+.bt-edit{
+    min-width: 900px;
+    border-radius: 0;
+}

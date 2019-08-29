@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>国库-主管厅长</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="lib/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/css/font-awesome.min.css">
+    <link rel="stylesheet" href="lib/css/ionicons.min.css">
+    <link rel="stylesheet" href="lib/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="lib/css/_all-skins.min.css">
+
+    <!--datepicker-->
+    <link rel="stylesheet" href="plugins/datepicker/foundation-datepicker.css">
+
+    <link rel="stylesheet" href="css/dfp.css">
+
+</head>
+<body class="hold-transition sidebar-mini sidebar-collapse">
+<div class="wrapper">
+
+    <div class="content-wrapper" style="background: #f8f8f8;">
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+
+                <!-- left -->
+                <div class="col-md-9 col-lg-9 dfp-left">
+
+                    <!--<div id="payProgressStatement" class="box box-default dfp-box">-->
+                        <!--<div id="payProgressStatementContent" class="box-body" style="height: 190px;">-->
+                            <!--<iframe id="payProgressStatementIframe" src="" class="dfp-ele-iframe"></iframe>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--支出进度情况-->
+                    <div id="payProgressStatement" class="box box-default dfp-box">
+                        <div class="box-header with-border dfp-box-header">
+                            <h3 class="box-title dfp-box-title">支出进度情况</h3>
+                            <div class="pull-right box-tools">
+                                <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="查询" id="payProgressStatementCheck">
+                                    <i class="fa fa-fw fa-search" style="padding: 0;"></i>
+                                </button>
+                                <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="刷新" id="payProgressStatementRefresh">
+                                    <i class="fa fa-fw fa-refresh" style="padding: 0;"></i>
+                                </button>
+                                <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="最大化" id="payProgressStatementMaxium">
+                                    <i class="fa fa-fw fa-square-o" style="padding: 0;"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <!--查询-->
+                        <div id="payProgressStatementCheckSelect" class="box box-info" style="position: absolute;display: none;width: 400px;float: right;right: 10px;z-index: 9999;">
+                            <div class="box-header with-border dfp-box-header">
+                                <h3 class="box-title dfp-box-title">支出进度情况-查询</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <div class="box-body">
+                                <div class="input-group" style="margin-bottom: 5px;">
+                                    <span class="input-group-addon">预算类别</span>
+                                    <input type="text" class="form-control" value="全部">
+                                </div>
+                                <div class="input-group" style="margin-bottom: 5px;">
+                                    <span class="input-group-addon">项目分类</span>
+                                    <input type="text" class="form-control" value="全部">
+                                </div>
+                                <div class="input-group" style="margin-bottom: 5px;">
+                                    <span class="input-group-addon">指标来源</span>
+                                    <input type="text" class="form-control" value="全部">
+                                </div>
+                                <div class="input-group" style="margin-bottom: 5px;">
+                                    <span class="input-group-addon">预算单位</span>
+                                    <input type="text" class="form-control" value="全部">
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer pull-right">
+                                <button id="payProgressStatementCheckSelectCancel" type="button" class="btn btn-default">取消</button>
+                                <button id="payProgressStatementCheckSelectSubmit" type="button" class="btn btn-info">确定</button>
+                            </div>
+                            <!-- /.box-footer -->
+                        </div>
+                        <div id="payProgressStatementContent" class="box-body" style="height: 190px;">
+
+                            <div class="zhibiao" style="position:absolute;z-index: 5;margin:13px 0 0 20px;font-size: 14px;">
+                                <span class="zbje">指标金额：<span class="zbjenum" id="_portal_zhichu_text_zbje_span">0</span>元</span>&nbsp;&nbsp;
+                                <span class="zfje">支出金额：<span class="zfjenum" id="_portal_zhichu_text_zfje_span">0</span>元</span>&nbsp;&nbsp;
+                                <span class="zbye" style="margin-right: 20px;">指标余额：<span class="zbyenum" id="_portal_zhichu_text_zbye_span">0</span>元</span>
+                            </div>
+                            <div style="float: right;font-size: 14px;margin-top: 13px;">
+                                <span id="tooltipyzf" style="margin-right: 10px;" ><span style="width:10px;height:10px;background:#F56A00;display:inline-block;margin-right: 3px;"></span><span> 已支付</span></span>
+                                <span id="tooltipsyed" style="margin-right: 10px;"><span style="width:10px;height:10px;background:#D2EAFB;display:inline-block;margin-right: 3px;"></span><span> 剩余额度</span></span>
+                                <span id="tooltipXSJD" style="margin-right: 10px;float:left;"><span style="color:red;">----</span><span> 序时进度</span></span>
+                            </div>
+                            <div id="dwzc" style="width:95%;height:130px;margin: 0 auto;margin-top:20px;padding:0 2% 0 2%;"></div>
+                            <div id="_payProgressRanking" style="margin-left: 20px;margin-top: 10px;font-size: 14px;">
+                                <span style="">支付进度本部门排第 <span id="payProgressRanking_bm" style="color: #f56a00;font-weight: bold;"></span> 名</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span style="">全部省级预算单位排第 <span id="payProgressRanking_ysdw" style="color: #f56a00;font-weight: bold;"></span> 名</span>
+                            </div>
+                            <!-- 支出进度 序时进度 -->
+                            <div id="payprogressXSJD" style="display:none;background: #fff;border: 1px solid #0c0c0c !important;padding: 5px;">
+                                <span class="">序时进度：<span id="payprogressXSJDValue">0%</span></span>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!--/支出进度情况-->
+
+                    <!--支出大盘分析-->
+                    <div id="paymentMarketAnalysis" class="box box-default dfp-box">
+                        <div id="paymentMarketAnalysisContent" class="box-body" style="height: 410px;">
+                            <iframe id="paymentMarketAnalysisIframe" src="" class="dfp-ele-iframe"></iframe>
+                        </div>
+                    </div>
+                    <!--/支出大盘分析-->
+
+                </div>
+                <!-- /left -->
+
+                <!-- right -->
+                <div class="col-lg-3 col-md-3 dfp-right">
+
+                    <!--支出排名-->
+                    <div id="paymentRanking" class="box box-default dfp-box">
+                        <div id="paymentRankingContent" class="box-body" style="height: 260px;">
+                            <iframe id="paymentRankingIframe" src="" class="dfp-ele-iframe"></iframe>
+                        </div>
+                    </div>
+                    <!--/支出排名-->
+
+                    <!--支付情况-->
+                    <div id="paymentStatement" class="box box-default dfp-box">
+                        <div id="paymentStatementContent" class="box-body" style="height: 340px;">
+                            <iframe id="paymentStatementIframe" src="" class="dfp-ele-iframe"></iframe>
+                        </div>
+                    </div>
+                    <!--/支付情况-->
+
+                </div>
+                <!-- /right -->
+
+            </div>
+
+        </section>
+    </div>
+
+</div>
+<!-- ./wrapper -->
+
+<script src="lib/js/jquery-2.1.4.min.js"></script>
+<script src="lib/js/jquery-ui.min.js"></script>
+<script>
+    $.widget.bridge('uibutton', $.ui.button);
+</script>
+<script src="lib/js/bootstrap.min.js"></script>
+<script src="lib/js/app.min.js"></script>
+
+<!--datepicker-->
+<script src="plugins/datepicker/foundation-datepicker.js"></script>
+<script src="plugins/datepicker/foundation-datepicker.zh-CN.js"></script>
+<!--layer-->
+<script src="plugins/layer/layer.js"></script>
+<!--highcharts-->
+<script src="plugins/highcharts/highcharts.js"></script>
+<script src="plugins/highcharts/highcharts-more.js"></script>
+
+<script charset="utf-8" src="js/dfp/dfp.js"></script>
+<script charset="utf-8" src="js/dfp/dfpPayProgress.js"></script>
+<script charset="utf-8" src="js/pageGKZGTZ.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>用户数据权限</title>
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css" />
+<link rel="stylesheet" type="text/css" href="./payPlan.css" />
+</head>
+<body>
+	<div class="row top-content" style="margin: 0;">
+		<div class="form-inline">
+			<label>过滤要素条件</label>
+			<div class="input-group">
+				<input type="text" class="form-control"
+					aria-label="Amount (to the nearest dollar)" id="elecontationInput" placeholder="请选择"> <span
+					class="input-group-addon"  ><span
+					class="glyphicon glyphicon-th-large" data-bind="click: showModalELE"></span>
+				</span>
+				<input type="hidden" id="eleCodeInput">
+				<input type="hidden" id="eleNameInput">
+			</div>
+			<button class="btn btn-primary btn-data-authority"
+				data-bind="click: addEle">添加</button>
+			<button class="btn btn-primary" id="saveAllFilter" data-bind="click: saveAllInfo">保存</button>
+			<button class="btn btn-danger btn-data-authority"
+				data-bind="click: delEle">删除</button>
+		</div>
+	</div>
+	<div class="content">
+		<div style="width: 65%; float: left; margin-right: 10px;">
+			<div class="left-content">
+				<span class="title">过滤条件</span>
+				<div class="panel panel-default">
+					<ul class="nav nav-tabs" role="tablist" id="ulNavtabTree">
+				  	</ul>
+				  	<div class="tab-content" id="tabContentTree">
+				  	</div>
+				</div>
+			</div>
+		</div>
+		<div style="width: 33.5%; float: left;">
+			<div class="right-content">
+				<span class="title">
+					自定义SQL
+				</span>
+				<div class="panel panel-default">
+					<textarea class="sql-input" id="sqlInputVal"></textarea>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--  
+	   要素弹出框
+	 -->
+	 <div class="modal fade" tabindex="-1" role="dialog" id="modalElE" data-backdrop="static">
+			<div class="modal-dialog" role="document" style="width: 45%; height:400px">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<span class="modal-title"></span>
+					</div>
+					<div class="modal-body">
+					<label for="" class="col-sm-2 col-md-2 text-right" style="width:18%; font-weight:normal">快速定位</label>
+			        <input type="hidden" id="choiced-node">
+					<div class="col-sm-5 col-md-5 ip-input-group">
+						<input type="text" class="form-control" id="user-write">
+					</div>
+					<button id="btn-eleTree" class="btn btn-primary top-button" type="button" name="btnFind" onClick="ip.search(this.id);" >查找<span class="glyphicon glyphicon-search search-addon"></span></button>
+					<button id="nex-eleTree" class="btn btn-default top-button-next" style="margin-left:10px;" type="button" name="btnNext" onClick="ip.next(this.id);">下一个</button>
+					<div class="modal-treemodal">
+						<div id="eleTreediv" class="ztree"
+								u-meta='{"id":"eleTree","data":"eleDataTable","type":"tree","idField":"chr_id","pidField":"parentid","nameField":"elename"}'>
+						</div>
+					</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						<button type="button" class="btn btn-primary" data-bind="click: sureCloseModalEle">确定</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	 <div>
+
+	<script src="/df/trd/requirejs/require.js"></script>
+	<script src="/df/require.config.js"></script>
+	<script src="./payPlan.js"></script>
+</body>
+
+</html>

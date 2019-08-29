@@ -1,0 +1,15 @@
+<script type="text/x-template" id="item-template">
+  <li class="side-item">
+    <div href="javascript:;" @click="toggle(model)">
+      <a class="side-text" href="javascript:;" v-text="model.name"></a>
+      <span class="glyphicon" v-if="isFolder" :class="{'glyphicon-plus': !open, 'glyphicon-minus': open}"></span>
+    </div>
+    <ul class="list-unstyled" style="padding-left: 15px;" v-show="open" v-if="isFolder">
+      <item v-for="model in model.children" :open-all="openAll" :model="model" :key="model.id"></item>
+    </ul>
+  </li>
+</script>
+<!--<ul class="list-unstyled" style="padding-bottom: 30px;">-->
+  <li  class="side-item"><a href="javascript:;" class="side-text">我的工作台</a></li>
+  <item :open-all="openAll" :model="model" v-for="model in menu" :key="model.id"></item>
+<!--</ul>-->

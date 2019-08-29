@@ -1,0 +1,33 @@
+<div class="container-fluid h" style="overflow:hidden">
+	<div class="row h">
+		<div class="col-sm-4 h pl10">
+			<div class="top-content height_pct_8 pt_pct_dot5" id="tabbed-plan">
+				<div class="mt5">
+					<input type="text" id="userText" class="form-control w150 inline-block" onkeydown="if(event.keyCode==13){commonSeach('user');}"/>
+	                <button class="btn btn-primary" onclick="commonSeach('user')" style="margin-top:0;">查询</button>
+	                <button class="btn btn-primary" onclick="commonSeachNext('user')" style="margin-top:0;">下一个</button>
+	            </div>
+			</div>
+			<div class="height_pct_92 ">
+				<div class="border-box tree-sidebar">
+					<div id="userTree" class="ztree" ></div> 
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-8 h">
+			<div class="row top-content height_pct_8 pt_pct_dot5" id="tabbed-plan">
+				<label for="finance_code" class="col-md-2 col-sm-2 text-right">财政机构:</label>
+				<div class="col-md-3 col-sm-4 ip-input-group">
+					<select class="form-control" id="finance_code"
+						onchange="getStampsByFinanceUser()">
+					</select>
+				</div>
+			</div>
+			<div class="row height_pct_92 ">
+				<div class="border-box">
+					<div id="stampTree" class="ztree" ></div> 
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

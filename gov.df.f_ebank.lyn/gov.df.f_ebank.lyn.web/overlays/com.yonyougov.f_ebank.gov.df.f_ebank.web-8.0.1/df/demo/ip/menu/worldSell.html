@@ -1,0 +1,1116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>到Lily主打海外名品-全球特购</title>
+<link rel="stylesheet" type="text/css" href="style/base.css"/>
+<link rel="stylesheet" type="text/css" href="style/worldSell.css"/>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/dd_png-min.js"></script>
+<script type="text/javascript" src="js/base.js"></script>
+<!--[if IE 6]>  
+    <script type="text/javascript" src="js/dd_png.js"></script>  
+    <script type="text/javascript">  
+    DD_belatedPNG.fix('*');  
+    </script>  
+<![endif]-->  
+<script type="text/javascript">
+	
+	$(function(){
+		$(".left li").hover(function(){
+			$(this).prepend("<a href='#2' class='mask'></a>");	
+		},function(){
+			$(this).children("a:first").remove();	
+		})	
+	});
+	$(function(){
+		$(".mainTop a").click(function(){
+			$(this).addClass("current").siblings().removeClass("current");	
+		})	
+	})
+		
+	
+	$(function(){
+		$(".sliders").hover(function(){
+			$(".sliderPrev,.sliderNext").show();
+			clearInterval(wordsliderVid);	
+		},function(){
+			$(".sliderPrev,.sliderNext").hide();	
+			wordsliderVid=setInterval(wordsliderMove,3000);		
+		});
+		
+		
+		var wordsliderIndex=0;
+		var wordsliderColor=["#14171c","#000","#000"];
+		var wordsliderVid=setInterval(wordsliderMove,3000);	
+		function wordsliderMove(){
+			wordsliderIndex++;
+			if(wordsliderIndex>=$(".slider_father a").size()){
+				wordsliderIndex=0;	
+			}
+			$(".slider_father a").eq(wordsliderIndex).fadeIn(1200).siblings().hide();
+			$("#sellBanner").css("background-color",wordsliderColor[wordsliderIndex]);
+		};
+		
+		$(".sliderPrev").click(function(){
+			wordsliderIndex--;
+			if(wordsliderIndex==-1){
+				wordsliderIndex=$(".slider_father a").size()-1;
+			}
+			$(".slider_father a").eq(wordsliderIndex).fadeIn(1200).siblings().hide();
+			$("#sellBanner").css("background-color",wordsliderColor[wordsliderIndex]);
+		});
+		$(".sliderNext").click(function(){
+			wordsliderIndex++;
+			if(wordsliderIndex>=$(".slider_father a").size()){
+				wordsliderIndex=0;
+			}
+			$(".slider_father a").eq(wordsliderIndex).fadeIn(1200).siblings().hide();
+			$("#sellBanner").css("background-color",wordsliderColor[wordsliderIndex]);
+		})
+	})
+</script>
+</head>
+
+<body>
+<!--header-->
+    <div class="header">
+    	<div class="wrapper clearfix">
+        	<div class="fl hy">
+            	Hi,欢迎来到Lily主打海外名品
+                <span>客服热线：400-000-0000</span>
+            </div>
+            <div class="fr lg">
+            	<a class="item" href="#">请登录</a>
+                <a class="item" href="#">免费注册</a>
+                <a class="sj" href="#">我的主打</a>
+                <a class="buy" href="#"><span></span>购物车<strong>0</strong>件商品</a>
+                <a class="sj" href="#">我的订单</a>
+                <a class="item" href="#">帮助</a>
+            </div>
+        </div>
+    </div>
+<!--top-->
+    <div style=" background:#fff;"><div class="wrapper top">
+        	<div class="logo clearfix">
+				<div class="girl wrapper"></div>
+            	<a class="logoimg" href="index.html"><img src="image/base/logo1.png" /></a>
+                <div class="sear">
+                	<form action="#" method="post">
+                    	<input class="search" type="text" name="search" value="女装" />
+                        <input class="sub" type="submit" value="搜索" />
+                    </form>
+                    <p>已支持海外商家：<a href="#">美国Amazon</a>|
+                    	<a href="#">6PM</a>|
+                        <a href="#">Vitacost</a>|
+                        <a href="#">Beauty</a>|
+                        <a href="#">GNCLevi's</a>|
+                        <a href="#">使用帮助</a>
+                    </p>
+                </div>
+            </div>
+            <div class="nav">
+            	<h2 class="fl allclass">
+                	全部商品分类
+                	<ul class="navlist">
+                    	<li class="navli">
+                        	<a class="nava" href="#">
+                            <i class="icon1"></i>
+                            精品男装、女装</a>
+                            <div class="menu">
+                                <dl>
+                                    <dt><a href="#">女装</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">女装</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">女装</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">女装</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">女装</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">女装</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">女装</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </li>
+                        <li class="navli">
+                        	<a class="nava" href="#">
+                            <i class="icon2"></i>
+                            化妆品、个人护理</a>
+                            <div class="menu">
+                                <dl>
+                                    <dt><a href="#">面部护肤</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">身体护理</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">美妆护理</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">美容美发</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">女士护理</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">男士洗护</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </li>
+                        <li class="navli">
+                        	<a class="nava" href="#">
+                            <i class="icon3"></i>
+                            母婴用品</a>
+                            <div class="menu">
+                                <dl>
+                                    <dt><a href="#">婴幼保健</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">哺育喂养</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">洗护清洁</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">女装</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">婴幼服饰</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">奶粉辅食</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">纸尿裤/湿巾</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </li>
+                        <li class="navli">
+                        	<a class="nava" href="#">
+                            <i class="icon4"></i>
+                            箱包、手袋特卖</a>
+                            <div class="menu">
+                                <dl>
+                                    <dt><a href="#">潮流女包</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">时尚男包</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">儿童箱包</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">精品钱包</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">功能箱包</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </li>
+                        <li class="navli">
+                        	<a class="nava" href="#">
+                            <i class="icon5"></i>
+                            户外运动</a>
+                            <div class="menu">
+                                <dl>
+                                    <dt><a href="#">户外装备</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">户外鞋服</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">运动服装</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">运动器材</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">运动鞋</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </li>
+                        <li class="navli">
+                        	<a class="nava" href="#">
+                            <i class="icon6"></i>
+                            女鞋、时尚男鞋</a>
+                            <div class="menu">
+                                <dl>
+                                    <dt><a href="#">冬季新品</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">精品男鞋</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">休闲女鞋</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">休闲男鞋</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </li>
+                        <li class="navli">
+                        	<a class="nava" href="#">
+                            <i class="icon7"></i>
+                            家居生活用品</a>
+                            <div class="menu">
+                                <dl>
+                                    <dt><a href="#">生活用品</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">生活电器</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">厨房电器</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </li>
+                        <li class="navli">
+                        	<a class="nava" href="#">
+                            <i class="icon8"></i>
+                            精美饰品、手表</a>
+                            <div class="menu">
+                                <dl>
+                                    <dt><a href="#">特色手表</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">儿童手表</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">流行饰品</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">眼镜</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </li>
+                        <li class="navli">
+                        	<a class="nava" href="#">
+                            <i class="icon9"></i>
+                            手机、数码电子</a>
+                            <div class="menu">
+                                <dl>
+                                    <dt><a href="#">手机电脑</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">手机配件</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">智能设备</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">数码周边</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">摄影设备</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                                <dl>
+                                    <dt><a href="#">办公设备</a></dt>
+                                    <dd>
+                                        <a href="#">T恤/Polo/吊带</a>
+                                        <a href="#">衬衫</a>
+                                        <a href="#">毛衣/针织</a>
+                                        <a href="#">外套夹克</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                        <a href="#">棉服/羽绒</a>
+                                        <a href="#">卫衣</a>
+                                        <a href="#">连衣裙</a>
+                                        <a href="#">半身裙</a>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </li>
+                    </ul>
+                </h2>
+                <div class="fl navs">
+                	<a class="items active" href="#">首页</a>
+                	<a class="items" href="#">每日必BUY</a>
+                    <a class="items" href="#"><span class="spe1"></span>全球特购</a>
+                    <a class="items" href="#"><span class="spe2"></span>品牌馆</a>
+                    <a class="items" href="#">国际服饰</a>
+                    <a class="items" href="#">一键购</a>
+                </div>
+            </div>
+        </div></div>
+<!--banner-->
+    <div style="background:#14171c;" class="bannerBox" id="sellBanner">
+    	<div class="wrapper banner">
+        	<div class="sliders">
+            	<div class="slider_father">
+                    <a class="slider_show" href="#">
+                        <img src="image/banner1.jpg" width="1200" height="350" alt="" />
+                    </a>
+                    <a href="#">
+                        <img src="image/banner2.jpg" width="1200" height="350" alt="" />
+                    </a>
+                    <a href="#">
+                        <img src="image/banner3.jpg" width="1200" height="350" alt="" />
+                    </a>
+                </div>
+                <a class="sliderPrev" href="#2">
+                	<i class="iconPrev"></i>
+                </a>
+                <a class="sliderNext" href="#2">
+                	<i class="iconNext"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+<!--maincontent-->
+	<div class="mainTop">
+    	<div class="wrapper clearfix ">
+            <a class="current girl1" href="#">最新特卖</a>
+            <a href="#last">最后疯抢<span class="new"></span></a>
+            <a href="#passed">往期活动</a>
+        </div>
+    </div>
+    <div class="maincont wrapper clearfix">
+    	<div class="left">
+        	<ul>
+            	<li>
+                	<!--<a class="mask" href="#"></a>-->
+            		<a class="pic" href="#"><img src="image/w1.jpg" width="790" height="215" alt="" /></a>
+                    <span class="clock">2天 08:20:10</span>
+                    <i class="icon_new"></i>
+                </li>
+                <li>
+                	<!--<a class="mask" href="#"></a>-->
+            		<a class="pic" href="#"><img src="image/w1.jpg" width="790" height="215" alt="" /></a>
+                    <span class="clock">2天 08:20:10</span>
+                    <i class="icon_new"></i>
+                </li>
+                <li>
+                	<!--<a class="mask" href="#"></a>-->
+            		<a class="pic" href="#"><img src="image/w1.jpg" width="790" height="215" alt="" /></a>
+                    <span class="clock">2天 08:20:10</span>
+                    <i class="icon_new"></i>
+                </li>
+                <li>
+                	<!--<a class="mask" href="#"></a>-->
+            		<a class="pic" href="#"><img src="image/w1.jpg" width="790" height="215" alt="" /></a>
+                    <span class="clock">2天 08:20:10</span>
+                    <i class="icon_new"></i>
+                </li>
+            </ul>
+            <div class="last" id="last">
+            	<h2></h2>
+                <ul>
+                    <li>
+                    	<!--<a class="mask" href="#"></a>-->
+                        <a class="pic" href="#"><img src="image/w1.jpg" width="790" height="215" alt="" /></a>
+                        <span class="new_clock">2天 08:20:10</span>                        
+                    </li>
+                    <li>
+                    	<!--<a class="mask" href="#"></a>-->
+                        <a class="pic" href="#"><img src="image/w1.jpg" width="790" height="215" alt="" /></a>
+                        <span class="new_clock">2天 08:20:10</span>                        
+                    </li>
+                    <li>
+                    	<!--<a class="mask" href="#"></a>-->
+                        <a class="pic" href="#"><img src="image/w1.jpg" width="790" height="215" alt="" /></a>
+                        <span class="new_clock">2天 08:20:10</span>                        
+                    </li>
+                </ul>
+            </div>
+            <div class="passed" id="passed">
+            	<h2></h2>
+                <ul>
+                    <li>
+                    	<a class="clever" href="#"></a>
+                        <a class="pic" href="#"><img src="image/w1.jpg" width="790" height="215" alt="" /></a>
+                        <span class="clock">此活动已结束</span>
+                        
+                    </li>
+                    <li>
+                    	<a class="clever" href="#"></a>
+                        <a class="pic" href="#"><img src="image/w1.jpg" width="790" height="215" alt="" /></a>
+                        <span class="clock">此活动已结束</span>
+                        
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="right">
+        	<h2>热销推荐</h2>
+            <dl>
+            	<dt><img src="image/t1.jpg" width="80" height="80" /></dt>
+                <dd class="des"><a href="#">Zamst RK 1 Runners Right Knee Brace, Black, Large</a></dd>
+                <dd class="price">海外价：¥344 <span>($53.63)</span></dd>
+            </dl>
+            <dl>
+            	<dt><img src="image/t1.jpg" width="80" height="80" /></dt>
+                <dd class="des"><a href="#">Zamst RK 1 Runners Right Knee Brace, Black, Large</a></dd>
+                <dd class="price">海外价：¥344 <span>($53.63)</span></dd>
+            </dl>
+            <dl>
+            	<dt><img src="image/t1.jpg" width="80" height="80" /></dt>
+                <dd class="des"><a href="#">Zamst RK 1 Runners Right Knee Brace, Black, Large</a></dd>
+                <dd class="price">海外价：¥344 <span>($53.63)</span></dd>
+            </dl>
+            <dl>
+            	<dt><img src="image/t1.jpg" width="80" height="80" /></dt>
+                <dd class="des"><a href="#">Zamst RK 1 Runners Right Knee Brace, Black, Large</a></dd>
+                <dd class="price">海外价：¥344 <span>($53.63)</span></dd>
+            </dl>
+            <dl>
+            	<dt><img src="image/t1.jpg" width="80" height="80" /></dt>
+                <dd class="des"><a href="#">Zamst RK 1 Runners Right Knee Brace, Black, Large</a></dd>
+                <dd class="price">海外价：¥344 <span>($53.63)</span></dd>
+            </dl>
+            <dl>
+            	<dt><img src="image/t1.jpg" width="80" height="80" /></dt>
+                <dd class="des"><a href="#">Zamst RK 1 Runners Right Knee Brace, Black, Large</a></dd>
+                <dd class="price">海外价：¥344 <span>($53.63)</span></dd>
+            </dl>
+            <dl>
+            	<dt><img src="image/t1.jpg" width="80" height="80" /></dt>
+                <dd class="des"><a href="#">Zamst RK 1 Runners Right Knee Brace, Black, Large</a></dd>
+                <dd class="price">海外价：¥344 <span>($53.63)</span></dd>
+            </dl>
+        </div>
+    </div>    
+    
+<!--fuwu-->
+	<!--<img style="display:block; padding-top:30px; background:#fff;" class="wrapper" src="image/fuwu.png" width="1200" height="83" alt="" />-->
+<!--footer-->
+	 <div class="wrapper service clearfix">
+            <div class="serTel"></div>
+        	<ul class="ulOne">
+            	<li class="spe"><h3>关于LILY</h3></li>
+                <li><a href="#">公司简介</a></li>
+                <li><a href="#">加入Lily</a></li>
+                <li><a href="#">合作专区</a></li>
+                <li><a href="#">联系我们</a></li>
+            </ul>
+            <ul class="ulTwo">
+            	<li class="spe"><h3>新手指南</h3></li>
+                <li><a href="#">账户注册</a></li>
+                <li><a href="#">购物流程</a></li>
+                <li><a href="#">海外购物</a></li>
+                <li><a href="#">网站地图</a></li>
+            </ul>
+            <ul class="ulThree">
+            	<li class="spe"><h3>配送范间</h3></li>
+                <li><a href="#">国内配送</a></li>
+                <li><a href="#">海外配送</a></li>
+                <li><a href="#">订单拆分</a></li>
+            </ul>
+            <ul class="ulFour">
+            	<li class="spe"><h3>支付方式</h3></li>
+                <li><a href="#">货到付款</a></li>
+                <li><a href="#">在线支付</a></li>
+                <li><a href="#">礼品卡及账户余额</a></li>
+                <li><a href="#">其他支付方式</a></li>
+            </ul>
+            <ul class="ulFive">
+            	<li class="spe"><h3>售后服务</h3></li>
+                <li><a href="#">退换货政策</a></li>
+                <li><a href="#">退换货办理流程</a></li>
+                <li><a href="#">退换货网上办理</a></li>
+                <li><a href="#">退款说明</a></li>
+            </ul>
+            <ul class="ulSix">
+            	<li class="spe"><h3>帮助</h3></li>
+                <li><a href="#">找回密码</a></li>
+                <li><a href="#">邮件订阅</a></li>
+                <li><a href="#">产品册订阅</a></li>
+                <li><a href="#">隐私声明</a></li>
+            </ul>
+        </div>
+     <p class=" wrapper copyright">
+        	Copyright 2007-2012 Lily.com All Rights Reserverd 京ICP证100557号 京公安备110105001124号 出版物经营许可证新出发京批字第直110138号
+     </p>
+        
+     <div class="wrapper link">
+     	<span class="link01"></span><span class="link02"></span><span class="link03"></span><span class="link04"></span>
+     </div>
+    
+</body>
+</html>

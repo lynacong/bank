@@ -1,0 +1,112 @@
+.wrapper{
+	padding:10px;
+}
+.fixed-select{
+	display:inline-block;
+	width:220px;
+}
+.u-grid-header-link{
+	padding-left:5px;
+	padding-right:5px;
+}
+.input-other{
+	position:relative;
+}
+.icon-other{
+	position: absolute;
+    right: 16px;
+    background: #4A90E2;
+    height: 26px;
+    width: 26px;
+    line-height: 29px;
+    text-align: center;
+    font-size: 16px;
+    color:#fff;
+}
+select.form-control{
+	padding: 0px 12px;
+}
+.addviewInput{
+	width:210px;
+}
+#addBudgetItem .control-label{
+	text-align:right;
+}
+#addBudgetItem .modal-body{
+	padding-left:0px;
+}
+#addBudgetItem .modal-dialog{
+	width:500px;
+}
+#addChoiceModel .modal-dialog{
+	width:520px;
+}
+.toggle-icon{
+	display: inline-block;
+    height: 17px;
+    width: 20px;
+    background: url(../../../trd/ip/changeTree/images/base.gif);
+    top: 4px;
+    position: relative;
+    margin-left: 10px;
+}
+.tree-block {
+	padding-top: 8px;
+	min-height:430px;
+	border:1px #e5e5e5 solid;
+}
+.menuTree {
+	height: 500px;
+	overflow: auto;
+}
+
+.menu-grid {
+	margin-top: 10px;
+}
+.quik-find,.quik-next{
+	margin-left: 3px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 2px;
+}
+.view-Tree{
+	height:360px;
+	overflow:auto;
+}
+.u-grid-content{
+	height: 450px;
+    overflow-y: auto;
+}
+#manage-grid_content_left_bottom{
+	width:0 !important;
+}
+.modal-header{
+	padding: 10px 15px;
+}
+#addBudgetItem .col-md-9{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.menu-grid[u-meta]{
+	height:460px;
+}
+.u-grid-content{
+	height: -moz-calc(100% - 33px);
+	height: -webkit-calc(100% - 33px);
+	height: calc(100% - 33px);
+}
+
+.u-grid,.u-grid-grid,.u-grid-content-div{
+	height:100%!important;
+}
+.u-grid.u-grid-header-drag-clue,.u-pagination{
+	height:auto!important;
+}
+
+.query-container{
+	float: right;
+}
+
+#query-btn{
+	float: right;
+}

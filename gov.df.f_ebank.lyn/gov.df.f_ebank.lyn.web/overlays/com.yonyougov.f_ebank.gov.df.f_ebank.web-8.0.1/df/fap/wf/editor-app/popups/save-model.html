@@ -1,0 +1,36 @@
+
+<div class="modal" ng-controller="SaveModelCtrl" data-ng-init="save()">
+     <div class="modal-dialog" ng-show="visible">
+        <div class="modal-content">
+        <div class="modal-header">
+            <span>{{'MODEL.SAVE.TITLE' | translate}}</span>
+        </div>
+        <div class="modal-body" style="padding: 10px;">
+        
+        	 <div class="" ng-if="error && !error.isConflict">
+                <span><pre style="background: #fff; border:none; color:red;">{{error}}</pre></span>
+            </div>
+            <div class="pull-right popup-error">
+                <span>{{wain}}</span>
+            </div>
+        </div>
+        <div class="editor-modal-footer modal-footer">
+        
+        	
+        
+           
+            
+            <div class="pull-right">
+            	<button class="btn btn-primary" ng-click="saveAndClose()" ng-disabled="status.loading" ng-show="!error" translate>ACTION.SAVE-AND-CLOSE</button>
+            	<button class="btn btn-primary" ng-click="save()" ng-disabled="status.loading" ng-show="!error" translate>ACTION.SAVE</button>
+            	<button type="button" class="btn" ng-click="close()" ng-hide="error && !error.isConflict" translate>ACTION.OK</button>
+           		<button type="button" class="btn" ng-click="close()" ng-show="error && !error.isConflict" translate>ACTION.CANCEL</button>
+            </div>
+        
+        	<loading></loading>
+        
+        </div>
+    </div>
+</div>
+</div>
+

@@ -1,0 +1,106 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	background-color: #ebf2f9;
+	padding: 50px 0;
+	margin:0;
+	position:relative;
+}
+
+/*打印按钮*/
+.printBtn{
+	width:80px; 
+	height:30px;
+	position:absolute; 
+	top:10px;
+	left:calc(50% + 370px);
+}
+
+#printDiv{
+	width:900px; 
+	min-height:600px;
+	padding:60px 0px;
+	margin:0 auto;
+	boreder:1px solid #000;
+	background-color: #fff;
+}
+
+.table1{
+	width: 800px;
+	margin: 0px auto;
+/* 	margin-top:50px; */
+	}
+.mainTable{
+	width: 800px;
+	
+	margin:0px auto;
+	/* margin-bottom:50px; */
+	}
+.titleDate{
+	font-size:12px;
+	}
+	
+.titleRemark{
+	text-indent:2em;
+	font-size:12px;
+	}
+/*缩进2个字符*/
+.suojin2{
+	text-indent:2em;
+	}
+/*字段标题（加粗）*/
+.fieldTitle{
+	text-align: center;
+	font-size:12px;
+	font-weight:bold;
+	}
+/*字段标题（不加粗）*/	
+.fieldTitle2{
+	text-align: center;
+	font-size: 12px;
+	}	
+/*字段标题（左对齐）*/	
+.fieldTitleLeft{
+	text-align: left;
+	font-size:12px;
+	font-weight:bold;
+	}
+
+/*字段内容 左对齐*/	
+.fieldContent{
+	text-align: left;
+	font-size: 12px;
+	}
+/*字段内容 右对齐（如金额）*/
+.fieldContentRight{
+	text-align: right;
+	font-size: 12px;
+	}
+/*公章*/
+.sealDiv{
+	height:100%;
+	width:100%;
+	position:relative;
+	}
+.sealContent{
+	position:absolute;
+	top:40%;
+	left:43%
+	}
+.sealDate{
+	position:absolute;
+	bottom:5px;
+	right:10px;
+	}	
+	
+td{
+	padding-left:5px;
+	padding-right:5px;
+	}
+.tabletdheight{
+		height:22px;
+	    width:15px;
+	    text-align:center; 
+	}
+		

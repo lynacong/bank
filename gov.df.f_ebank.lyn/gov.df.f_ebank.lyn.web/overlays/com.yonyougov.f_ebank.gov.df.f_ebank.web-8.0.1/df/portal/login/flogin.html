@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <title>财政一体化项目</title>
+    <link rel="stylesheet" href="css/flogin.css"/>
+    <script src="/df/trd/md5/js/md5.js"></script>
+    <script src="/df/trd/jquery/jquery-1.12.3.min.js"></script>
+    <script src="/df/portal/admin/index/js/dfp/dfp.js"></script>
+    <script src="/df/portal/admin/index/js/dfp/dfpArticle.js"></script>
+    <script src="/df/portal/admin/index/js/layer/layer.js"></script>
+    <script src="/df/portal/admin/index/js/Base64.js"></script>
+   <script src="js/flogin.js"></script>
+    <style>
+        /* .openSystem {
+            display: none;
+        } */
+    </style>
+
+</head>
+<body>
+<div class="top" style="background-color:#1A81FF;height:260px">
+    <div ><img  style=" margin: 50px 0px 0px 100px;" src="img/biaoti.png"></div>
+    <div style="float:right;margin-right: 60px;margin-top: -60px;">
+    	 <!-- 环境设置start -->
+        <div id="environmentSettingBtn" class="environmentSettingBtn" style="float:left;cursor: pointer;margin-right: 20px;">
+            <a href="javascript:void(0)" onclick="document.getElementById('environmentSettingBody').style.display='block';document.getElementById('bg_fade').style.display='block'"><div style="margin-top:2px;float: left; margin-right: 3px"><img src="img/hjsz.png"/></div>环境设置</a>
+        </div>
+        <!-- 环境设置弹出框内容 -->
+        <div id="environmentSettingBody" class="whiteContent">
+            <div id="environmentSetting" style="margin-top: 60px;">
+                <div class="part">
+                    <span class="reminder">区划切换：</span>
+                    <div class="box">
+				<select id="rgCode" >
+					<option value="2017" selected="selected">2017</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="part">
+                    <span class="reminder">年度切换：</span>
+                    <div class="box">
+                        <select id="setYear" >
+                         	<option value="2017" selected="selected">2017</option>
+                         </select>
+                    </div>
+                </div>
+                <div class="btn">
+                    <input type="button" id="changeRg" class="subbtn" value="保存" style="margin:50px 0 0 200px;"/>
+
+                    <button  class="subbtn" value="取消" style="margin:50px 0 0 170px;">
+                        <a href="javascript:void(0)"style="color: #FFFFFF;text-decoration: none;" onclick="document.getElementById('environmentSettingBody').style.display='none';document.getElementById('bg_fade').style.display='none'">取消</a>
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+        <div id="bg_fade" class="black_overlay"></div>
+        <!-- 环境设置end -->
+        <!-- <div style="float:left;margin-left: 10px;margin-right: 10px;">|</div> -->
+        <!-- 修改密码start -->
+        <div id="changePwdBtn" class="changePwdButton" style="float:left;cursor: pointer;margin-right:20px;">
+            <a href="javascript:void(0)" onclick="document.getElementById('changePwdBody').style.display='block';document.getElementById('fade').style.display='block'"><div style="margin-top:2px;float: left;margin-right: 3px"><img src="img/xgmm.png"/></div>修改密码</a>
+        </div>
+        <!-- 弹出框内容 -->
+        <div id="changePwdBody" class="white_content">
+
+            <div id="chpwd" style="margin-top: 60px;">
+                <form name="login_form" class="form-horizontal" action="" method="post">
+                    <div>
+                        <span class="reminder">原始密码：</span>
+                        <div class="box">
+                            <input id="oldpasswd" type="password" class="form-control">
+                        </div>
+                    </div>
+                    <div>
+                        <span class="reminder">新密码：</span>
+                        <div class="box">
+                            <input id="passwd" type="password" class="form-control">
+                        </div>
+                    </div>
+                    <div>
+                        <span class="reminder">再次确认新密码：</span>
+                        <div class="box">
+                            <input id="passwd2" type="password" class="form-control">
+                        </div>
+                    </div>
+                    <div class="btn">
+                        <input id="commitPwdBtn" type="button" class="subbtn" value="提交" style="margin:50px 0 0 200px;"/>
+
+                        <button id="offPwdBtn" class="subbtn" value="取消" style="margin:50px 0 0 170px;">
+                            <a href="javascript:void(0)" onclick="document.getElementById('changePwdBody').style.display='none';document.getElementById('fade').style.display='none'">取消</a>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div id="fade" class="black_overlay">
+        </div>
+        <!-- 修改密码end -->
+        <!-- <div style="float:left;margin-left: 10px;margin-right: 10px;">|</div> -->
+        <div style="float:left;cursor: pointer;color:#ffffff;" id="logoutBtn"><div style="margin-top:2px;float: left; margin-right: 3px"><img src="img/zhuxiao.png"/></div>注销</div>
+    </div>
+    <div style="height:20px;color:#ffffff;">
+    	 <div style="float: right;margin-right: 60px;display: inline-block;">时间：<span id="currentTimeTop"></span></div>
+        <div style="float: right;margin-right: 60px;">当前用户：<span id="agencyameTop">用户名</span></div>
+       
+    </div>
+</div>
+<div class="middle">
+    
+        <div class="left_icon1" >
+            <div id="ysglbutton" class="ysglbtn leftbtn openSystem">
+                <!-- <div class="leftbtnimg"><img src="img/ysglbtn.png"/></div>
+                <div class="leftbtnspan"><span>预算管理</span></div> -->
+                <div id="ysglbutton" class="yusuanguanlih" style="min-height: 320px;height:100%;width: 100%;"></div>
+                <!-- <img  src="img/yusuanguanlibtn.png"/> -->
+            </div>
+            <div id="zbglbutton" class="zbglbtn leftbtn openSystem">
+                <!-- <div class="leftbtnimg"><img src="img/zbglbtn.png"/></div>
+                <div class="leftbtnspan"><span>指标管理</span></div> -->
+                <!-- <img src="img/zhibiaoguanlibtn.png"/> -->
+                <div class="zhibiaoguanlih"style="min-height: 320px;height:100%;width: 100%;"></div>
+            </div>
+            <div id="jzzfbutton" class="jzzfbtn leftbtn openSystem">
+                <!-- <div class="leftbtnimg"><img src="img/jzzfbtn.png"/></div>
+                <div class="leftbtnspan"><span>集中支付</span></div> -->
+                <!-- <img src="img/jizhongzhifubtn.png"/> -->
+                <div class="jizhongzhifuh" style="min-height: 320px;height:100%;width: 100%;"></div>
+            </div>
+            <div id="zfcgbutton" class="zfcgbtn leftbtn openSystem">
+                <!-- <div class="leftbtnimg"><img src="img/zfcgbtn.png"/></div>
+                <div class="leftbtnspan"><span>政府采购</span></div> -->
+                <!-- <img src="img/zhengfucaigoubtn.png"/> -->
+                <div class="zhengfucaigouh" style="min-height: 320px;height:100%;width:100%;"></div>
+            </div>
+           <!--  <div id="oabutton" class="oabtn leftbtn openSystem" style="display:none;">
+                <div class="leftbtnimg"><img src="img/oabtn.png"/></div>
+                <div class="leftbtnspan"><span>OA</span></div>
+            </div>
+            <div id="zcglbutton" class="zcglbtn leftbtn openSystem" style="display:none;">
+                <div class="leftbtnimg"><img src="img/zcglbtn.png"/></div>
+                <div class="leftbtnspan"><span>资产管理</span></div>
+            </div>
+        
+       
+            <div id="gztfbutton" class="gztfbtn leftbtn openSystem" style="display:none;">
+                <div class="leftbtnimg"><img src="img/gztfbtn.png"/></div>
+                <div class="leftbtnspan"><span>工资统发</span></div>
+            </div>
+            <div id="jxpjbutton" class="jxpjbtn leftbtn openSystem" style="display:none;">
+                <div class="leftbtnimg"><img src="img/jxpjbtn.png"/></div>
+                <div class="leftbtnspan"><span>绩效评价</span></div>
+            </div>
+            <div id="jsglbutton" class="jsglbtn leftbtn openSystem" style="display:none;">
+                <div class="leftbtnimg"><img src="img/jsglbtn.png"/></div>
+                <div class="leftbtnspan"><span>决算管理</span></div>
+            </div> -->
+        </div>
+
+	<div class="right">
+	    <div class="right_icon1" >
+	        <h3 class="" style="border-bottom: 1px solid #85BCFF;"><img src="img/tit_09.png"/></h3>
+	        <div class="xtggbtn">
+	            <ul class="list list1" id="m-content" style="-webkit-padding-start: 0px;margin-top: 5px;">
+	
+	            </ul>
+	        </div>
+	    </div>
+	    <div class="right_icon2">
+	        <div class="downloadheader" style="height:30px;margin-bottom:3px;">
+	
+	            <h3 class="" style="border-bottom: 1px solid #85BCFF;"><img src="img/tit_42.png"/></h3>
+	
+	             <!-- <div style="float:right;margin-top:-60px;">
+	                <a href="javascript:toUpload();" class="upload"><p>上传</p></a>
+	             </div> -->
+	
+	        </div>
+	
+	        <div class="wjxzbtn">
+	            <ul class="list list1" id="download" style="-webkit-padding-start: 0px;margin-top: 10px;">
+	
+	                <li><a  href="/servlet/DownLoadServlet?name=dianzipingzheng.rar&id=dianzipingzheng.rar">电子凭证库客户端1.0.0.6.msi</a></li>
+	                <li><a  href="/servlet/DownLoadServlet?name=GoogleChromePortable.rar&id=GoogleChromePortable.rar">GoogleChromePortable.rar</a></li>
+	            </ul>
+	        </div>
+	    </div>
+	</div>
+    
+   
+</div>
+
+
+<div style="height:100px;background:#DDECFD;text-align:center;width:100%; display: inline-block;line-height: 100px;">山东省财政厅</div>
+
+</body>
+</html>

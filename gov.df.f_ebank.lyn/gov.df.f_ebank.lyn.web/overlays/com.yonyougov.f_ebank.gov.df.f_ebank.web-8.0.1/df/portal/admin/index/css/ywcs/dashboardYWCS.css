@@ -1,0 +1,37 @@
+@CHARSET "UTF-8";
+body{font-size: 12px;width: 100%;height: 100%;background: #f8f8f8;font-family: "微软雅黑";overflow-x:hidden;overflow-y: auto;}
+
+/* 常用操作 */
+#often > div > ul > li {float: left;background: #f8f8f8;width: 20%;margin-right: 20px;border-right: solid 1px #ccc;border-radius: 3px;text-align: center;height: 40px;}
+#often > div > ul > li > a {font-size: 16px;color: #000;height: 45px;line-height: 35px;}
+/* #often > div > ul > li > a > img {height: 30px;width: 30px;padding-right: 30px;} */
+#often > div > ul > li > a > img {height: 22px;width: 22px;margin-left: -30px;}
+/*#often > div > ul > li:NTH-CHILD(1) > a > img {background:url(icon-ban.png) no-repeat;}
+#often > div > ul > li:NTH-CHILD(2) > a > img {background:url(icon-cha.png) no-repeat;}
+#often > div > ul > li:NTH-CHILD(3) > a > img {background:url(icon-dan.png) no-repeat;}
+#often > div > ul > li:HOVER:NTH-CHILD(1) > a > img {background:url(icon-ban-w.png) no-repeat;}
+#often > div > ul > li:HOVER:NTH-CHILD(2) > a > img {background:url(icon-cha-w.png) no-repeat;}
+#often > div > ul > li:HOVER:NTH-CHILD(3) > a > img {background:url(icon-dan-w.png) no-repeat;}*/
+#often > div > ul > li:HOVER {background: #108ee9;}
+#often > div > ul > li:HOVER > a {color: #f8f8f8;}
+#often > div > ul > li:HOVER > a > img {color: #f8f8f8;}
+
+/* 部门总体进度 */
+#agencyTopProgress > button {padding: 3px 12px;font-weight: bold;text-align: left;cursor: default;border: none;background: none;font-size: 15px;}
+#agencyTopProgress > button > i {transform: rotate(-90deg);-moz-transform: rotate(-90deg);-webkit-transform:rotate(-90deg);-ms-transform: rotate(-90deg);color: #108EE9;}
+#agencyTopProgressProjectPayment > div > span {position: unset;font-size: 16px;cursor: default;}
+#agencyTopProgressBasePayment > div > span {position: unset;font-size: 16px;cursor: default;}
+/* 序时进度 */
+#XSJD {float: left;background: bottom;width: 3px;height: 76px;border-right: 1px dashed #F04134;padding: 5px 0 0 0;border-left: none;position: absolute;margin-top: -7px;margin-left: -2px;}
+/* 支出进度图例 */
+#payProgressTooltip {padding-bottom: 1px; padding-top: 1px;}
+#payProgressTooltip > ul > li:FIRST-CHILD {margin-left: -40px;}
+#payProgressTooltip > ul > li {list-style: none;display: inline-flex;float: left;margin-top: 4px;margin-right: 15px;}
+#payProgressTooltip > ul > li > img {width:15px; height:15px;margin: 2px 4px 0 0;}
+
+/*左下角待办、公告*/
+#leftDownTabs > div > ul {height: 30px;z-index: 2;border-bottom: solid 1px #108ee9;}
+#leftDownTabs > div > ul > li {z-index: 3;border-top: 0;width: 90px;position: relative;top: -1px;border-bottom: solid 1px #108ee9;}
+#leftDownTabs > div > ul > li.active {top: 1px;border-bottom: none;}
+#leftDownTabs > div > ul > li > a {width: 90px;height: 30px;position: relative;text-align: center;font-size: 14px;color: #000;background: #E5F4FF;padding-top: 3px;font-family: "微软雅黑";border-top-left-radius: 5px;border-top-right-radius: 5px;border: solid 1px #b39bbc;border-bottom: none;}
+#leftDownTabs > div > ul > li.active > a {color: #108ee9;background: #FFFFFF;font-weight: bold;font-size: 15px;}

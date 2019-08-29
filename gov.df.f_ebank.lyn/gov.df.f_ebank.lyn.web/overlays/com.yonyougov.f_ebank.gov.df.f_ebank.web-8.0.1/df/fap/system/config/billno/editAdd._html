@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>增加单号规则</title>
+    <!--<link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/font-awesome.min.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/u.css" />-->
+    <!--<link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/tree.css" />-->
+    <!--<link rel="stylesheet" type="text/css" href="../../../../trd/ip/changeTree/changeTree.css" />-->
+    <!--<link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/grid.css" />-->
+    <!--<link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/ip.css" />-->
+    <!--<link rel="stylesheet" type="text/css" href="../../../../trd/bootstrap/css/bootstrap.min.css">-->
+    <!--<link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/platform.css" />-->
+    <!--<link rel="stylesheet" type="text/css" href="../ncrd.css"/>-->
+    <link rel="stylesheet" type="text/css" href="editBase.css">
+</head>
+
+<body>
+    <!--第一层规则信息规则窗口-->
+    <div class="modal fade" id="setRuleWindow" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="setRuleWindowLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title font-size-14">增加单号规则信息</h4>
+                </div>
+                <div class="modal-body ">
+                    <!--form表单开始-->
+                    <form class="form-horizontal">
+                        <input id="billnorule_id" type="hidden" data-bind="value:billId">
+                        <div class="row ">
+                            <div class="form-group col-sm-5  col-lg-5 ">
+                                <label for="billnorule_code" class="col-sm-4 control-label text-center">
+                                 <!--<span class="glyphicon glyphicon-star" style="color:red;font-size:1px"></span>-->
+                                 <span style="color:red;padding:0 5px">*</span>规则编码:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="billnorule_code" data-bind="value:billCode">
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-5 col-lg-5">
+                                <label for="billnorule_name" class="col-sm-4 control-label text-center"><span style="color:red;padding:0 5px">*</span>规则名称:</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control " id="billnorule_name" data-bind="value:billName">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="form-group col-sm-5 col-lg-5">
+                                <label for="sys_app" class="col-sm-4 control-label text-center"><span style="color:red;padding:0 5px">*</span>所属系统:</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" id="sys_app" data-bind="value:selectedApp">
+                            <!--<select class="form-control" id="sys_app" data_bind="options:sysApps,
+                                                                          optionsText:'name',
+                                                                          optionsValue:'value',
+                                                                          value:'selectedApp'
+                                                                          ">-->
+
+                            </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<div style="min-height:200px">-->
+                        <!--表格开始-->
+                        <div type="text" class="margin-top-0" id="editTable" u-meta='{"id":"editGrid","data":"editDataTable","type":"grid","showNumCol":false,"editable":false,"canDrag":true,"canSwap":true,"columnMenu":false,"onDblClickFun":"onDblClickFun1"}'>
+                            <div options='{"field":"line_no","dataType":"String","title":"序号","editType":"string","visible":true,"width": 60}'></div>
+                            <div options='{"field":"billnorule_id","dataType":"String","title":"规则ID","editType":"string","visible":false}'></div>
+                            <div options='{"field":"billnoruleline_id","dataType":"String","title":"规则项ID", "editType":"string","visible":false}'></div>
+                            <div options='{"field":"eles_name","dataType":"String","title":"关联要素", "editType":"string","visible":false}'></div>
+                            <div options='{"field":"line_type_name","dataType":"String","title":"类型","editType":"string","width": 110}'></div>
+                            <div options='{"field":"ele_code_name","dataType":"String","title":"要素","editType":"string","width": 130}'></div>
+                            <div options='{"field":"line_format_name","dataType":"String","title":"格式","editType":"string","width": 160}'></div>
+                            <div options='{"field":"level_num_name","dataType":"String","title":"级次","editType":"string","width": 110}'></div>
+                            <div options='{"field":"init_value","dataType":"String","title":"初始化","editType":"string","width": 100}'></div>
+
+                        </div>
+                        <!--</div>-->
+                        <!--表格结束-->
+                        <div class="row">
+                            <div class="form-group padding-left-15">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ruleItemBox" id="addRuleBtn" data-bind="click:addRule">新增</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" id="updateBtn" data-bind="click:updateRule">修改</button>
+                                <button type="button" class="btn btn-danger" data-bind="click:editDelete">删除</button>
+                            </div>
+                            <div class="form-group pull-right" style="display:none">
+                                <button type="button" class="btn btn-primary" data-bind="click:editUp">上移</button>
+                                <button type="button" class="btn btn-primary" data-bind="click:editDown">下移</button>
+                            </div>
+                        </div>
+                    </form>
+                    <!--form表单结束-->
+                </div>
+                <div class="modal-footer padding-right-0">
+                    <button type="button" data-bind="click:btnSaveClick" class="btn btn-primary">确认</button>
+                    <button type="button" data-bind="click:btnCloseClick" class="btn btn-primary" style="color: #000;">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- 规则项 ruleItem 弹框开始 -->
+    <div class="modal fade" id="ruleItemBox" tabindex="-1" role="dialog" aria-labelledby="ruleItemBoxLabel" data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <input type="hidden" id="ruleItemBoxTitle" value="addRule">
+                    <button type="button" class="close" data-bind="click:cancleItem1" id="closeBtn" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title font-size-14" id="ruleItemBoxLabel">单号规则信息</h4>
+                </div>
+                <div class="modal-body">
+                    <!--form表单开始-->
+                    <form class="form-horizontal">
+                        <div class="form-group margin-bottom-10">
+                            <label for="line_type" class="col-sm-2 control-label">类型:</label>
+                            <div class="col-sm-4">
+                                <select class="form-control" id="line_type" data-bind="options:types,
+                                                                          optionsText:'name',
+                                                                          optionsValue:'value',
+                                                                          value:selectedType,
+                                                                          event:{change:typeChange}
+                                                                           ">
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group margin-bottom-10">
+                            <label for="ele_code_sel" class="col-sm-2 control-label">要素:</label>
+                            <div class="col-sm-4">
+                                <!--<select class="form-control" id="ele_code_sel" disabled data-bind=" value:ruleEleCode">-->
+                                <select class="form-control" id="ele_code_sel" disabled data-bind="event:{change:eleCodeChange},
+                                                                                                   value:ruleEleCode
+                                                                                        ">                                                       
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group margin-bottom-10" style="display: block" id="formatDiv">
+                            <label for="line_format" class="col-sm-2 control-label " id="lineFormatLabel">格式:</label>
+                            <div class="col-sm-4">
+                                <select class="form-control" id="line_format" disabled data-bind='value:ruleFormat'></select>
+                            </div>
+                        </div>
+                        <!--<div class="form-group margin-bottom-10" style="display: none" id="lengthDiv">
+                            <label for="length" class="col-sm-2 control-label">位长:</label>
+                            <div class="col-sm-4" >
+                                <input type="text" class="form-control" id="length"   disabled>
+                            </div>
+                        </div>-->
+                        <div class="form-group margin-bottom-10">
+                            <label for="level_num" class="col-sm-2 control-label ">级次:</label>
+                            <div class="col-sm-4">
+                                <!--<select class="form-control" id="level_num" disabled data-bind="options:levelNums,
+                                                                                                optionsText:'name',
+                                                                                                optionsValue:'value',
+                                                                                                value:selectedLevel,
+                                                                                     ">-->
+                                <select class="form-control" id="level_num" disabled data-bind="value:selectedLevel">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group margin-bottom-10">
+                            <label for="init_value" class="col-sm-2 control-label ">设定值:</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" id="init_value" data-bind="value:ruleInitValue">
+                            </div>
+                        </div>
+                        <!--<div style="min-height:200px">-->
+                        <!--表格开始-->
+                        <div type="text" u-meta='{"id":"ruleItem-grid","data":"ruleItem_dataTable","type":"grid","columnMenu":false,"showNumCol":false,"editable":true,"autoExpand":false,"sortable":true,"canDrag":true,"canSwap":true}'>
+                            <div options='{"field":"line_no","dataType":"String","title":"序号","editType":"string","width": 60}'></div>
+                            <div options='{"field":"billnoruleline_id","dataType":"String","title":"规则项ID", "editType":"string","visible":false}'></div>
+                            <div options='{"field":"ele_code","dataType":"String","title":"要素","width": 212, "editOptions":{"id":"combobox1","type":"combo","datasource":"comElesArr"},"editType":"combo","renderType":"comboRender"}'></div>
+                            <div options='{"field":"level_num","dataType":"String","title":"级次","width": 100,"editOptions":{"id":"combobox2","type":"combo","datasource":"comElesLevel"},"editType":"combo","renderType":"comboRender"}'></div>
+                        </div>
+                        <!--表格结束-->
+                        <div class="margin-top-10 margin-bottom-10">
+                            <button type="button" class="btn btn-primary" id="seqAddBtn" data-bind="click:add_ruleItem" disabled>新增</button>
+                            <button type="button" class="btn btn-danger" id="seqDelBtn" data-bind="click:del_ruleItem" disabled>删除</button>
+                        </div>
+                    </form>
+                    <!--form表单结束-->
+
+                </div>
+                <div class="modal-footer padding-right-0">
+                    <button type="button" class="btn btn-primary" id="ruleItem_add" data-bind="click:save_ruleItem">确认</button>
+                    <button type="button" class="btn btn-primary" id="cancleItemBtn" data-bind="click:cancleItem2" style="color: #000;">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--规则项 ruleItem 弹框结束-->
+
+</body>
+
+</html>

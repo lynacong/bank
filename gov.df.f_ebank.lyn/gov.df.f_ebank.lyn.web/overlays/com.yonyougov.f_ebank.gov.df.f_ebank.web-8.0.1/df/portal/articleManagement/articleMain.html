@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+	<title>文章管理</title>
+	<meta name="author" content="ip">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" /> -->
+	<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+	<link rel="stylesheet" type="text/css" href="./css/input.css" />
+	<script src="/df/trd/knockout/knockout-3.2.0.debug.js"></script>
+	<script src="/df/trd/requirejs/require.js"></script>
+	<script src="/df/require.config.js"></script>
+	<script src="./articleMain.js"></script>
+	<script src="/df/portal/admin/index/js/Base64.js"></script>
+	<!-- bootstrap dependencies -->
+	<link rel="stylesheet" href="/df/trd/uui/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/df/trd/uui/css/bootstrap-responsive.min.css" />	
+	<link rel="stylesheet" href="/df/trd/uui/css/jquery.gritter.css" />
+</head>
+<body>
+<ul id="myTab" class="nav nav-tabs">
+	<li><a href="#articleDone" data-toggle="tab">已录入文章</a></li>
+	<li><a href="#article" data-toggle="tab">已发布文章</a></li>
+</ul>
+<div id="myTabContent" class="tab-content">
+	<div class="tab-pane fade in active" id="articleDone">
+		<div style="text-align: center;border-width:0px;word-break:break-all"><!-- class="table-responsive"  -->
+			<table id="contentTable" 
+				class="table table-striped table-hover table_odd_even" style = "text-align: center;">
+				<thead  align="center">
+					<tr>
+						<td width="0%" style="display:none"></td>
+						<td width="24%" >文章标题</td>
+	 				 	<td width="9%" >文章文号</td>
+	 				 	<td width="8%" >文章作者</td>
+	 				 	<td width="8%" >发布状态</td>
+	 				 	<td width="15%" >生效日期</td>
+	 				 	<td width="15%" >失效日期</td>
+	 				 	<td width="6%" >创建人</td>
+	 				 	<td width="15%" >创建时间</td>
+						<!-- <th width="20%" align="center" style="text-align:center">操作</th> -->
+					</tr>
+				</thead>
+				<tbody data-bind="foreach: data.content">
+					<tr id = 'table' onclick="selColor(this);"><!-- onclick="selColor(this);"  -->
+					<td data-bind="text:id" width="0%" style="display:none;"></td>
+					<td data-bind="text:title" width="24%"></td>
+					<td data-bind="text:articleNo" width="10%"></td>
+					<td data-bind="text:author" width="8%"></td>
+					<td data-bind="text:pubStatus" width="8%"></td>
+					<td data-bind="text:validateTime" width="15%"></td>
+					<td data-bind="text:expiredTime" width="15%"></td>
+					<td data-bind="text:creater" width="5%"></td>
+					<td data-bind="text:createTime" width="15%"></td>
+					<!-- <td width="10%">
+						<p><a href="javascript:void(0)" data-bind="click:modify">修改</a><button width="80dp"  style = "visibility:hidden"></button><a href="javascript:void(0)" data-bind="click:deleBill">删除</a></p>
+					</td> -->
+					</tr>
+				</tbody>
+			</table>
+			<div id="toDoPageDef">
+				<ul class="pagination">
+					<li><a href ="javascript:void(0);" data-bind="click: toFirstPage">首页</a></li>
+					<li id="beforePage"><a href ="javascript:void(0);" data-bind="click: beforePage">&laquo;上一页</a></li>
+					<li id="nextPage" ><a href ="javascript:void(0);" data-bind="click: nextPage">下一页&raquo;</a></li>
+					<li><a href ="javascript:void(0);" data-bind="click: toLastPage">末页</a></li>
+					<li><a data-bind="text:data.totalPages"></a></li>
+					<li><a data-bind="text:data.totalCount"></a></li>
+				</ul>
+				<div style="margin-top:-68px;margin-left:600px;">
+					<input type="text" id="changepage" style="width:40px;margin-top:12px;"/>
+					<input id="redirect" type="button" class="btn btn-primary" style="margin-top:-5px;padding-top:0px;width:60px;" value="跳转" data-bind="click: changePage"/>
+			    </div>
+			</div>
+		</div>
+	</div>
+	<div class="tab-pane fade" id="article">
+		<div style="text-align: center;border-width:0px;word-break:break-all">
+			<table id="contentTable" class="table table-striped table-hover" style = "text-align: center;">
+				<thead  align="center">
+					<tr>
+						<td width="0%" style="display:none"></td>
+						<td width="30%" >文章标题</td>
+	 				 	<td width="20%" >发布的栏目</td>
+	 				 	<td width="10%" >发布的PORTLET</td>
+	 				 	<td width="20%" >发布时间</td>
+	 				 	<td width="10%" >发布人</td>
+	 				 	<td width="10%" >审核状态</td>
+					</tr>
+				</thead>
+				<tbody data-bind="foreach: data.content">
+					<tr onclick="selColor(this);" id = 'table'>
+						<td data-bind="text:id" width="0%" style="display:none;"></td>
+						<td data-bind="text:title" width="30%"></td>
+						<td data-bind="text:articleNo" width="20%"></td>
+						<td data-bind="text:author" width="10%"></td>
+						<td data-bind="text:validateTime" width="20%"></td>
+						<td data-bind="text:author" width="10%"></td>
+						<td data-bind="text:pubStatus" width="10%"></td>
+						<!-- <td width="10%">
+							<p><a href="javascript:void(0)" data-bind="click:modify">修改</a><button width="80dp"  style = "visibility:hidden"></button><a href="javascript:void(0)" data-bind="click:deleBill">删除</a></p>
+						</td> -->
+					</tr>
+				</tbody>
+			</table>
+			<div id="toDoPageDef">
+				<ul class="pagination">
+					<li><a href ="javascript:void(0);" data-bind="click: toFirstPage">首页</a></li>
+					<li id="beforePage2"><a href ="javascript:void(0);"  data-bind="click: beforePage">&laquo;上一页</a></li>
+					<li id="nextPage2"><a href ="javascript:void(0);"  data-bind="click: nextPage">下一页&raquo;</a></li>
+					<li><a href ="javascript:void(0);" data-bind="click: toLastPage">末页</a></li>
+					<li><a data-bind="text:data.totalPages"></a></li>
+					<li><a data-bind="text:data.totalCount"></a></li>
+				</ul>
+				<div style="margin-top:-68px;margin-left:600px;">
+					<input type="text" id="changepage2" style="width:40px;margin-top:12px;"/>
+					<input id="redirect" type="button" class="btn btn-primary" style="margin-top:-5px;padding-top:0px;width:60px;" value="跳转" data-bind="click: changePage" />
+			    </div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="table-responsive" style=" padding-top: 50px;text-align: center;border-width:0px;word-break:break-all">
+	<table class="table table-striped table-hover" style = "text-align: center;">
+		<tr>
+			<td width="25%">
+				<input id="addArticle" type="button" class="btn btn-primary" style="margin-left:20dp;padding-top:0px;width:60px;" value="新增" data-bind="click: addArticle"/>
+			</td>
+			<td width="25%">
+				<input id="editArticle" type="button" class="btn btn-primary disabled" style="margin-left:20dp;padding-top:0px;width:60px;" value="编辑" data-bind="click: editArticle"/>
+			</td>
+			<td width="25%">
+				<input id="deleteArticle" type="button" class="btn btn-primary disabled" style="margin-left:20dp;padding-top:0px;width:60px;" value="删除" data-bind="click: deleteArticle"/>
+			</td>
+			
+			<td width="25%">
+			    <select id="selectPgPletId">
+				   <option value="101001002001">单位经办</option>
+				   <option value="101002002001">单位审核</option>
+				   <option value="101003002001">主管部门</option>
+				   <option value="101004002001">集中支付</option>
+			       <option value="101005002001">国库领导</option>
+				   <option value="101006002001">国库经办</option>
+				   <option value="101007002001">业务处室</option>
+			   </select>
+				<input id="pubArticle" type="button" class="btn btn-primary disabled" style="margin-left:20dp;padding-top:0px;width:60px;" value="发布" data-bind="click: pubArticle"/>
+			</td>
+		</tr>
+	</table>
+</div>
+
+</body>
+</html>

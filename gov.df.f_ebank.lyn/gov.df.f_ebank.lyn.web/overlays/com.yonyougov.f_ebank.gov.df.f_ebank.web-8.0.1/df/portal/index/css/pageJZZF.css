@@ -1,0 +1,41 @@
+@charset "utf-8";
+*{margin: 0; padding: 0;box-sizing: border-box;}
+body{font-size: 12px;width: 100%;height: 100%;background: #f8f8f8;font-family: "微软雅黑";overflow-x:hidden;overflow-y: auto;}
+ul,ol,li{list-style: none;}
+
+.box {border: 1px solid #d2d6de;margin-bottom: 15px;}
+
+/* 常用操作 */
+#often > div > ul > li {float: left;background: #f8f8f8;width: 20%;margin-right: 20px;border: solid 1px #ccc;border-radius: 5px;text-align: center;height: 40px;}
+#often > div > ul > li > a {font-size: 16px;color: #000;height: 45px;line-height: 35px;}
+#often > div > ul > li > a > img {height: 30px;width: 30px;padding-right: 30px;}
+#often > div > ul > li:NTH-CHILD(1) > a > img {background:url(../img/icon-ban.png) no-repeat;}
+#often > div > ul > li:NTH-CHILD(2) > a > img {background:url(../img/icon-cha.png) no-repeat;}
+#often > div > ul > li:NTH-CHILD(3) > a > img {background:url(../img/icon-dan.png) no-repeat;}
+#often > div > ul > li:HOVER:NTH-CHILD(1) > a > img {background:url(../img/icon-ban-w.png) no-repeat;}
+#often > div > ul > li:HOVER:NTH-CHILD(2) > a > img {background:url(../img/icon-cha-w.png) no-repeat;}
+#often > div > ul > li:HOVER:NTH-CHILD(3) > a > img {background:url(../img/icon-dan-w.png) no-repeat;}
+#often > div > ul > li:HOVER {background: #108ee9;}
+#often > div > ul > li:HOVER > a {color: #f8f8f8;}
+#often > div > ul > li:HOVER > a > img {color: #f8f8f8;}
+
+/* 单位操作表格 */
+#agencyOperation > div > ul {height: 30px;}
+#agencyOperation > div > ul > li {border-top: 0;width: 150px;}
+#agencyOperation > div > ul > li > a {height: 30px;position: relative;text-align: center;font-size: 16px;color: #000;padding-top: 3px;font-family: "微软雅黑";border-top-left-radius: 5px;border-top-right-radius: 5px;border: solid 1px #b39bbc;border-bottom: none;}
+#agencyOperation > div > ul > li.active > a {background: #108ee9;color: #fff;}
+#agencyOperation > div > div.tab-content {border-top: solid 1px #ddd;}
+
+
+/* 我的单据 */
+#selfDocuments > div > ul {height: 30px;}
+#selfDocuments > div > ul > li {border-top: 0;width: 130px;}
+#selfDocuments > div > ul > li > a {height: 30px;position: relative;text-align: center;font-size: 16px;color: #000;padding-top: 3px;font-family: "微软雅黑";border-top-left-radius: 5px;border-top-right-radius: 5px;border: solid 1px #b39bbc;border-bottom: none;}
+#selfDocuments > div > ul > li.active > a {background: #108ee9;color: #fff;}
+#selfDocuments > div > div.tab-content {border-top: solid 1px #ddd;}
+
+.dfp-tab-table {
+	font-size: 14px;
+	
+}
+

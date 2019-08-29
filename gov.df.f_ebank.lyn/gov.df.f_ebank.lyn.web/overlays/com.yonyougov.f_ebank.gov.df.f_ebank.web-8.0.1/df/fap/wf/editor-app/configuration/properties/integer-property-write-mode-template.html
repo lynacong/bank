@@ -1,0 +1,9 @@
+
+<div ng-controller="KisBpmStringPropertyCtrl">
+    <input type="text" ng-model="property.value"
+    	   onkeyup="var type=/^(?:[1-9]?\d|100)$/; var re=new RegExp(type); var output='请输入0-100的正整数!'; if(!this.value.match(re)) alert(output)"
+    	   class="form-control" 
+           ng-focus="true"
+           ng-blur="inputBlurred()"
+           ng-keypress="{13:'enterPressed($event)'}"/>
+</div>

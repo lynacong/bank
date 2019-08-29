@@ -1,0 +1,205 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 12px;
+    height: 100%;
+    background: #f8f8f8;
+    font-family: "微软雅黑";
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+body {
+    margin-left: -50px;
+    width: auto;
+}
+
+.box {
+    border: 1px solid #d2d6de;
+    margin-bottom: 10px;
+    box-shadow: none;
+}
+
+.content {
+    padding: 10px;
+}
+
+/*dfp-box*/
+.dfp-box {
+    margin-bottom: 10px;
+}
+
+.dfp-left {
+    padding-right: 10px;
+}
+
+.dfp-right {
+    padding-left: 0px;
+}
+
+.dfp-box-header {
+    height: 37px;
+    border-bottom: 2px solid #108EE9 !important;
+}
+
+.dfp-box-title {
+    color: #108EE9;
+    font-weight: bold;
+}
+
+/*end dfp-box*/
+
+/*dfp-element*/
+.dfp-ele-input-tool {
+    height: 30px;
+    background: #FFFFFF !important;
+}
+
+.dfp-ele-select {
+    border-radius: 5px;
+    height: 30px;
+    padding: 3px 6px;
+}
+
+.dfp-ele-iframe {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+}
+
+button.dfp-ele-btn {
+    background: #108EE9;
+}
+
+/*background: #dbf3f3;*/
+button.dfp-ele-btn-sm {
+    font-size: 16px;
+    padding: 2px 4px;
+    /*background: #f5f5f5;*/
+    background: #FFFFFF;
+    /*color: #108ee9;*/
+    color: #CCCCCC;
+    border: none;
+}
+button.dfp-ele-btn-sm > i {
+    padding: 0;
+}
+
+/*end dfp-element*/
+
+/*dfp-font*/
+.dfp-font-black {
+    color: #000000;
+}
+.dfp-font-white {
+    color: #FFFFFF;
+}
+/*end dfp-font*/
+
+/*dfp-color*/
+.dfp-num-red {
+    color: #f04134;
+    font-weight: bold;
+}
+.dfp-num-yellow {
+    color: #f57b1d;
+    font-weight: bold;
+}
+
+/*end dfp-color*/
+
+/*dfp-event*/
+.dfp-event-loadToClick {
+    cursor: pointer;
+}
+.dfp-event-loadToHide {
+
+}
+/*end dfp-event*/
+
+/*dfp-modal*/
+/*常用操作 菜单、设置*/
+#topOften {margin: 0 5px 0 5px;}
+#often {float: left;width: 89%;padding: 0;margin-bottom: 5px;}
+#oftenContent {background: #f8f8f8;padding: 2px;}
+#oftenSetting {float: right;width: 10%;height: 41px;margin-bottom: 10px;font-size: 16px;padding-top: 10px;cursor: pointer;background: #cad3f5;color: #000;}
+#oftenSetting:hover {background: #108ee9;color: #fff;}
+#often > div > ul > li {float: left;background: #f8f8f8;width: 20%;margin-right: 20px;border-right: solid 1px #ccc;border-radius: 3px;text-align: center;height: 35px;}
+#often > div > ul > li > a {font-size: 16px;color: #000;height: 45px;line-height: 35px;}
+#often > div > ul > li > a > img {height: 22px;width: 22px;margin-left: -30px;}
+#often > div > ul > li> a:HOVER {background: #108ee9 !important;}
+#often > div > ul > li:HOVER > a {color: #f8f8f8;}
+#often > div > ul > li:HOVER > a > img {color: #f8f8f8;}
+
+li.oftenUl-menu-li > a {background: #ffffff;color: #000;}
+li.oftenUl-menu-li:HOVER > a {background: #108ee9;color: #fff;}
+
+/*end 常用操作 菜单*/
+/*公告信息*/
+#articleContent {
+    overflow: hidden;
+    overflow-y: auto;
+}
+#articleContent > ul > li {
+    width: 100%;
+    line-height: 10px;
+}
+#articleContent > ul > li > a {
+    list-style: none;
+    height: 30px;
+    line-height: 30px;
+    color: #151515;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    display: inline-block;
+    width: 96%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+/*end 公告信息*/
+/*待办事项*/
+#dealingContent {overflow: hidden;overflow-y: auto;padding: 2px 0 0 10px;  }
+#dealingContent > ul > li {width: 100%;}
+#dealingContent > ul > li > a {height: 23px;line-height: 27px;  color: #151515;  font-family: "微软雅黑";  font-size: 14px;  display: inline-block;  width: 96%;  text-overflow: ellipsis;  white-space: nowrap;  overflow: hidden;  }
+#dealingContent > ul > li > a:hover {color: #108ee9;}
+
+/*TODO 经办审核页面特殊*/
+#m-content1 > table {border: none;table-layout: fixed;}
+#m-content1 > table > thead {display: none;}
+#m-content1 > table > tbody > tr {cursor: pointer;color: #000;font-size: 14px;height: 27px;}
+#m-content1 > table > tbody > tr:hover {color: #108ee9;}
+#m-content1 > table > tbody > tr > td {border: none;}
+#m-content1 > table > tbody > tr > td.dealingContent-td-1 {padding-left: 15px;width: 70%;text-overflow: ellipsis;  white-space: nowrap;  overflow: hidden;}
+#m-content1 > table > tbody > tr > td.dealingContent-td-2 {min-width: 30%;max-width: 30%;width: 30%;padding-left: 5px;text-overflow: ellipsis;  white-space: nowrap;  overflow: hidden;}
+#m-content1 > table > tbody > tr > td.dealingContent-td-2 > span {color: red;}
+#m-content1 > table > tbody > tr:hover > td.dealingContent-td-2 > span{color: #108ee9;}
+/*endTODO 经办审核页面特殊*/
+
+#dealingContent > table {border: none;table-layout: fixed;}
+#dealingContent > table > thead {display: none;}
+#dealingContent > table > tbody > tr {cursor: pointer;color: #000;font-size: 14px;height: 27px;}
+#dealingContent > table > tbody > tr:hover {color: #108ee9;}
+#dealingContent > table > tbody > tr > td {border: none;}
+#dealingContent > table > tbody > tr > td.dealingContent-td-1 {padding-left: 15px;width: 70%;text-overflow: ellipsis;  white-space: nowrap;  overflow: hidden;}
+#dealingContent > table > tbody > tr > td.dealingContent-td-2 {min-width: 30%;max-width: 30%;width: 30%;padding-left: 5px;text-overflow: ellipsis;  white-space: nowrap;  overflow: hidden;}
+#dealingContent > table > tbody > tr > td.dealingContent-td-2 > span {color: red;}
+#dealingContent > table > tbody > tr:hover > td.dealingContent-td-2 > span{color: #108ee9;}
+
+#dealingRefreshCover {display: none;}
+/*#dealingRefreshCover > i {position: absolute;height: 65px;left: 50%;top: 50%;margin-left: -40px;margin-top: -30px;}*/
+#dealingRefreshCover > img {position: absolute;height: 65px;left: 50%;top: 50%;margin-left: -40px;margin-top: -30px;}
+
+/*end 待办事项*/
+/*end dfp-modal*/

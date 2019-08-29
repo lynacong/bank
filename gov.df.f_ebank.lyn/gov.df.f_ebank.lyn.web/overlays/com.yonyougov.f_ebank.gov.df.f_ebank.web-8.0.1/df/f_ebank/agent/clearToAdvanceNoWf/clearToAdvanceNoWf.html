@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>银行清算资金分解到网点</title>
+<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/datetimepicker/css/bootstrap-datetimepicker.min.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/theme/blue.css" />
+<link rel="stylesheet" type="text/css" href="../../css/fbStyle.css" />
+<link rel="stylesheet" type="text/css" href="../../css/image.css" />
+<link rel="stylesheet" type="text/css" href="../../css/fbcommon.css" />
+</head>
+<body>
+	<div class="wrapper" style="margin:0 auto;">
+		<div style="height: 35px;">
+			<div class="btn-grid-group-btn ip-content-btn-area" >
+						<div class="icon-buttons">
+							<div id="view" class="icon-box" data-bind="click:fSelect">
+								<i class="iconbtn icon-query-state"></i>查询</div>
+							<div id="advanceConfirm" class="icon-box" onclick="advanceConfirm()">
+								<i class="iconbtn icon-confirm"></i>清算到账确认</div>
+							<div id="advanceCancelConfirm" class="icon-box" onclick="advanceCancelConfirm()">
+								<i class="iconbtn icon-revoke-confirm"></i>撤销确认</div>
+							<div id="advancePayTrade" class="icon-box" onclick="advancePayTrade()">
+								<i class="iconbtn icon-refund-redial"></i>清算资金划转</div>
+							<div id="advancePayConfirm" class="icon-box" onclick="advancePayConfirm()">
+								<i class="iconbtn icon-pay-edit"></i>清算资金划转确认</div>
+						</div>
+					</div>
+	        </div>
+				<div class="btn-group-content"
+			style="margin-top:5px; display: block;overflow-y: scroll; border: 1px solid #ccc;">
+			
+			
+				<label style="">查询区：</label> <br>
+				<div
+					style="border-radius: 2px;border: 1px solid #ccc;overflow:auto;padding:4px;">
+					<div class="" style="margin:4px 0px 0px 0px;height:35px">
+						<div id="paySearchArea"></div>
+					</div>
+				</div>
+		
+			<div style="float:left;padding-top:13px;">
+				<label id="zfpz">汇总列表：</label>
+			<select id="pz_status" style="border-radius: 2px;border: 1px solid #ccc;" onchange="fGetGrid()">
+					<option value="001" selected="selected">未确认</option>
+					<option value="002">已确认</option>
+			</select>
+			</div>
+			<div id="mianDiv" style=" display: block;height:289px" onClick="getDetail()">
+				<div id="modalMainGridArea" class="tabbed-grid tabbed-grid-modal"></div>
+			</div>
+			<label style="float:left;padding-top:13px;">明细列表：</label>	 
+			<div id="subDiv" style=" display: block; height:289px">
+	 			<div id="modalSubsysGridArea" class="tabbed-grid tabbed-grid-modal"></div>  
+			</div>
+		</div>		
+		
+		<!-- 员工工号录入 -->
+		 <div class="modal fade" id="userCodeInput" tabindex="-1" role="dialog"
+			aria-labelledby="ylModalLabel" data-backdrop="static">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-bind="click:closeuserCodeInput"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="titleText">指纹验证柜员号</h4>
+					</div>
+					<div class="modal-body display-container">
+						<div style="height: 50px;">
+						    <label id="textNo" style="margin:1px 0px 5px 10px;">柜员号：</label> 
+					          <label>
+						       <input type="text" style="border-radius: 2px;height:30;margin:5px 0px 0px 0px;" id="userNo" value=""> 
+					        </label>
+				     	</div>
+					</div>
+					<div class="modal-footer" style="clear: both;">
+						<button type="button" class="btn btn-primary" data-bind="click:doSaveuserCodeInput">确定</button>
+						<button type="button" class="btn btn-primary" data-bind="click:closeuserCodeInput">退出</button>
+					</div>		
+				</div>
+			</div>
+		</div>  
+		<object classid="clsid:933DB2AB-51BF-4204-9E30-C907FE352A5E" width="0" height="0" id="dtm" codebase="../common/libFPDev_WL.ocx"> </object> 
+	</div>
+	<script src="../../../trd/knockout/knockout-3.2.0.debug.js"></script>
+	<script src="../../../trd/requirejs/require.js"></script>
+	<script src="../../../require.config.js"></script>
+	<script src="./clearToAdvanceNoWf.js"></script>
+	<script src="../../common/ebankConstants.js"></script>
+	<script src="../../common/ebankCommonUtil.js"></script>
+</body>
+</html>

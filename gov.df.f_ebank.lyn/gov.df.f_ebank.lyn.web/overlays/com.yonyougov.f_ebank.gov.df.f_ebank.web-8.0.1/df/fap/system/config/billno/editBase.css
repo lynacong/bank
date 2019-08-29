@@ -1,0 +1,89 @@
+#addEleContainer{
+    padding: 0;
+}
+#elemArray{
+    overflow: scroll;
+}
+#elementList{
+    padding:5px 5px;
+    height:250px;
+
+}
+.elementListChildBase{
+    width: 100px;
+    height: 100px;
+    margin:5px  15px  5px  0;
+    padding: 5px;
+}
+#elementList .elementListChild{
+    color:  #4990E2;
+    border: 1px solid #D9E9F6;
+    background-color: #F2F9FF;
+}
+#elementList .elementListChild:hover{
+    color: #fff;
+    background-color:#4990E2;
+    border: 1px solid #204d74;
+}
+#rightTypeLable{
+    color: #AAD0FC;
+}
+.selectAllBgColor{
+    background:rgba(0,0,0,0.5) ;
+}
+
+.modal-content {
+	padding-right:10px;
+	padding-left:10px;
+}
+
+.modal-header {
+	padding: 5px 0 5px 0;
+	border-bottom: 1px solid #E5E5E5;
+}
+
+.modal-body {
+	padding: 10px 0 0 0;
+}
+
+
+.modal-title {
+	font-family: MicrosoftYaHei;
+	color: #9B9B9B;
+}
+
+#setRuleWindow .modal-dialog {
+    width: 690px;
+    margin: 30px auto;
+}
+
+#setRuleWindow .control-label {
+	font-family: MicrosoftYaHei;
+	font-size: 12px;
+	color: #151515;
+	line-height: 25px;
+	font-weight: normal;
+	padding-top:0;
+}
+
+#ruleItemBox .modal-dialog {
+    width: 400px;
+    margin: 30px auto;
+}
+
+#ruleItemBox .control-label {
+	font-family: MicrosoftYaHei;
+	font-size: 12px;
+	color: #333333;
+	line-height: 25px;
+	font-weight: normal;
+	padding: 0 10px 0 0;
+}
+#setRuleWindow input,
+#ruleItemBox input,
+#setRuleWindow select,
+#ruleItemBox select{
+	font-family: MicrosoftYaHei;
+	font-size: 12px;
+	color: #333333;
+}

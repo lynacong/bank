@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/gov.df.f_ebank.lyn.iml" filepath="$PROJECT_DIR$/gov.df.f_ebank.lyn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gov.df.f_ebank.lyn.api/gov.df.f_ebank.lyn.api.iml" filepath="$PROJECT_DIR$/gov.df.f_ebank.lyn.api/gov.df.f_ebank.lyn.api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gov.df.f_ebank.lyn.controller/gov.df.f_ebank.lyn.controller.iml" filepath="$PROJECT_DIR$/gov.df.f_ebank.lyn.controller/gov.df.f_ebank.lyn.controller.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gov.df.f_ebank.lyn.server/gov.df.f_ebank.lyn.server.iml" filepath="$PROJECT_DIR$/gov.df.f_ebank.lyn.server/gov.df.f_ebank.lyn.server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gov.df.f_ebank.lyn.web/gov.df.f_ebank.lyn.web.iml" filepath="$PROJECT_DIR$/gov.df.f_ebank.lyn.web/gov.df.f_ebank.lyn.web.iml" />
+    </modules>
+  </component>
+</project>

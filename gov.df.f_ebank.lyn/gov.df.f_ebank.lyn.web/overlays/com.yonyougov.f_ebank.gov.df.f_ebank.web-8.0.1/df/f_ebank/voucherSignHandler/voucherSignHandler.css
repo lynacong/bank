@@ -1,0 +1,31 @@
+.left-container{
+    float: left;
+    width: 300px;
+    height: 100%;
+    border: 1px solid #ccc;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.right-container {
+    margin-left: 300px;
+    height: 100%;
+    border: 1px solid #ccc;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;    
+    border: 1px solid #ccc;
+}
+
+.grouptitle1 
+    {
+    font-size:10px;
+    color:#00F;
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    padding: 0 2px 0 2px;
+    background-color:white;
+    z-index:1;
+    } 

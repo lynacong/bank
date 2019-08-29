@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;IE=11;IE=10;IE=9;IE=8;"/>
+    <title>自动任务</title>
+    <link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../trd/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/u.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/tree.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../trd/ip/changeTree/changeTree.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/grid.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/ip.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/platform.css"/>
+    <link rel="stylesheet" type="text/css" href="../ncrd.css"/>
+	<!--[if lte IE 9]>
+		<link rel="stylesheet" type="text/css" href="../ncrd-ie9.css" />
+    <![endif]-->
+</head>
+<body>
+<!--定时任务管理页面-->
+<div id="timingtask-list-contanier" class="container-fluid ncrd">
+    <div class="col-sm-3 col-md-3 padding-right-0 padding-left-0">
+        <div class="panel panel-default panel-body left-tree">
+            <div class="tree-search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="请输入关键字" data-bind="value:treeKeyword">
+                    <span class="input-group-btn">
+                            <button class="btn btn-default" data-bind="click:findTree">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </button>
+                            </span>
+                </div>
+            </div>
+            <!-- 左侧树 -->
+            <div class="ncrd left-tree-scroll">
+                <div id="tree" class="ztree"
+                     u-meta='{"id":"tree","data":"treeDataTable","type":"tree","idField":"cid","pidField":"pid","nameField":"name","setting":"treeSetting"}'></div>
+            </div>
+        </div>
+    </div>
+    <!--</div>-->
+    <div class="col-sm-9 col-md-9 padding-right-5 padding-left-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="right-btngroup padding-bottom-10">
+                    <!-- 按钮组 -->
+                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target=""
+                            data-bind="click: editAdd">新增
+                    </button>
+                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target=""
+                            data-bind="click: editUpdate">修改
+                    </button>
+                    <button type="button" class="btn btn-danger " data-toggle="modal" data-target=""
+                            data-bind="click: deleteBtn">删除
+                    </button>
+                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target=""
+                            data-bind="click: taskEnabled">启用
+                    </button>
+                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target=""
+                            data-bind="click: taskDisabled">停用
+                    </button>
+                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target=""
+                            data-bind="click: refresh">刷新
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default panel-body right-grid">
+                    <!--表格-->
+                    <div u-meta='{"id":"grid","data":"gridDataTable","type":"grid","sortable":false,"showNumCol": false,"columnMenu":false,"editable":false,"autoExpand":false,"showTree":false,"keyField":"theId","parentKeyField":"parentId"}'>
+                        <div options='{"field":"autotask_id","dataType":"String","title":"表ID","editType":"string","width": 150,"visible":false}'></div>
+                        <div options='{"field":"autotask_no","dataType":"String","title":"序号","editType":"string","width": 60}'></div>
+                        <div options='{"field":"autotask_code","dataType":"String","title":"任务编码","editType":"string","width": 110}'></div>
+                        <div options='{"field":"autotask_name","dataType":"String","title":"任务名称","editType":"string","width": 150}'></div>
+                        <div options='{"field":"sys_id","dataType":"String","title":"所属模块","editType":"string","width": 165}'></div>
+                        <div options='{"field":"task_status_name","dataType":"String","title":"当前状态","editType":"string","width": 200}'></div>
+                        <div options='{"field":"last_ver","dataType":"String","title":"最后修改时间","editType":"string","width": 200}'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--定时任务管理编辑页面-->
+<div id="timingtask-editAdd-contanier" class="container-fluid ncrd">
+</div>
+
+<!--右键菜单-->
+<div class="clickContent panel panel-default"
+     style="position: absolute;background-color: #ccc;width: 80px;display: none;">
+    <ul style="list-style: none;text-align: center">
+        <li data-bind="click: editAdd">增加</li>
+        <li data-bind="click: editUpdate">修改</li>
+        <li data-bind="click: deleteBtn">删除</li>
+        <li data-bind="click: taskEnabled">启用</li>
+        <li data-bind="click: taskDisabled">停用</li>
+        <li data-bind="click: refresh">刷新</li>
+    </ul>
+</div>
+
+<!-- 引入js-->
+<script src="../../../../trd/requirejs/require.debug.js"></script>
+<script src="../../../../require.config.js"></script>
+<script src="list.js" type="text/javascript"></script>
+</body>
+</html>

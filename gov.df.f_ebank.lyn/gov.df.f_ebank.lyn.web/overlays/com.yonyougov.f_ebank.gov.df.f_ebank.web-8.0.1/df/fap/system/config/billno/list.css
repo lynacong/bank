@@ -1,0 +1,26 @@
+#billno-list-contanier #tree {
+    font-family: MicrosoftYaHei;
+    font-size: 12px;
+    color: #000000;
+}
+
+.billno-label {
+    font-family: MicrosoftYaHei;
+    font-size: 12px;
+    color: #333333;
+    font-weight:normal;
+    line-height: 25px;
+}
+
+#ruleNumber,#ruleName,#appModel {
+    width: 60%;
+    margin-left: -5px;
+}
+
+#formData .form-group {
+    min-width: 280px;
+}
+
+.margin-left-n40 {
+	margin-left: -40px;
+}

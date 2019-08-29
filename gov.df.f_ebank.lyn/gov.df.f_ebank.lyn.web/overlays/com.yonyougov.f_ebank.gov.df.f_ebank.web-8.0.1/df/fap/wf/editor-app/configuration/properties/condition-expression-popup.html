@@ -1,0 +1,120 @@
+
+<div class="modal" ng-controller="KisBpmConditionExpressionPopupCtrl">
+<div class="modal-dialog" style="width:800px;">
+<div class="modal-content">
+<div class="modal-header">
+    <button type="button" class="editor-pop-close close" data-dismiss="modal" aria-hidden="true" ng-click="close()">&times;</button>
+    <span translate>PROPERTY.SEQUENCEFLOW.CONDITION.TITLE</span>
+</div>
+<div class="modal-body">
+
+    <div class="detail-group clearfix">
+    	<div class="row">
+    		<!-- <label class="col-sm-2">规则详细信息</label>
+    		<div class="col-sm-10" style="border-top: 1px solid red;"></div> -->
+    		<p>	
+    			<label class="" style="display: inline-block; width: 10%; color: #4F8EDC;">规则详细信息</label>
+    			<label style="display: inline-block; border-top: 1px solid #4F8EDC; width: 89%;"></label>
+    		</p>
+    	</div>
+     <div class="row">
+       <div class="u-widget-body" style="padding:0;">
+       		<div class="col-md-11 col-sm-11" style="min-height: 100px; max-height: 200px; overflow: auto;">
+             <table  id="gridTest_out" class="gridTest_out">
+					<thead style="display: table; table-layout: fixed;">
+							<tr id="1st" style="display: table; table-layout: fixed;width:100%;">  
+			                    <td style="text-align: center;width: 8%;">设置</td>  
+			                    <td style="text-align: center;width: 11%;">左括号</td>  
+			                    <td style="text-align: center;width: 15%;">参数名称</td>  
+			                    <td style="text-align: center;width: 20%;">关系运算符</td>  
+			                    <td style="text-align: center;width: 15%;">参数值</td>  
+			                    <td style="text-align: center;width: 11%;">右括号</td>  
+			                    <td style="text-align: center;width: 20%;">逻辑运算符</td>  
+			                    <td ng-show=false style="text-align: center;width: 20%;">要素chr_id</td>  
+			                    <td ng-show=false style="text-align: center;width: 20%;">要素的表</td>  
+			                </tr> 
+			                <!-- <tr id="1st" style="display: table; table-layout: fixed;width:100%;">  
+			                    <td style="text-align: center;width: 8%;">111</td>  
+			                    <td style="text-align: center;width: 11%;">111</td>  
+			                    <td style="text-align: center;width: 15%;">111</td>  
+			                    <td style="text-align: center;width: 20%;">111</td>  
+			                    <td style="text-align: center;width: 15%;">111</td>  
+			                    <td style="text-align: center;width: 11%;">111</td>  
+			                    <td style="text-align: center;width: 20%;">111</td>  
+			                </tr>  
+			                
+			                 <!-- <select id="selectLogicFlag" ng-init="selectedNameLogicFlag = logicFlag[0]"
+										ng-model="selectedNameLogicFlag" ng-options="x for x in logicFlag" ng-change="flagChanged(selectedNameLogicFlag)" style="text-align: center;width: 100%;">
+									</select> -->
+				   </thead> 
+				   <tbody>
+				   	<tr id="1st" name="out_1st" style="display: table; table-layout: fixed;width:100%;" ng-repeat="data in datas | limitTo: datas.length" ng-click="datasFocuschange($index)"
+								ng-class='{focus: $index==focus}'>
+								<td style="width: 8%;">{{$index + 1}}</td>
+								<!-- <td style="text-align: center;width: 8%;">1</td> -->
+								<td id="leftFlag{{$index}}" ng-click="leftflagClick($index)" style="text-align: center;width: 11%;">{{data.left_pare}}</td>
+								<td id='paramNameID{{$index}}' ng-click="getParamName()" style="text-align: center;width: 15%;">{{data.left_paraname}}</td>
+								<td id="relFlag{{$index}}" ng-click="relFlagClick($index)" style="text-align: center;width: 20%;">{{data.operator}}</td>
+								<td id='paramValueID{{$index}}' ng-click="getParamVal($index)" style="text-align: center;width: 15%;">{{data.right_paraname}}</td>
+								<td id="rightFlag{{$index}}" ng-click="rightFlagClick($index)" style="text-align: center;width: 11%;">{{data.right_pare}}</td>
+								<td id="logicFlag{{$index}}" ng-click="logicFlagClick($index)" style="text-align: center;width: 20%;" ng-model="selectedNameLogicFlag">{{data.logic_operator}}</td>
+								<td id='NoParamValueTree{{$index}}' ng-show=false style="text-align: center;width: 15%;"></td>
+								<td id='eleTableInfo{{$index}}' ng-show=false style="text-align: center;width: 15%;">{{data.ele_source_info}}</td>
+								<!-- <td>{{data.name7}}</td> -->
+					        </tr>
+				   </tbody>
+				</table>
+				</div>
+			<div class="col-md-1 col-sm-1">
+				<button type="button" class="btn btn-primary"  ng-click="add()">新增</button>
+				<button type="button" class="btn btn-danger" ng-click="del()">删除</button>
+			</div>
+           </div>
+          
+         </div>
+        
+        <div class="form-group clearfix">
+	       
+	        <!--描述  -->
+	        <div class="row" ng-show="isShow1">
+	    		<!-- <label class="col-sm-2">规则详细信息</label>
+	    		<div class="col-sm-10" style="border-top: 1px solid red;"></div> -->
+	    		<p>	
+	    			<label class="" style="display: inline-block; width: 10%; color: #4F8EDC;">{{'PROPERTY.SEQUENCEFLOW.CONDITION.STATIC' | translate}}</label>
+	    			<label style="display: inline-block; border-top: 1px solid #4F8EDC; width: 89%;"></label>
+	    		</p>
+	    	</div>
+            <div class="col-xs-12" ng-show="isShow3">
+                <textarea class="form-control" ng-model="conditionExpressionDesc" readonly="true" style="width:90%; height:100%; max-width: 100%; max-height: 100%; min-height: 100px"/>
+            </div>
+            
+            <!-- 脚本 -->
+            <div class="row" ng-show="isShow2">
+	    		<!-- <label class="col-sm-2">规则详细信息</label>
+	    		<div class="col-sm-10" style="border-top: 1px solid red;"></div> -->
+	    		<p>	
+	    			<label class="" style="display: inline-block; width: 10%; color: #4F8EDC;">{{'PROPERTY.SEQUENCEFLOW.CONDITION.STATIC' | translate}}</label>
+	    			<label style="display: inline-block; border-top: 1px solid #4F8EDC; width: 89%;"></label>
+	    		</p>
+	    	</div>
+            <div class="col-xs-12" ng-show="isShow4">
+                <textarea class="form-control" ng-model="conditionExpressionScript" readonly="true" style="width:90%; height:100%; max-width: 100%; max-height: 100%; min-height: 100px"/>
+            </div>
+            
+            <div class="col-md-4 col-sm-4" style="margin-top: 5px;">
+				<button type="button" class="btn btn-primary"  ng-click="showDes()" style="display: inline-block; margin-right: 5px;">描述</button>
+				<button type="button" class="btn btn-danger" ng-click="showSC()">脚本</button>
+			</div>
+            
+            
+        </div>
+
+    </div>
+    <div class="editor-modal-footer modal-footer">
+        <button ng-click="ruleExpCheck()" class="btn btn-primary" translate>规则表达式检查</button>
+        <button ng-click="save()" class="btn btn-primary" translate>ACTION.SAVE</button>
+        <button ng-click="close()" class="btn btn-primary" translate>ACTION.CANCEL</button>
+    </div>
+</div>
+</div>
+</div>

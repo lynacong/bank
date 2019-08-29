@@ -1,0 +1,22 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:distributed="http://www.springframework.org/schema/fasp2/distributed"
+	xmlns:dic="http://www.springframework.org/schema/fasp2/dic"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/fasp2/dic
+        http://www.springframework.org/schema/fasp2/dic/dic.xsd
+        http://www.springframework.org/schema/fasp2/distributed
+        http://www.springframework.org/schema/fasp2/distributed/distributed.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+        ">
+	
+	<bean id="sys.objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"></bean>
+	<!-- <bean id="sys.hibernateTemp" class="org.springframework.orm.hibernate3.HibernateTemplate"></bean> -->
+	
+</beans>

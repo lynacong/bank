@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:javaee="http://java.sun.com/xml/ns/javaee"
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_9" version="2.5">
+	<description>Finance Application Support Platform</description>
+	<display-name>Fasp_2.0</display-name>
+	<context-param>
+		<param-name>develop</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<param-name>startup</param-name>
+		<param-value>df</param-value>
+	</context-param>
+	<context-param>
+		<param-name>contextClass</param-name>
+		<param-value>
+			DFInitClasspathXmlApplicationContext
+		</param-value> 
+		<!-- <param-value>
+			com.longtu.framework.springexp.IfmisInitClasspathXmlApplicationContext
+		</param-value> -->
+	</context-param>
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>fasp.root</param-value>
+	</context-param>
+	<context-param>
+		<param-name>oaDrive</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>/WEB-INF/classes/log4j.properties</param-value>
+	</context-param>
+	<context-param>
+		<param-name>defcontextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/classes/yy-context.xml
+		</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+
+	<filter>
+		<filter-name>dfCommonFilter</filter-name>
+		<filter-class>gov.df.fap.service.login.filter.DfCommonFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>dfCommonFilter</filter-name>
+		<url-pattern>*</url-pattern>
+	</filter-mapping>
+	<filter>
+		<filter-name>WfUserContextFilter</filter-name>
+		<filter-class>gov.df.fap.util.web.WfUserContextFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+    <filter-mapping>
+		<filter-name>WfUserContextFilter</filter-name>
+		<url-pattern>/df/*</url-pattern>
+	</filter-mapping>
+
+
+	<servlet>
+		<servlet-name>spring3mvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:SpringmvcContext.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>AutoJobLoadServlet</servlet-name>
+		<servlet-class>
+			gov.df.fap.service.autotask.AutoJobLoadServlet
+		</servlet-class>
+		<load-on-startup>4</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>spring3mvc</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+	<mime-mapping>
+		<extension>css</extension>
+		<mime-type>text/css</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>xls</extension>
+		<mime-type>application/msexcel</mime-type>
+	</mime-mapping>
+	<mime-mapping>
+		<extension>download</extension>
+		<mime-type>application/xx</mime-type>
+	</mime-mapping>
+	<welcome-file-list>
+		<welcome-file>/df/portal/login/login.html</welcome-file>
+	</welcome-file-list>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/404.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/505.jsp</location>
+	</error-page>
+	<login-config>
+		<auth-method>BASIC</auth-method>
+	</login-config>
+</web-app>

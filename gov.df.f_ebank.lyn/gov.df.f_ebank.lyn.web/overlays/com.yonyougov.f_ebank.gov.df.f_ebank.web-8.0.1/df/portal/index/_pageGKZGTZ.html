@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>主管部门</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="css/lte/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/lte/AdminLTE.min.css">
+    <link rel="stylesheet" href="css/lte/_all-skins.min.css">
+
+    <!--datepicker-->
+    <link rel="stylesheet" href="css/lte/foundation-datepicker.css">
+
+    <link rel="stylesheet" href="css/dfp.css">
+    <link rel="stylesheet" type="text/css" href="css/gkzgtz/dashboardGKZGTZ.css">
+
+</head>
+<body class="hold-transition sidebar-mini sidebar-collapse">
+<div class="wrapper">
+
+    <div class="content-wrapper" style="background: #f8f8f8;">
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+
+                <!-- left -->
+                <div class="col-md-9 col-lg-9 dfp-left">
+
+                    <!--支出进度情况-->
+                    <div id="payProgressStatement" class="box box-default dfp-box">
+                        <div class="box-header with-border dfp-box-header">
+                            <h3 class="box-title dfp-box-title">支出进度情况</h3>
+                            <div class="pull-right box-tools">
+                                <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="查询" id="payProgressStatementCheck">
+                                    <i class="fa fa-fw fa-search" style="padding: 0;"></i>
+                                </button>
+                                <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="刷新" id="payProgressStatementRefresh">
+                                    <i class="fa fa-fw fa-refresh" style="padding: 0;"></i>
+                                </button>
+                                <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="最大化" id="payProgressStatementMaxium">
+                                    <i class="fa fa-fw fa-square-o" style="padding: 0;"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <!--查询-->
+                        <div id="payProgressStatementCheckSelect" class="box box-info" style="position: relative;display: none;width: 400px;float: right;right: 10px;z-index: 9999;">
+                            <div class="box-header with-border dfp-box-header">
+                                <h3 class="box-title dfp-box-title">支出进度情况-查询</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <div class="box-body">
+                                <div class="input-group" style="margin-bottom: 5px;">
+                                    <span class="input-group-addon">预算类别</span>
+                                    <input type="text" class="form-control" value="全部">
+                                </div>
+                                <div class="input-group" style="margin-bottom: 5px;">
+                                    <span class="input-group-addon">项目分类</span>
+                                    <input type="text" class="form-control" value="全部">
+                                </div>
+                                <div class="input-group" style="margin-bottom: 5px;">
+                                    <span class="input-group-addon">指标来源</span>
+                                    <input type="text" class="form-control" value="全部">
+                                </div>
+                                <div class="input-group" style="margin-bottom: 5px;">
+                                    <span class="input-group-addon">预算单位</span>
+                                    <input type="text" class="form-control" value="全部">
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer pull-right">
+                                <button id="payProgressStatementCheckSelectCancel" type="button" class="btn btn-default">取消</button>
+                                <button id="payProgressStatementCheckSelectSubmit" type="button" class="btn btn-info">确定</button>
+                            </div>
+                            <!-- /.box-footer -->
+                        </div>
+                        <div id="payProgressStatementContent" class="box-body" style="height: 190px;">
+
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!--/支出进度情况-->
+
+                    <!--支出大盘分析-->
+                    <div id="paymentMarketAnalysis" class="box box-default dfp-box">
+                        <div class="box-header with-border dfp-box-header">
+                            <h3 class="box-title dfp-box-title">支出大盘分析</h3>
+                            <div class="pull-right box-tools">
+                                <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="查询" id="paymentMarketAnalysisCheck">
+                                    <i class="fa fa-fw fa-search" style="padding: 0;"></i>
+                                </button>
+                                <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="刷新" id="paymentMarketAnalysisRefresh">
+                                    <i class="fa fa-fw fa-refresh" style="padding: 0;"></i>
+                                </button>
+                                <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="最大化" id="paymentMarketAnalysisMaxium">
+                                    <i class="fa fa-fw fa-square-o" style="padding: 0;"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!--查询-->
+                        <div id="paymentMarketAnalysisCheckSelect" class="box box-info" style="position: relative;display: none;width: 400px;float: right;right: 10px;z-index: 9999;">
+                            <div class="box-header with-border dfp-box-header">
+                                <h3 class="box-title dfp-box-title">支出进度情况-查询</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <div class="box-body">
+                                <div class="input-group" style="margin-bottom: 5px;">
+                                    <span class="input-group-addon">预算类别</span>
+                                    <input type="text" class="form-control" value="全部">
+                                </div>
+                                <div class="input-group" style="margin-bottom: 5px;">
+                                    <span class="input-group-addon">项目分类</span>
+                                    <input type="text" class="form-control" value="全部">
+                                </div>
+                                <div class="input-group" style="margin-bottom: 5px;">
+                                    <span class="input-group-addon">指标来源</span>
+                                    <input type="text" class="form-control" value="全部">
+                                </div>
+                                <div class="input-group" style="margin-bottom: 5px;">
+                                    <span class="input-group-addon">预算单位</span>
+                                    <input type="text" class="form-control" value="全部">
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer pull-right">
+                                <button id="paymentMarketAnalysisCheckSelectCancel" type="button" class="btn btn-default">取消</button>
+                                <button id="paymentMarketAnalysisCheckSelectSubmit" type="button" class="btn btn-info">确定</button>
+                            </div>
+                            <!-- /.box-footer -->
+                        </div>
+                        <!--/查询-->
+                        <!-- /.box-header -->
+                        <div id="paymentMarketAnalysisContent" class="box-body" style="height: 410px;">
+
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!--/支出大盘分析-->
+
+                </div>
+                <!-- /left -->
+
+                <!-- right -->
+                <div class="col-lg-3 col-md-3 dfp-right">
+
+                    <!--支出排名-->
+                    <div id="paymentRanking" class="box box-default dfp-box">
+                        <div class="box-header with-border dfp-box-header">
+                            <h3 class="box-title dfp-box-title">支出排名</h3>
+                            <div class=" box-tools">
+                                <div style="float: left;margin-right: 10px;">
+                                    <select id="paymentRankingSelect" class="form-control dfp-ele-select">
+                                        <option value="" selected="">按处室</option>
+                                        <option value="">按部门</option>
+                                        <option value="">按单位</option>
+                                    </select>
+                                </div>
+                                <div id="paymentRankingContent" style="float: right;">
+                                    <span style="position: relative;top: 10px;">单位：<span>元</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" style="height: 260px;">
+
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!--/支出排名-->
+
+                    <!--支付情况-->
+                    <div id="paymentStatement" class="box box-default dfp-box">
+                        <div class="box-header with-border dfp-box-header">
+                            <h3 class="box-title dfp-box-title">支出情况</h3>
+                            <div class=" box-tools">
+                                <div style="float: left;margin-right: 10px;">
+                                    <input id="paymentStatementStartTime" type="text" style="width: 87px;padding: 2px 2px;border-radius: 5px;" class="form-control dfp-ele-input-tool" readonly="readonly">
+                                </div>
+                                <div style="float: left;width: 0px;"><span style="position: relative;left: -8px;top: 5px;"> - </span></div>
+                                <div style="float: left;margin-right: 1px;">
+                                    <input id="paymentStatementEndTime" type="text" style="width: 87px;padding: 2px 2px;border-radius: 5px;" class="form-control dfp-ele-input-tool" readonly="readonly">
+                                </div>
+                                <div style="float: right;">
+                                    <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="刷新" id="zfqkRefresh">
+                                        <i class="fa fa-fw fa-refresh" style="padding: 0;"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div id="paymentStatementContent" class="box-body" style="height: 336px;">
+
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!--/支付情况-->
+
+                </div>
+                <!-- /right -->
+
+            </div>
+
+        </section>
+    </div>
+
+</div>
+<!-- ./wrapper -->
+
+<script src="lib/js/jquery-2.1.4.min.js"></script>
+<script src="lib/js/jquery-ui.min.js"></script>
+<script>
+    $.widget.bridge('uibutton', $.ui.button);
+</script>
+<script src="lib/js/bootstrap.min.js"></script>
+<script src="lib/js/app.min.js"></script>
+
+<!--layer-->
+<script src="plugins/layer/layer.js"></script>
+
+<script charset="utf-8" src="js/dfp/dfp.js"></script>
+<!--<script charset="utf-8" src="js/pageGKZGTZ.js"></script>-->
+</body>
+</html>

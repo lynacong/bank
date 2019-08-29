@@ -1,0 +1,177 @@
+<div class="container-fluid h" >
+	<div class="config-btn">
+		<button type="button" class="btn btn-config" onclick="refreshTree()">刷新</button>
+		<button type="button" class="btn btn-config" onclick="add()">新增</button>
+		<button type="button" class="btn btn-config" onclick="modify()">修改</button>
+		<button type="button" class="btn btn-danger" onclick="del()">删除</button>
+	</div>
+	<div class="config-search clearfix mb5" id="tabbed-plan">
+		<label for="finance_code">财政机构</label>
+		<select class="form-control ebank-input" id="finance_code" onchange="fGetGrid()"></select>
+	</div>
+
+	<div class="config-main-hassearch clearfix">
+		<div class="col-sm-4 border tree-sidebar">
+				<div id="treeTest2" class="ztree"
+					u-meta='{"id":"tree_elerule","data":"treeDataTable","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"show_name","setting":"treeSetting"}'></div>
+		</div>
+		<div class="col-sm-8">
+			<table class="table-striped table table-bordered table-hover table-condensed" id="gridTest"
+				style="width:100%;">
+				<thead>
+					<tr>
+						<th>要素名称</th>
+						<th>要素级次</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<!-- 新增/修改Modal start-->
+		<div class="modal fade" id="addBalanceSetModel" tabindex="-1" role="dialog"
+			aria-labelledby="ylModalLabel" data-backdrop="static" style="height:900px;">
+			<div class="modal-dialog" role="document" style="width:650px;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" onclick="closeModel()"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="titleText"></h4>
+					</div>
+					<div class="modal-body">
+						<div class="base-info">
+							<span class="glyphicon glyphicon-stop mb10" style="color:#4A90E2;margin-right:10px;"></span>额度基本信息
+							<div class="row">
+								<div class="col-md-6">
+									<label class="col-md-4 text-right" for="billtypeCode">
+										<span class="color-red">*</span>额度编号：</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" id="billTypeCode">
+									</div>
+								</div>
+								<div class="col-md-6 ">
+									<label class="col-md-4 text-right" for="billTypeName">
+										<span class="color-red">*</span>额度名称：</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control" id="billTypeName">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row mt5 config-info">
+							<div class="col-md-6" >
+								<span class="glyphicon glyphicon-stop" style="color:#4A90E2;margin-right:10px;"></span>额度配置列表
+								<div class="border" style="height:162px;">
+									<div id="viewTree" class="ztree"
+										u-meta='{"id":"viewDetailTree","data":"viewDetailTree","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"name","setting":"detailTreeSetting"}'>
+									</div>
+								</div>
+								<div class="pt10">
+									<button type="button" class="btn btn-config" onclick="addColumnButton()">添加</button>
+									<button type="button" class="btn btn-danger" onclick="delColumnButton()">删除</button>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<span class="glyphicon glyphicon-stop" style="color:#4A90E2;margin-right:10px;"></span>配置详细信息
+								<div class="h p10 border">
+									<div class="col-md-12">
+										<label class="col-md-4 text-right" for="ele_code">要素编码：</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" id="ele_code" onkeyup="changeDeatil(this)">
+										</div>
+									</div>
+									<div class="col-md-12">
+										<label class="col-md-4 text-right" for="ele_name">要素名称：</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" id="ele_name" onkeyup="changeDeatil(this)">
+										</div>
+									</div>
+									<div class="col-md-12">
+										<label class="col-md-4 text-right" for="level_num">级次：</label>
+										<div class="col-md-8">
+											<select class="form-control" id="level_num" onchange="changeDeatil(this)">
+												<option value="-2">任意级</option>
+												<option value="-1">底级</option>
+												<option value="0">顶级</option>
+												<option value="1">1级</option>
+												<option value="2">2级</option>
+												<option value="3">3级</option>
+												<option value="4">4级</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<label class="col-md-4 text-right" for="ele_rule">编码规则：</label>
+										<div class="col-md-8">
+											<input type="text" class="form-control" id="ele_rule" onkeyup="changeDeatil(this)">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>						
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" onclick="saveOrUpdate()">确定</button>
+						<button type="button" class="btn btn-primary" onclick="closeModel()">退出</button>
+					</div>
+				</div>
+			</div>
+		</div> 
+	<!-- 详细信息新增界面 -->
+	<div class="modal fade" id="addCol" role="dialog" tabindex="-1" data-backdrop="static">
+		<div class='modal-dialog' role="document" style="width:400px;">
+			<div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' aria-label="Close" onclick="cancelAddDetailButton()">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class='modal-title'>添加额度配置</h4>
+				</div>
+				<div class='modal-body row'>
+					<div class="col-sm-12">
+						<label class="col-sm-4 text-right" for="addCode"><span class="color-red">*</span>要素编码：</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="addCode">
+						</div>
+				   </div>
+				   <div class="col-sm-12">
+						<label class="col-sm-4 text-right" for="addName"><span class="color-red">*</span>要素名称：</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="addName">
+						</div>
+				   </div>
+				   <div class="col-sm-12">
+						<label class="col-sm-4 text-right" for="addNum"><span class="color-red">*</span>级次：</label>
+						<div class="col-sm-8">
+							<select class="form-control" id="addNum">
+								<option value="-2">任意级</option>
+								<option value="-1">底级</option>
+								<option value="0">顶级</option>
+								<option value="1">1级</option>
+								<option value="2">2级</option>
+								<option value="3">3级</option>
+								<option value="4">4级</option>
+						</select>
+						</div>
+				   </div>
+				   <div class="col-sm-12">
+						<label class="col-sm-4 text-right" for="addRule"><span class="color-red">*</span>编码规则：</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" id="addRule">
+						</div>
+				   </div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="eleConfirmButton"
+							onclick="addDetailButton()" class="btn btn-primary">保存</button>
+					<button type="button" id="eleCloseButton"
+						onclick="cancelAddDetailButton()" class="btn btn-primary">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

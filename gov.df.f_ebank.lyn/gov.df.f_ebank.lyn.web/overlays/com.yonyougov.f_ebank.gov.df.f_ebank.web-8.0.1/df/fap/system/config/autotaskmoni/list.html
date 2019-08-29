@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;IE=11;IE=10;IE=9;IE=8;"/>
+    <title>任务监控</title>
+    <link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../trd/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/u.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/tree.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../trd/ip/changeTree/changeTree.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../trd/uui/css/grid.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/ip.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../trd/ip/css/platform.css"/>
+    <link rel="stylesheet" type="text/css" href="../ncrd.css"/>
+	<!--[if lte IE 9]>
+		<link rel="stylesheet" type="text/css" href="../ncrd-ie9.css" />
+    <![endif]-->
+</head>
+
+<body>
+<!--定时任务监控页面-->
+<div id="timingTask-list-contanier" class="container-fluid ncrd collapse in">
+    <!-- 按钮 -->
+    <div class="col-sm-12 col-md-12">
+        <div class="row padding-top-10 padding-bottom-10">
+            <div class="col-md-12">
+                <div class="right-btngroup">
+                    <!-- 按钮组 -->
+                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target=""
+                            data-bind="click: hangTask">挂起
+                    </button>
+                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target=""
+                            data-bind="click: restoreTask">恢复
+                    </button>
+                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target=""
+                            data-bind="click: performTask">手工执行
+                    </button>
+                    <button type="button" class="btn btn-danger " data-toggle="modal" data-target=""
+                            data-bind="click: showGrid">刷新
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="right-grid">
+                    <!--表格列表 -->
+                    <div u-meta='{"id":"grid","data":"gridDataTable","type":"grid","sortable":false,"editable":false,"columnMenu":false,"autoExpand":false,"showTree":false,"keyField":"theId","parentKeyField":"parentId"}'>
+                        <div options='{"field":"autotask_no","dataType":"String","title":"序号","editType":"string","width": 60}'></div>
+                        <div options='{"field":"autotask_id","dataType":"String","title":"任务ID","editType":"string","width": 110 ,"visible":false}'></div>
+                        <div options='{"field":"autotask_code","dataType":"String","title":"任务编码","editType":"string","width": 110}'></div>
+                        <div options='{"field":"autotask_name","dataType":"String","title":"任务名称","editType":"string","width": 178}'></div>
+                        <div options='{"field":"start_time","dataType":"String","title":"开始时间","editType":"string","width": 160}'></div>
+                        <div options='{"field":"last_exe_time","dataType":"String","title":"最后结束时间","editType":"string","width": 160}'></div>
+                        <div options='{"field":"total_count","dataType":"String","title":"运行总数","editType":"string","width": 100}'></div>
+                        <div options='{"field":"success_count","dataType":"String","title":"运行成功次数","editType":"string","width": 120}'></div>
+                        <div options='{"field":"fail_count","dataType":"String","title":"运行失败次数","editType":"string","width": 120}'></div>
+                        <div options='{"field":"task_status_name","dataType":"String","title":"当前状态","editType":"string","width": 260}'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--右键菜单-->
+<div class="clickContent panel panel-default"
+     style="position: absolute;background-color: #ccc;width: 80px;display: none;">
+    <ul style="list-style: none;text-align: center">
+        <li data-bind="click: hangTask">挂起</li>
+        <li data-bind="click: restoreTask">恢复</li>
+        <li data-bind="click: performTask">手工执行</li>
+        <li data-bind="click: showGrid">刷新</li>
+    </ul>
+</div>
+
+<!-- 引入js-->
+<script src="../../../../trd/requirejs/require.debug.js"></script>
+<script src="../../../../require.config.js"></script>
+<script src="list.js" type="text/javascript"></script>
+</body>
+
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible"
+	content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+<title>单位处室配置</title>
+<meta name="author" content="ip">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css"
+	href="/df/trd/ip/css/platform.css" />
+<link rel="stylesheet" type="text/css" href="./agencymb.css" />
+</head>
+
+<body>
+	<div class="menuConfig-body">
+		<div id="menubody" class="menubody">
+			<div class="bodySize row">
+				<div class='tree-block col-md-3'>
+					<div class="form-group search-form" style="margin: 5px;">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="模糊查询"
+								aria-describedby="basic-addon1"
+								data-bind="event:{keyup:quickQuery}"
+								onkeydown='if(event.keyCode==13){menuTreeNext();}'
+								id="quickquery"> <span class="input-group-addon"
+								onclick="menuTreeNext()"><span
+								class="glyphicon glyphicon-search"></span> </span>
+						</div>
+					</div>
+					<div class="menuTree">
+						<div id="menuConfigTree" class="ztree"
+							u-meta='{"id":"menuConfigTree1","data":"treeDataTable","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"codename","setting":"treeSetting"}'></div>
+					</div>
+				</div>
+				<div class='menu-tabs col-md-9'>
+					<div style="height: 40px;">
+						<button id="addViewBtn" type="button"
+							class="btn btn-primary add-btn" data-toggle="modal"
+							data-bind="click: addbtn">新&nbsp;增</button>
+						<button id="addViewBtn" type="button"
+							class="btn btn-primary add-btn" data-toggle="modal"
+							data-bind="click: editbtn">修&nbsp;改</button>
+						<button id="delViewBtn" type="button"
+							class="btn btn-danger del-btn" data-bind="click: delbtn">删&nbsp;除</button>
+					</div>
+					<div type="text" class="menu-grid"
+						u-meta='{"id":"write-grid","data":"gridDataTable","type":"grid","editable":false,"autoExpand":false,"showTree":false,"showNumCol":true,"keyField":"theId","parentKeyField":"parentId","multiSelect":true,"height":500,"headerHeight":25,"rowHeight":25}'>
+						<div
+							options='{"field":"chr_code","dataType":"String","title":"编号","editType":"string"}'></div>
+						<div
+							options='{"field":"chr_name","dataType":"String","title":"名称","editType":"string"}'></div>
+						<div
+							options='{"field":"parent_name","dataType":"String","title":"所属单位","renderType":"changeType","editType":"string"}'></div>
+						<div
+							options='{"field":"disp_code","dataType":"String","title":"顺序","editType":"string"}'></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- addModal -->
+	<div class="modal fade" id="addRoleModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" style="width:400px">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">新增处室</h4>
+				</div>
+				<div class="modal-body clearfix">
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label"><span
+							class="star-color" style="font-size: 15px;">*</span>处室:</label>
+						<div class="input-group col-md-8 ip-input-group">
+							<input id="belonemb" type="text" class="form-control col-md-8"
+								readonly="readonly"> <input id="belonemb-h"
+								type="hidden"> <span id="belonemb-span"
+								class="input-group-addon belon-class"> <span
+								class="glyphicon glyphicon-list"></span>
+							</span>
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label"><span
+							class="star-color" style="font-size: 15px;">*</span>所属单位:</label>
+						<div class="input-group col-md-8 ip-input-group">
+							<input id="beloneorg" type="text" class="form-control col-md-8"
+								readonly="readonly"> <input id="beloneorg-h"
+								type="hidden"> <span id="beloneorg-span"
+								class="input-group-addon belon-class"> <span
+								class="glyphicon glyphicon-list"></span>
+							</span>
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label">显示顺序:</label>
+						<div class="input-group col-md-8 ip-input-group">
+							<input type="text" class="form-control" id="disp_order"
+							onKeyUp="value=value.replace(/[^\d]/g,'')" placeholder="请输入数字">
+						</div>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bind="click:ensure">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- addModal -->
+	<div class="modal fade" id="editRoleModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" style="width:400px">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel1">新增顺序</h4>
+				</div>
+				<div class="modal-body clearfix">
+				    <input id="chr_id1"  type="hidden">
+					<div class="form-group clearfix">
+						<input type="hidden" class="form-control" id="role_id"> <label
+							class="col-md-4 control-label"><span class="star-color"
+							style="font-size: 15px;">*</span>处室:</label>
+						<div class="input-group col-md-8 ip-input-group">
+							<input type="text" class="form-control" id="mb" readonly="readonly">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label"><span
+							class="star-color" style="font-size: 15px;">*</span>所属单位:</label>
+						<div class="input-group col-md-8 ip-input-group">
+							<input type="text" class="form-control" id="org" readonly="readonly">
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label class="col-md-4 control-label">显示顺序:</label>
+						<div class="input-group col-md-8 ip-input-group">
+							<input type="text" class="form-control" id="disp_order1"
+							onKeyUp="value=value.replace(/[^\d]/g,'')" placeholder="请输入数字">
+						</div>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary"
+						data-bind="click:ensure1">确定</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="/df/trd/requirejs/require.js"></script>
+<script src="/df/require.config.js"></script>
+<script src="./agencymb.js"></script>
+</html>

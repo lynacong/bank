@@ -1,0 +1,19 @@
+.left-container{
+    float: left;
+    width: 600px;
+    height: 100%;
+    border: 1px solid #ccc;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.right-container {
+    margin-left:600px;
+    height: 100%;
+    border: 1px solid #ccc;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;    
+    border: 1px solid #ccc;
+}

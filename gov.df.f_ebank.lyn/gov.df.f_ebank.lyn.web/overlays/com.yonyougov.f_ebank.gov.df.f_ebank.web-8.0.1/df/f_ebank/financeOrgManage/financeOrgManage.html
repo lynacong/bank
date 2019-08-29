@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta http-equiv="X-UA-Compatible"
+	content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+	<title>财政机构管理</title>
+	<meta name="author" content="ip">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+	<!-- <link rel="stylesheet" type="text/css" href="/df/trd/ip/css/platform.css" /> -->
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />	
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/theme/blue.css" />
+	<link rel="stylesheet" type="text/css" href="./financeOrgManage.css" />
+</head>
+
+<body>
+	<div class="container-fluid h100per">
+		<div class="row btn-bar btn-group epay-header" role="group" aria-label="">
+			<button type="button" class="btn btn-primary" data-bind="click:refresh">刷新</button>
+			<button type="button" class="btn btn-primary" data-bind="click:addOrg">新增</button>
+			<button type="button" class="btn btn-primary" data-bind="click:modifyOrg">修改</button>
+			<button type="button" class="btn btn-primary" data-bind="click:disable">停用</button>
+			<button type="button" class="btn btn-primary" data-bind="click:enable">启用</button>
+			<button type="button" class="btn btn-danger" data-bind="click:delOrg">删除</button>
+		</div>
+		<div class="row epay-content">
+			<div class="col-sm-12 pt10">
+				<div id="orgGrid" u-meta='{"id":"grid","type":"grid","data":"gridDataTable","showNumCol":"true","canDrag":true,"sortable":false,"canSwap":false,"columnMenu": true,"rowHeight": 32,"headerHeight":32}'>
+				<div options='{"field":"chr_name","width":150,"dataType":"String","title":"财政机构名称"}'></div>
+				<div options='{"field":"chr_code","width":150,"dataType":"String","title":"财政机构编码"}'></div>
+				<div options='{"field":"finance_org","width":150,"dataType":"String","title":"机构码"}'></div>
+				<div options='{"field":"tre_no","width":150,"dataType":"String","title":"国库主体代码"}'></div>
+				<div options='{"field":"tre_org_no","width":150,"dataType":"String","title":"财政机构代码"}'></div>
+				<div options='{"field":"is_clear","width":120,"dataType":"String","title":"是否清算"}'></div>
+				<!-- <div options='{"field":"is_dxp","width":120,"dataType":"String","title":"是否有dxp同步"}'></div> -->
+				<div options='{"field":"enabled","width":40,"dataType":"String","title":"是否启用"}'></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+		<!-- 新增/修改Modal start-->
+		<div class="modal fade" id="orgSetModel" tabindex="-1" role="dialog"
+			aria-labelledby="ylModalLabel" data-backdrop="static">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>	
+						<h4 class="modal-title" id="titleText"></h4>
+					</div>
+					<div class="modal-body display-container">
+							<div class="form-group col-md-12">
+								<label for="orgCode" class="col-md-3 text-right">财政机构编码：</label> 
+								<div class="input-group col-md-8">
+									<input type="text" id="orgCode" class="form-control"  />
+								</div>
+							</div>
+							<div class="form-group col-md-12">
+								<label for="orgName" class="col-md-3 text-right">财政机构名称：</label> 
+								<div class="input-group col-md-8">
+									<input type="text"  id="orgName" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group col-md-12">
+								<label for="financeOrg" class="col-md-3 text-right">机构码：</label> 
+								<div class="input-group col-md-8">
+									<input type="text"  id="financeOrg" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group col-md-12">
+								<label for="treNo" class="col-md-3 text-right">国库主体代码：</label> 
+								<div class="input-group col-md-8">
+									<input type="text"  id="treNo" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group col-md-12">
+								<label for="treOrgNo" class="col-md-3 text-right">国库机构代码：</label> 
+								<div class="input-group col-md-8">
+									<input type="text"  id="treOrgNo" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group col-md-12">
+								<label for="isClear" class="col-md-3 text-right">是否清算：</label>
+								<div class="input-group col-md-8">
+									<select id="isClear" class="form-control">
+										<option value="0">不清算</option>
+										<option value="1">清算</option>
+									</select>
+								</div>
+							</div>
+							<!-- <div class="form-group col-md-12">
+								<label for="isDxp" class="col-md-3 text-right">是否有dxp同步：</label>
+								<div class="input-group col-md-8">
+									<select id="isDxp" class="form-control">
+										<option value="0">无</option>
+										<option value="1">用友</option>
+										<option value="2">龙图</option>
+									</select>
+								</div>
+							</div> -->
+							<div class="form-group col-md-12" id='finance_code'>
+								<label for="financeCode" class="col-md-3 text-right">配置模板：</label> 
+								<div class="input-group col-md-8">
+									<select id="financeCode" class="form-control">
+									</select>
+								</div>
+							</div>
+							<div class="form-group col-md-12">
+								<label for="orgEnabled" class="col-md-3 text-right">是否启用：</label>
+								<div class="input-group col-md-8">
+									<select id="orgEnabled" class="form-control">
+										<option value="0">停用</option>
+										<option value="1">启用</option>
+									</select>
+								</div>
+							</div>
+					</div>
+					<div class="modal-footer" style="clear: both;">
+						<button type="button" class="btn btn-primary" data-bind="click:save">确定</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">退出</button>
+					</div>
+				</div>
+			</div>
+	</div>
+	<!-- 新增/修改Modal end-->
+	</div>
+</body>
+<!--<script src="/df/trd/knockout/knockout-3.2.0.debug.js"></script>-->
+<script src="/df/trd/requirejs/require.js"></script>
+<script src="/df/require.config.js"></script>
+<script src="../common/ebankConstants.js"></script>
+<script src="./financeOrgManage.js"></script>
+</html>

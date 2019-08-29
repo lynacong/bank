@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge;IE=11;IE=10;IE=9;IE=8;" />
+	<title>系统编码</title>
+	<meta name="author" content="ip">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/u.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/grid.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/platform.css" />
+	<link rel="stylesheet" type="text/css" href="./subsystem.css" />
+</head>
+<body>
+<div class="subsystem-content">
+	<div class="operate-area">
+    	<button class="btn btn-primary" data-bind="click: subAddRow">新增</button>
+    	<button class="btn btn-primary" data-bind="click: subDeleRow">删除</button>
+    	<button class="btn btn-primary" data-bind="click: subSaveRow">保存</button>
+	</div>
+	<div class="subsystem-grid-area">
+		<div class="subsystem-grid" u-meta='{"id":"subsystem-grid","type":"grid","data":"subsystemDatatable","columnMenu":true,"multiSelect":true,"showNumCol": true,"editable":true,"headerHeight":25,"rowHeight":25,"contentFocus":true,"cancelSelect":false,"cancelFocus":false}'>
+			<div options='{"field":"sys_id","dataType":"String","title":"编码","editType":"editFun"}'></div>
+			<div options='{"field":"sys_name","dataType":"time","title":"名称","editType":"editFun"}'></div>
+			<div options='{"field":"sys_desc","dataType":"String","title":"描述"}'></div>
+			<div options='{"field":"enabled","dataType":"String","title":"启用","editOptions":{"id":"combobox1","type":"combo","datasource":"comItems"},"editType":"combo","renderType":"comboRender"}'></div>
+			<div options='{"field":"version","dataType":"String","title":"版本","editType":"editFun"}'></div>
+		</div>
+	</div>
+</div>
+	<script src="/df/trd/jquery/jquery-1.12.3.min.js"></script>
+    <script src="/df/trd/knockout/knockout-3.2.0.debug.js"></script>
+	<script src="/df/trd/requirejs/require.js"></script>
+    <script src="/df/require.config.js"></script>
+	<script src="./subsystem.js"></script>
+</body>
+</html>

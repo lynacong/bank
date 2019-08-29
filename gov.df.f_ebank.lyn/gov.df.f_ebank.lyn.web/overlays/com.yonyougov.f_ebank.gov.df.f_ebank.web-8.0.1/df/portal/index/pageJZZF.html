@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>主管部门</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <link rel="stylesheet" href="/df/trd/uui/css/u.css" type="text/css">
+	<link rel="stylesheet" href="/df/trd/uui/css/grid.css" type="text/css">
+	<link rel="stylesheet" href="/df/trd/ip/css/ip.css" type="text/css">
+	<link rel="stylesheet" href="/df/trd/ip/css/bizSys.css" type="text/css">
+	<link rel="stylesheet" href="/df/trd/ip/css/theme/blue.css" type="text/css">
+	<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/df/trd/datetimepicker/css/bootstrap-datetimepicker.min.css">
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/tree.css">
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/changeTree/changeTree.css">
+
+	<link rel="stylesheet" href="lib/css/bootstrap.min.css">
+	<link rel="stylesheet" href="lib/css/font-awesome.min.css">
+	<link rel="stylesheet" href="lib/css/ionicons.min.css">
+	<link rel="stylesheet" href="lib/css/AdminLTE.min.css">
+	<link rel="stylesheet" href="lib/css/_all-skins.min.css">
+	<link rel="stylesheet" href="css/dfp.css">
+
+	<style>
+		/* 常用操作 */
+		/*#often > div > ul > li {float: left;background: #f8f8f8;width: 20%;margin-right: 20px;border: solid 1px #ccc;border-radius: 5px;text-align: center;height: 40px;}*/
+		/*#often > div > ul > li > a {font-size: 16px;color: #000;height: 45px;line-height: 35px;}*/
+		/*#often > div > ul > li > a > img {height: 30px;width: 30px;padding-right: 30px;}*/
+		/*#often > div > ul > li:HOVER {background: #108ee9;}*/
+		/*#often > div > ul > li:HOVER > a {color: #f8f8f8;}*/
+		/*#often > div > ul > li:HOVER > a > img {color: #f8f8f8;}*/
+
+		/* 单位操作表格 */
+		#agencyOperation > div > ul {height: 30px;}
+		#agencyOperation > div > ul > li {border-top: 0;width: 150px;}
+		#agencyOperation > div > ul > li > a {height: 30px;position: relative;text-align: center;font-size: 16px;color: #000;padding-top: 3px;font-family: "微软雅黑";border-top-left-radius: 5px;border-top-right-radius: 5px;border: solid 1px #b39bbc;border-bottom: none;}
+		#agencyOperation > div > ul > li.active > a {background: #108ee9;color: #fff;}
+		#agencyOperation > div > div.tab-content {border-top: solid 1px #ddd;}
+
+		/* 我的单据 */
+		#selfDocuments > div > ul {height: 30px;}
+		#selfDocuments > div > ul > li {border-top: 0;width: 130px;}
+		#selfDocuments > div > ul > li > a {height: 30px;position: relative;text-align: center;font-size: 16px;color: #000;padding-top: 3px;font-family: "微软雅黑";border-top-left-radius: 5px;border-top-right-radius: 5px;border: solid 1px #b39bbc;border-bottom: none;}
+		#selfDocuments > div > ul > li.active > a {background: #108ee9;color: #fff;}
+		#selfDocuments > div > div.tab-content {border-top: solid 1px #ddd;}
+
+		.dfp-tab-table {
+			font-size: 14px;
+		}
+	</style>
+
+</head>
+<body class="hold-transition sidebar-mini sidebar-collapse" style="margin-left: -50px;width: auto;">
+<div class="wrapper">
+
+    <div class="content-wrapper" style="background: #f8f8f8;">
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <!-- top -->
+                <div class="col-md-11 col-lg-11">
+                    <!-- 常用操作 -->
+                    <div id="often" class="box box-default">
+                        <div class="box-body">
+                            <ul id="oftenUl">
+                                <li id="oftenUlBan" class="oftenUl-li" style="background: rgb(255, 255, 255); color: rgb(0, 0, 0);"><a href="javascript:void(0);" title="办理支付" class=""><img src="img/menu/often-ban.png">&nbsp;&nbsp;办理支付</a></li>
+                                <li id="oftenUlDan" class="oftenUl-li" style="background: rgb(255, 255, 255); color: rgb(0, 0, 0);"><a href="javascript:void(0);" title="业务单据" class=""><img src="img/menu/often-dan.png">&nbsp;&nbsp;业务单据</a></li>
+                                <li id="oftenUlCha" class="oftenUl-li" style="background: rgb(255, 255, 255); color: rgb(0, 0, 0);"><a href="javascript:void(0);" title="常用查询" class=""><img src="img/menu/often-cha.png">&nbsp;&nbsp;常用查询</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.常用操作 -->
+                
+                </div>
+                 <!--/. top -->
+                <!-- left -->
+                <div class="col-md-9 col-lg-9">
+                
+					
+                    
+                    <!-- 单位操作信息 -->
+                    <!-- <div class="box box-default">
+                    	<div class="box-header with-border" style="padding: 0;">
+                            <div class="pull-right box-tools" style="top: 8px;">
+								<button type="button" class="btn btn-info btn-sm" title="最大化" id="agencyOperationMax">
+									<i class="fa fa-fw fa-square-o" style="padding: 0;"></i>
+								</button>
+							</div>
+                        </div>
+                        <div id="agencyOperation" class="box-body">
+							<div class="nav-tabs-custom">
+								<ul id="agencyOperationLi" class="nav nav-tabs">
+									<li id="transferPaymentLi" class="active">
+										<a href="#transferPayment" data-toggle="tab">转移支付</a>
+									</li>
+								</ul>
+								<div id="agencyOperationContent" class="tab-content">
+									<div class="tab-pane" id="transferPayment">
+										<iframe src="" id="transferPaymentIframe"></iframe>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+                    </div> -->
+                    <!-- /.单位操作信息 -->
+                    <div class="box box-default">
+                        <div id="agencyOperation" class="box-body" style="padding-bottom: 0px;">
+                        	<div class="col-lg-3 col-md-3 col-xs-3 " style="padding: 0 5px 0 5px;">
+		                        <div class="small-box bg-green" style="background: #ffffff !important;border: solid 1px #e4d4d4;border-top: 2px solid #108EE9;margin-bottom: 10px;">
+		                            <div class="inner" style="color: #0c0c0c">
+		                                <h3>
+		                                    <img style="height: 80px; margin-left: 26px;" src="img/jzzf/zyzf.png">
+		                                    <span style="font-size: 18px;">转移支付</span>
+		                                </h3>
+		                                <p style="margin-left: 10px;font-weight: bold;border-top: 1px solid #D2EAFB;">
+		                                	待申请&nbsp; 
+		                                	<span style="float: right;">
+		                                		<span style="color: #F56A00;" id="transferPaymentBi">0</span>&nbsp;&nbsp;笔
+		                                	</span>
+		                                </p>
+		                                <p>
+		                                	<span style="float: right;font-weight: bold;">
+		                                		<span style="color: #F56A00;" id="transferPaymentMoney">0.00</span><span>元</span>
+		                                	</span>
+		                                </p>
+		                                <button disabled class="btn agencyOperationBtn" style="margin-left: 65%;margin-top: 20px;min-width: 35%;height: 30px;font-size: 16px;color: #108EE9;background: #ffffff;border:1px solid #D9D9D9;">
+		                                    <span style="position: relative;top: -2px;">去办理</span>
+		                                </button>
+		                            </div>
+		                        </div>
+		                    </div>
+		                    <div class="col-lg-3 col-md-3 col-xs-3 " style="padding: 0 5px 0 5px;">
+		                        <div class="small-box bg-green" style="background: #ffffff !important;border: solid 1px #e4d4d4;border-top: 2px solid #37A66E;margin-bottom: 10px;">
+		                            <div class="inner" style="color: #0c0c0c">
+		                                <h3>
+		                                    <img style="height:80px; margin-left:26px;" src="img/jzzf/tsdw.png">
+		                                    <span style="font-size: 18px;">特殊单位</span>
+		                                </h3>
+		                                <p style="margin-left: 10px;font-weight: bold;border-top: 1px solid #D2EAFB;">待申请&nbsp; <span style="float: right;"><span style="color: #F56A00;" id="specialSecretAgencyBi">0</span>&nbsp;&nbsp;笔</span></p>
+		                                <p><span style="float: right;font-weight: bold;"><span style="color: #F56A00;" id="specialSecretAgencyMoney">0.00</span><span>元</span></span></p>
+		                                <button disabled class="btn agencyOperationBtn" style="margin-left: 65%;margin-top: 20px;min-width: 35%;height: 30px;font-size: 16px;color: #108EE9;background: #ffffff;border:1px solid #D9D9D9;">
+		                                    <span style="position: relative;top: -2px;">去办理</span>
+		                                </button>
+		                            </div>
+		                        </div>
+		                    </div>
+		                    <div class="col-lg-3 col-md-3 col-xs-3 " style="padding: 0 5px 0 5px;">
+		                        <div class="small-box bg-green" style="background: #ffffff !important;border: solid 1px #e4d4d4;border-top: 2px solid #F56A00;margin-bottom: 10px;">
+		                            <div class="inner" style="color: #0c0c0c">
+		                                <h3>
+		                                    <img style="height:80px; margin-left:16px;" src="img/jzzf/fysdw.png">
+		                                    <span style="font-size: 18px;">非预算单位</span>
+		                                </h3>
+		                                <p style="margin-left: 10px;font-weight: bold;border-top: 1px solid #D2EAFB;">待申请&nbsp; <span style="float: right;"><span style="color: #F56A00;" id="nDepartmentBudgetBi">0</span>&nbsp;&nbsp;笔</span></p>
+		                                <p><span style="float: right;font-weight: bold;"><span style="color: #F56A00;" id="nDepartmentBudgetMoney">0.00</span><span>元</span></span></p>
+		                                <button disabled class="btn agencyOperationBtn" style="margin-left: 65%;margin-top: 20px;min-width: 35%;height: 30px;font-size: 16px;color: #108EE9;background: #ffffff;border:1px solid #D9D9D9;">
+		                                    <span style="position: relative;top: -2px;">去办理</span>
+		                                </button>
+		                            </div>
+		                        </div>
+		                    </div>
+		                    <div class="col-lg-3 col-md-3 col-xs-3 " style="padding: 0 5px 0 5px;">
+		                        <div class="small-box bg-green" style="background: #ffffff !important;border: solid 1px #e4d4d4;border-top: 2px solid #6D65BC;margin-bottom: 10px;">
+		                            <div class="inner" style="color: #0c0c0c">
+		                                <h3>
+		                                    <img style="height:80px; margin-left:26px;" src="img/jzzf/tfgz.png">
+		                                    <span style="font-size: 18px;">统发工资</span>
+		                                </h3>
+		                                <p style="margin-left: 10px;font-weight: bold;border-top: 1px solid #D2EAFB;">待申请&nbsp; <span style="float: right;"><span style="color: #F56A00;" id="payRollBi">0</span>&nbsp;&nbsp;笔</span></p>
+		                                <p><span style="float: right;font-weight: bold;"><span style="color: #F56A00;" id="payRollMoney">0.00</span><span>元</span></span></p>
+		                                <button disabled class="btn agencyOperationBtn" style="margin-left: 65%;margin-top: 20px;min-width: 35%;height: 30px;font-size: 16px;color: #108EE9;background: #ffffff;border:1px solid #D9D9D9;">
+		                                    <span style="position: relative;top: -2px;">去办理</span>
+		                                </button>
+		                            </div>
+		                        </div>
+		                    </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 支付监控 -->
+                    <div class="box box-default">
+                    	<div class="box-header with-border">
+                            <h3 class="box-title" style="width: 170px;padding-left: 20px;height: 35px;line-height: 35px;display: inline-block;font-family: 微软雅黑;font-size: 16px;float: left;color:#128FE9;font-weight: bold;/* background: url(img/zb-bg.png) left center no-repeat; */margin: -10px;">支付监控</h3>
+                        </div>
+                        <div id="paymentMonitoring" class="box-body">
+                            <div id="paymentMonitoringDiv" u-meta='{"id":"paymentMonitoringGrid","height":"355px","type":"grid","data":"dataTable","editable":false,"onBeforeEditFun":"tableBeforeEdit","onDblClickFun":"tableDbCLick","rowHeight":"30","needLocalStorage": false,"headerHeight":"36","sortable":true}'>
+								<div options='{"field":"file_name","width":"auto","dataType":"String","title":"疑点事项","renderType":"changeColorNormal"}'></div>
+								<div options='{"field":"is_zfcg","width":"120px","dataType":"String","title":"处理中（笔数）","renderType":"changeColorNormal"}'></div>
+								<div options='{"field":"agencyexp_name","width":"120px","dataType":"String","title":"待处理（笔数）","renderType":"changeColorNormal"}'></div>
+								<div options='{"field":"bis_name","width":"120px","dataType":"String","title":"已处理（笔数）","renderType":"changeColorNormal"}'></div>
+							</div>
+                        </div>
+                    </div>
+                    <!-- /.支付监控 -->
+                    
+                </div>
+                <!-- /left -->
+                
+                <!-- right -->
+                <div class="col-lg-3 col-md-3" style="padding-left: 0px;">
+	            	<!-- fiscal -->
+                  <!--   <div id="fiscalCheck" class="input-group">
+                        <input id="fiscalInput" type="text" class="form-control" style="height: 40px;" placeholder="请输入关键词">
+                        <span class="input-group-addon" style="cursor: pointer;height: 40px;">
+                        	<img id="fiscalSubImg" style="transform: scale(1.3, 1.3) !important;transition:all 0.5s !important;" src="img/dashboard/search1.png"/>
+                        </span>
+                    </div> -->
+                    <!-- /.fiscal -->
+                    
+                    <!-- 我的单据 -->
+                    <div class="box box-default">
+						<div class="box-header with-border" style="padding: 0;">
+							<div class="pull-right box-tools">
+								<button type="button" class="btn btn-info btn-sm" title="刷新" id="selfDocumentsRefresh">
+									<i class="fa fa-fw fa-refresh" style="padding: 0;"></i>
+								</button>
+							</div>
+						</div>
+                        <div id="selfDocuments" class="box-body" style="padding: 5px;">
+                        	<div class="nav-tabs-custom">
+								
+							</div>
+                        </div>
+                        <div id="selfDocumentsRefreshCover" class="overlay" style="display: none;">
+                            <img style="position: absolute;height: 100px;left: 50%;top: 50%;margin-left: -40px;margin-top: -50px;" src="/df/portal/admin/index/img/loading-refresh.gif">
+                        </div>
+                    </div>
+                    <!-- /.我的单据 -->
+                    
+                    <!-- 待办 -->
+                    <div id="dealing" class="box box-default dfp-box" style="height: 215px;">
+                        <div class="box-header with-border dfp-box-header">
+                            <h3 class="box-title dfp-box-title">待办事项</h3>
+                            <div class=" box-tools">
+                                <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="刷新" id="dealingRefresh">
+                                    <i class="fa fa-fw fa-refresh" style="padding: 0;"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div id="dealingContent" class="box-body" style="height: 177px;overflow-y: auto;">
+                            <ul></ul>
+                        </div>
+                        <!-- /.box-body -->
+                        <div id="dealingRefreshCover" class="overlay" style="display: none;">
+                            <img style="position: absolute;height: 65px;left: 50%;top: 50%;margin-left: -40px;margin-top: -30px;" src="/df/portal/admin/index/img/loading-refresh.gif">
+                        </div>
+                    </div>
+                    <!-- /.待办 -->
+                    
+                    <!-- 公告 -->
+					<div id="article" class="box box-default dfp-box" style="height: 150px;">
+						<div class="box-header with-border dfp-box-header">
+							<h3 class="box-title dfp-box-title">公告信息</h3>
+							<div class=" box-tools">
+								<button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="刷新" id="articleRefresh">
+									<i class="fa fa-fw fa-refresh" style="padding: 0;"></i>
+								</button>
+							</div>
+						</div>
+						<!-- /.box-header -->
+						<div id="articleContent" class="box-body" style="height: 115px;overflow-y: auto;overflow-x: hidden;">
+							<ul></ul>
+						</div>
+						<!-- /.box-body -->
+						<div id="articleRefreshCover" class="overlay" style="display: none;">
+							<img style="position: absolute;height: 65px;left: 50%;top: 50%;margin-left: -40px;margin-top: -30px;" src="/df/portal/admin/index/img/loading-refresh.gif">
+						</div>
+					</div>
+                    <!-- /.公告 -->
+                    
+                </div>
+                <!-- /right -->
+
+            </div>
+
+        </section>
+    </div>
+
+</div>
+<!-- ./wrapper -->
+
+<script src="lib/js/jquery-2.1.4.min.js"></script>
+<script src="lib/js/jquery-ui.min.js"></script>
+<script>
+    $.widget.bridge('uibutton', $.ui.button);
+</script>
+<script src="lib/js/bootstrap.min.js"></script>
+<script src="lib/js/app.min.js"></script>
+
+<script src="/df/trd/uui/js/u-polyfill.js"></script>
+<script src="/df/trd/knockout/knockout-3.2.0.debug.js"></script>
+<script src="/df/trd/uui/js/u.js"></script>
+<script src="/df/trd/uui/js/u-grid.js"></script>
+<script charset="utf-8" src="/df/trd/ip/js/ip.js"></script>
+<!-- xml导出 -->
+<script src="/df/trd/jszip/jszip.js"></script>
+<script src="/df/trd/xlsx/xlsx.js"></script>
+<script src="/df/trd/blob/Blob.js"></script>
+<script src="/df/trd/fileSaver/FileSaver.min.js"></script>
+
+<script src="/df/trd/md5/js/md5.js"></script>
+<script src="plugins/layer/layer.js"></script>
+<script src="plugins/lodash/lodash.js"></script>
+
+<script charset="utf-8" src="js/dfp/dfp.js"></script>
+<script charset="utf-8" src="js/dfp/dfpMenu.js"></script>
+<script charset="utf-8" src="js/dfp/dfpPayProgress.js"></script>
+<script charset="utf-8" src="js/dfp/dfpArticle.js"></script>
+<script charset="utf-8" src="js/dfp/dfpDealing.js"></script>
+<script charset="utf-8" src="js/dfp/dfpGrid.js"></script>
+<script charset="utf-8" src="js/dfp/dfpElement.js"></script>
+<script charset="utf-8" src="js/pageJZZF.js"></script>
+
+</body>
+</html>

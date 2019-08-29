@@ -1,0 +1,32 @@
+.wrapper{
+	padding:10px;
+}
+.module-title{
+	background: #FBFBFB;
+	border: 1px solid #E5E5E5;
+	padding:10px;
+}
+.module-content{
+	padding:20px 30px;
+}
+select.module-select{
+	display:inline-block;
+	width:220px;
+	padding: 0px 12px;
+}
+.radio-inline{
+	margin-right:15px;
+}
+.title-color{
+	color:#1296DB;
+	padding-right:5px;
+}
+.little-module{
+	margin-top:5px;
+}
+.btn-moduel{
+	text-align:center;
+}
+.btn-moduel .btn-primary{
+	margin-right:5px;
+}

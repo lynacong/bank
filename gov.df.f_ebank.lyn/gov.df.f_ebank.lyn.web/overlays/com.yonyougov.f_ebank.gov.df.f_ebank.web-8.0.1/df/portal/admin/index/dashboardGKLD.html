@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>国库-管理人员</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="css/lte/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/lte/AdminLTE.min.css">
+    <link rel="stylesheet" href="css/lte/_all-skins.min.css">
+
+    <!--datepicker-->
+    <link rel="stylesheet" href="css/lte/foundation-datepicker.css">
+
+    <link rel="stylesheet" href="css/dfp.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/gkzgtz/dashboardGKZGTZ.css">-->
+
+</head>
+<body class="hold-transition sidebar-mini sidebar-collapse">
+<div class="wrapper">
+
+    <div class="content-wrapper" style="background: #f8f8f8;">
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-11 dfp-left" style="width: 90%;">
+                    <div id="topPaymentStatementText" class="box box-default">
+                        <div class="box-body" style="padding-bottom: 0px;">
+                            <span style="font-size: 15px;">
+                                本年财政总指标金额 <span class="dfp-num-red">2,127.46 亿</span>元，
+                                增长 <span class="dfp-num-red">13.1%</span>，共完成支出 <span class="dfp-num-yellow">324.03 万</span>笔，
+                                支出金额 <span class="dfp-num-yellow">313.55 亿</span>元，支出进度 <span class="dfp-num-yellow">65%</span>，
+                                序时进度 <span class="dfp-num-red">71%</span>。
+                            </span><br>
+                            <span style="font-size: 15px;">
+                                本月完成支出 <span class="dfp-num-yellow">34,721</span> 笔，共计 <span class="dfp-num-yellow">37.25 亿</span>元，
+                                比上月增长 <span class="dfp-num-yellow">-0.4%</span>，比上年同期增长 <span class="dfp-num-red">1.3%</span>。
+                            </span>
+                            <button type="button" class="btn btn-info pull-right" style="position: relative;top: -5px;">详细查询</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 dfp-right" style="width: 10%;">
+                    <div id="topPageSettingBtn" class="box box-default" style="background: #B8E1FF;cursor: pointer;">
+                        <div class="box-body" style="height: 65px;">
+                            <div style="position: relative;top: 12px;font-size: 15px;">
+                                <i class="fa fa-cog"></i>
+                                <span>页面设置</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- left -->
+                <div class="col-md-9 col-lg-9 dfp-left">
+
+                    <!--三页签-->
+                    <div id="paymentRanking" class="box box-default dfp-box">
+                        <div class="box-header with-border dfp-box-header">
+                            <h3 class="box-title dfp-box-title">支出排名</h3>
+                            <div class=" box-tools">
+
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" style="height: 346px;">
+                            <iframe id="paymentRankingIframe" src="" class="dfp-ele-iframe"></iframe>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!--/三页签-->
+
+                    <!--支出规律分析-->
+                    <div id="paymentLawAnalysis" class="box box-default dfp-box">
+                        <div class="box-header with-border dfp-box-header">
+                            <h3 class="box-title dfp-box-title">支出规律分析</h3>
+                            <div class="pull-right box-tools">
+                                <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="查询" id="paymentLawAnalysisCheck">
+                                    <i class="fa fa-fw fa-search" style="padding: 0;"></i>
+                                </button>
+                                <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="刷新" id="paymentLawAnalysisRefresh">
+                                    <i class="fa fa-fw fa-refresh" style="padding: 0;"></i>
+                                </button>
+                                <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="最大化" id="paymentLawAnalysisMaxium">
+                                    <i class="fa fa-fw fa-square-o" style="padding: 0;"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!--查询-->
+                        <div id="paymentLawAnalysisCheckSelect" class="box box-info" style="position: relative;display: none;width: 400px;float: right;right: 10px;z-index: 9999;">
+                            <div class="box-header with-border dfp-box-header">
+                                <h3 class="box-title dfp-box-title">支出进度情况-查询</h3>
+                            </div>
+                            <!-- /.box-header -->
+                            <!-- form start -->
+                            <div class="box-body">
+                                <div class="input-group" style="margin-bottom: 5px;">
+                                    <span class="input-group-addon">预算类别</span>
+                                    <input type="text" class="form-control" value="全部">
+                                </div>
+                                <div class="input-group" style="margin-bottom: 5px;">
+                                    <span class="input-group-addon">项目分类</span>
+                                    <input type="text" class="form-control" value="全部">
+                                </div>
+                                <div class="input-group" style="margin-bottom: 5px;">
+                                    <span class="input-group-addon">指标来源</span>
+                                    <input type="text" class="form-control" value="全部">
+                                </div>
+                                <div class="input-group" style="margin-bottom: 5px;">
+                                    <span class="input-group-addon">预算单位</span>
+                                    <input type="text" class="form-control" value="全部">
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer pull-right">
+                                <button id="paymentLawAnalysisCheckSelectCancel" type="button" class="btn btn-default">取消</button>
+                                <button id="paymentLawAnalysisCheckSelectSubmit" type="button" class="btn btn-info">确定</button>
+                            </div>
+                            <!-- /.box-footer -->
+                        </div>
+                        <!--/查询-->
+                        <!-- /.box-header -->
+                        <div id="paymentLawContent" class="box-body" style="height: 180px;">
+                            <iframe id="paymentLawIframe" src="" class="dfp-ele-iframe"></iframe>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!--/支出规律分析-->
+
+                </div>
+                <!-- /left -->
+
+                <!-- right -->
+                <div class="col-lg-3 col-md-3 dfp-right">
+
+                    <!--待办-->
+                    <div id="dealing" class="box box-default dfp-box">
+                        <div class="box-header with-border dfp-box-header">
+                            <h3 class="box-title dfp-box-title">待办事项</h3>
+                            <div class=" box-tools">
+                                <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="刷新" id="dealingRefresh">
+                                    <i class="fa fa-fw fa-refresh" style="padding: 0;"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div id="dealingContent" class="box-body" style="height: 138px;overflow-y: auto;">
+                            <ul></ul>
+                        </div>
+                        <!-- /.box-body -->
+                        <div id="dealingRefreshCover" class="overlay" style="display: none;">
+                            <!--<img style="width: 50px;height: 50px;position: absolute;height: 100px;left: 50%;top: 50%;margin-left: -40px;margin-top: -50px;" src="/df/portal/admin/index/img/loading-refresh.gif">-->
+                            <i class="fa fa-refresh fa-spin"></i>
+                        </div>
+                    </div>
+                    <!--/待办-->
+
+                    <!--进度排名-->
+                    <div id="payProgressRanking" class="box box-default dfp-box">
+                        <div class="box-header with-border dfp-box-header">
+                            <h3 class="box-title dfp-box-title">进度排名</h3>
+                            <div class=" box-tools">
+                                <div style="float: left;margin-right: 10px;">
+                                    <select id="payProgressRankingSelect" class="form-control dfp-ele-select">
+                                        <option value="" selected="">按处室</option>
+                                        <option value="">按部门</option>
+                                        <option value="">按单位</option>
+                                    </select>
+                                </div>
+                                <div style="float: right;">
+                                    <span style="position: relative;top: 10px;">单位：<span>元</span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div id="payProgressRankingContent" class="box-body" style="height: 260px;">
+                            <iframe id="payProgressRankingIframe" src="" class="dfp-ele-iframe"></iframe>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!--/进度排名-->
+
+                    <!--公告-->
+                    <div id="article" class="box box-default dfp-box">
+                        <div class="box-header with-border dfp-box-header">
+                            <h3 class="box-title dfp-box-title">公告信息</h3>
+                            <div class=" box-tools">
+                                <button type="button" class="btn btn-info btn-sm dfp-ele-btn-sm" title="刷新" id="articleRefresh">
+                                    <i class="fa fa-fw fa-refresh" style="padding: 0;"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div id="articleContent" class="box-body" style="height: 97px;overflow-y: auto;">
+                            <ul></ul>
+                        </div>
+                        <!-- /.box-body -->
+                        <div id="articleRefreshCover" class="overlay" style="display: none;">
+                            <!--<img style="width: 50px;height: 50px;position: absolute;height: 100px;left: 50%;top: 50%;margin-left: -40px;margin-top: -50px;" src="/df/portal/admin/index/img/loading-refresh.gif">-->
+                            <i class="fa fa-refresh fa-spin"></i>
+                        </div>
+                    </div>
+                    <!--/公告-->
+
+                </div>
+                <!-- /right -->
+
+            </div>
+
+        </section>
+    </div>
+
+</div>
+<!-- ./wrapper -->
+
+<footer style="margin-left: 60px;margin-top: 15px;">
+	山东省财政厅 北京用友政务软件有限公司  联合研发
+</footer>
+
+<script src="js/lte/jQuery-2.1.4.min.js"></script>
+<script src="js/lte/jquery-ui.min.js"></script>
+<script>
+    $.widget.bridge('uibutton', $.ui.button);
+</script>
+<script src="js/lte/bootstrap.min.js"></script>
+<script src="js/lte/app.min.js"></script>
+
+<!--datepicker-->
+<script src="js/lte/foundation-datepicker.js"></script>
+<script src="js/lte/foundation-datepicker.zh-CN.js"></script>
+<!--layer-->
+<script src="js/layer/layer.js"></script>
+
+<script charset="utf-8" src="js/dfp/dfp.js"></script>
+<script charset="utf-8" src="js/dfp/dfpArticle.js"></script>
+<script charset="utf-8" src="js/dfp/dfpDealing.js"></script>
+<script charset="utf-8" src="js/dashboardGKLD.js"></script>
+</body>
+</html>

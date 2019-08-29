@@ -1,0 +1,60 @@
+	<div class="wrapper" style="margin:0 auto;">
+		<div class="button-fixed">
+			<div class="btn-grid-group-btn ip-content-btn-area">
+				<div class="icon-buttons">
+					<!-- <div id="ref" class="icon-box" data-bind="click:refresh">
+						<i class="iconbtn icon-refresh"></i>刷新
+					</div> -->
+					<div id="view" class="icon-box" onclick="fSelect()">
+						<i class="iconbtn icon-query-state"></i>查询
+					</div>
+					<!-- <div id="assppreview" class="icon-box" onclick="doVoucherPreview()" >
+								<i class="iconbtn icon-previews"></i>凭证预览</div> -->
+										<div id="print" class="icon-box"  onclick="printBillfunction();"><i class="iconbtn icon-previews"></i>打印</div>
+
+					</div>
+				</div>
+			</div>
+		<div class="btn-group-content  button-fixed-select">
+			<div class="common-border">
+				<span class="common-surround-header">查询区</span>
+				<div class="search-area" >
+					<div id="modalQueryGridArea"></div>
+				</div>
+			</div>
+			<div class="mainLabel clearfix">
+			<label id="zfpz">凭证主单：</label>
+			</div>
+			<div class="mainTable"> 
+			    <table id="dwItemDataGrid1" class="table-striped table nowrap table-bordered table-hover table-condensed"  style="width:100%"></table>
+			</div>
+			<div class="mainLabel clearfix">
+				<label >凭证明细：</label>
+			</div>
+		    <div class="subTable"> 
+			<table id="dwItemDetailGrid1" class="table-striped table nowrap table-bordered table-hover table-condensed" style="width:100%"></table>
+            </div>
+		</div>
+	</div>
+	
+				  <!--预览附件模态框-->
+ <div class="modal fade bs-example-modal-lg" id="preview-attach-box" tabindex="-1" role="dialog" aria-labelledby="previewAttachBoxLabel"
+     data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document" style="width:91%;height:900px;">
+        <div class="modal-content">
+            <div class="modal-header" style="background:white;height:40px;font-family: MicrosoftYaHei;font-size: 12px;color: #333333;padding-top:15px;">
+                <button type="button" class="close" onClick="clsoePreview()" aria-label="Close" style="color:black;padding-right:10px;"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title font-size-14" id="addAttachBoxLabel">预览附件</h4>
+            </div>
+            <div id="other" class="modal-body" style="width:100%;padding-top: 8px;padding-bottom: 8px;">
+             	<div id="csof-right-iframe" style="width:100%;height:700px;overflow-y:auto;"></div>
+             	<!-- <a class="media"></a>  -->
+            </div>
+            <div class="modal-footer padding-right-0" style="height:45px;">
+                <button type="button" class="btn btn-primary" id="attach-preview-close" onClick="clsoePreview()" style="margin-top:4px;width:60px;height:30px;background: #FFFFFF;border-radius: 4px;color:black;margin-right:40px;">关闭
+                </button>
+            </div>
+        </div>
+    </div>
+</div> 

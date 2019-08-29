@@ -1,0 +1,31 @@
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>预览打印</title>
+	<link rel="stylesheet" type="text/css" href="/df/trd/bootstrap/css/bootstrap.css" />	
+	<link rel="stylesheet" type="text/css" href="/df/trd/uui/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/ip.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/bizSys.css" />
+	<link rel="stylesheet" type="text/css" href="/df/trd/ip/css/theme/blue.css" />
+</head>
+<body>
+
+<OBJECT CLASSID="CLSID:EAF9360D-B3E4-4CC0-B3D7-456489ED249D" ID="ocxDSc" style="width:1180px; height:540px;align:'center'"></OBJECT>
+<div class="btn-bar">
+	<div>
+		<button id="prevReport" class="btn btn-primary" onclick="gotoPrevReport()">上一联</button>
+		<button id="nextReport" class="btn btn-primary" onclick="gotoNextReport()">下一联</button>
+		<button id="doPrint" class="btn btn-primary" onclick="doVoucherPrint()">打印</button>
+		<button id="cancel" class="btn btn-primary" onclick="exit()">退出</button>
+		共计加载  <span id="total">0</span>联 当前第  <span id="present_index">0</span>联
+	</div>
+</div>
+
+<script src="../../../trd/jquery/jquery-1.12.3.min.js"></script>
+<script src="../../../trd/ip/js/ip.js"></script>
+<script src="reportPreview.js"></script>
+</body>
+</html>
+ 

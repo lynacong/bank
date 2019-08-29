@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>权限组管理</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../../trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" href="../../trd/uui/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../../trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="../../trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="../../trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="../../trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../trd/ip/css/platform.css" />
+<link rel="stylesheet" type="text/css" href="./dataRight.css">
+
+
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="contain" style="padding-top:10px;margin-top:0px;">
+			<div class="row">
+				<div class="col-sm-4 col-md-3 col-lg-3 left-content">
+					<!-- tree modal -->
+					<div class="form-group search-form" style="margin: 5px;">
+							<div class="input-group">
+							<input type="text" class="form-control" placeholder="请输入关键词" aria-describedby="basic-addon1" data-bind="event:{keyup:quickQuery}" onkeydown='if(event.keyCode==13){menuTreeNext();}' id="quickquery">
+							<span class="input-group-addon" onclick="menuTreeNext()"><span class="glyphicon glyphicon-search"></span></span>
+							</div>
+					</div>
+					<span class="modal-tree-root"><img src="/df/trd/ip/changeTree/images/base.gif">权限组</span>
+						
+					<div id="ruleTree" class="ztree" style="padding:0"
+								u-meta='{"id":"ruleTree","data":"dataTableRuleGroup","type":"tree","idField":"rule_id","pidField":"pid","nameField":"name","setting":"RuleListTreeSetting"}'>
+					</div>
+				</div>
+				<div class="col-sm-8 col-md-9 col-lg-9">
+					<div class="header">
+						<button class="btn btn-primary"  id="addsss" data-bind="click:addGroup">新增</button> 
+						<button class="btn btn-primary"  role="button" data-bind="click:modifyGroup">修改</button> 
+						<button class="btn btn-danger"  role="button" data-bind="click:delGroup" id="groupDel">删除</button> 
+						<button class="btn btn-primary" data-toggle="modal" style="width:183px" data-target="#elementModal" role="button">数据权限要素设置</button>
+					</div>
+					<div class="form-group clearfix">
+						<label for="inputEmail3" class="col-sm-1 control-label">编号:</label>
+						<div class="col-sm-11" style="width:35%;">
+							<input type="text" class="form-control" id="right-code" readonly="true" >
+						</div>
+					</div>
+					<div class="form-group clearfix">
+						<label for="inputPassword3" class="col-sm-1 control-label">名称:</label>
+						<div class="col-sm-11" style="width:35%;">
+							<input type="text" class="form-control" id="right-name" readonly="true" >
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputName2">配置信息：</label>
+						<div class="info-content" id="" style="width:41.5%;">
+							<!-- tree modal -->
+							<span class="modal-tree-root"><img src="/df/trd/ip/changeTree/images/base.gif">权限</span>
+							<div id="treeTest2" class="ztree"
+								u-meta='{"id":"tree2","data":"dataTableRightList","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"chr_name","setting":"RightListTreeSetting"}'></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 设定规则Modal start -->
+		<div class="modal fade" id="rightModal" tabindex="-1" role="dialog"
+			aria-labelledby="rightModalLabel" data-backdrop="static">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="rightModalLabel">设定规则</h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-inline">
+							<div class="form-group">
+								<label for="rule_code">编号：</label> <input type="text"
+									class="form-control" id="rule_code">
+							</div>
+							<div class="form-group" >
+								<label for="rule_name">名称：</label> <input type="text"
+									class="form-control" id="rule_name" style="width:276px">
+							</div>
+							<div class="form-group m-top">
+								<label for="remark">说明：</label> <input type="text"
+									class="form-control spe-input"  id="remark">
+							</div>
+						</form>
+						<div class="m-top">
+									
+							<!-- Nav tabs -->
+							<ul id="addNewRule" class="nav nav-tabs" role="tablist">
+							</ul>
+
+							<!-- Tab panes -->
+							<div id="myTabContent" class="tab-content" style = "border:solid 1px #FFE5E5;border-top:none;">
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer" style=" border-top: 0px;">
+						<button type="button" class="btn btn-primary" data-toggle="modal"
+							data-whatever="普通预览" data-target="#ylModal">预览</button>
+						<button type="button" class="btn btn-primary"
+							data-bind="click: rightSure">确定</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 设定规则Modal end -->
+		<!-- 预览Modal start-->
+		<div class="modal fade" id="ylModal" tabindex="-1" role="dialog"
+			aria-labelledby="ylModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="ylModalLabel">预览权限组信息</h4>
+					</div>
+					<div class="modal-body display-container">
+						<div id="detail_list">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 预览Modal end-->
+		<!-- 数据权限Modal start-->
+		<div class="modal fade" id="elementModal" tabindex="-1" role="dialog"
+			aria-labelledby="elementModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="elementModalLabel">数据权限要素设置</h4>
+					</div>
+					<div class="modal-body clearfix">
+						<div class="col-sm-5 no-right-col">
+							<p>未选择权限要素</p>
+							<div type="text"
+								u-meta='{"id":"notRightGrid","data":"gridDataTableLeftList","type":"grid","editable":false,"autoExpand":false,"showNumCol":true,"showTree":false,"keyField":"theId","parentKeyField":"parentId"}'>
+								<div
+									options='{"field":"chr_id","dataType":"String","title":"chr_id","editType":"string","width": 100,"visible":false}'></div>
+								<div
+									options='{"field":"ele_name","dataType":"String","title":"要素中文名","editType":"string","width": 100}'></div>
+								<div
+									options='{"field":"ele_code","dataType":"String","title":"要素英文名","editType":"string","width": 100}'></div>
+								<div
+									options='{"field":"ele_source","dataType":"String","title":"要素全称","editType":"string","width": 150}'></div>
+								<!-- <div options='{"field":"String","dataType":"String","title":"操作","editType":"string","width": 100,"renderType":"writeSetFun"}'></div>-->
+							</div>
+							<p id="canEdit" style="display:none;color:red">系统已启用且存在业务数据，不能再进行设置！
+							</p>
+						</div>
+						<div id="" class="col-sm-2 add-delete">
+							<div><button id="btnAdd" type="button" data-bind="click: addRow"
+								class="btn btn-primary" style="padding:0; margin-top:20px; border: none;"><img src="/df/images/btn_add.png"/></button>
+							</div>
+							<div>
+							<button id="btnDel" type="button" data-bind="click: delRows"
+								class="btn btn-primary btn-eleset-style" style="padding:0; margin-top:20px; border: none;"><img src="/df/images/btn_delete.png"/></button>
+							</div>
+						</div>
+						<div class="col-sm-5 has-right-col"> 
+							<p>已选择权限要素</p>
+							<div type="text"
+								u-meta='{"id":"hasRightGrid","data":"gridDataTableRightList","type":"grid","editable":false,"autoExpand":false,"showNumCol":true,"showTree":false,"keyField":"theId","parentKeyField":"parentId"}'>
+								<div
+									options='{"field":"chr_id","dataType":"String","title":"chr_id","editType":"string","width": 100,"visible":false}'></div>
+								<div
+									options='{"field":"ele_name","dataType":"String","title":"要素中文名","editType":"string","width": 100}'></div>
+								<div
+									options='{"field":"ele_code","dataType":"String","title":"要素英文名","editType":"string","width": 100}'></div>
+								<div
+									options='{"field":"ele_source","dataType":"String","title":"要素全称","editType":"string","width": 140}'></div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" id="elementSave" class="btn btn-primary"
+							data-dismiss="modal" data-bind="click: saveElement">保存</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 数据权限Modal end-->
+	</div>
+	<script src="/df/trd/requirejs/require.js"></script>
+	<script src="/df/require.config.js"></script>
+	<script src="./dataRight.js"></script>
+</body>
+</html>

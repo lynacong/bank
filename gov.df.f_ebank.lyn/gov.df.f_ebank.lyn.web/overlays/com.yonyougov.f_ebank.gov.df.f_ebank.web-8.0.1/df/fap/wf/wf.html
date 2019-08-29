@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>工作流设计器</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../../trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" href="../../trd/uui/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../../trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="../../trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="../../trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="../../trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../trd/ip/css/platform.css" />
+<link rel="stylesheet" type="text/css" href="./wf.css">
+</head>
+<body>
+	<div class="wrapper wrapper-height">
+		<div class="contain wrapper-height wrapper-stable-height">
+			<div class="row wrapper-height">
+				<div id="" class="add-delete">
+					<button id="btnAdd" type="button" data-bind="click:addRow"
+						class="btn btn-primary">新增</button>
+					<button id="btnDel" type="button" data-bind="click:delRows"
+						class="btn btn-primary">删除</button>
+					<div class="upload-logo-btn-cont">
+						导入 <input type="file" id="leadinRow" name="imgFile"
+							class="upload-logo-btn" value="" />
+					</div>
+					<a href="" class="btn btn-primary btn-primary-a" id="export" style="color: #499bed;">导出</a>
+					<!--<button id="btnUpg" type="button" data-bind="click:upgRows"
+						class="btn btn-primary">升级</button>-->
+				</div>
+				<div class="col-sm-3 col-md-2 col-lg-2 left-content">
+					<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+					流程
+					<div id="treeTest2" class="ztree"
+						u-meta='{"id":"tree2","data":"dataTableList","type":"tree","idField":"wf_code","pidField":"zpid","nameField":"name","setting":"treeSetting"}'></div>
+				</div>
+				<div class="col-sm-9 col-md-10 col-lg-10 stable-height"
+					style="padding-right:0;">
+					<iframe id="iframeSrc" src="" height="100%" width="100%"
+						onscroll="auto"></iframe>
+				</div>
+			</div>
+		</div>
+		<!-- 模态框 -->
+		<div class="modal fade" id="addModal" tabindex="-1" role="dialog"
+			aria-labelledby="myModalLabel" data-backdrop="static">
+			<div class="modal-dialog" role="document" style="width:32%">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title">定义流程信息</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-horizontal">
+							<div class="form-group">
+								<label for="inputProcessCode" class="col-sm-3 control-label"><span
+										style="font-size: 15px;color:red;">*</span>流程编号：</label>
+								<div class="col-sm-9">
+									<input type="email" class="form-control" id="inputProcessCode"
+										placeholder="">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="inputProcessName" class="col-sm-3 control-label"><span
+										style="font-size: 15px;color:red;">*</span>流程名称：</label>
+								<div class="col-sm-9">
+									<input type="email" class="form-control" id="inputProcessName"
+										placeholder="">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="primaryName" class="col-sm-3 control-label">主表名称：</label>
+								<div class="col-sm-9">
+									<select name="" id="primaryName" class="form-control"
+										style="height:28px">
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="idField" class="col-sm-3 control-label">ID字段：</label>
+								<div class="col-sm-9">
+									<input type="email2" class="form-control" id="idField"
+										placeholder="" readonly="readonly">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal"
+							data-bind="click:confirm">确定</button>
+						<button type="button" class="btn btn-primary"
+							data-bind="click:cancel">取消</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			function setIframeHeight(iframe) {
+				if (iframe) {
+					var iframeWin = iframe.contentWindow
+							|| iframe.contentDocument.parentWindow;
+					if (iframeWin.document.body) {
+						iframe.height = iframeWin.document.documentElement.scrollHeight
+								|| iframeWin.document.body.scrollHeight;
+					}
+				}
+			};
+
+			window.onload = function() {
+				setIframeHeight(document.getElementById('external-frame'));
+			};
+		</script>
+		<script src="/df/trd/requirejs/require.js"></script>
+		<script src="/df/require.config.js"></script>
+		<script src="./wf.js"></script>
+</body>
+</html>

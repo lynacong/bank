@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 2 | Buttons</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="dist/css/font-awesome.min.css">
+
+    <!-- jqgrid -->
+    <link rel="stylesheet" href="plugins/jqgrid/jqgrid.css">
+
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="dist/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="dist/css/skins/all-skins.min.css">
+    <link rel="stylesheet" href="self/css/ps.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="plugins/ie9/html5shiv.min.js"></script>
+    <script src="plugins/ie9/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hold-transition skin-blue">
+
+<!-- Main content -->
+<section class="content" id="content">
+
+    <!-- 角色对页面 -->
+    <div class="row">
+
+        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+            <!-- table -->
+            <table id="jqgrid"></table>
+            <!-- 分页bar -->
+            <div id="pjqgrid"></div>
+
+            <br>
+            <!-- <a href="javascript:void(0)" id="m1">Get Selected id's</a> -->
+            获取角色名：<a href="javascript:void(0)">select code, name from fasp_t_carole where guid = 'roleId'</a>
+            <br>
+            <!-- <a href="javascript:void(0)" id="m1s">Select(Unselect) row 13</a> -->
+
+        </article>
+
+    </div>
+
+</section>
+
+<script src="dist/js/jquery-2.2.3.min.js" charset="utf-8"></script>
+<script src="dist/js/jquery-ui.min.js" charset="utf-8"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="dist/js/app.min.js"></script>
+<!-- TODO 待替换 -->
+<script src="plugins/notification/SmartNotification.min.js"></script>
+<script src="plugins/jqgrid/jquery.jqGrid.min.js"></script>
+<script src="plugins/jqgrid/grid.locale-en.min.js"></script>
+
+<script src="self/js/dfp.js"></script>
+<script src="self/js/ps.js"></script>
+<script src="self/js/ps.url.js"></script>
+
+<script>
+
+    $(function () {
+        role_page_init();
+    });
+
+    /**
+     * 页面数据初始化
+     */
+    function role_page_init() {
+        var jqgrid_data = [];
+        $.ajax({
+            url: $.psu.back("rolePageInit"),
+            type: "GET",
+            data: {"tokenid": $.dfp.tokenid()},
+            dataType: "json",
+            success: function (data) {
+                //debugger;
+                var rolePage = data.rolePage,
+                    allRoles = data.allRoles,
+                    allPages = data.allPages;
+                for (var i = 0, length = rolePage.length || 0; i < length; i++) {
+                    var obj = {
+                        roleName: rolePage[i].role_name,
+                        roleId: rolePage[i].role_id,
+                        pageTitle: rolePage[i].page_title, // 对应指定页面
+                        setYear: parseInt(rolePage[i].set_year),
+                        rgCode: rolePage[i].rg_code
+                    };
+                    jqgrid_data.push(obj);
+                }
+                $("#jqgrid").jqGrid({
+                    data: jqgrid_data,
+                    datatype: "local", //为local时初始化不加载，支持json，xml等 
+                    colNames: ['操作', '角色名', '角色ID', '页面分类', '年度', '区划'], //表头
+                    colModel: [ //这里会根据index去解析jsonReader中root对象的属性，填充cell
+                        {name: 'act', index: 'act', width: 120, sortable: false, search: false, resizable: false},
+                        //{name : 'id', index : 'id'},
+                        {name: 'roleName', index: 'roleName', editable: true},// edittype:'select', editoptions:{value:faspTCarole_name}},
+                        {name: 'roleId', index: 'roleId', editable: true, hidden: false},
+                        {name: 'pageTitle', index: 'pageTitle', width: 100, editable: true, edittype:'select', editoptions:{value:$.psu.jqgridPage()}},
+                        {name: 'setYear', index: 'setYear', width: 100, editable: true, editrules: {edithidden: false, required: true, integer: true}},
+                        {name: 'rgCode', index: 'rgCode', width: 100, editable: true, editrules: {edithidden: false, required: true, integer: true}}
+                    ],
+                    //width : 'auto', // '数字' 或 'auto'
+                    height: 'auto',
+                    autowidth: true,
+                    multiselect: true, // 多选
+                    multiboxonly: true, //在点击表格row时只支持单选，只有当点击checkbox时才多选，需要multiselect=true是有效
+                    rowNum: 10, // 每页记录数
+                    rowList: [10, 20, 30, 50, 100], // 每页记录数可选列表
+                    rownumbers: true, //设置列表显示序号,需要注意在colModel中不能使用rn作为index
+                    rownumWidth: 20, //设置显示序号的宽度，默认为25
+                    pager: '#pjqgrid', // 分页标签divID
+                    toolbarfilter: true,
+                    viewrecords: true, //显示记录数信息，如果这里设置为false,下面的不会显示 recordtext: "第{0}到{1}条, 共{2}条记录", //默认显示为{0}-{1} 共{2}条 scroll: false, //滚动翻页，设置为true时翻页栏将不显示
+                    sortable: true, // 这里是排序的默认设置，这些值会根据列表header点击排序时覆盖
+                    sortname: 'id',
+                    sortorder: "asc",
+                    caption: "角色-页面关系配置", //显示查询结果表格标题
+                    //editurl : "/cz80/", // 表格可编辑提交链接
+                    //prmNames : { //如当前查询实体为ware，这些可以在查询对象的superObject中设定
+                    //    page: "wareDetail.page",
+                    //    rows: "wareDetail.rows",
+                    //    sort: "wareDetail.sidx",
+                    //    order: "wareDetail.sord",
+                    //    search: "wareDetail.search"
+                    //},
+                    //jsonReader:{ //server返回Json解析设定
+                    //    root: "list", //对于json中数据列表
+                    //    page: "page",
+                    //    total: "totalPage",
+                    //    records: "totalCount",
+                    //    repeatitems: false,
+                    //},
+                    gridComplete: function () { // 设定每行操作按钮，当表格所有数据都加载完成而且其他的处理也都完成时触发此事件，排序，翻页同样也会触发此事件
+                        var ids = jQuery("#jqgrid").jqGrid('getDataIDs');
+                        for (var i = 0; i < ids.length; i++) {
+                            var cl = ids[i];
+                            // 表格行操作
+                            editRow = "<button class='btn btn-xs btn-default' data-original-title='编辑行' onclick=\"self_jqgrid.editRow('" + cl + "');\"><i class='fa fa-pencil'></i></button> ";
+                            saveRow = "<button class='btn btn-xs btn-default' data-original-title='保存行' onclick=\"self_jqgrid.saveRow('" + cl + "');\"><i class='fa fa-save'></i></button> ";
+                            deleteRow = "<button class='btn btn-xs btn-default' data-original-title='删除行' onclick=\"self_jqgrid.deleteRow('" + cl + "');\"><i class='fa fa-times'></i></button> ";
+                            restoreRow = "<button class='btn btn-xs btn-default' data-original-title='恢复行' onclick=\"self_jqgrid.restoreRow('" + cl + "');\"><i class='fa fa-refresh'></i></button>";
+                            jQuery("#jqgrid").jqGrid('setRowData', ids[i], {
+                                act: editRow + saveRow + deleteRow + restoreRow
+                            });
+                        }
+                    }
+
+                });
+                // 设定分页bar显示的信息
+                jQuery("#jqgrid").jqGrid('navGrid', "#pjqgrid", {
+                        edit: false,
+                        add: false,
+                        del: false
+                    },
+                    {},
+                    {},
+                    {
+                        delCaption: "删除",
+                        reloadAfterSubmit: true,
+                        onClickButton: function () {
+                            debugger;
+                            // 选中行 id
+                            var ids = jQuery("#jqgrid").jqGrid('getGridParam', 'selarrrow');
+
+                        }
+                    }
+                );
+                // http://blog.csdn.net/tfy1332/article/details/51241020
+                jQuery("#jqgrid").jqGrid('inlineNav', "#pjqgrid", {
+                    add: true, // 显示添加行按钮，按钮将会调用addRow(addParams)方法
+                    addtitle: "增加", // 鼠标经过显示
+                    addtext: "", // 按钮内文字
+                    //addicon : "ui-icon-plus", // 按钮的图标,目前仅能设置为UI主题中的图标
+                    edit: true, // 按钮将会调用editRow(editParams)方法
+                    edittitle: "修改",
+                    edittext: "",
+                    save: false, // 按钮将会调用saveRow(editParams)方法
+                    //savetitle : " 保存",
+                    cancel: true, // 按钮将会调用restoreRow(editParams)方法
+                    canceltitle: "取消操作",
+                    canceltext: "",
+                    searchtext: "",
+                    searchtitle: "查询",
+                    refreshtext: "",
+                    refreshtitle: "恢复",
+                }, {
+                    addParams: { // 点击添加按钮后传递给addRow方法的参数
+                        position: "afterSelected",
+                        addRowParams: {
+                            keys: true,
+                            oneditfunc: function (rowid) {
+                                alert("addRowParams " + rowid);
+                            }
+                        }
+                    },
+                    editParams: { // 点击导航栏按钮的编辑，保存，取消按钮，传递给 editRow, saveRow, restoreRow 方法的参数
+                        keys: true,
+                        oneditfunc: function (rowid) {
+                            alert("edit params " + rowid);
+                        }
+                    }
+                });
+
+                /* Add tooltips */
+                $('.navtable .ui-pg-button').tooltip({
+                    container: 'body'
+                });
+
+                // 特殊操作
+                jQuery("#m1").click(function () {
+                    var s;
+                    s = jQuery("#jqgrid").jqGrid('getGridParam', 'selarrrow');
+                    alert(s);
+                });
+                jQuery("#m1s").click(function () {
+                    jQuery("#jqgrid").jqGrid('setSelection', "13");
+                });
+                /**
+                 命令1  jQuery("#list").jqGrid('getCol','styleNumber',false);
+                 说明：获得jqGrid的一列，好像第一个值是空的，所以遍历的时候，记得在for循环里面if（obj）{} 一下。
+                 命令2  jQuery("#list").getGridParam('selarrrow');
+                 说明：获得jqGrid你选择的多行的记录的id列的值，好像第一个值也是空的。所以最好先判断一下。这个命令使用的前提是你的jqGrid的multiselect 是设置多选。
+                 命令3  jqGrid.jqGrid('getGridParam', 'selrow')
+                 说明：获得你选中的行记录的单个id
+                 命令4  $(listId).jqGrid('restoreRow', this.lastsel)
+                 说明：把一行处于编辑状态的行变成非编辑状态，但是我发现好像这种方式不能保存你编辑的值，这真让人头疼。
+                 */
+
+                // remove classes
+                $(".ui-jqgrid").removeClass("ui-widget ui-widget-content");
+                $(".ui-jqgrid-view").children().removeClass("ui-widget-header ui-state-default");
+                $(".ui-jqgrid-labels, .ui-search-toolbar").children().removeClass("ui-state-default ui-th-column ui-th-ltr");
+                $(".ui-jqgrid-pager").removeClass("ui-state-default");
+                $(".ui-jqgrid").removeClass("ui-widget-content");
+
+                // add classes
+                $(".ui-jqgrid-htable").addClass("table table-bordered table-hover");
+                $(".ui-jqgrid-btable").addClass("table table-bordered table-striped");
+
+                $(".ui-pg-div").removeClass().addClass("btn btn-sm btn-primary");
+                $(".ui-icon.ui-icon-plus").removeClass().addClass("fa fa-plus");
+                $(".ui-icon.ui-icon-pencil").removeClass().addClass("fa fa-pencil");
+                $(".ui-icon.ui-icon-trash").removeClass().addClass("fa fa-trash-o");
+                $(".ui-icon.ui-icon-search").removeClass().addClass("fa fa-search");
+                $(".ui-icon.ui-icon-refresh").removeClass().addClass("fa fa-refresh");
+                $(".ui-icon.ui-icon-disk").removeClass().addClass("fa fa-save").parent(".btn-primary").removeClass("btn-primary").addClass("btn-success");
+                $(".ui-icon.ui-icon-cancel").removeClass().addClass("fa fa-times").parent(".btn-primary").removeClass("btn-primary").addClass("btn-danger");
+
+                $(".ui-icon.ui-icon-seek-prev").wrap("<div class='btn btn-sm btn-default'></div>");
+                $(".ui-icon.ui-icon-seek-prev").removeClass().addClass("fa fa-backward");
+
+                $(".ui-icon.ui-icon-seek-first").wrap("<div class='btn btn-sm btn-default'></div>");
+                $(".ui-icon.ui-icon-seek-first").removeClass().addClass("fa fa-fast-backward");
+
+                $(".ui-icon.ui-icon-seek-next").wrap("<div class='btn btn-sm btn-default'></div>");
+                $(".ui-icon.ui-icon-seek-next").removeClass().addClass("fa fa-forward");
+
+                $(".ui-icon.ui-icon-seek-end").wrap("<div class='btn btn-sm btn-default'></div>");
+                $(".ui-icon.ui-icon-seek-end").removeClass().addClass("fa fa-fast-forward");
+            }
+        });
+    }
+
+    // 动态调整页面内表格宽度
+    $(window).on('resize.jqGrid', function () {
+        $("#jqgrid").jqGrid('setGridWidth', $("#content").width());
+    });
+
+    /**
+     * 自定义操作
+     */
+    var self_jqgrid = {
+        editRow: function (ids) {
+            jQuery('#jqgrid').editRow(ids, {
+                keys: true, // 设置为true可以使用 [Enter]保存数据或者[Esc] 取消编辑
+                url: $.dfp.fullUrl($.psu.back("rolePageUpdate")),
+                mtype: "POST",
+                restoreAfterError: true,
+                extraparam: {},
+                oneditfunc: function (rowid) {
+                }, // 在行成功转为编辑模式下触发的事件，参数为此行数据id
+                successfunc: function (data) {
+                    $.smallBox({
+                        title: data.updateFlag,
+                        content: "<i class='fa fa-clock-o'></i> <i>2 seconds ago...</i>",
+                        color: "#296191",
+                        iconSmall: "fa fa-thumbs-up bounce animated",
+                        timeout: 1500
+                    });
+                    //self_jqgrid.refreshTable();
+                    return true;
+                },
+                errorfunc: function (rowid, res) {
+                }
+            });
+        },
+        /**
+         * 保存行信息 - editRow时自动调用保存方法
+         */
+        saveRow: function (ids) {
+            jQuery('#jqgrid').saveRow(ids, {
+                url: $.dfp.fullUrl($.psu.back("rolePageSave")),
+                mtype: "POST",
+                restoreAfterError: true,
+                extraparam: {},
+                successfunc: function (data) {
+                    $.smallBox({
+                        title: data.updateFlag,
+                        content: "<i class='fa fa-clock-o'></i> <i>2 seconds ago...</i>",
+                        color: "#296191",
+                        iconSmall: "fa fa-thumbs-up bounce animated",
+                        timeout: 2000
+                    });
+                    //self_jqgrid.refreshTable();
+                    return true;
+                },
+                errorfunc: function (rowid, res) {
+                }
+            });
+        },
+        deleteRow: function (ids) {
+            $.post($.psu.back("rolePageDelete"),
+                {"id": ids, "tokenid": $.dfp.tokenid()},
+                function (data) {
+                    data = data.updateFlag;
+                    $.smallBox({
+                        title: data.updateFlag,
+                        content: "<i class='fa fa-clock-o'></i> <i>2 seconds ago...</i>",
+                        color: "#296191",
+                        iconSmall: "fa fa-thumbs-up bounce animated",
+                        timeout: 2000
+                    });
+                    // 页面删除一行（行为不会传到服务器）
+                    jQuery('#jqgrid').delRowData(ids);
+                });
+        },
+        /**
+         * 将指定行恢复到正常状态
+         */
+        restoreRow: function (ids) {
+            jQuery('#jqgrid').restoreRow(ids);
+        },
+        /**
+         * 重新加载当前右侧页面
+         */
+        refreshTable: function () {
+            loadThisRightUrl();
+        }
+    };
+
+</script>
+
+</body>
+</html>

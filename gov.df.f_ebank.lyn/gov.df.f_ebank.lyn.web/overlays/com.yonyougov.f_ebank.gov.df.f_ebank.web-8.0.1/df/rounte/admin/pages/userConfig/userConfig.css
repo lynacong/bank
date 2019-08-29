@@ -1,0 +1,191 @@
+html {
+    height: 100%;
+}
+.header {
+    width: 100%;
+    background: #fff;
+    height: 50px;
+}
+
+.menubody {
+	width: 100%;
+    background: #fff;
+}
+
+.mainBackground {
+	background:#b4dcff;
+}
+.backcolor {
+	background:#ffffff;
+}
+.bodyBackgroud {
+	background:#ffffff;
+	min-height:450px;
+	margin: 0 auto;
+	padding: 10px;
+}
+.headerSize {
+    width: 95%;
+	height:45px;
+	margin: 0 auto;
+}
+.bodySize{
+	width: 95%;
+	margin: 0 auto;
+	padding: 20px;
+}
+.menuInput h {
+	font-size:15px;
+	color: #111111;
+	display: inline-block;
+	font-family: "΢���ź�";
+	margin-top: 15px; 
+	margin-left: 15px;
+}
+
+.menu-control {
+    margin-top: -23px;
+    width: 200px;
+    margin-left: 80px;
+}
+.addView-control {
+	width: 150px;
+    height: 28px !important;
+}
+
+
+
+.tree-block {
+	min-height:540px;
+	border:1px #e5e5e5 solid;
+}
+
+.form-block {
+	height: 577px;
+	padding: 10px;
+	overflow: auto;
+	border:1px #e5e5e5 solid;
+}
+.form-block1{
+	height: 537px;
+	padding: 10px;
+	overflow: auto;
+	border:1px #e5e5e5 solid;
+}
+.form-block2 {
+	height: 384px;
+	padding: 10px;
+	overflow: hidden;
+	border:1px #e5e5e5 solid;
+}
+
+.form-type {
+    padding: 10px;
+}
+
+.btnlist {
+	padding-left:30px;
+	height: 40px;
+}
+.menuTree {
+	height: 540px;
+	overflow: auto;
+}
+
+.menu-quickquery {
+	background:#fff;
+	height: 40px;
+	padding: 10px;
+}
+
+.quickquery-Input {
+	padding-right: 40px;
+}
+.query-img {
+	margin-top: -54px;
+    margin-left: 250px;
+    cursor: pointer;
+}
+.addview-Input {
+	width: 200px;
+    height: 28px;
+    margin-left: 10px;
+    
+}
+
+.menu-tabs {
+	width: 850px;
+    margin-left: 320px;
+    margin-top: -570px;
+    min-height:450px;
+}
+.add-btn {
+    margin-left: 650px;
+    margin-top: 10px;
+}
+.del-btn {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.menu-grid {
+	margin-top: 10px;
+}
+
+.panel-body{
+	height: 336px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px;
+}
+
+/* .panel-body2{
+	height: 150px;
+	overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px;
+}
+
+.panel-body3{
+	height: 100px;
+	overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px;
+} */
+
+.choose-btn2{
+	margin-top:-4px;
+}
+
+.select-role-active{
+	background: #3fa4ed;
+    color: #FFFFFF;
+    padding: 3px;
+}
+
+.message {
+	padding:5px;
+	border:solid 1px #e5e5e5;
+}
+.message1 {
+	margin-top:5px;
+	padding:5px;
+	border:solid 1px #e5e5e5;
+}
+
+.has-dif {
+    border-color: red;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+.belon-class {
+	cursor:pointer;
+}
+.test {
+	overflow-y:auto !important;
+}
+#write-grid_wrapper {
+    position: relative;
+    clear: both;
+    zoom: 1;
+    overflow-x: auto;
+}

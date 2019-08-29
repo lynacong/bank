@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ipd</title>
+<link rel="stylesheet" type="text/css" href="../../../trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="../../../trd/datetimepicker/css/bootstrap-datetimepicker.min.css" />
+<link rel="stylesheet" type="text/css" href="../../../trd/uui/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../../../trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css" href="../../../trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css" href="../../../trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css" href="../../../trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css" href="../../../trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css" href="../../../trd/ip/css/ip.css" />
+<!-- <link rel="stylesheet" type="text/css" href="../../../trd/ip/css/platform.css" />  -->
+<style type="text/css">
+	
+</style>
+ <link rel="stylesheet" type="text/css" href="../../../trd/ip/css/bizSys.css" />
+<link rel="stylesheet" type="text/css" href="../../../trd/ip/css/theme/blue.css" /> 
+<style>
+.form-control:focus + i {
+    display: block;
+}
+ .modal-header {
+    background-color: #F2F2F2;
+    color: #333;
+}
+.ip-pop-success{
+	font-size: 40px;
+    vertical-align: middle;
+}
+.info-message{
+	font-size: 18px;
+} 
+/*提示工具样式（开始）*/
+.ip-tooltip{
+    position: absolute;
+    z-index: 1900;
+    display: block;
+    font-size: 12px;
+    font-weight: 300;
+    font-style: normal;
+    line-height: 1.57142857;
+    text-align: left;
+    text-align: start;
+    text-decoration: none;
+    text-shadow: none;
+    text-transform: none;
+    letter-spacing: normal;
+    word-break: normal;
+    word-spacing: normal;
+    word-wrap: normal;
+    white-space: normal;
+    filter: alpha(opacity=0);
+    opacity: 1;
+    line-break: auto;
+}
+.ip-tooltip-danger.top .ip-tooltip-arrow{
+	border-top-color: rgb(244,67,54) !important;
+}
+.ip-tooltip.top .ip-tooltip-arrow {
+    bottom: -4px;
+    left: 50%;
+    margin-left: -4px;
+    border-width: 4px 4px 0;
+    border-top-color: #3f51b5;
+}
+.ip-tooltip-danger .ip-tooltip-inner {
+    background-color: rgb(244,67,54) !important;
+}
+.ip-tooltip .ip-tooltip-inner {
+    color: #fff;
+    background-color: #3f51b5;
+}
+.ip-tooltip-inner {
+    max-width: 200px;
+    padding: 6px 12px;
+    text-align: center;
+    border-radius: 3px;
+}
+.ip-tooltip-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+}
+</style>
+</head>
+
+<body style="padding:20px;">
+<h1>bshengLoading...</h1>
+<div>
+    <button class="btn btn-default" onclick="loading(true)">loading</button>
+    <script>
+    function loading(flag) {
+        var configModal = $("#info-loading")[0];
+        if (!configModal) {
+            var innerHTML = '<div id="info-loading" class="info-loading"><img src="./loading.gif"></div>';
+            $("body").append(innerHTML);
+        }
+        if (flag) {
+            $("#info-loading").css("display", "block");
+        } else {
+            $("#info-loading").css("display", "none");
+        }
+    }
+    </script>
+    <!-- <div class="info-loading"><img src="./loading5.gif"></div> -->
+</div>
+<h1>消息提示</h1>
+<div class="ip-tooltip top ip-tooltip-danger" role="tooltip">
+    <div class="ip-tooltip-arrow"></div>
+    <div class="ip-tooltip-inner">
+        Danger
+    </div>
+</div>
+                                
+<h1>1 树组件：</h1>
+<div>
+    <div id="treeTest2" class="ztree" u-meta='{"id":"tree2","data":"treeDataTable","type":"tree","idField":"id","pidField":"pid","nameField":"title","setting":"treeSetting"}'></div>
+</div>
+<h1>2 按钮组</h1>
+<h3>1) 单个按钮</h3>
+<div>
+    <h5>新增，编辑，保存，确认</h5>
+    <button type="button" class="btn btn-primary" disabled>（首选项）Primary</button>
+    <h5>取消，关闭</h5>
+    <button type="button" class="btn btn-default">（默认样式）Default</button>
+    <h5>删除</h5>
+    <button type="button" class="btn btn-danger">（危险）Danger</button>
+</div>
+<h3>2) 按钮组</h3>
+<div>
+    <a class="btn btn-default" href="#" role="button">Link</a>
+    <button class="btn btn-default" type="submit">Button</button>
+    <input class="btn btn-default" type="button" value="Input">
+    <input class="btn btn-default" type="submit" value="Submit">
+</div>
+<h1>3 标签页</h1>
+<div>
+    <!-- Nav tabs -->
+    <ul id="myTabs" class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#homes" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+        <li role="presentation"><a href="#profiles" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div id="myTabContent" class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="homes">
+            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="profiles">
+            Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.
+        </div>
+    </div>
+</div>
+<h1>4 表格</h1>
+<button data-bind="click: addRow">asadadad</button>
+<div>
+    <div type="text" u-meta='{"id":"write-grid","data":"gridDataTable","type":"grid","editable":false,"multiSelect":true,"autoExpand":false,"showTree":false,"showNumCol":true,"keyField":"theId","parentKeyField":"parentId","sumRowFixed": true,"headerHeight":32,"rowHeight":32,"sumRowHeight":32,"showSumRow": true, "sumRowFirst": true,"editable":true}'>
+        <div options='{"field":"handler","dataType":"String","title":"业务处理","editType":"string","width": 200}'></div>
+        <div options='{"field":"defi","dataType":"String","title":"资金性质","editType":"string","width": 200,"sumCol":true,"renderType":"myRenderMoneyFormat","editType":"myEditMoneyType"}'></div>
+        <div options='{"field":"enablement","dataType":"String","title":"功能分类","editType":"string","width": 200}'></div>
+        <div options='{"field":"source","dataType":"String","title":"指标来源","editType":"string","width": 200}'></div>
+        <div options='{"field":"String","dataType":"String","title":"操作","editType":"string","width": 100,"renderType":"writeSetFun"}'></div>
+    </div>
+    <div id='pagination' class='u-pagination fr' u-meta='{"type":"pagination","data":"gridDataTable","pageList":[5,10,20],"sizeChange":"sizeChangeFun","pageChange":"pageChangeFun"}'></div>
+</div>
+<h1>5 分页</h1>
+<div>
+    <div id='pagination' class='u-pagination'></div>
+</div>
+<h1>
+6 表单
+</h1>
+<div class="col-md-6" style="float:none;">
+    <h4>(1)内联表单</h4>
+    <div class="col-md-12">
+        <label for="" class="col-md-4 text-right">时间</label>
+        <div class="col-md-8 ip-input-group">
+            <input type="text" class="form-control">
+        </div>
+    </div>
+    <h5>1-1 支持说明的文本框</h5>
+    <div>请参考搜索框样式</div>
+    <h5>1-2 设置文本框最大输入数</h5>
+    <div>
+        maxlength: 规定输入字段中的字符的最大长度.
+        <p>
+            例如:
+        </p>
+        <p>
+            <input type="text" class="form-control" maxlength="5">最大只能输入5个字符
+        </p>
+    </div>
+    <h5>1-3支持图标</h5>
+    <div>
+        <div class="form-group ip-feedback">
+            <input type="text" class="ip-form-input" placeholder="请输入关键字搜索">
+            <span class="glyphicon glyphicon-search ip-form-control-feedback">
+        </span>
+        </div>
+        <div class="form-group ip-feedback">
+            <span class="glyphicon glyphicon-user ip-form-control-affix">
+        </span>
+            <input type="text" class="ip-form-input" placeholder="请输入用户名">
+        </div>
+    </div>
+    <h5>1-4 金额控件</h5>
+    <div>
+        <input id="demo" type="text" class="form-control" onfocus="ip.dealThousandFocus(this.id,this.value)" onblur="ip.dealThousand(this.id,this.value,3)" onkeyup="ip.judge(this,3)" onkeydown="ip.judgeDown(this)">
+    </div>
+    <h4>(2) 作为额外元素的按钮</h4>
+    <div>
+        a、业务系统使用
+        <div class="col-md-12">
+            <label class="col-md-4 text-right">名称</label>
+            <div class="input-group col-md-8 ip-input-group modal-input-group">
+                <input type="text" class="form-control col-md-6">
+                <span class="glyphicon input-control-feedback">X</span>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                        <span class="glyphicon glyphicon-list"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div>
+        b、平台系统使用
+        <div class="col-md-12">
+            <label class="col-md-4 text-right">名称</label>
+            <div class="input-group col-md-8 ip-input-group">
+                <input type="text" class="form-control col-md-6">
+                <span class="input-group-addon">
+                <!-- <button class="btn btn-default" type="button"> -->
+                    <span class="glyphicon glyphicon-list"></span>
+                <!-- </button> -->
+                </span>
+            </div>
+        </div>
+    </div>
+    <h4>(3) 搜索框</h4>
+    <div>
+        <div class="input-group ip-input-group">
+            <input type="text" class="form-control col-md-6" placeholder="请输入关键字搜索">
+            <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+                <span class="glyphicon glyphicon-search"></span>
+            </button>
+            </span>
+        </div>
+    </div>
+    <h4>(4) 上传文件</h4>
+    <div>
+        <p>https://github.com/kartik-v/bootstrap-fileinput（推荐）</p>
+        <p>http://plugins.krajee.com/file-input/demo</p>
+    </div>
+    <h1>
+    7 多选和单选框
+</h1>
+    <div>
+        <!--默认-->
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value=""> Option one is this and that&mdash;be sure to include why it's great
+            </label>
+        </div>
+        <div class="checkbox disabled">
+            <label>
+                <input type="checkbox" value="" disabled> Option two is disabled
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> Option one is this and that&mdash;be sure to include why it's great
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2"> Option two can be something else and selecting it will deselect option one
+            </label>
+        </div>
+        <div class="radio disabled">
+            <label>
+                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled> Option three is disabled
+            </label>
+        </div>
+        <!--内联样式-->
+        <label class="checkbox-inline">
+            <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+        </label>
+        <label class="checkbox-inline">
+            <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+        </label>
+        <label class="checkbox-inline">
+            <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+        </label>
+        <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+        <!-- <label class="radio-inline"> -->
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+        <!-- </label> -->
+        <!-- <label class="radio-inline"> -->
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+        <!-- </label> -->
+        <!-- <label class="radio-inline"> -->
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+        <!-- </label> -->
+    </div>
+    <h1>
+    8 路径导航
+</h1>
+    <div>
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Library</a></li>
+            <li class="active">Data</li>
+        </ol>
+    </div>
+    <h1>
+    9 下拉列表
+</h1>
+    <div>
+        <select class="form-control">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </div>
+    <h1>
+    10 只读状态
+</h1>
+    <div>
+        <input class="form-control" type="text" placeholder="Readonly input here…" readonly>
+    </div>
+    <h1>
+    11 校验状态
+</h1>
+    <div>
+        <div class="form-group has-error">
+            <label class="control-label" for="inputError1">Input with error</label>
+            <input type="text" class="form-control" id="inputError1">
+        </div>
+    </div>
+    <h1>
+    12 Glyphicons 字体图标
+</h1>
+    <div>
+        <button type="button" class="btn btn-default" aria-label="Left Align">
+            <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+        </button>
+        <button type="button" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+        </button>
+    </div>
+    <h1>
+    12-1 带菜单图标按钮
+</h1>
+    <div class="icon-buttons">
+        <span class="icon-box"><i class="iconbtn icon-enter"></i>录入</span>
+        <span class="icon-box"><i class="iconbtn icon-copy"></i>复制</span>
+        <span class="icon-box"><i class="iconbtn icon-in"></i>导入</span>
+        <span class="icon-box"><i class="iconbtn icon-send"></i>送审</span>
+        <span class="icon-box"><i class="iconbtn icon-del"></i>删除（批量删除）</span>
+        <span class="icon-box"><i class="iconbtn icon-print"></i>打印</span>
+        <span class="icon-box"><i class="iconbtn icon-out"></i>批量导出</span>
+        <span class="icon-box"><i class="iconbtn icon-revoke"></i>批量撤销</span>
+        <span class="icon-box"><i class="iconbtn icon-examine"></i>批量审核（批量复合）</span>
+        <span class="icon-box"><i class="iconbtn icon-back"></i>取消退回</span>
+        <span class="icon-box"><i class="iconbtn icon-cancel-examine"></i>取消审核</span>
+        <span class="icon-box"><i class="iconbtn icon-effect"></i>批量生效</span>
+        <span class="icon-box"><i class="iconbtn icon-operationlog"></i>操作日志</span>
+        <span class="icon-box"><i class="iconbtn icon-revoke-approval"></i>撤销送审</span>
+        <span class="icon-box"><i class="iconbtn icon-reception"></i>手动接收</span>
+        <span class="icon-box"><i class="iconbtn icon-all-send"></i>批量送审</span>
+        <span class="icon-box"><i class="iconbtn icon-connection"></i>自动挂接</span>
+        <span class="icon-box"><i class="iconbtn icon-consult"></i>查阅</span>
+        <span class="icon-box"><i class="iconbtn icon-report"></i>按季编报</span>
+        <span class="icon-box"><i class="iconbtn icon-situation"></i>执行情况</span>
+        <span class="icon-box"><i class="iconbtn icon-release"></i>批量下达</span>
+        <span class="icon-box"><i class="iconbtn icon-lot-set"></i>批量设定</span>
+        <span class="icon-box"><i class="iconbtn icon-to-void"></i>作废</span>
+        <span class="icon-box"><i class="iconbtn icon-sign-censorship"></i>签章送审</span>
+        <span class="icon-box"><i class="iconbtn icon-batch-signature"></i>批量审核签章</span>
+        <span class="icon-box"><i class="iconbtn icon-revocation-signature"></i>批量撤销签章</span>
+        <span class="icon-box"><i class="iconbtn icon-initial-signature"></i>初审签名</span>
+        <span class="icon-box"><i class="iconbtn icon-generate"></i>生成</span>
+        <span class="icon-box"><i class="iconbtn icon-enclosure"></i>附件</span>
+        <span class="icon-box"><i class="iconbtn icon-previews"></i>预览</span>
+        <span class="icon-box"><i class="iconbtn icon-cancel-print"></i>取消打印</span>
+        <span class="icon-box"><i class="iconbtn icon-batch-sign"></i>批量签章</span>
+        <span class="icon-box"><i class="iconbtn icon-send-out"></i>发送</span>
+        <span class="icon-box"><i class="iconbtn icon-sign-send"></i>签章并发送</span>
+        <span class="icon-box"><i class="iconbtn icon-register"></i>登记</span>
+        <span class="icon-box"><i class="iconbtn icon-handle"></i>处理</span>
+        <span class="icon-box"><i class="iconbtn icon-feedback"></i>反馈</span>
+        <span class="icon-box"><i class="iconbtn icon-circulate-notice"></i>发布协查通报</span>
+        <span class="icon-box"><i class="iconbtn icon-recover"></i>收回</span>
+        <span class="icon-box"><i class="iconbtn icon-autograph"></i>签名</span>
+        <span class="icon-box"><i class="iconbtn icon-cancel-signature"></i>撤销签名</span>
+        <span class="icon-box"><i class="iconbtn icon-query-state"></i>查询状态</span>
+        <span class="icon-box"><i class="iconbtn icon-download"></i>下载</span>
+        <span class="icon-box"><i class="iconbtn icon-back-entry"></i>退至录入</span>
+        <span class="icon-box"><i class="iconbtn icon-clearing-bank-amendment"></i>清算银行修改</span>
+        <span class="icon-box"><i class="iconbtn icon-payment-summary"></i>支付摘要修改</span>
+        <span class="icon-box"><i class="iconbtn icon-payment-account-modification"></i>支付账户修改</span>
+        <span class="icon-box"><i class="iconbtn icon-refresh"></i>刷新</span>
+        <span class="icon-box"><i class="iconbtn icon-view-details"></i>查看明细</span>
+        <span class="icon-box"><i class="iconbtn icon-refund-redial"></i>退款重拨</span>
+        <span class="icon-box"><i class="iconbtn icon-batch-deactivation"></i>批量停用</span>
+        <span class="icon-box"><i class="iconbtn icon-cancellation"></i>注销</span>
+        <span class="icon-box"><i class="iconbtn icon-split"></i>拆分</span>
+        <span class="icon-box"><i class="iconbtn icon-revoke-split"></i>撤销拆分</span>
+        <span class="icon-box"><i class="iconbtn icon-start"></i>启用</span>
+        <span class="icon-box"><i class="iconbtn icon-send-again"></i>再发送</span>
+        <span class="icon-box"><i class="iconbtn icon-first-trial"></i>初审</span>
+        <span class="icon-box"><i class="iconbtn icon-last-trial"></i>终审</span>
+        <span class="icon-box"><i class="iconbtn icon-invalid-certificate"></i>作废凭证</span>
+        <span class="icon-box"><i class="iconbtn icon-confirm"></i>确认</span>
+        <span class="icon-box"><i class="iconbtn icon-document-view"></i>凭证查看</span>
+        <span class="icon-box"><i class="iconbtn icon-status-view"></i>状态查询</span>
+        <span class="icon-box"><i class="iconbtn icon-revoke-confirm"></i>撤销确认</span>
+        <span class="icon-box"><i class="iconbtn icon-pay-apply"></i>申请</span>
+        <span class="icon-box"><i class="iconbtn icon-pay-edit"></i>编辑</span>
+        <span class="icon-box"><i class="iconbtn icon-revoke-issued"></i>撤销下达</span>
+        <span class="icon-box"><i class="iconbtn icon-revoke-register"></i>撤销登记</span>
+        <span class="icon-box"><i class="iconbtn icon-revoke-generation"></i>撤销生成</span>
+        <span class="icon-box"><i class="iconbtn icon-details"></i>详情</span>
+        <span class="icon-box"><i class="iconbtn icon-co-organized"></i>协办</span>
+        <span class="icon-box"><i class="iconbtn icon-ransformation"></i>转换</span>
+        <span class="icon-box"><i class="iconbtn icon-batchinput"></i>批量录入</span>
+        <span class="icon-box"><i class="iconbtn icon-save"></i>保存</span>
+        <span class="icon-box"><i class="iconbtn icon-close"></i>关闭</span>
+        <span class="icon-box"><i class="iconbtn icon-recommend"></i>推荐</span>
+        <span class="icon-box"><i class="iconbtn icon-export"></i>导出</span>
+        <span class="icon-box"><i class="iconbtn icon-selection"></i>遴选</span>
+        <span class="icon-box"><i class="iconbtn icon-reset-rule"></i>重置规则</span>
+        <span class="icon-box"><i class="iconbtn icon-credit-rating"></i>信用等级评定</span>
+        <span class="icon-box"><i class="iconbtn icon-expert-pro-ass"></i>专家项目考核</span>
+        <span class="icon-box"><i class="iconbtn icon-examination-records"></i>考核记录</span>
+    </div>
+    <h1>
+    12-2 纯图标按钮
+</h1>
+    <div class="">
+        <i class="iconmenu icon-submit" title="送审"></i>
+        <i class="iconmenu icon-revoke-submit" title="撤销送审"></i>
+        <i class="iconmenu icon-edit" title="编辑"></i>
+        <i class="iconmenu icon-prints" title="打印"></i>
+        <i class="iconmenu icon-details" title="详情"></i>
+        <i class="iconmenu icon-input" title="录入"></i>
+        <i class="iconmenu icon-delete" title="删除"></i>
+        <i class="iconmenu icon-hanging" title="挂接"></i>
+        <i class="iconmenu icon-back-prev" title="退回上岗"></i>
+        <i class="iconmenu icon-cancel-back" title="取消退回"></i>
+        <i class="iconmenu icon-back-first" title="退回第一岗"></i>
+        <i class="iconmenu icon-examine" title="审核"></i>
+        <i class="iconmenu icon-examine" title="复核"></i>
+        <i class="iconmenu icon-cancel-examine" title="取消审核"></i>
+        <i class="iconmenu icon-set" title="设定"></i>
+        <i class="iconmenu icon-consult" title="查阅"></i>
+        <i class="iconmenu icon-execution" title="执行情况"></i>
+        <i class="iconmenu icon-issued" title="下达"></i>
+        <i class="iconmenu icon-cancel-issued" title="取消下达"></i>
+        <i class="iconmenu icon-generate" title="生成"></i>
+        <i class="iconmenu icon-preview" title="预览"></i>
+        <i class="iconmenu icon-signature" title="签章"></i>
+        <i class="iconmenu icon-reduction" title="调减"></i>
+        <i class="iconmenu icon-copys" title="复制"></i>
+        <i class="iconmenu icon-void" title="作废"></i>
+        <i class="iconmenu icon-copy-entry" title="复制录入"></i>
+        <i class="iconmenu icon-audit-signature" title="审核签章"></i>
+        <i class="iconmenu icon-initials-signatures" title="初审签名"></i>
+        <i class="iconmenu icon-signs-censorship" title="签章送审"></i>
+        <i class="iconmenu icon-autograph" title="签名"></i>
+        <i class="iconmenu icon-cancel-signature" title="撤销签名"></i>
+        <i class="iconmenu icon-handles" title="处理"></i>
+        <i class="iconmenu icon-feedbacks" title="反馈"></i>
+        <i class="iconmenu icon-circulate-notices" title="发布协查通报"></i>
+        <i class="iconmenu icon-send-outs" title="发送"></i>
+        <i class="iconmenu icon-sign-sends" title="签章并发送"></i>
+        <i class="iconmenu icon-registers" title="登记"></i>
+        <i class="iconmenu icon-recovers" title="收回"></i>
+        <i class="iconmenu icon-cancel-prints" title="取消打印"></i>
+        <i class="iconmenu icon-cancel-sign" title="撤销签章"></i>
+        <i class="iconmenu icon-cancel-censorship" title="撤销签章送审"></i>
+        <i class="iconmenu icon-query-state" title="查询状态"></i>
+        <i class="iconmenu icon-view-detail" title="查看明细"></i>
+        <i class="iconmenu icon-refund-redials" title="退款重拨"></i>
+        <i class="iconmenu icon-batch-deactivations" title="批量停用"></i>
+        <i class="iconmenu icon-cancellations" title="注销"></i>
+        <i class="iconmenu icon-sends-again" title="再发送"></i>
+        <i class="iconmenu icon-first-trials" title="初审"></i>
+        <i class="iconmenu icon-last-trials" title="终审"></i>
+        <i class="iconmenu icon-invalid-certificates" title="作废凭证"></i>
+        <i class="iconmenu icon-confirms" title="确认"></i>
+        <i class="iconmenu icon-document-views" title="凭证查看"></i>
+        <i class="iconmenu icon-status-views" title="状态查询"></i>
+        <i class="iconmenu icon-revoke-confirms" title="撤销确认"></i>
+        <i class="iconmenu icon-warning-red" title="红色预警"></i>
+        <i class="iconmenu icon-warning-orange" title="橙色预警"></i>
+        <i class="iconmenu icon-warning-yellow" title="黄色预警"></i>
+        <i class="iconmenu icon-warning-blue" title="蓝色预警"></i>
+        <i class="iconmenu icon-freeze-insert" title="冻结录入"></i>
+        <i class="iconmenu icon-unfreeze-insert" title="解冻录入"></i>
+        <i class="iconmenu icon-freeze-edit" title="冻结编辑"></i>
+        <i class="iconmenu icon-unfreeze-edit" title="解冻编辑"></i>
+        <i class="iconmenu icon-pay-mark" title="做支付"></i>
+        <i class="iconmenu icon-update-remark" title="修改备注"></i>
+        <i class="iconmenu icon-un-lock" title="启用"></i>
+        <i class="iconmenu icon-move-up" title="上移"></i> 
+        <i class="iconmenu icon-move-down" title="下移"></i>
+        <i class="iconmenu icon-patch-input" title="批量录入"></i>
+        <i class="iconmenu icon-look-file" title="查看指标文号"></i>
+        <i class="iconmenu icon-re-select" title="重选"></i>
+        <i class="iconmenu icon-select-leader" title="选为组长"></i>
+    </div>
+    <h1>12-3 示意图  </h1>
+    <div>
+        <i class="sketchBig sketchBig-basics" title="基础类" style="background-color:#108EE9"></i>
+        <i class="sketchBig sketchBig-information" title="信息化类" style="background-color:#108EE9"></i>
+        <i class="sketchBig sketchBig-drug" title="药监类" style="background-color:#108EE9"></i>
+        <i class="sketchBig sketchBig-ifad" title="农发类" style="background-color:#108EE9"></i>
+        <i class="sketchBig sketchBig-daily" title="日常运转类" style="background-color:#108EE9"></i>
+        <i class="sketchBig sketchBig-else" title="其他类" style="background-color:#108EE9"></i>
+        <i class="sketchBig sketchBig-more" title="更多" style="background-color:#108EE9"></i>
+    </div>
+    <h1>
+    <h1>12-3-1 示意图  (选中状态)  </h1>
+    <div>
+        <i class="sketchBig-select sketchBig-basics-select" title="基础类" style="background-color:#e6f4fd"></i>
+        <i class="sketchBig-select sketchBig-information-select" title="信息化类" style="background-color:#e6f4fd"></i>
+        <i class="sketchBig-select sketchBig-drug-select" title="药监类" style="background-color:#e6f4fd"></i>
+        <i class="sketchBig-select sketchBig-ifad-select" title="农发类" style="background-color:#e6f4fd"></i>
+        <i class="sketchBig-select sketchBig-daily-select" title="日常运转类" style="background-color:#e6f4fd"></i>
+        <i class="sketchBig-select sketchBig-else-select" title="其他类" style="background-color:#e6f4fd"></i>
+        <i class="sketchBig-select sketchBig-more-select" title="点点点" style="background-color:#e6f4fd"></i>
+    </div>
+    <h1>
+    <h1>12-4 示意图 （小  / 详细类） </h1>
+    <div>
+        <i class="sketchSmall sketchSmall-policy" title="政策类" style="background-color:#108EE9"></i>
+        <i class="sketchSmall sketchSmall-cause" title="事业类" style="background-color:#108EE9"></i>
+        <i class="sketchSmall sketchSmall-transferpay" title="转移支付类" style="background-color:#108EE9"></i>
+        <i class="sketchSmall sketchSmall-daily" title="日常运转类" style="background-color:#108EE9"></i>
+    </div>
+    <h1>
+    <h1>12-4-1 示意图 （小  / 详细类 ---选中状态） </h1>
+    <div>
+        <i class="sketchSmall-select sketchSmall-policy-select" title="政策类" style="background-color:#e6f4fd"></i>
+        <i class="sketchSmall-select sketchSmall-cause-select" title="事业类" style="background-color:#e6f4fd"></i>
+        <i class="sketchSmall-select sketchSmall-transferpay-select" title="转移支付类" style="background-color:#e6f4fd"></i>
+        <i class="sketchSmall-select sketchSmall-daily-select" title="日常运转类" style="background-color:#e6f4fd"></i>
+    </div>
+    <h1>
+    <h1>12-5-4  上一页  下一页 图标</h1>
+    <div>
+    	<i class="text-prev" >上一步</i>
+    	<i class="text-next" >下一步</i>
+    	<i class="icon-next" title="上一页"></i>
+    	<i class="icon-prev" title="下一页"></i>
+    </div>
+    13 点击按钮弹出弹窗
+</h1>
+    <div>
+        <h4>(1)bootrap 弹窗</h4>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+            点击弹窗弹窗
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">系统提示</h4>
+                    </div>
+                    <div class="modal-body">
+                        欢迎使用IP平台组件
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">确定</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h1>
+    14、select2(输入框支持查询)
+</h1>
+    <div>
+        <p style="height:30px;line-height:30px;font-size:20px;">官网：<a href="https://select2.github.io/">https://select2.github.io/</a></p>
+        <p style="height:30px;line-height:30px;font-size:20px;">常用接口：<a href="http://www.cnblogs.com/always-online/p/4469060.html">http://www.cnblogs.com/always-online/p/4469060.html</a></p>
+    </div>
+    <h1>15、带确定 取消的消息提示框(平台)</h1>
+    <div>
+        <button class="btn btn-danger" data-bind="click:warnJump">删除(点击确定即关闭)</button>
+        <button class="btn btn-danger" data-bind="click:warnJump1">删除(需写确定取消逻辑)</button>
+    </div>
+    <div>
+        <p>以上实例代码如下</p>
+        <p>//点击确定直接关闭实例</p>
+        <p> viewModel.warnJump=function(){</p>
+        <p> ip.warnJumpMsg("确定删除吗？",0,0,true);</p>
+        <p> }</p>
+        <p>//点击删除弹出框实例（写逻辑）</p>
+        <p> viewModel.warnJump1=function(){</p>
+        <p> ip.warnJumpMsg("确定删除吗？","sid","cCla");</p>
+        <p> $("#sid").on("click",function(){</p>
+        <p> //处理确定逻辑方法</p>
+        <p> //alert("删除成功！");</p>
+        <p> });</p>
+        <p> $(".cCla").on("click",function(){</p>
+        <p> //处理取消逻辑方法</p>
+        <p> //$("#config-modal").remove();</p>
+        <p> })</p>
+        <p> }</p>
+    </div>
+    <h1>15-1、带确定 取消的消息提示框(业务系统)(标题与提示信息均可编辑)</h1>
+    <div>
+        <button class="btn btn-danger" data-bind="click:warnJumpSys">删除(点击确定即关闭)</button>
+        <button class="btn btn-danger" data-bind="click:warnJumpSys1">删除(需写确定取消逻辑)</button>
+    </div>
+    <div>
+        <p>以上实例代码如下</p>
+        <p>//点击确定直接关闭实例</p>
+        <p> viewModel.warnJumpSys=function(){</p>
+        <p> ip.warnJumpMsgSys("提示信息","确定删除吗",0,0,true);</p>
+        <p> }</p>
+        <p>//点击删除弹出框实例（写逻辑）</p>
+        <p> viewModel.warnJumpSys1=function(){</p>
+        <p> ip.warnJumpMsgSys("提示信息","此处可编辑信息","sidsys","cClasys");</p>
+        <p> $("#sidsys").on("click",function(){</p>
+        <p> //处理确定逻辑方法</p>
+        <p> //alert($("#msg-notice-sys").val());</p>
+        <p> //alert("删除成功！");</p>
+        <p> });</p>
+        <p> $(".cClasys").on("click",function(){</p>
+        <p> //处理取消逻辑方法</p>
+        <p> //$("#config-modal-sys").remove();</p>
+        <p> })</p>
+        <p> }</p>
+    </div>
+    <h1>16、进度条</h1>
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+            60%
+        </div>
+    </div>
+</div>
+<h1>
+17、提示信息弹窗 (看页面顶部页面中心)
+</h1>
+<div>
+     <div id="info-notice" class="info-notice" style="display: block;">
+    	<div class="info-notice-header">
+    		<span class="info-notice-title">系統提示</span>
+    		<!-- <span class="ip-pop-close"></span> -->
+    		<button type="button" class="close ip-pop-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    	</div>
+    	<div class="info-notice-body">
+	    	
+	        <span><i class="glyphicon glyphicon-ok-circle ip-pop-success"></i></span>成功信息弹窗
+        </div>
+    </div>
+   <div id="info-notice" class="info-notice" style="display: block;top: 515px">
+    	<div class="info-notice-header">
+    		<span class="info-notice-title">系統提示</span>
+    		<span class="ip-pop-close"></span>
+    	</div>
+    	<div class="info-notice-body">
+	        <span><i class="glyphicon glyphicon-info-sign ip-pop-info"></i></span>信息弹窗
+        </div>
+    </div>
+    
+    <div id="info-notice" class="info-notice" style="display: block;top: 366px">
+    	<div class="info-notice-header">
+    		<span class="info-notice-title">系統提示</span>
+    		<span class="ip-pop-close"></span>
+    	</div>
+    	<div class="info-notice-body">
+	        <span><i class="glyphicon glyphicon-remove-circle ip-pop-error"></i></span>错误信息弹窗
+        </div>
+    </div>
+   <!--   <div id="info-notice" class="info-notice" style="display: block;top:260px">
+        <span><i class="glyphicon glyphicon-remove-circle ip-pop-error"></i></span>提示信息弹窗
+    </div>
+    <div id="info-notice" class="info-notice" style="display: block;top:320px">
+        <span><i class="glyphicon glyphicon-info-sign ip-pop-info"></i></span>提示信息弹窗
+    </div> -->
+</div>
+<!-- <h1>18、多级表头表格</h1>
+<div>
+<div type="text"
+u-meta='{"id":"write-grids","data":"gridDataTable","type":"grid","editable":false,"multiSelect":false,"autoExpand":false,"showTree":false,"showNumCol":true,"keyField":"theId","parentKeyField":"parentId","maxHeaderLevel":3,"headerHeight":30,"rowHeight":25,"showSumRow":true,"sumRowFirst":true}'>
+
+<div options='{"field":"defienablementsource","title":"资金性质+功能分类+指标来源","headerLevel":3,"startField":"defi","endField":"source"}'></div>
+<div options='{"field":"enablementsource","title":"功能分类+指标来源","headerLevel":2,"startField":"enablement","endField":"source"}'></div>
+<div options='{"field":"handler","dataType":"String","title":"业务处理","editType":"string","width": 200}'></div>
+<div options='{"field":"defi","dataType":"String","title":"资金性质","editType":"string","width": 200}'></div>
+<div options='{"field":"enablement","dataType":"String","title":"功能分类","editType":"string","width": 200}'></div>
+<div options='{"field":"source","dataType":"String","title":"指标来源","editType":"string","width": 200}'></div>
+<div options='{"field":"String","dataType":"String","title":"操作","editType":"string","width": 100,"renderType":"writeSetFun"}'></div>
+</div>
+</div> -->
+<h1 style="">19、组件补充</h1>
+<div class="row">
+    <div class="col-md-4 col-xs-6">
+        <ul>
+            <li>
+                <p>1、文本框内的前后输入框图标</p> <em>（1）登录界面常用样式</em>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><span
+                            class="glyphicon glyphicon-user"></span>
+                    </span>
+                    <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"><span
+                            class="glyphicon glyphicon-lock"></span>
+                    </span>
+                    <input type="password" class="form-control" placeholder="password" aria-describedby="basic-addon1">
+                </div> <em>（2）辅助输入框样式</em>
+                <div class="input-group">
+                    <input type="password" class="form-control" placeholder="日期" aria-describedby="basic-addon1"> <span class="input-group-addon" id="basic-addon1"><span
+                            class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </li>
+            <li>
+                <p>3、支持树形异步加载显示</p>
+                <div>
+                    暂无
+                </div>
+            </li>
+            <li>
+                <p>4、录入规则%号</p>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon1">
+                    <span class="input-group-addon" id="basic-addon1">%</span>
+                </div>
+            </li>
+            <li>
+                <p>4、支持树形异步加载显示</p>
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                    点击
+                </button>
+            </li>
+            <li>
+                <p>5、日历控件</p>
+                <div class="input-group date form_date col-md-8 ip-input-group" data-date="" data-date-format="yyyy-mm-dd" data-link-field="demo" data-link-format="yyyy-mm-dd">
+                    <input class="form-control" size="16" id="demo" type="text" value="">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+            </li>
+             <li>
+             	<p>5、带清空的按钮</p>
+                <div class="input-group col-md-9 col-sm-9 modal-input-group">
+				    <input type="text" class="form-control col-md-6 col-sm-6" id="agency_code-FDECDC6D-ACA3-4CBE-A48F-916E6F62C33C" onkeydown="return ip.codeInto(this.id,this.name,0,{},0,this.title,event)">
+				    <input type="hidden" id="agency_code-FDECDC6D-ACA3-4CBE-A48F-916E6F62C33C-h" name="AGENCY">
+				    <span class="input-control-feedback" onclick="ip.clearText('agency_code-FDECDC6D-ACA3-4CBE-A48F-916E6F62C33C')">X</span>
+				    <span class="input-group-addon"><span class="glyphicon glyphicon-list" style="color: #b3a9a9;font-size: 12px;" type="button" id="agency_code-FDECDC6D-ACA3-4CBE-A48F-916E6F62C33C-btn" name="AGENCY" data-toggle="modal" onclick="ip.showAssitTree(this.id,this.name,0,{},0,this.title)">
+				    </span>
+				    </span>
+			    </div>
+            </li>
+            
+             <li>
+             	<p>新提示框</p>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
+				
+				<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" data-backdrop="static">
+				  <div class="modal-dialog modal-sm" role="document" style="width: 250px;">
+				    <div class="modal-content">
+				      <div class="modal-header">系统提示</div>
+				      <div class="modal-body">
+				      	<i class="glyphicon glyphicon-ok-circle ip-pop-success"></i>
+				      	<span class="info-message">保存成功！</span>
+				      
+				      </div>
+				    </div>
+				  </div>
+				</div>
+            </li>
+            
+            
+        </ul>
+    </div>
+   
+</div>
+ 
+<script src="../../../trd/knockout/knockout-3.2.0.debug.js"></script>
+<script src="../../../trd/requirejs/require.js"></script>
+<script src="../require.config.js"></script>
+<script src="../../../trd/ip/js/ip.js"></script>
+<script src="./ipd.js"></script>
+</body>
+
+</html>

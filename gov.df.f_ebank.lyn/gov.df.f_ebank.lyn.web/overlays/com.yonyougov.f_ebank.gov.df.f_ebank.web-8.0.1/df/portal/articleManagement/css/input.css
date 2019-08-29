@@ -1,0 +1,22 @@
+.table-hover > tbody > tr:hover > td,
+ .table-hover > tbody > tr:hover > th {
+   background-color: #c0edff;
+ }
+ 
+.selectTr {
+    background-color: #c0edff !important;
+}
+.trEven{
+	background-color: #f9f9f9 ;
+}
+/* *::before, *::after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+} */
+

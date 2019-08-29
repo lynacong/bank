@@ -1,0 +1,96 @@
+	<div class="container-fluid h">
+		<div class="config-btn">
+			<button type="button" class="btn btn-config" onclick="refreshTree()">刷新</button>
+			<button type="button" class="btn btn-config" onclick="addElectronicsEle()">新增</button>
+			<button type="button" class="btn btn-config" onclick="modifyElectronicsEle()">修改</button>
+			<button type="button" class="btn btn-danger" onclick="delElectronicsEle()">删除</button>
+		</div>
+		<div class="config-search clearfix mb5">
+			<label for="bankNameSearch">银行机构查询：</label>
+			<input type="text" id="bankNameSearch" class="form-control ebank-input" placeholder="请输入名称" onkeyup="inputListner()"/>
+		</div>
+		
+		<div class="config-main-hassearch clearfix">
+			<div class="col-sm-4 border tree-sidebar">
+				<div id="treeTest2" class="ztree" u-meta='{"id":"tree_elerule","data":"treeDataTable","type":"tree","idField":"chr_id","pidField":"parent_id","nameField":"show_name","setting":"treeSetting"}'></div>
+			</div>
+			<div class="col-sm-8">
+				<table class="table-striped table table-bordered table-hover table-condensed" id="gridTest" style="width:100%;">  
+		            <thead>  
+		                <tr>  
+		                    <th style="width:50%;">银行名称</th>  
+		                    <th style="width:25%;">银行编码</th>
+		                    <th style="width:25%;">机构码</th>  
+		                    <th style="width:25%;">银行类型</th>  
+		                </tr>  
+		            </thead>  
+		            <tbody>  
+		            </tbody>  
+		       	 </table>
+			</div>
+		</div>
+		
+		<!-- 新增/修改Modal start-->
+		<div class="modal fade" id="msgAddBillTypeSetModel" tabindex="-1" role="dialog"
+			aria-labelledby="ylModalLabel" data-backdrop="static">
+			<div class="modal-dialog" role="document" style="width:600px;">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="titleText"></h4>
+					</div>
+					<div class="modal-body row">
+						<div class="col-sm-12 mt15">
+							<label class="col-sm-3 text-right" for="bankCode"><span class="color-red">*</span>银行编码：</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="bankCode">
+							</div>
+						</div>
+						<div class="col-sm-12 mt15">
+							<label class="col-sm-3 text-right" for="bankName"><span class="color-red">*</span>银行名称：</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="bankName">
+							</div>
+						</div>
+						<div class="col-sm-12 mt15">
+							<label class="col-sm-3 text-right" for="orgCode"><span class="color-red">*</span>机&nbsp;&nbsp;构&nbsp;&nbsp;码：</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="orgCode">
+							</div>
+						</div>
+						<div class="col-sm-12 mt15">
+							<label class="col-sm-3 text-right" for="banktype"><span class="color-red">*</span>银行类别：</label>
+							<div class="col-sm-9">
+								<select id="banktype"  class="form-control" onchange="doBankTypeChange()">
+									<option value = "1" selected="selected">办理行</option>
+									<option value = "2">开户行</option>
+								</select>
+							</div>
+						</div>
+						<!-- <div class="col-sm-12 mt15 hidden" id = "finance_code_select">
+							<label class="col-sm-3 text-right" for="finance_code"><span class="color-red">*</span>财政机构：</label>
+							<div class="col-sm-9">
+								<select class="form-control" id="finance_code" >
+							</select>
+							</div>
+						</div> -->
+						<!-- <div class="form-group">
+							<label for="parentBank">上级银行：</label> 
+							<select id="billType" data-bind="foreach: dataArr" class="form-control">
+								<option data-bind="text: show_name, value: chr_id"></option>
+							</select>
+						</div> -->
+					</div>
+					<div class="modal-footer">					
+						<button type="button" class="btn btn-primary" onclick="saveOrUpdate()">确定</button>
+						<button type="button" class="btn btn-primary" data-dismiss="modal">退出</button>
+					</div>
+				</div>
+			</div>
+	</div>
+	<!-- 新增/修改Modal end-->
+	</div>
+

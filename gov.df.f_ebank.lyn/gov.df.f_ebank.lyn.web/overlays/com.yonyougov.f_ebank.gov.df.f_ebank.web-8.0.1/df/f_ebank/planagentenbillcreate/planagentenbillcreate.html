@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>省级授权额度到账通知书生成</title>
+<link rel="stylesheet" type="text/css"
+	href="../../../df/trd/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../../df/trd/datetimepicker/css/bootstrap-datetimepicker.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../../df/trd/uui/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css"
+	href="../../../df/trd/uui/css/u.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../../df/trd/uui/css/tree.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../../df/trd/ip/css/reset.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../../df/trd/ip/changeTree/changeTree.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../../df/trd/uui/css/grid.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../../df/trd/ip/css/ip.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../../df/trd/ip/css/bizSys.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../../df/trd/ip/css/theme/blue.css" />
+<link rel="stylesheet" type="text/css" href="../css/fbStyle.css" />
+<link rel="stylesheet" type="text/css" href="../css/fbcommon.css" />
+<link rel="stylesheet" type="text/css" href="../css/image.css" />
+
+</head>
+<body>
+	<div class="wrapper" style="margin:0 auto;">
+		<div style="height: 90px;">
+			<div class="btn-grid-group-btn ip-content-btn-area" >
+				<div class="icon-buttons">
+					<div id="sc" class="icon-box" style="display:null;"
+						onclick="doCreateBill()"><i class="iconbtn icon-generate"></i>生成</div>
+					<div id="cxsc" class="icon-box" style="display:none;"
+						onclick="doCancelCreateBill()"><i class="iconbtn icon-revoke"></i>撤销生成</div>
+					<div id="cx" class="icon-box" data-bind="click:fSelect"><i class="iconbtn icon-query-state"></i>查询</div>
+				</div>
+			</div>
+			<div style="height:4px"></div>
+			<div style="border: 1px solid #ccc; padding:5px;height:45px;">
+				
+				<label>&nbsp;通知书：</label> <select id="sc_status"
+					style="border-radius: 2px;border: 1px solid #ccc;"
+					onchange="fGetGrid()">
+					<option value="1" selected="selected">未生成</option>
+					<option value="2">已生成</option>
+				</select> <label style="margin:1px 0px 5px 10px;">财政机构： </label> <select
+					id="finance_code" style="border-radius: 2px;border: 1px solid #ccc;"
+					onchange="orgChange()">
+				</select>
+				
+				<label style="margin:1px 0px 5px 10px;">年度： </label> <select
+					id="set_year" style="border-radius: 2px;border: 1px solid #ccc;"
+					onchange="yearChange()">
+				</select>
+				 <label style="margin:1px 0px 5px 10px;">月份</label> <select id="set_month"
+					style="border-radius: 2px;border: 1px solid #ccc;"
+					onchange="monthChange()">
+					<option value="0" selected="selected">全部</option>
+					<option value="1">1月</option>
+					<option value="2">2月</option>
+					<option value="3">3月</option>
+					<option value="4">4月</option>
+					<option value="5">5月</option>
+					<option value="6">6月</option>
+					<option value="7">7月</option>
+					<option value="8">8月</option>
+					<option value="9">9月</option>
+					<option value="10">10月</option>
+					<option value="11">11月</option>
+					<option value="12">12月</option>
+				</select> <label id="voucher_no_name" style="margin:1px 0px 5px 10px;">凭证号： </label>
+				<input type="text" style="border-radius: 2px;height:30;margin:5px 0px 0px 0px;" id="voucher_no" value="">
+				</select> <label id="plan_voucher_no_name" style="margin:1px 0px 5px 10px;">计划明细号： </label>
+				<input type="text" style="border-radius: 2px;height:30;margin:5px 0px 0px 0px;" id="plan_voucher_no" value="">
+<!-- 				<button id="modalok" type="button"
+					style="background: #108EE9;height:30;margin:0px 0px 0px 0px;"
+					onclick="fGetGrid()">查询</button> -->
+			</div>
+
+		</div>
+		<div class="btn-group-content"
+			style=" display: block;border: 1px solid #ccc;">
+		
+			<label id="lb_mian" style="float:left;padding-top:13px;">额度到账通知书：</label>
+			<div id="mianDiv" style=" display: block;height:50%;" onClick="getVoucher()">
+				<div id="modalMainGridArea" class="tabbed-grid tabbed-grid-modal"></div>
+				<div style="height:3px"></div>
+			</div>
+			<label id="detail" style="display: none;float:left;padding-top:13px;">额度到账通知书明细：</label>
+			<div id="subDiv" style=" display: block;height:50%;">
+	 			<div id="modalSubsysGridArea" class="tabbed-grid tabbed-grid-modal"></div>  
+			</div>
+			
+			  
+			
+		</div>
+	</div>
+	<script src="../../trd/knockout/knockout-3.2.0.debug.js"></script>
+	<script src="../../trd/requirejs/require.js"></script>
+	<script src="../../require.config.js"></script>
+	<script src="planagentenbillcreate.js"></script>
+	<script src="../common/ebankConstants.js"></script>
+</body>
+</html>
